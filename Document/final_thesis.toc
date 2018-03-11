@@ -1,4 +1,4 @@
 \select@language {english}
 \contentsline {section}{Preface}{2}{section*.1}
-\contentsline {section}{\numberline {1}The "mini-ROBOT"}{3}{section.1}
+\contentsline {section}{\numberline {1}Autonomous Transport Robots"}{3}{section.1}
 \contentsline {section}{References}{4}{section*.2}
