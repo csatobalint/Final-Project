@@ -5,4 +5,7 @@
 \contentsline {subsection}{\numberline {1.2}Autonomous vehicles}{3}{subsection.1.2}
 \contentsline {subsection}{\numberline {1.3}Application of autonomous transport robots}{6}{subsection.1.3}
 \contentsline {section}{\numberline {2}Mobile Robots}{8}{section.2}
-\contentsline {section}{References}{9}{section*.2}
+\contentsline {subsection}{\numberline {2.1}Classification of mobile robots}{8}{subsection.2.1}
+\contentsline {subsubsection}{\numberline {2.1.1}Based on the medium in which the robot moves}{8}{subsubsection.2.1.1}
+\contentsline {subsubsection}{\numberline {2.1.2}Based on the locomotion mechanism}{8}{subsubsection.2.1.2}
+\contentsline {section}{References}{10}{section*.2}
