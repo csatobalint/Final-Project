@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     62932,       1387]
-NotebookOptionsPosition[     61470,       1338]
-NotebookOutlinePosition[     61847,       1354]
-CellTagsIndexPosition[     61804,       1351]
+NotebookDataLength[     69481,       1533]
+NotebookOptionsPosition[     68017,       1484]
+NotebookOutlinePosition[     68394,       1500]
+CellTagsIndexPosition[     68351,       1497]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -516,7 +516,7 @@ Cell[BoxData[
    3.7310806620729313`*^9}, 3.731080739976999*^9, 3.731081358649605*^9, 
    3.731081674802045*^9, 3.7310817244270897`*^9, 3.7310822994607544`*^9, 
    3.731234743328535*^9, 3.7312349117551317`*^9, 3.731234959293191*^9, 
-   3.731236339720755*^9, 3.731769257680402*^9}]
+   3.731236339720755*^9, 3.731769257680402*^9, 3.7340254329044085`*^9}]
 }, Open  ]],
 
 Cell[BoxData[{
@@ -595,7 +595,7 @@ Cell[BoxData[
    3.7310807399945097`*^9, 3.7310813586701183`*^9, 3.7310816748190565`*^9, 
    3.7310817244446025`*^9, 3.731082299478266*^9, 3.731234746266262*^9, 
    3.731234913817893*^9, 3.731234959308817*^9, 3.731236344969232*^9, 
-   3.7317692577084208`*^9}]
+   3.7317692577084208`*^9, 3.7340254329329286`*^9}]
 }, Open  ]],
 
 Cell[BoxData[
@@ -728,8 +728,8 @@ Cell[BoxData[
 Cell[BoxData[
  TagBox[
   StyleBox[
-   DynamicModuleBox[{$CellContext`gamma$$ = 0., $CellContext`omega$$ = 
-    0, $CellContext`velocity$$ = 0., Typeset`show$$ = True, 
+   DynamicModuleBox[{$CellContext`gamma$$ = 0, $CellContext`omega$$ = 
+    0, $CellContext`velocity$$ = 0, Typeset`show$$ = True, 
     Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
     Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
     "\"untitled\"", Typeset`specs$$ = {{
@@ -737,15 +737,15 @@ Cell[BoxData[
       Hold[$CellContext`gamma$$], 0, 2 Pi}, {
       Hold[$CellContext`omega$$], 0, 2}}, Typeset`size$$ = {
     432., {211., 218.}}, Typeset`update$$ = 0, Typeset`initDone$$, 
-    Typeset`skipInitDone$$ = False, $CellContext`velocity$16599$$ = 
-    0, $CellContext`gamma$16600$$ = 0, $CellContext`omega$16601$$ = 0}, 
+    Typeset`skipInitDone$$ = False, $CellContext`velocity$7334$$ = 
+    0, $CellContext`gamma$7335$$ = 0, $CellContext`omega$7336$$ = 0}, 
     DynamicBox[Manipulate`ManipulateBoxes[
      1, StandardForm, 
       "Variables" :> {$CellContext`gamma$$ = 0, $CellContext`omega$$ = 
         0, $CellContext`velocity$$ = 0}, "ControllerVariables" :> {
-        Hold[$CellContext`velocity$$, $CellContext`velocity$16599$$, 0], 
-        Hold[$CellContext`gamma$$, $CellContext`gamma$16600$$, 0], 
-        Hold[$CellContext`omega$$, $CellContext`omega$16601$$, 0]}, 
+        Hold[$CellContext`velocity$$, $CellContext`velocity$7334$$, 0], 
+        Hold[$CellContext`gamma$$, $CellContext`gamma$7335$$, 0], 
+        Hold[$CellContext`omega$$, $CellContext`omega$7336$$, 0]}, 
       "OtherVariables" :> {
        Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
         Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
@@ -800,8 +800,9 @@ $CellContext`vB, $CellContext`vC} =
                 Span[1, 2]], {0}], {$CellContext`vx, $CellContext`vy}]]], 
            PlotRange -> {{1, 3}, {1, 3}}, Axes -> True]], $CellContext`v = {0,
          0, 0}, $CellContext`\[Omega] = {0, 0, 0}, $CellContext`vRobot = {1, 
-        0, 0}, $CellContext`vWheels = {1, 1, 
-        1}, $CellContext`A = {{(-1)/2, Sqrt[3]/2, 0.2}, {(-1)/2, -Sqrt[3]/2, 
+        0, 0}, $CellContext`vWheels = {1, 1, 1}, $CellContext`vx = 
+       0., $CellContext`vy = 
+       0., $CellContext`A = {{(-1)/2, Sqrt[3]/2, 0.2}, {(-1)/2, -Sqrt[3]/2, 
           0.2}, {1, 0, 0.2}}, $CellContext`\[Theta]1 = Pi/6, $CellContext`R = 
        0.2, $CellContext`\[Theta]2 = (5 Pi)/
         6, $CellContext`\[Theta]3 = (3 Pi)/
@@ -1009,7 +1010,8 @@ $CellContext`DrawRobot[{
    3.731080662212525*^9, 3.731080740033036*^9, 3.7310813587036386`*^9, 
    3.731081456314359*^9, 3.7310817244766254`*^9, 3.731082299508794*^9, 
    3.731234750423131*^9, 3.731234916880701*^9, 3.73123495937132*^9, {
-   3.731236360376447*^9, 3.731236384793626*^9}, 3.7317692577974806`*^9}]
+   3.731236360376447*^9, 3.731236384793626*^9}, 3.7317692577974806`*^9, 
+   3.7340254329859614`*^9}]
 }, Open  ]],
 
 Cell[BoxData[
@@ -1223,9 +1225,11 @@ Cell[BoxData[
       RowBox[{"[", "i", "]"}], "]"}], "]"}], "]"}], ",", 
    "\[IndentingNewLine]", 
    RowBox[{"{", 
-    RowBox[{"i", ",", "1", ",", "steps", ",", "1"}], "}"}]}], "]"}]], "Input",
+    RowBox[{"i", ",", "1", ",", "steps", ",", "1"}], "}"}], ",", 
+   RowBox[{"SaveDefinitions", "\[Rule]", "True"}]}], "]"}]], "Input",
  CellChangeTimes->{{3.7312362349172993`*^9, 3.731236254728428*^9}, {
-  3.7312365750417075`*^9, 3.731236605049593*^9}}],
+  3.7312365750417075`*^9, 3.731236605049593*^9}, {3.7340254300540686`*^9, 
+  3.73402543025933*^9}}],
 
 Cell[BoxData[
  RowBox[{
@@ -1236,22 +1240,22 @@ Cell[BoxData[
 used as a part specification. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", \
 ButtonStyle->\\\"Link\\\", ButtonFrame->None, ButtonData:>\\\"paclet:ref/Part\
 \\\", ButtonNote -> \\\"Part::pkspec1\\\"]\\)\"\>"}]], "Message", "MSG",
- CellChangeTimes->{3.7317692580346365`*^9}],
+ CellChangeTimes->{3.7317692580346365`*^9, 3.734025433303017*^9}],
 
 Cell[BoxData[
  TagBox[
   StyleBox[
-   DynamicModuleBox[{$CellContext`i$$ = 1, Typeset`show$$ = True, 
+   DynamicModuleBox[{$CellContext`i$$ = 7, Typeset`show$$ = True, 
     Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
     Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
     "\"untitled\"", Typeset`specs$$ = {{
       Hold[$CellContext`i$$], 1, 10, 1}}, Typeset`size$$ = {
     432., {209., 216.}}, Typeset`update$$ = 0, Typeset`initDone$$, 
-    Typeset`skipInitDone$$ = True, $CellContext`i$17179$$ = 0}, 
+    Typeset`skipInitDone$$ = False, $CellContext`i$7914$$ = 0}, 
     DynamicBox[Manipulate`ManipulateBoxes[
      1, StandardForm, "Variables" :> {$CellContext`i$$ = 1}, 
       "ControllerVariables" :> {
-        Hold[$CellContext`i$$, $CellContext`i$17179$$, 0]}, 
+        Hold[$CellContext`i$$, $CellContext`i$7914$$, 0]}, 
       "OtherVariables" :> {
        Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
         Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
@@ -1295,6 +1299,147 @@ Cell[BoxData[
      SingleEvaluation->True],
     Deinitialization:>None,
     DynamicModuleValues:>{},
+    Initialization:>({$CellContext`ShowResults[{
+          Pattern[$CellContext`newv, 
+           Blank[]], 
+          Pattern[$CellContext`\[Gamma], 
+           Blank[]], 
+          Pattern[$CellContext`\[Omega], 
+           Blank[]], 
+          Pattern[$CellContext`newpos, 
+           Blank[]], 
+          Pattern[$CellContext`neworientation, 
+           Blank[]], 
+          Pattern[$CellContext`dt, 
+           Blank[]], 
+          Pattern[$CellContext`newvWheels, 
+           Blank[]]}] := Graphics[
+         Join[
+          $CellContext`DrawRobot[
+           Join[$CellContext`newpos, {$CellContext`neworientation}]], 
+          $CellContext`DrawVectors2[
+           Join[
+            Join[$CellContext`newpos, {$CellContext`neworientation}], {
+            20 $CellContext`newv 
+             Cos[$CellContext`\[Gamma]], $CellContext`newv 
+             Sin[$CellContext`\[Gamma]]}]]], 
+         PlotRange -> {{-15, 15}, {-15, 15}}, Axes -> True, Frame -> 
+         True], $CellContext`\[Omega] = {0, 0, 0}, $CellContext`DrawRobot[{
+          Pattern[$CellContext`x, 
+           Blank[]], 
+          Pattern[$CellContext`y, 
+           Blank[]], 
+          Pattern[$CellContext`z, 
+           Blank[]], 
+          Pattern[$CellContext`\[CurlyPhi], 
+           Blank[]]}] := {
+         EdgeForm[Black], 
+         Translate[
+          Rotate[{Red, 
+            Sphere[$CellContext`rO, $CellContext`L/100], Blue, 
+            Opacity[0.3], 
+            Cylinder[{$CellContext`rA - ($CellContext`wW/2) Join[
+                Part[
+                 Normalize[$CellContext`rA], 
+                 Span[1, 2]], {0}], $CellContext`rA + ($CellContext`wW/2) Join[
+                 Part[
+                  Normalize[$CellContext`rA], 
+                  Span[1, 2]], {0}]}, $CellContext`wR], 
+            Cylinder[{$CellContext`rB - ($CellContext`wW/2) Join[
+                Part[
+                 Normalize[$CellContext`rB], 
+                 Span[1, 2]], {0}], $CellContext`rB + ($CellContext`wW/2) Join[
+                 Part[
+                  Normalize[$CellContext`rB], 
+                  Span[1, 2]], {0}]}, $CellContext`wR], 
+            Cylinder[{$CellContext`rC - ($CellContext`wW/2) Join[
+                Part[
+                 Normalize[$CellContext`rC], 
+                 Span[1, 2]], {0}], $CellContext`rC + ($CellContext`wW/2) Join[
+                 Part[
+                  Normalize[$CellContext`rC], 
+                  Span[1, 2]], {0}]}, $CellContext`wR], Black, Thick, 
+            Opacity[1], 
+            Line[{$CellContext`rO, $CellContext`rA}], 
+            Line[{$CellContext`rO, $CellContext`rB}], 
+            Line[{$CellContext`rO, $CellContext`rC}], 
+            Opacity[0.3], 
+            
+            Cylinder[{$CellContext`rO - ($CellContext`h/
+               2) $CellContext`uz, $CellContext`rO + ($CellContext`h/
+                2) $CellContext`uz}, $CellContext`R], 
+            Null}, $CellContext`\[CurlyPhi], {0, 0, 
+           1}], {$CellContext`x, $CellContext`y, $CellContext`z}]}, \
+$CellContext`DrawRobot[{
+          Pattern[$CellContext`x, 
+           Blank[]], 
+          Pattern[$CellContext`y, 
+           Blank[]], 
+          Pattern[$CellContext`r, 
+           Blank[]]}] := {
+         EdgeForm[Black], 
+         Translate[
+          Rotate[{Pink, 
+            Disk[{0, 0}, $CellContext`R], Black, 
+            Disk[{0, 0}, $CellContext`R/20], Gray, 
+            Rotate[
+             
+             Rectangle[{-($CellContext`wheelDiameter/2) + 
+               Part[$CellContext`wheelPosA, 1], -($CellContext`wheelWidth/2) + 
+               Part[$CellContext`wheelPosA, 2]}, {$CellContext`wheelDiameter/
+                2 + Part[$CellContext`wheelPosA, 1], $CellContext`wheelWidth/
+                2 + Part[$CellContext`wheelPosA, 2]}], 
+             Part[$CellContext`wheelPosA, 3]], 
+            Rotate[
+             
+             Rectangle[{-($CellContext`wheelDiameter/2) + 
+               Part[$CellContext`wheelPosB, 1], -($CellContext`wheelWidth/2) + 
+               Part[$CellContext`wheelPosB, 2]}, {$CellContext`wheelDiameter/
+                2 + Part[$CellContext`wheelPosB, 1], $CellContext`wheelWidth/
+                2 + Part[$CellContext`wheelPosB, 2]}], 
+             Part[$CellContext`wheelPosB, 3]], 
+            Rotate[
+             
+             Rectangle[{-($CellContext`wheelDiameter/2) + 
+               Part[$CellContext`wheelPosC, 1], -($CellContext`wheelWidth/2) + 
+               Part[$CellContext`wheelPosC, 2]}, {$CellContext`wheelDiameter/
+                2 + Part[$CellContext`wheelPosC, 1], $CellContext`wheelWidth/
+                2 + Part[$CellContext`wheelPosC, 2]}], 
+             
+             Part[$CellContext`wheelPosC, 
+              3]]}, $CellContext`r, {$CellContext`x, $CellContext`y}], \
+{$CellContext`x, $CellContext`y}]}, $CellContext`rO = {0, 0, 
+        0}, $CellContext`L = 
+       0.1, $CellContext`rA = {0.08660254037844387, 0.05, 
+        0.}, $CellContext`wW = 0.0125, $CellContext`wR = 
+       0.020000000000000004`, $CellContext`rB = {-0.08660254037844387, 0.05, 
+        0.}, $CellContext`rC = {0., -0.1, 0.}, $CellContext`h = 
+       0.010000000000000002`, $CellContext`uz = {0, 0, 1}, $CellContext`R = 
+       0.2, $CellContext`wheelDiameter = 
+       0.2, $CellContext`wheelPosA = {
+        0.17320508075688773`, 0.1, (2 Pi)/3}, $CellContext`wheelWidth = 
+       0.04000000000000001, $CellContext`wheelPosB = {-0.17320508075688773`, 
+         0.1, (4 Pi)/3}, $CellContext`wheelPosC = {
+        0., -0.2, 2 Pi}, $CellContext`DrawVectors2[{
+          Pattern[$CellContext`x, 
+           Blank[]], 
+          Pattern[$CellContext`y, 
+           Blank[]], 
+          Pattern[$CellContext`r, 
+           Blank[]], 
+          Pattern[$CellContext`vx, 
+           Blank[]], 
+          Pattern[$CellContext`vy, 
+           Blank[]]}] := {
+         EdgeForm[Black], 
+         Translate[
+          Rotate[{Red, 
+            Arrow[{{0, 0}, {0, 0} + {$CellContext`vx, $CellContext`vy}}], 
+            Text[
+             Style["v", Black], {$CellContext`R/3, $CellContext`R/5}], 
+            Null}, $CellContext`r, {$CellContext`x, $CellContext`y}], \
+{$CellContext`x, $CellContext`y}]}, $CellContext`vx = 0, $CellContext`vy = 0}; 
+     Typeset`initDone$$ = True),
     SynchronousInitialization->True,
     UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
     UnsavedVariables:>{Typeset`initDone$$},
@@ -1304,7 +1449,7 @@ Cell[BoxData[
   Manipulate`InterpretManipulate[1]]], "Output",
  CellChangeTimes->{
   3.731236259441552*^9, {3.7312365815600276`*^9, 3.7312366078574557`*^9}, 
-   3.731769258076665*^9}]
+   3.731769258076665*^9, 3.7340254333935795`*^9}]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1326,7 +1471,8 @@ Drive\\\\MSc\\\\Final-Project\\\\Simulations\"\>"], "Output",
    3.731080768668565*^9}, 3.7310808060257263`*^9, 3.7310808860895367`*^9, 
    3.731081359905799*^9, 3.73108172485937*^9, 3.731082224678075*^9, 
    3.7310822996373816`*^9, 3.7310823341749983`*^9, 3.731082388190445*^9, 
-   3.731082445862421*^9, 3.7312349594494486`*^9, 3.7317692581727295`*^9}]
+   3.731082445862421*^9, 3.7312349594494486`*^9, 3.7317692581727295`*^9, 
+   3.734025433419594*^9}]
 }, Open  ]],
 
 Cell[BoxData[
@@ -1363,32 +1509,32 @@ Cell[3714, 104, 7118, 148, 405, "Input"],
 Cell[10835, 254, 9244, 211, 888, "Input"],
 Cell[CellGroupData[{
 Cell[20104, 469, 510, 9, 36, "Input"],
-Cell[20617, 480, 2247, 38, 404, "Output"]
+Cell[20617, 480, 2271, 38, 404, "Output"]
 }, Open  ]],
-Cell[22879, 521, 1029, 29, 121, "Input"],
+Cell[22903, 521, 1029, 29, 121, "Input"],
 Cell[CellGroupData[{
-Cell[23933, 554, 698, 14, 60, "Input"],
-Cell[24634, 570, 1725, 27, 36, "Output"]
+Cell[23957, 554, 698, 14, 60, "Input"],
+Cell[24658, 570, 1749, 27, 36, "Output"]
 }, Open  ]],
-Cell[26374, 600, 4403, 97, 376, "Input"],
+Cell[26422, 600, 4403, 97, 376, "Input"],
 Cell[CellGroupData[{
-Cell[30802, 701, 1280, 24, 60, "Input"],
-Cell[32085, 727, 13625, 284, 611, "Output"]
+Cell[30850, 701, 1280, 24, 60, "Input"],
+Cell[32133, 727, 13696, 286, 611, "Output"]
 }, Open  ]],
-Cell[45725, 1014, 3801, 82, 376, "Input"],
-Cell[49529, 1098, 1909, 33, 60, "Input"],
-Cell[51441, 1133, 3379, 65, 129, "Input"],
-Cell[54823, 1200, 493, 12, 36, "Input"],
+Cell[45844, 1016, 3801, 82, 376, "Input"],
+Cell[49648, 1100, 1909, 33, 60, "Input"],
+Cell[51560, 1135, 3379, 65, 129, "Input"],
+Cell[54942, 1202, 493, 12, 36, "Input"],
 Cell[CellGroupData[{
-Cell[55341, 1216, 444, 11, 60, "Input"],
-Cell[55788, 1229, 451, 9, 26, "Message"],
-Cell[56242, 1240, 3860, 66, 549, "Output"]
+Cell[55460, 1218, 551, 13, 60, "Input"],
+Cell[56014, 1233, 473, 9, 26, "Message"],
+Cell[56490, 1244, 10133, 207, 549, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[60139, 1311, 104, 2, 36, "Input"],
-Cell[60246, 1315, 956, 13, 36, "Output"]
+Cell[66660, 1456, 104, 2, 36, "Input"],
+Cell[66767, 1460, 982, 14, 36, "Output"]
 }, Open  ]],
-Cell[61217, 1331, 249, 5, 36, "Input"]
+Cell[67764, 1477, 249, 5, 36, "Input"]
 }
 ]
 *)

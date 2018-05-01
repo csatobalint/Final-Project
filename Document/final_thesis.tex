@@ -2,7 +2,12 @@
 \usepackage[utf8]{inputenc}
 \usepackage[a4paper]{geometry}
 \geometry{verbose,tmargin=2cm,bmargin=2cm,lmargin=3cm,rmargin=2cm,headheight=12pt,headsep=24pt}
-\setcounter{secnumdepth}{3}
+\setcounter{secnumdepth}{4}
+\usepackage{titlesec}
+\titleformat{\paragraph}
+{\normalfont\normalsize\bfseries}{\theparagraph}{1em}{}
+\titlespacing*{\paragraph}
+{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
 \setcounter{tocdepth}{3}
 \usepackage{pdfpages}
 \usepackage{bm}
@@ -90,7 +95,7 @@ Department of Applied Mechanics}}
 
 
 
-\title{\vspace{-2cm}\includegraphics[width=0.4\textwidth,keepaspectratio]{bme_skyline}\\
+\title{\vspace{-2cm}\includegraphics[width=0.4\textwidth,keepaspectratio]{figures/bme_skyline}\\
 \BME\vspace{4cm}\\
 Control and Parameter Estimation Problems of Autonomous Transport Robots
 \\[5mm]
@@ -113,7 +118,9 @@ Control and Parameter Estimation Problems of Autonomous Transport Robots
 \renewcommand{\contentsname}{Contents}
 \renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
 \tableofcontents
-
+\numberwithin{equation}{section} % Number equations within sections
+\numberwithin{figure}{section} % Number figures within sections
+\numberwithin{table}{section} % Number tables within sections
 
 \newpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -123,22 +130,10 @@ Control and Parameter Estimation Problems of Autonomous Transport Robots
 Autonomous vehicle technology offers the possibility of fundamentally
 changing transportation. Equipping cars and light vehicles
 with this technology will likely reduce crashes, energy consumption,
-and pollution and reduce the costs of congestion, as well.
-
-This technology is most easily conceptualized using a five-part
-continuum suggested by the National Highway Traffic Safety Administration
-(NHTSA), with different benefits of the technology realized
-at different levels of automation:
-\begin{itemize}
-\item \textbf{Level 0:}  The human driver is in complete control of all functions of the car.
-\item \textbf{Level 1:}  One function is automated.
-\item \textbf{Level 2:}  More than one function is automated at the same time (e.g., steering and acceleration), but the driver must remain constantly attentive.
-\item \textbf{Level 3:} The driving functions are sufficiently automated that the driver can safely engage in other activities.
-\item \textbf{Level 4:} The car can drive itself without a human driver.
-\end{itemize}
-\noindent Careful policymaking will be necessary to maximize the social
-benefits that this technology will enable, while minimizing the disadvantages[1].
-
+and pollution and reduce the costs of congestion, as well.............
+blabalblablalblalba
+lablblablablalblballb
+labllablblalbalblalblbal
 
 \addcontentsline{toc}{section}{Preface}
 
@@ -153,7 +148,7 @@ Since the early days of the human civilization, one of the most common problem h
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=10cm]{evot}
+	\includegraphics[width=10cm]{figures/evot}
 	\label{fig1}
 	\caption{Evolution of Transportation}
 \end{figure}
@@ -217,7 +212,7 @@ The conventional ways of transporting could be appropriate for most of the cases
 One of the latest trends in technology is to create such driverless robots that can help people in their everyday life, i.e. bringing any kind of products to customers. A company called Starship launched a several self-driving robotic vehicles on the streets of Washington, D.C. that can transport food and other small items to customers ordering via app.
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=5cm]{starship.jpg}
+	\includegraphics[width=7cm]{figures/starship.jpg}
 	\label{fig1}
 	\caption{Starship Technologies}
 \end{figure}
@@ -229,7 +224,7 @@ The robotic vehicles move themeselves along sidewalks using camera and tracking 
 A company called SMP Robotics made automated guided vehicles that can remove grass clippings and fallen leaves or construct garbage collection in a garden. 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=5cm]{smp.jpg}
+	\includegraphics[width=7cm]{figures/smp.jpg}
 	\label{smp}
 	\caption{SMP Robotics}
 \end{figure}
@@ -238,16 +233,16 @@ A company called SMP Robotics made automated guided vehicles that can remove gra
 
 A firm named NEOBOTIX made autonomous transport system for daily use in industrial applications. The robots are equipped with laser scanners that permanently detect landmarks and obstacles what allows the robot to react dynamically to unexpected changes of their surrounding, i.e. to safely operate between human and other moving objects. This flexibility makes them suited for dynamic transportation tasks with frequent changes. For instance, they can complement roller or belt conveyors and take parts to machines or workplaces that are not connected to the conveyor system. \cite{neo}
 
-\begin{figure}[h]
+\begin{figure}[htb!]
 	\centering
-	\minipage{0.40\textwidth}
+	\minipage{0.50\textwidth}
 	\centering
-	\includegraphics[height=5cm]{neo1.jpg}
+	\includegraphics[height=5cm]{figures/neo1.jpg}
 	\caption{{\small MT-400}}
 	\endminipage\hfill
-	\minipage{0.40\textwidth}
+	\minipage{0.50\textwidth}
 	\centering
-	\includegraphics[height=5cm]{neo2.jpg}
+	\includegraphics[height=5cm]{figures/neo2.jpg}
 	\caption{{\small MT-500}}
 	\label{conv2}
 	\endminipage\hfill
@@ -257,21 +252,36 @@ A firm named NEOBOTIX made autonomous transport system for daily use in industri
 
 BMW logistics also uses autonomous transport robots similarly in industrial environment. The well-known car manufacturer has been working hard to reduce emissions in all steps of the manufacturing process of a car, not only in the final product. This application shows really well that the autonomous developments in the automotive industry is not just about the autonomous driving on the roads but the manufacturing processes as well. Smart Transport Robots (STR) transport components through logistics at the Wackersdorf plant. They measures the distance to wireless transmitters which are located at in the logistics hall to calculate its exact position and route. Using sensors to identify and react to critical situations, it is able to share the route with humans and other vehicles. \cite{bmw}
 
-\begin{figure}[h]
+\begin{figure}[htb!]
 	\centering
-	\includegraphics[width=7cm]{bmw.jpg}
+	\includegraphics[width=9cm]{figures/bmw.jpg}
 	\label{bmw}
 	\caption{BMW: Smart Transport Robots}
 \end{figure}
 
-Another interesting field of application of transportation robots is the military. By putting humans to this work they are often exposed to a risk that could be avoided.The Autonomous Platform Demonstrator is a military transportation robot developed by the U.S. It has a hybrid-electric drive train with six in-hub electric motors powered by li-ion batteries charged using an on-board diesel generator. From control point of view it can be controlled in real-time by a soldier or it can operate autonomously. Autonomously it can operate at speeds up to 50 mph. It can travel along a GPS way point route and avoid obstacles in its way. \cite{apd}
+A company, named AETHON, made fully autonomous robot called TUG that automates the transport of materials and supplies in commercial environments. It can automatically drop off and pickup of carts, navigates on internal map of facility using laser and it has a omnidirectional 4 wheel driven drive system for higher maneuverability.
+
+\begin{figure}[htb!]
+	\centering
+	\includegraphics[width=7cm]{figures/tug.png}
+	\label{bmw}
+	\caption{AETHON: TUG mobile transport robot}
+\end{figure}
+
+Another interesting field of application of transportation robots is the military. By putting humans to this work they are often exposed to a risk that could be avoided.The Autonomous Platform Demonstrator is a military transportation robot developed by the U.S. It has a hybrid-electric drive train with six in-hub electric motors powered by li-ion batteries charged using an on-board diesel generator. 
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=7cm]{apd.jpg}
+	\includegraphics[width=7cm]{figures/apd.jpg}
 	\label{bmw}
 	\caption{Military transportation robot: APD}
 \end{figure}
+
+From control point of view it can be controlled in real-time by a soldier or it can operate autonomously. Autonomously it can operate at speeds up to 50 mph. It can travel along a GPS way point route and avoid obstacles in its way. \cite{apd}
+
+
+
+
 
 
 \newpage
@@ -314,6 +324,90 @@ In locomotion, the environment is fixed and the robot moves by imparting force t
 	\end{itemize}
 
 \end{itemize}
+
+
+\subsection{Legged Mobile Robots}
+Legged mobile robots contact the ground by a set of contact points which provides good adaptability and maneuverability in rough terrain. Not even the ground quality is an issue until the ground clearance is possible to be maintained, e.g crossing holes which does not exceed the size of the robot is solvable demand. The main disadvantages of legged systems include power and mechanical complexity. The leg must be capable of sustaining the part of the robot’s total weight, lifting and lowering the robot body meanwhile keeping the stability permanently. Furthermore, high maneuverability needs sufficient number of degrees of freedom to impart forces in a sufficient number of different directions.
+The legged robots are basically biologically inspired based on the fact that they are successful locomotion systems. A number of different leg configurations have been successful in a variety of organisms, i.e. the most common numbers are the two, four or six.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=7cm]{figures/legged2.pdf}
+	\label{legged}
+	\caption{Arrangement of the legs of various animals}
+\end{figure}
+
+A creature with at least three legs can achieve static balance which means that no correcting movements have to be taken to preserve its balance. Actually static balance means that the center of gravity is within the tripod of ground contact. A small deviation from stability is passively corrected toward the stable pose by constrain forces after the disturbance goes away. However, any creature who is intended to walk must be able to lift and then release their legs, thus for static walking the minimum number of needed legs is six. Insects and spiders are immediately able to walk when born compared to mammals with four legs who are not able to walk or even to stand in case of humans with only two legs. Therefore the main issue regarding the locomotion of legged robots is the balancing. Of course, the number of legs and also the number of degrees of freedom of a given leg can be increased in order to achieve better stability and maneuverability. On the other hand, more legs and joints result more actuators, thus more energy, more mass, more control, i.e. more costs in certain senses. Most of the legged robots in research and industrial cases have two legs.
+The robot legs and arms are usually driven by electrical motors and pneumatic pistons. High level of harmony of the piston movements must be carried out by the designer in order to its hold balance also during the walking what is challenging control task.
+
+\subsection{Wheeled Mobile Robots}
+The wheels are the most widely used locomotion mechanisms in man-made vehicles in general due to its simplicity, effectiveness. In most of the cases, during the design the robot builders need to focus problems regarding traction, stability, maneuverability and control. 
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=4cm]{figures/triangle.pdf}
+	\label{triangle}
+	\caption{Major aspects of wheeled robot design}
+\end{figure}
+
+In general, balance is not usually an issue in wheeled robotics as they are designed such a way that the all wheels are in contact with the ground. Having three wheels is sufficient to guarantee the static stability if the center of gravity is within the triangle formed by three contact points. Obviously in case of two wheels, self-balancing is necessary. When more than two wheels are used, once the stability improved by adding more contact possibilites, but also a flexible suspension system is required to allow all wheels to maintain ground contact when the robot encounters uneven terrain. One of the simplest approaches to suspension is to design flexibility into the wheel itself, i.e. applying deformable tire of soft rubber material.
+
+Basically, the maneuverability of a given robot depend on the design, the configuration and the degrees of freedoms of powered wheels. Each configuration, wheels type has their advantages and disadvantages that have to be considered before building a mobile robot, we shall see the details later. The robot arrangements can be classified into two groups: holonomic and anholonomic. A mechanical system is called anholonomic if in a specific configuration (state) there exists such displacement or rotation that cannot be carried out by means of the combination of possible actuators. A well known example, an automobile cannot move perpendicular to its orientation because of the kinematic constrains of the wheels. On the other hand, some robots are holonomic, in other words omnidirectional, meaning that they can move at any time in any direction along the ground plane (x,y) regardless of the orientation of the robot around its vertical axis. This level of maneuverability requires wheels that can move in more than just one direction, we shall see the detauls later too.
+
+There is generally an inverse correlation between controllability and maneuverability. For example, the omnidirectional designs require significant processing to convert desired rotational and translational velocities to individual
+wheel commands. Furthermore, such omnidirectional designs often have greater degrees of freedom at the wheel. Controlling an omnidirectional robot for a specific direction of travel is also more difficult and often less accurate when compared to less maneuverable designs.
+
+As conclusion, there is no perfect robot configuration that simultaneously maximizes stability, maneuverability, and controllability. For that reason, it is always the designer's task to choose the most appropriate mobile robot configuration considering the constraints originated from the given application.
+
+
+\subsubsection{Wheel design}
+The choice of the wheel type has a large effect on the overall kinematics. There are four major wheel classes as shown in the figure below.
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=7cm]{figures/wheels4.png}
+	\label{wheels}
+	\caption{Major classes of wheels: 
+		(a) Standard wheel, (b) Castor wheel, (c) Swedish wheel (45$^{\circ}$/90$^{\circ}$), (d) Ball wheel}
+\end{figure}
+The standard and castor wheel have are highly one-directional as they have a primary axix around they can rotate. These wheels must be steered along a vertical axes to move in a different direction. The main difference between the two configuration is that the castor wheel rotates around an offset vertical axes causing adverse force imparted to the case compared to the standard wheel case where the axes of rotation passes through the contact point. Both the Sweedish and the spherical wheel are less directionally constrained than the former conventional ones. The Swedish wheels functions such as normals wheels providing low resistance in another direction as well, i.e. rolling resistance instead of sticking. Small rollers are attached around the circumference can rotate only in a passive way while the primary axes are the only powered joints. As a result, although the wheel can be driven along only one principal axis, the wheel can move along almost any trajectory. The spherical wheel is a truly omnidirectional wheel, often designed so that it may be actively powered to spin along any direction.
+
+\subsubsection{Wheel configurations}
+\paragraph{Holonomic robots}
+In practical applications, holonomic systems are rarely present due to higher prices and mechanical complexity, moreover dead reckoning by means of odometry is quite inaccurate. \\[10pt]
+\noindent \textbf{Three wheeled omnidirectional mobile robot} \\
+The mechanically simplest holonomic robot is omnidirectional configuration. At least three independently driven wheels are needed to be able to move in any direction $(x,y,\varphi)$ in ground plane at any time.
+\begin{figure}[htb!]
+	\centering
+	\includegraphics[width=10cm]{figures/omniconfig.png}
+	\caption{Three-wheeled omnidirectional drive configuration}
+	\label{omniconfig}
+\end{figure}
+The resultant velocity vectors in terms of wheel velocities can be seen in Figure \ref{omniconfig}. The blue wheel velocity vectors can have lateral component, i.e. the wheels have to be able to move parallel to their primary axes. This kind of configuration needs the previously mentioned Swedish wheels or spherical wheels. 
+In addition, also four wheels or even more can be built-in in a system, but in this case it can occur that the wheels drive each other in reverse direction, furthermore the more than three contact point does not guarantee the proper contact of each wheels with the ground.\\[10pt]
+\noindent \textbf{Omnidirectional robot with four Swedish wheel} \\
+Four-wheeled arrangement with 45$^{\circ}$ Swedish wheels, each driven by a separate motor, have been used in several research and industrial projects. A good example is is Uranus that can rotate and translate independently without any constraints by means of omnidirectional wheels.
+\begin{figure}[htb!]
+	\centering
+	\minipage{0.47\textwidth}
+	\centering
+	\includegraphics[height=3cm]{figures/uranus}
+	\caption{Carnegie Mellon Uranus robot}
+	\endminipage\hfill
+	\minipage{0.53\textwidth}
+	\centering
+	\includegraphics[height=3cm]{figures/mecanum}
+	\caption{Mecanum AB robot}
+	\label{conv2}
+	\endminipage\hfill
+\end{figure} \\
+When all four wheels spin in the same direction, the robot moves longitudinally in a straight line forward or backward, accordingly. When one diagonal pair of wheels spin in the same direction and the other diagonal pair of wheels spin in the opposite direction, the robot moves purely laterally. The simultaneous spin can be achieved if the wheels on left side are driven in forward or backward while the wheels on the other side are driven the corresponding opposite direction. As it was discussed earlier, this four-wheel arrangement is not minimal in terms of control, stability and maneuverability, but prefered over three-wheeled configuration for higher capacity and stability reasons. \\[10pt]
+Main disadvantages of omnidirectional configurations includes the complexity of control because of the more complex processing of wheel velocities. For instance, the Swedish wheels has a set of free rollers along the wheel perimeter adding extra degrees of freedom,i.e. translation in the lateral direction. Furthermore, due to these rollers the wheel perimeter is not a perfect circle, thus accuracy of dead-reckoning based on counting the number of rotations might be inaccurate soon. The rollers can also cause slippage, thus accumulation of displacement errors.
+
+\paragraph{Anholonomic robots}
+
+
+
+
 
 
 
