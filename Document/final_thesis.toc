@@ -13,5 +13,5 @@
 \contentsline {subsubsection}{\numberline {2.3.1}Wheel design}{12}{subsubsection.2.3.1}
 \contentsline {subsubsection}{\numberline {2.3.2}Wheel configurations}{12}{subsubsection.2.3.2}
 \contentsline {paragraph}{\numberline {2.3.2.1}Holonomic robots}{12}{paragraph.2.3.2.1}
-\contentsline {paragraph}{\numberline {2.3.2.2}Anholonomic robots}{13}{paragraph.2.3.2.2}
-\contentsline {section}{References}{14}{paragraph.2.3.2.2}
+\contentsline {paragraph}{\numberline {2.3.2.2}Anholonomic robots}{14}{paragraph.2.3.2.2}
+\contentsline {section}{References}{16}{figure.2.10}

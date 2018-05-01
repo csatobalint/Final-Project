@@ -378,7 +378,7 @@ In practical applications, holonomic systems are rarely present due to higher pr
 The mechanically simplest holonomic robot is omnidirectional configuration. At least three independently driven wheels are needed to be able to move in any direction $(x,y,\varphi)$ in ground plane at any time.
 \begin{figure}[htb!]
 	\centering
-	\includegraphics[width=10cm]{figures/omniconfig.png}
+	\includegraphics[width=15cm]{figures/omniconfig.png}
 	\caption{Three-wheeled omnidirectional drive configuration}
 	\label{omniconfig}
 \end{figure}
@@ -397,20 +397,50 @@ Four-wheeled arrangement with 45$^{\circ}$ Swedish wheels, each driven by a sepa
 	\centering
 	\includegraphics[height=3cm]{figures/mecanum}
 	\caption{Mecanum AB robot}
-	\label{conv2}
+	\label{mecanum}
 	\endminipage\hfill
 \end{figure} \\
 When all four wheels spin in the same direction, the robot moves longitudinally in a straight line forward or backward, accordingly. When one diagonal pair of wheels spin in the same direction and the other diagonal pair of wheels spin in the opposite direction, the robot moves purely laterally. The simultaneous spin can be achieved if the wheels on left side are driven in forward or backward while the wheels on the other side are driven the corresponding opposite direction. As it was discussed earlier, this four-wheel arrangement is not minimal in terms of control, stability and maneuverability, but prefered over three-wheeled configuration for higher capacity and stability reasons. \\[10pt]
 Main disadvantages of omnidirectional configurations includes the complexity of control because of the more complex processing of wheel velocities. For instance, the Swedish wheels has a set of free rollers along the wheel perimeter adding extra degrees of freedom,i.e. translation in the lateral direction. Furthermore, due to these rollers the wheel perimeter is not a perfect circle, thus accuracy of dead-reckoning based on counting the number of rotations might be inaccurate soon. The rollers can also cause slippage, thus accumulation of displacement errors.
 
 \paragraph{Anholonomic robots}
+The non holonomic wheeled robot configurations are more widely spreaded, e.g. automatic wheelcairs, robot cars. The most common choice of indoor robotics is the well-known two-wheel differential drive due to its simplicity beside acceptable maneuverability, only slightly inferior to omnidirectional drives. In optimal configuration the two wheels are arranged symmetrically, thus the robot can spin around the center point of the case without changing its location. One or two additional ground points, e.g. non driven castor wheel(s), are usually added to gain stability. 
+\begin{figure}[htb!]
+	\centering
+	\includegraphics[width=10cm]{figures/differential.png}
+	\caption{Two-wheeled differential drive configuration}
+	\label{differential}
+\end{figure}
+In such robotics, motion in a particular direction may initially require a rotational motion to be able to change the position along straight movements. Two wheel differential drive is not clearly omnidirectional but motion can be decomposed 
+into distinct rotation and displacement according to the given order. One can say, that it has two and a half degrees of freedom compared to three wheeled omnidirectional configurations that have three whole degrees of freedom.
+The advantages includes easy maneuverability, simple construction as only two motors and two conventional wheels needed. Also two wheels can be enough, but in this case self-balancing control has to be attached, in general castor wheels are preferred. The disadvantages of this configuration are lower lateral stability at higher speed turns, sensitivity to terrain roughness, furthermore if the axes of the two wheels are not coincident, the sliding of the wheels will occur.
 
+Similarly to automobiles, remarkable part of the four-wheel robots use the Ackerman steering geometry. It is a way of geometric arrangement of linkages in the steering of a vehicle designed such a way that the inner and outer wheel of a turn can move along circles of different curvatures. 
+\begin{figure}[htb!]
+	\centering
+	\includegraphics[height=6cm]{figures/ackerman2.png}
+	\caption{Ackerman steering arrangement}
+	\label{ackerman2}
+\end{figure}
+It is important that ${\theta}_i$ and ${\theta}_o$ angles cannot be the same whereas in that case the constant sliding of the wheels would be inevitable. In addition, the rear wheels also have to be tuned to spin with different appropriate velocities as they move along different trajectories. As Figure \ref{ackerman2} depicts, such a vehicle typically has a turning diameter that is larger than itself, thus to move sideways requires a parking maneuver consisting of repeated changes in direction forward and backward. In addition, the limited maneuverability of Ackerman steering has an important advantage, i.e. its directionality and steering geometry provide a
+very good lateral stability in high-speed turns. Furthermore, it is much more easier to straight simply by locking the steerable wheels and driving the drive wheels compared to the omnidirectional configurations where permanent control is needed.
 
+Multi-degree-of-freedom robots have more than the needed three degrees of freedom. They have enhanced maneuverability, but as a result of the over determined arrangement the slippage free control is more challenging at the same time. The main application scope are mostly the navigation on uneven terrains, e.g. military applications or moon rovers. The position tracking is impossible by odometry, thus external sensors are essentially needed. 
 
-
-
-
-
+\begin{figure}[htb!]
+	\centering
+	\minipage{0.5\textwidth}
+	\centering
+	\includegraphics[height=5cm]{figures/uniq.png}
+	\caption{UNIQ: 8 DOF mobile robot}
+	\endminipage\hfill
+	\minipage{0.5\textwidth}
+	\centering
+	\includegraphics[height=5cm]{figures/rover.png}
+	\caption{Sojourner: Mars rover of NASA}
+	\label{mecanum}
+	\endminipage\hfill
+\end{figure}
 
 
 

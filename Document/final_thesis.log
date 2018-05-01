@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6210 64-bit) (preloaded format=pdflatex 2017.4.22)  1 MAY 2018 13:03
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6210 64-bit) (preloaded format=pdflatex 2017.4.22)  1 MAY 2018 19:55
 entering extended mode
 **./final_thesis.tex
 (final_thesis.tex
@@ -1136,7 +1136,7 @@ LaTeX Warning: Label `bmw' multiply defined.
 LaTeX Warning: Label `bmw' multiply defined.
 
 
-LaTeX Warning: Label `conv2' multiply defined.
+LaTeX Warning: Label `mecanum' multiply defined.
 
 )
 \openout1 = `final_thesis.aux'.
@@ -1382,7 +1382,7 @@ File: figures/omniconfig.png Graphic file (type png)
 
 <use figures/omniconfig.png>
 Package pdftex.def Info: figures/omniconfig.png used on input line 381.
-(pdftex.def)             Requested size: 284.52756pt x 77.67348pt.
+(pdftex.def)             Requested size: 426.79134pt x 116.51021pt.
 
 <figures/uranus.png, id=223, 721.94719pt x 435.87843pt>
 File: figures/uranus.png Graphic file (type png)
@@ -1397,46 +1397,74 @@ File: figures/mecanum.png Graphic file (type png)
 <use figures/mecanum.png>
 Package pdftex.def Info: figures/mecanum.png used on input line 398.
 (pdftex.def)             Requested size: 197.67334pt x 85.35826pt.
- [12 <./figures/wheels4.png>] [13 <./figures/omniconfig.png> <./figures/uranus.
-png> <./figures/mecanum.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 435--436
+ [12 <./figures/wheels4.png>]
+<figures/differential.png, id=234, 451.6875pt x 192.28983pt>
+File: figures/differential.png Graphic file (type png)
+
+<use figures/differential.png>
+Package pdftex.def Info: figures/differential.png used on input line 410.
+(pdftex.def)             Requested size: 284.52756pt x 121.13441pt.
+ [13 <./figures/omniconfig.png> <./figures/uranus.png> <./figures/mecanum.png>]
+
+<figures/ackerman2.png, id=245, 661.72218pt x 436.63126pt>
+File: figures/ackerman2.png Graphic file (type png)
+
+<use figures/ackerman2.png>
+Package pdftex.def Info: figures/ackerman2.png used on input line 421.
+(pdftex.def)             Requested size: 258.71683pt x 170.71652pt.
+ [14 <./figures/differential.png> <./figures/ackerman2.png>] <figures/uniq.png,
+ id=257, 590.205pt x 378.66469pt>
+File: figures/uniq.png Graphic file (type png)
+
+<use figures/uniq.png>
+Package pdftex.def Info: figures/uniq.png used on input line 434.
+(pdftex.def)             Requested size: 221.74059pt x 142.26378pt.
+ <figures/rover.png, id=258, 909.3975pt x 679.78969pt>
+File: figures/rover.png Graphic file (type png)
+
+<use figures/rover.png>
+Package pdftex.def Info: figures/rover.png used on input line 439.
+(pdftex.def)             Requested size: 190.31305pt x 142.26378pt.
+ [15 <./figures/uniq.png> <./figures/rover.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 465--466
 []\OT1/cmr/m/n/12 http://iiot-world.com/artificial-intelligence/five-challenges
 -in-designing-a-fully-
  []
 
-[14]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 470.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 470.
+[16]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 500.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 500.
  (final_thesis.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 470.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 470.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 500.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 500.
 Package rerunfilecheck Info: File `final_thesis.out' has not changed.
-(rerunfilecheck)             Checksum: 8DDBCD6E1D5483913ACF81EE3137BAD8;1037.
+(rerunfilecheck)             Checksum: 362230B1FAECC7FA080976AB274DCDF8;1031.
 
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 470.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 500.
  ) 
 Here is how much of TeX's memory you used:
- 28240 strings out of 493333
- 663099 string characters out of 3139170
+ 28269 strings out of 493333
+ 663616 string characters out of 3139170
  902309 words of memory out of 3000000
- 31183 multiletter control sequences out of 15000+200000
+ 31202 multiletter control sequences out of 15000+200000
  15903 words of font info for 56 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  62i,9n,96p,1194b,609s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Pr
 ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program Fi
-les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTe
-X 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fon
-ts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/
-public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/a
-msfonts/cm/cmsy8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/c
-m/cmti12.pfb>
-Output written on final_thesis.pdf (15 pages, 3673162 bytes).
+les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files/MiKTe
+X 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fon
+ts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/
+public/amsfonts/cm/cmr17.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/am
+sfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/c
+m/cmsy8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.
+pfb>
+Output written on final_thesis.pdf (17 pages, 6562796 bytes).
 PDF statistics:
- 303 PDF objects out of 1000 (max. 8388607)
- 56 named destinations out of 1000 (max. 500000)
- 240 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 329 PDF objects out of 1000 (max. 8388607)
+ 62 named destinations out of 1000 (max. 500000)
+ 260 words of extra memory for PDF output out of 10000 (max. 10000000)
 
