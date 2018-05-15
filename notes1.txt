@@ -1,0 +1,19 @@
+dynamic simulation
+	- kiderült, hogy mi az optimális orientáció
+	- kezdeti gyorsulásállapototot lehet számítani, ennek hatását a kontakt erőkre
+	- tapadás van feltételezve
+	javítások:
+		- rosszúl van számítva még valahol a tehetlenségi nyomaték, illetve gyanúsan nagyok a gyorsulások,
+		  paramétereket ellenőrizni kell még
+		- rolling resistance-t kéne implementálni, ha időben szeretném integrálni
+		- gyebros megfontolás, hogy átadódnak a momentumok vagy nem
+		- rendesen megcsinálni, hogy ha rárakok egy csomagot, akkor updatelje a súlypontot stb..
+		- összefüggések kiértékelése
+			n=f(MA,MB,MC)=f(m,theta,height,....)
+
+kinematic simulation
+	- fogok egy adott pályát és a statikus mozgásból származó erőket ráadom és static rollovert próbálok detektálni
+	- esetleg valahogy meg kéne nézni, hogy teljesítményt lehet optimálni az orientációval
+	- static rollover veszélynél elfordítom ideálisabb poziba a robotot
+	- adott pálya leírása: térgörbés megoldás, esetleg valami teljesítmény optimalizált görbe tervezés
+	- 

@@ -1,0 +1,15 @@
+általánosan önvezetők--transzport, statikus már megoldott
+humanoid robotok static-dynamic?
+
+Önvezető autók, illetve mindeféle autónóm robot problémáit, design challange-ket összegyűjteni
+	-> tájékozódás, obstacle avoiding
+	-> mozgatási lehetőségek, robot konfigurációk megvizsgálása (humanoid lépegető robotok is)
+	
+Transzport robotok megvizsgálása, hasonló problémák merülnek fel itt is
+	-> hasonlóak mint autóknál
+	-> statikus dinamikus megkülönbözetés mozgást tekintve
+	-> változó csomagokból adódó szabályozási ötlet
+	-> dinamikus mozgás kialakítása pálya-idő-energia optimalizálás <-> ellentétben a robosztus biztonságos mozgással
+	
+
+	
