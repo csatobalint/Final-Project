@@ -32,3 +32,6 @@
 
 // Battery input (80k-160k voltage divider)
 #define BATTERY_ANALOG_IN 7
+
+#define LED_RED 30
+#define LED_YEL 32

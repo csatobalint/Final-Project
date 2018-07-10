@@ -24,7 +24,9 @@ void Motor::stop() {
 }
 
 void Motor::set_speed(float s) {
-  analogWrite(en, p_min + s*(p_max-p_min));
+  int spd = p_min + s*(p_max-p_min);
+  if (spd >= 255) spd = 255;
+  analogWrite(en, spd);
 }
 
 void Motor::set_signed_speed(float s) {
