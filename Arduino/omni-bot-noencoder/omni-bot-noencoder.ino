@@ -32,15 +32,12 @@ bool omni_dir_drive = true;
 //bool led_red_on = true;
 //bool led_yel_on = true;
 
-float spd = 0.0;
-float diff = 0.005;
-
 void setup() {
   Serial.begin(57600);
   RN42_SERIAL_PORT.begin(57600);
-  motorA.set_signed_speed(spd);
-  motorB.set_signed_speed(spd);
-  motorC.set_signed_speed(spd);
+  motorA.set_signed_speed(0);
+  motorB.set_signed_speed(0);
+  motorC.set_signed_speed(0);
   //cMotorA.set_target_velocity(0.0);
   //cMotorB.set_target_velocity(0.0);
   //cMotorC.set_target_velocity(0.0);
@@ -135,13 +132,5 @@ void timed_loop() {
   //Serial.print("Wheel velocities: "); Serial.print(cMotorA.get_current_velocity()); Serial.print(", ");
   //Serial.print(cMotorB.get_current_velocity()); Serial.print(", ");
   //Serial.print(cMotorC.get_current_velocity()); Serial.println(".");
-  spd += diff;
-  if (spd >= 1.0 || spd <= -1.0) {
-    diff*=-1.0;
-  }
-  Serial.print("All motor's speed: "); Serial.println(spd);
-  motorA.set_signed_speed(spd);
-  motorB.set_signed_speed(spd);
-  motorC.set_signed_speed(spd);
 }
 
