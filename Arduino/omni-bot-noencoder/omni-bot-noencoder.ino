@@ -17,9 +17,9 @@ Motor motorC(MOTOR_C_IN1, MOTOR_C_IN2, MOTOR_C_EN, 0, 255);
 Encoder1 encoderA;
 Encoder2 encoderB;
 Encoder3 encoderC;
-//ControlledMotor cMotorA(&motorA, &encoderA, 4096, 0.035);
-//ControlledMotor cMotorB(&motorB, &encoderB, 4096, 0.035);
-//ControlledMotor cMotorC(&motorC, &encoderC, 4096, 0.035);
+ControlledMotor cMotorA(&motorA, &encoderA, 4096, 0.035);
+ControlledMotor cMotorB(&motorB, &encoderB, 4096, 0.035);
+ControlledMotor cMotorC(&motorC, &encoderC, 4096, 0.035);
 
 //Battery battery(3.2f, 4.2f, BATTERY_ANALOG_IN);
 BluetoothJoystickCommander bjc(&RN42_SERIAL_PORT);
@@ -38,9 +38,9 @@ void setup() {
   motorA.set_signed_speed(0);
   motorB.set_signed_speed(0);
   motorC.set_signed_speed(0);
-  //cMotorA.set_target_velocity(0.0);
-  //cMotorB.set_target_velocity(0.0);
-  //cMotorC.set_target_velocity(0.0);
+  cMotorA.set_target_velocity(0);
+  cMotorB.set_target_velocity(0);
+  cMotorC.set_target_velocity(0);
   //pinMode(LED_RED, OUTPUT);
   //pinMode(LED_YEL, OUTPUT);
   t.every(25, timed_loop); // Every 25 ms
@@ -86,12 +86,12 @@ void drive() {
   Serial.print(vA); Serial.print(",");
   Serial.print(vB); Serial.print(",");
   Serial.print(vC); Serial.println("");
-  motorA.set_signed_speed(vA);
+  /*motorA.set_signed_speed(vA);
   motorB.set_signed_speed(vB);
-  motorC.set_signed_speed(vC);
-  //cMotorA.set_target_velocity(vA*700.0);
-  //cMotorB.set_target_velocity(vB*700.0);
-  //cMotorC.set_target_velocity(vC*700.0);
+  motorC.set_signed_speed(vC);*/
+  cMotorA.set_target_velocity(vA*700.0);
+  cMotorB.set_target_velocity(vB*700.0);
+  cMotorC.set_target_velocity(vC*700.0);
 }
 
 void loop() {
@@ -126,11 +126,11 @@ void loop() {
 }
 
 void timed_loop() {
-  //cMotorA.update();
-  //cMotorB.update();
-  //cMotorC.update();
-  //Serial.print("Wheel velocities: "); Serial.print(cMotorA.get_current_velocity()); Serial.print(", ");
-  //Serial.print(cMotorB.get_current_velocity()); Serial.print(", ");
-  //Serial.print(cMotorC.get_current_velocity()); Serial.println(".");
+  cMotorA.update();
+  cMotorB.update();
+  cMotorC.update();
+  Serial.print("Wheel velocities: "); Serial.print(cMotorA.get_current_velocity()); Serial.print(", ");
+  Serial.print(cMotorB.get_current_velocity()); Serial.print(", ");
+  Serial.print(cMotorC.get_current_velocity()); Serial.println(".");
 }
 

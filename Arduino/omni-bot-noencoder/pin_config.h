@@ -12,16 +12,16 @@
 #define ENCODER1_CH2  3
 
 // Motor B
-#define MOTOR_B_IN1 7
-#define MOTOR_B_IN2 8
+#define MOTOR_B_IN1 22 //7
+#define MOTOR_B_IN2 23 //8
 #define MOTOR_B_EN  9
 #define ENCODER2_CH1 18
 #define ENCODER2_CH2 19
 
 // Motor C
-#define MOTOR_C_IN1 10
-#define MOTOR_C_IN2 11
-#define MOTOR_C_EN  12
+#define MOTOR_C_IN1  24 //10
+#define MOTOR_C_IN2  25 //11
+#define MOTOR_C_EN  7 //12
 #define ENCODER3_CH1  21
 #define ENCODER3_CH2  20
 
