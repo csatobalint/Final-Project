@@ -1,9 +1,9 @@
 #include <Arduino.h>
 
 void setup() {
-    Serial.begin(9600);
+  Serial.begin(57600);
 }
 
 void loop() {
-    Serial.println("BT");
+    Serial.println("USB");
 }

@@ -110,5 +110,3 @@ int Encoder3::get_position() {
 long int Encoder3::get_time_micros() {
   return time3_micros;
 }
-
-
