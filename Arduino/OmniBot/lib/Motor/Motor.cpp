@@ -30,7 +30,7 @@ void Motor::set_speed(float s) {
 }
 
 void Motor::set_signed_speed(float s) {
-  if (s==0) {
+  if (abs(s)<0.05) {
     stop();
   } else if (s>0) {
     set_direction(true);

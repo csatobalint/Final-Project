@@ -18,9 +18,9 @@
 #define ENCODER1_CH1 18
 #define ENCODER1_CH2 19
 
-// Motor C
-#define MOTOR_B_IN1  24 //10
-#define MOTOR_B_IN2  25 //11
+// Motor B
+#define MOTOR_B_IN1  25 //10
+#define MOTOR_B_IN2  24 //11
 #define MOTOR_B_EN  7 //12
 #define ENCODER2_CH1  21
 #define ENCODER2_CH2  20
@@ -33,5 +33,8 @@
 // Battery input (80k-160k voltage divider)
 #define BATTERY_ANALOG_IN 7
 
-#define LED_RED 30
+#define LED_RED 31
 #define LED_YEL 32
+
+//PotPin
+#define potPin 0
