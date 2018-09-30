@@ -16,9 +16,10 @@ void PollingEncoder::encoder_setup() {
 }
 
 void PollingEncoder::encoder_update_position() {
-  ch1 = digitalRead(ch1_pin); // Reads the "current" state of the outputA
+  ch1 = digitalRead(ch1_pin);
+  ch2 = digitalRead(ch2_pin); // Reads the "current" state of the outputA
    // If the previous and the current state of the outputA are different, that means a Pulse has occured
-   if (ch1 != prev_ch1){
+   /*if (ch1 != prev_ch1){
      // If the outputB state is different to the outputA state, that means the encoder is rotating clockwise
      if (digitalRead(ch2_pin) != ch1) {
        position ++;
@@ -27,10 +28,21 @@ void PollingEncoder::encoder_update_position() {
        position --;
        position_time = micros();
      }
-     /*Serial.print("Position: ");
-     Serial.println(position);*/
+     //Serial.print("Position: ");Serial.println(position);
+   }*/
+
+   if (ch2 != prev_ch2) {
+     position += (ch2-prev_ch2) * (ch1 ? +1 : -1);
+     position_time = micros();
    }
+   else if (ch1 != prev_ch1)  {
+     position += (ch1-prev_ch1) * (ch2 ? -1 : +1);
+     position_time = micros();
+   }
+   else return; //nothing changed: exit
+
    prev_ch1 = ch1;
+   prev_ch2 = ch2;
 
 }
 

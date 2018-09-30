@@ -18,7 +18,6 @@ Motor motorC(MOTOR_C_IN1, MOTOR_C_IN2, MOTOR_C_EN, 0.00, 255);
 #define maxWheelSpeed 100
 #include "Encoder.h"
 #include "ControlledMotor.h"
-
 Encoder1 encoderA;
 Encoder2 encoderB;
 Encoder3 encoderC;
@@ -29,14 +28,14 @@ ControlledMotor cMotorC(&motorC, &encoderC, 4096, 0.035);
 /*
 #include "PollingEncoder.h"
 #include "PollingControlledMotor.h"
-#define maxWheelSpeed 320
+#define maxWheelSpeed 100
 PollingEncoder encoderA(ENCODER1_CH1,ENCODER1_CH2,digitalRead(ENCODER1_CH1),digitalRead(ENCODER1_CH2));
 PollingEncoder encoderB(ENCODER2_CH1,ENCODER2_CH2,digitalRead(ENCODER2_CH1),digitalRead(ENCODER2_CH2));
 PollingEncoder encoderC(ENCODER3_CH1,ENCODER3_CH2,digitalRead(ENCODER3_CH1),digitalRead(ENCODER3_CH2));
 PollingControlledMotor cMotorA(&motorA, &encoderA, 4096, 0.035);
 PollingControlledMotor cMotorB(&motorB, &encoderB, 4096, 0.035);
-PollingControlledMotor cMotorC(&motorC, &encoderC, 4096, 0.035);
-*/
+PollingControlledMotor cMotorC(&motorC, &encoderC, 4096, 0.035);*/
+
 //Battery battery(3.2f, 4.2f, BATTERY_ANALOG_IN);
 BluetoothJoystickCommander bjc(&RN42_SERIAL_PORT);
 
@@ -65,7 +64,7 @@ void setup() {
   delay(measurementDelay);
   Serial.print(measurementDelay); Serial.println(",0,0,0");
 
-  float pwm = 1;
+  float pwm = 0;
   motorA.set_signed_speed(pwm); //-1...0...1
   motorB.set_signed_speed(pwm);
   motorC.set_signed_speed(pwm);
@@ -210,7 +209,7 @@ void drive() {
 void loop() {
   //long int startmillis = millis(); long int startmicros = micros();
 
-/*  encoderA.encoder_update_position();
+  /*encoderA.encoder_update_position();
   encoderB.encoder_update_position();
   encoderC.encoder_update_position();*/
 

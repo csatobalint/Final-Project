@@ -14,6 +14,7 @@ private:
 	double av_current;  /// Current angular velocity
 	double av_target;	/// Target angular velocity
   double av_prev; /// Previous angular velocity
+	double aa_current;  /// Current angular acceleration
   double int_error;
 	double spd; /// Calculated velocity of controlled motor
   int pos_prev;
@@ -26,6 +27,7 @@ public:
   double get_current_velocity();
   double get_target_velocity();
 	double get_spd();
+	double get_current_acceleration();
   void update();
 	/// TODO: Implement a PD-control on Motor using angular displacement readings from Encoder
 };
