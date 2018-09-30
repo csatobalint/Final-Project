@@ -15,10 +15,10 @@ Motor motorA(MOTOR_A_IN1, MOTOR_A_IN2, MOTOR_A_EN, 0.00, 255);
 Motor motorB(MOTOR_B_IN1, MOTOR_B_IN2, MOTOR_B_EN, 0.00, 255);
 Motor motorC(MOTOR_C_IN1, MOTOR_C_IN2, MOTOR_C_EN, 0.00, 255);
 
-
+#define maxWheelSpeed 100
 #include "Encoder.h"
 #include "ControlledMotor.h"
-#define maxWheelVelocity 700
+
 Encoder1 encoderA;
 Encoder2 encoderB;
 Encoder3 encoderC;
@@ -29,7 +29,7 @@ ControlledMotor cMotorC(&motorC, &encoderC, 4096, 0.035);
 /*
 #include "PollingEncoder.h"
 #include "PollingControlledMotor.h"
-#define maxWheelVelocity 320
+#define maxWheelSpeed 320
 PollingEncoder encoderA(ENCODER1_CH1,ENCODER1_CH2,digitalRead(ENCODER1_CH1),digitalRead(ENCODER1_CH2));
 PollingEncoder encoderB(ENCODER2_CH1,ENCODER2_CH2,digitalRead(ENCODER2_CH1),digitalRead(ENCODER2_CH2));
 PollingEncoder encoderC(ENCODER3_CH1,ENCODER3_CH2,digitalRead(ENCODER3_CH1),digitalRead(ENCODER3_CH2));
@@ -61,25 +61,25 @@ void setup() {
   Serial.begin(57600);
   RN42_SERIAL_PORT.begin(57600);
 
-
   Serial.println(); Serial.println("Motor Speed Measurement");
   delay(measurementDelay);
+  Serial.print(measurementDelay); Serial.println(",0,0,0");
 
   float pwm = 1;
   motorA.set_signed_speed(pwm); //-1...0...1
   motorB.set_signed_speed(pwm);
   motorC.set_signed_speed(pwm);
 
-  float t_velocity = maxWheelVelocity*0.5;
+  /*float t_velocity = maxWheelSpeed*1;
   cMotorA.set_target_velocity(t_velocity); //-700...0...700
   cMotorB.set_target_velocity(t_velocity);
-  cMotorC.set_target_velocity(t_velocity);
+  cMotorC.set_target_velocity(t_velocity);*/
 
   pinMode(LED_RED, OUTPUT);
   //pinMode(LED_YEL, OUTPUT);
 
   t.every(25, control_loop); // Every 25 ms run the timed_loop, it works unitl the main loop is faster
-  t.every(200, inceremental_loop);
+  //t.every(200, inceremental_loop);
 
   digitalWrite(LED_RED, led_red_on);
   randomSeed(analogRead(1));
@@ -141,7 +141,7 @@ void control_loop() {
   cMotorA.update();
   cMotorB.update();
   cMotorC.update();
-  /*print_wheel_velocities();*/
+  print_wheel_velocities();
 }
 
 float ramp_up_value = 0;
@@ -154,15 +154,15 @@ void inceremental_loop() {
     incremental_header = false;
   }
 
-  cMotorA.set_target_velocity(ramp_up_value*maxWheelVelocity); //-700...0...700
-  cMotorB.set_target_velocity(ramp_up_value*maxWheelVelocity);
-  cMotorC.set_target_velocity(ramp_up_value*maxWheelVelocity);
+  cMotorA.set_target_velocity(ramp_up_value*maxWheelSpeed); //-700...0...700
+  cMotorB.set_target_velocity(ramp_up_value*maxWheelSpeed);
+  cMotorC.set_target_velocity(ramp_up_value*maxWheelSpeed);
 
   Serial.print(millis());                       Serial.print(", ");
   Serial.print(cMotorA.get_current_velocity()); Serial.print(", ");
   Serial.print(cMotorB.get_current_velocity()); Serial.print(", ");
   Serial.print(cMotorC.get_current_velocity()); Serial.print(",");
-  Serial.print(ramp_up_value*maxWheelVelocity); Serial.println("");
+  Serial.print(ramp_up_value*maxWheelSpeed); Serial.println("");
 
   ramp_up_value = ramp_up_value + ramp_up_value_increment;
   if(ramp_up_value>1) ramp_up_value_increment *= -1;
@@ -199,15 +199,16 @@ void drive() {
   /*motorA.set_signed_speed(vA);
   motorB.set_signed_speed(vB);
   motorC.set_signed_speed(vC);*/
-  cMotorA.set_target_velocity(vA*maxWheelVelocity);
-  cMotorB.set_target_velocity(vB*maxWheelVelocity);
-  cMotorC.set_target_velocity(vC*maxWheelVelocity);
+  cMotorA.set_target_velocity(vA*maxWheelSpeed);
+  cMotorB.set_target_velocity(vB*maxWheelSpeed);
+  cMotorC.set_target_velocity(vC*maxWheelSpeed);
 }
 
 /****************************************************************************
 *********************************** LOOP ************************************
 *****************************************************************************/
 void loop() {
+  //long int startmillis = millis(); long int startmicros = micros();
 
 /*  encoderA.encoder_update_position();
   encoderB.encoder_update_position();
@@ -232,8 +233,10 @@ void loop() {
     /*print_bluetooth_joystick_data()*/
     drive();
   }
+
   //print_encoder_positions();
-  //Serial.print("Loop time: "); Serial.println(millis()-startTime);
+
+  //Serial.print("Loop time: "); Serial.print(millis()-startmillis); Serial.print(" [ms] "); Serial.print(micros()-startmicros); Serial.println(" [us] ");
 
   /*val = analogRead(potPin);
   float valFloat = (float)val/1023;
