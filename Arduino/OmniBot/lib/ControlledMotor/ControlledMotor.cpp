@@ -84,7 +84,7 @@ void ControlledMotor::update() {
   spd = av_target/maxWheelSpeed+(av_target-av_current)*P+int_error*I+aa_current*D;
 
 	//Control the motor via PWM signal -1..0..1
-  //m->set_signed_speed(spd);
+  m->set_signed_speed(spd);
 
   // Update previous values
   pos_prev = pos;
