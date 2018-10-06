@@ -47,8 +47,11 @@ yLim = [0 120];
 A = mean(dataY(end-50:end,:))
 %rise time
 A_T = 0.6321 * A
-T = interp1q(y,x,A_T')'
 
+for i=1:3
+    T(i) = interp1q(dataY(:,i),dataX,A_T(i))';
+end
+T
 %single storage plant
 dataYfitted = A.*(1-exp(-1./T.*dataX))
 
