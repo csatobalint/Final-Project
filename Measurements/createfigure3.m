@@ -12,9 +12,12 @@ figure1 = figure('PaperSize',[15 15]);
 axes1 = axes('Parent',figure1);
 hold(axes1,'on');
 
+Markers = ['v','^','diamond','square','o'];
+
 % Create multiple lines using matrix input to plot
-plot1 = plot(dataX,dataY,'Parent',axes1);
+plot1 = plot(dataX,dataY,'LineWidth',2,'Parent',axes1);
 for i=1:length(displayNames)
+    %set(plot1(i),'DisplayName',displayNames(i),'Marker',Markers(i));
     set(plot1(i),'DisplayName',displayNames(i));
 end
 
@@ -30,9 +33,9 @@ box(axes1,'on');
 grid(axes1,'on');
 axis(axes1,'square');
 % Set the remaining axes properties
-set(axes1,'FontSize',12,'GridLineStyle',':');
+set(axes1,'FontSize',16,'GridLineStyle',':');
 set(axes1,'GridAlpha',1,'MinorGridAlpha',1);
 % Create legend
 legend1 = legend(axes1,'show');
-set(legend1,'Location','southeast','Interpreter','latex','FontSize',12);
+set(legend1,'Location','southeast','Interpreter','latex','FontSize',16);
 

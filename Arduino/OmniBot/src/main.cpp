@@ -64,7 +64,7 @@ void setup() {
   delay(measurementDelay);
   Serial.print(measurementDelay); Serial.println(",0,0,0");
 
-  float pwm = 0;
+  float pwm =0;
   motorA.set_signed_speed(pwm); //-1...0...1
   motorB.set_signed_speed(pwm);
   motorC.set_signed_speed(pwm);
@@ -98,7 +98,17 @@ void print_wheel_velocities() {
   Serial.print(millis()); Serial.print(", ");
   Serial.print(cMotorA.get_current_velocity()); Serial.print(", ");
   Serial.print(cMotorB.get_current_velocity()); Serial.print(", ");
-  Serial.print(cMotorC.get_current_velocity()); Serial.println("");
+  Serial.print(cMotorC.get_current_velocity()); Serial.print(", ");
+  Serial.print(cMotorA.get_current_acceleration()); Serial.print(", ");
+  Serial.print(cMotorB.get_current_acceleration()); Serial.print(", ");
+  Serial.print(cMotorC.get_current_acceleration()); Serial.println("");
+  RN42_SERIAL_PORT.print(millis()); RN42_SERIAL_PORT.print(", ");
+  RN42_SERIAL_PORT.print(cMotorA.get_current_velocity()); RN42_SERIAL_PORT.print(", ");
+  RN42_SERIAL_PORT.print(cMotorB.get_current_velocity()); RN42_SERIAL_PORT.print(", ");
+  RN42_SERIAL_PORT.print(cMotorC.get_current_velocity()); RN42_SERIAL_PORT.print(", ");
+  RN42_SERIAL_PORT.print(cMotorA.get_current_acceleration()); RN42_SERIAL_PORT.print(", ");
+  RN42_SERIAL_PORT.print(cMotorB.get_current_acceleration()); RN42_SERIAL_PORT.print(", ");
+  RN42_SERIAL_PORT.print(cMotorC.get_current_acceleration()); RN42_SERIAL_PORT.println("");
 }
 
 void print_bluetooth_joystick_data(){

@@ -75,7 +75,7 @@ void ControlledMotor::update() {
 
   // Calculate angular acceleration
   aa_current = (av_current-av_prev)/((time_micros-time_micros_prev)*1e-6) * stepToRad; 	//[rad/s2]
-  if (abs(av_current-av_prev)<0.01) {
+  if (abs(av_current-av_prev)<0.02) {
     aa_current = 0;
   }
 
@@ -84,7 +84,7 @@ void ControlledMotor::update() {
   spd = av_target/maxWheelSpeed+(av_target-av_current)*P+int_error*I+aa_current*D;
 
 	//Control the motor via PWM signal -1..0..1
-  m->set_signed_speed(spd);
+  //m->set_signed_speed(spd);
 
   // Update previous values
   pos_prev = pos;
