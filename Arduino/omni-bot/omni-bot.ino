@@ -17,9 +17,9 @@ Motor motorC(MOTOR_C_IN1, MOTOR_C_IN2, MOTOR_C_EN, 11, 140);
 Encoder1 encoderA;
 Encoder2 encoderB;
 Encoder3 encoderC;
-ControlledMotor cMotorA(&motorA, &encoderA, 4096, 0.035);
-ControlledMotor cMotorB(&motorB, &encoderB, 4096, 0.035);
-ControlledMotor cMotorC(&motorC, &encoderC, 4096, 0.035);
+ControlledMotor cMotorA(&motorA, &encoderA, 3960, 0.035);
+ControlledMotor cMotorB(&motorB, &encoderB, 3960, 0.035);
+ControlledMotor cMotorC(&motorC, &encoderC, 3960, 0.035);
 
 Battery battery(3.2f, 4.2f, BATTERY_ANALOG_IN);
 BluetoothJoystickCommander bjc(&RN42_SERIAL_PORT);
