@@ -21,9 +21,9 @@ Motor motorC(MOTOR_C_IN1, MOTOR_C_IN2, MOTOR_C_EN, 0.00, 255);
 Encoder1 encoderA;
 Encoder2 encoderB;
 Encoder3 encoderC;
-ControlledMotor cMotorA(&motorA, &encoderA, 4096, 0.035);
-ControlledMotor cMotorB(&motorB, &encoderB, 4096, 0.035);
-ControlledMotor cMotorC(&motorC, &encoderC, 4096, 0.035);
+ControlledMotor cMotorA(&motorA, &encoderA, 3960, 0.035);
+ControlledMotor cMotorB(&motorB, &encoderB, 3960, 0.035);
+ControlledMotor cMotorC(&motorC, &encoderC, 3960, 0.035);
 
 /*
 #include "PollingEncoder.h"
@@ -64,20 +64,20 @@ void setup() {
   delay(measurementDelay);
   Serial.print(measurementDelay); Serial.println(",0,0,0");
 
-  float pwm =0;
+  /*float pwm = 0.5;
   motorA.set_signed_speed(pwm); //-1...0...1
   motorB.set_signed_speed(pwm);
-  motorC.set_signed_speed(pwm);
+  motorC.set_signed_speed(pwm);*/
 
-  /*float t_velocity = maxWheelSpeed*1;
+  float t_velocity = maxWheelSpeed*1;
   cMotorA.set_target_velocity(t_velocity); //-700...0...700
   cMotorB.set_target_velocity(t_velocity);
-  cMotorC.set_target_velocity(t_velocity);*/
+  cMotorC.set_target_velocity(t_velocity);
 
   pinMode(LED_RED, OUTPUT);
   //pinMode(LED_YEL, OUTPUT);
 
-  t.every(25, control_loop); // Every 25 ms run the timed_loop, it works unitl the main loop is faster
+  t.every(10, control_loop); // Every 25 ms run the timed_loop, it works unitl the main loop is faster
   //t.every(200, inceremental_loop);
 
   digitalWrite(LED_RED, led_red_on);

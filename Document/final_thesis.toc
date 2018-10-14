@@ -22,5 +22,5 @@
 \contentsline {subsection}{\numberline {3.3}DC motor speed analysis}{18}{subsection.3.3}
 \contentsline {subsubsection}{\numberline {3.3.1}System modelling}{18}{subsubsection.3.3.1}
 \contentsline {subsubsection}{\numberline {3.3.2}Step response analysis of the motors}{19}{subsubsection.3.3.2}
-\contentsline {subsubsection}{\numberline {3.3.3}Controller design using blackbox model}{20}{subsubsection.3.3.3}
-\contentsline {section}{References}{23}{figure.3.9}
+\contentsline {subsubsection}{\numberline {3.3.3}Controller design using blackbox model \cite {dc_motor_3}}{20}{subsubsection.3.3.3}
+\contentsline {section}{References}{25}{figure.3.16}

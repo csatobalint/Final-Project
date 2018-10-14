@@ -8,8 +8,8 @@ ControlledMotor::ControlledMotor(
 					m(motor_pointer), e(encoder_pointer), wheel_radius(wheel_radius_m) {
 
 		P=0.02;
-		D=0.0;
-	  I=0.001;
+		D=0;
+	  I=0.002;
 		stepToRad=2.0*PI/encoder_pulses;								//one encoder step in radian ~0.00153 = 0.044°
 	  pos_prev = e->get_position();
 	  time_micros_prev = e->get_time_micros();
@@ -80,11 +80,11 @@ void ControlledMotor::update() {
   }
 
   // PID control
-  int_error += (av_target-av_current);
+  int_error += (av_target-av_current)*av_current/maxWheelSpeed;
   spd = av_target/maxWheelSpeed+(av_target-av_current)*P+int_error*I+aa_current*D;
 
 	//Control the motor via PWM signal -1..0..1
-  //m->set_signed_speed(spd);
+  m->set_signed_speed(spd);
 
   // Update previous values
   pos_prev = pos;

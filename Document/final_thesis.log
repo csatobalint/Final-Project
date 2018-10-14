@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6800 64-bit) (preloaded format=pdflatex 2018.10.7)  8 OCT 2018 00:45
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6800 64-bit) (preloaded format=pdflatex 2018.10.7)  13 OCT 2018 23:19
 entering extended mode
 **./final_thesis.tex
 (final_thesis.tex
@@ -846,9 +846,6 @@ LaTeX Warning: Label `mecanum' multiply defined.
 
 LaTeX Warning: Label `mecanum' multiply defined.
 
-
-LaTeX Warning: Label `second_order_underdamped_response' multiply defined.
-
 )
 \openout1 = `final_thesis.aux'.
 
@@ -965,7 +962,7 @@ Package epstopdf Info: Source file: <figures/bme_skyline.eps>
 (epstopdf)                    date: 2018-09-15 11:40:58
 (epstopdf)                    size: 72065 bytes
 (epstopdf)             Output file: <figures/bme_skyline-eps-converted-to.pdf>
-(epstopdf)                    date: 2018-10-07 10:21:42
+(epstopdf)                    date: 2018-10-13 11:50:22
 (epstopdf)                    size: 7831 bytes
 (epstopdf)             Command: <epstopdf --outfile=figures/bme_skyline-eps-con
 verted-to.pdf figures/bme_skyline.eps>
@@ -1003,7 +1000,7 @@ l.125 \newpage
 
 pdfTeX warning: pdflatex.exe (file ./figures/evot.pdf): PDF inclusion: found PD
 F version <1.6>, but at most version <1.5> allowed
-<figures/evot.pdf, id=151, 402.00188pt x 72.27pt>
+<figures/evot.pdf, id=153, 402.00188pt x 72.27pt>
 File: figures/evot.pdf Graphic file (type pdf)
 <use figures/evot.pdf>
 Package pdftex.def Info: figures/evot.pdf  used on input line 151.
@@ -1017,40 +1014,40 @@ File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 172.
  [4]
-<figures/starship.jpg, id=172, 716.6775pt x 402.75468pt>
+<figures/starship.jpg, id=174, 716.6775pt x 402.75468pt>
 File: figures/starship.jpg Graphic file (type jpg)
 <use figures/starship.jpg>
 Package pdftex.def Info: figures/starship.jpg  used on input line 215.
 (pdftex.def)             Requested size: 199.16928pt x 111.9286pt.
  [5]
-<figures/smp.jpg, id=179, 301.125pt x 201.00093pt>
+<figures/smp.jpg, id=181, 301.125pt x 201.00093pt>
 File: figures/smp.jpg Graphic file (type jpg)
 <use figures/smp.jpg>
 Package pdftex.def Info: figures/smp.jpg  used on input line 227.
 (pdftex.def)             Requested size: 199.16928pt x 132.94931pt.
  [6 <./figures/starship.jpg> <./figures/smp.jpg>]
-<figures/neo1.jpg, id=191, 100.375pt x 151.3655pt>
+<figures/neo1.jpg, id=193, 100.375pt x 151.3655pt>
 File: figures/neo1.jpg Graphic file (type jpg)
 <use figures/neo1.jpg>
 Package pdftex.def Info: figures/neo1.jpg  used on input line 240.
 (pdftex.def)             Requested size: 94.34177pt x 142.26378pt.
-<figures/neo2.jpg, id=192, 200.75pt x 309.155pt>
+<figures/neo2.jpg, id=194, 200.75pt x 309.155pt>
 File: figures/neo2.jpg Graphic file (type jpg)
 <use figures/neo2.jpg>
 Package pdftex.def Info: figures/neo2.jpg  used on input line 245.
 (pdftex.def)             Requested size: 92.38287pt x 142.26378pt.
-<figures/bmw.jpg, id=194, 462.2871pt x 308.352pt>
+<figures/bmw.jpg, id=196, 462.2871pt x 308.352pt>
 File: figures/bmw.jpg Graphic file (type jpg)
 <use figures/bmw.jpg>
 Package pdftex.def Info: figures/bmw.jpg  used on input line 257.
 (pdftex.def)             Requested size: 256.0748pt x 170.80331pt.
-<figures/tug.png, id=195, 367.3725pt x 411.78844pt>
+<figures/tug.png, id=197, 367.3725pt x 411.78844pt>
 File: figures/tug.png Graphic file (type png)
 <use figures/tug.png>
 Package pdftex.def Info: figures/tug.png  used on input line 266.
 (pdftex.def)             Requested size: 199.16928pt x 223.25467pt.
  [7 <./figures/neo1.jpg> <./figures/neo2.jpg> <./figures/bmw.jpg>]
-<figures/apd.jpg, id=207, 284.20787pt x 183.58241pt>
+<figures/apd.jpg, id=209, 284.20787pt x 183.58241pt>
 File: figures/apd.jpg Graphic file (type jpg)
 <use figures/apd.jpg>
 Package pdftex.def Info: figures/apd.jpg  used on input line 275.
@@ -1068,57 +1065,57 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 pdfTeX warning: pdflatex.exe (file ./figures/legged2.pdf): PDF inclusion: found
  PDF version <1.6>, but at most version <1.5> allowed
-<figures/legged2.pdf, id=223, 293.55574pt x 93.75627pt>
+<figures/legged2.pdf, id=225, 293.55574pt x 93.75627pt>
 File: figures/legged2.pdf Graphic file (type pdf)
 <use figures/legged2.pdf>
 Package pdftex.def Info: figures/legged2.pdf  used on input line 335.
 (pdftex.def)             Requested size: 199.16928pt x 63.61177pt.
 [10 <./figures/legged2.pdf, page is rotated 90 degrees>]
-<figures/triangle.pdf, id=238, 373.12097pt x 364.71455pt>
+<figures/triangle.pdf, id=240, 373.12097pt x 364.71455pt>
 File: figures/triangle.pdf Graphic file (type pdf)
 <use figures/triangle.pdf>
 Package pdftex.def Info: figures/triangle.pdf  used on input line 348.
 (pdftex.def)             Requested size: 113.81102pt x 111.24611pt.
  [11 <./figures/triangle.pdf>]
-<figures/wheels4.png, id=274, 962.09438pt x 351.56343pt>
+<figures/wheels4.png, id=276, 962.09438pt x 351.56343pt>
 File: figures/wheels4.png Graphic file (type png)
 <use figures/wheels4.png>
 Package pdftex.def Info: figures/wheels4.png  used on input line 367.
 (pdftex.def)             Requested size: 199.16928pt x 72.77907pt.
-<figures/omniconfig.png, id=275, 1301.61281pt x 355.3275pt>
+<figures/omniconfig.png, id=277, 1301.61281pt x 355.3275pt>
 File: figures/omniconfig.png Graphic file (type png)
 <use figures/omniconfig.png>
 Package pdftex.def Info: figures/omniconfig.png  used on input line 381.
 (pdftex.def)             Requested size: 426.79134pt x 116.51021pt.
-<figures/uranus.png, id=277, 721.94719pt x 435.87843pt>
+<figures/uranus.png, id=279, 721.94719pt x 435.87843pt>
 File: figures/uranus.png Graphic file (type png)
 <use figures/uranus.png>
 Package pdftex.def Info: figures/uranus.png  used on input line 393.
 (pdftex.def)             Requested size: 141.3795pt x 85.35826pt.
-<figures/mecanum.png, id=278, 932.73468pt x 402.75468pt>
+<figures/mecanum.png, id=280, 932.73468pt x 402.75468pt>
 File: figures/mecanum.png Graphic file (type png)
 <use figures/mecanum.png>
 Package pdftex.def Info: figures/mecanum.png  used on input line 398.
 (pdftex.def)             Requested size: 197.67334pt x 85.35826pt.
  [12 <./figures/wheels4.png>]
-<figures/differential.png, id=287, 451.6875pt x 192.28983pt>
+<figures/differential.png, id=289, 451.6875pt x 192.28983pt>
 File: figures/differential.png Graphic file (type png)
 <use figures/differential.png>
 Package pdftex.def Info: figures/differential.png  used on input line 410.
 (pdftex.def)             Requested size: 284.52756pt x 121.13441pt.
  [13 <./figures/omniconfig.png> <./figures/uranus.png> <./figures/mecanum.png>]
-<figures/ackerman2.png, id=299, 661.72218pt x 436.63126pt>
+<figures/ackerman2.png, id=301, 661.72218pt x 436.63126pt>
 File: figures/ackerman2.png Graphic file (type png)
 <use figures/ackerman2.png>
 Package pdftex.def Info: figures/ackerman2.png  used on input line 421.
 (pdftex.def)             Requested size: 258.71683pt x 170.71652pt.
  [14 <./figures/differential.png> <./figures/ackerman2.png>]
-<figures/uniq.png, id=310, 590.205pt x 378.66469pt>
+<figures/uniq.png, id=312, 590.205pt x 378.66469pt>
 File: figures/uniq.png Graphic file (type png)
 <use figures/uniq.png>
 Package pdftex.def Info: figures/uniq.png  used on input line 434.
 (pdftex.def)             Requested size: 221.74059pt x 142.26378pt.
-<figures/rover.png, id=311, 909.3975pt x 679.78969pt>
+<figures/rover.png, id=313, 909.3975pt x 679.78969pt>
 File: figures/rover.png Graphic file (type png)
 <use figures/rover.png>
 Package pdftex.def Info: figures/rover.png  used on input line 439.
@@ -1145,118 +1142,192 @@ Underfull \hbox (badness 10000) in paragraph at lines 471--472
  []
 
 [17]
-<figures/dc_conducting_wire.png, id=328, 479.54156pt x 208.52907pt>
+<figures/dc_conducting_wire.png, id=330, 479.54156pt x 208.52907pt>
 File: figures/dc_conducting_wire.png Graphic file (type png)
 <use figures/dc_conducting_wire.png>
 Package pdftex.def Info: figures/dc_conducting_wire.png  used on input line 480
 .
 (pdftex.def)             Requested size: 261.72913pt x 113.81102pt.
-<figures/dc_motor_model.png, id=331, 198.9834pt x 130.086pt>
+<figures/dc_motor_model.png, id=333, 198.9834pt x 130.086pt>
 File: figures/dc_motor_model.png Graphic file (type png)
 <use figures/dc_motor_model.png>
 Package pdftex.def Info: figures/dc_motor_model.png  used on input line 489.
 (pdftex.def)             Requested size: 174.0979pt x 113.81102pt.
  [18 <./figures/dc_conducting_wire.png> <./figures/dc_motor_model.png>]
-<figures/directed_speed_pwm_100.pdf, id=344, 426.59375pt x 426.59375pt>
+<figures/directed_speed_pwm_100.pdf, id=345, 426.59375pt x 426.59375pt>
 File: figures/directed_speed_pwm_100.pdf Graphic file (type pdf)
 <use figures/directed_speed_pwm_100.pdf>
 Package pdftex.def Info: figures/directed_speed_pwm_100.pdf  used on input line
  518.
 (pdftex.def)             Requested size: 199.17119pt x 199.16928pt.
-<figures/directed_speed_pwm_60.pdf, id=345, 426.59375pt x 426.59375pt>
+<figures/directed_speed_pwm_60.pdf, id=346, 426.59375pt x 426.59375pt>
 File: figures/directed_speed_pwm_60.pdf Graphic file (type pdf)
 <use figures/directed_speed_pwm_60.pdf>
 Package pdftex.def Info: figures/directed_speed_pwm_60.pdf  used on input line 
 528.
 (pdftex.def)             Requested size: 142.26698pt x 142.26378pt.
-<figures/directed_speed_pwm_40.pdf, id=346, 426.59375pt x 426.59375pt>
+<figures/directed_speed_pwm_40.pdf, id=347, 426.59375pt x 426.59375pt>
 File: figures/directed_speed_pwm_40.pdf Graphic file (type pdf)
 <use figures/directed_speed_pwm_40.pdf>
 Package pdftex.def Info: figures/directed_speed_pwm_40.pdf  used on input line 
 533.
 (pdftex.def)             Requested size: 142.26698pt x 142.26378pt.
-<figures/pwm_u.pdf, id=347, 426.59375pt x 426.59375pt>
+<figures/pwm_u.pdf, id=348, 426.59375pt x 426.59375pt>
 File: figures/pwm_u.pdf Graphic file (type pdf)
 <use figures/pwm_u.pdf>
 Package pdftex.def Info: figures/pwm_u.pdf  used on input line 539.
 (pdftex.def)             Requested size: 142.26698pt x 142.26378pt.
 
-[19 <./figures/directed_speed_pwm_100.pdf>] [20 <./figures/directed_speed_pwm_6
-0.pdf> <./figures/directed_speed_pwm_40.pdf> <./figures/pwm_u.pdf>]
-<figures/dc_motor_closed_system.png, id=378, 220.1826pt x 83.3514pt>
+[19 <./figures/directed_speed_pwm_100.pdf>]
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\@ifnextchar' on input line 546.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `subscript' on input line 546.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `subscript' on input line 546.
+
+[20 <./figures/directed_speed_pwm_60.pdf> <./figures/directed_speed_pwm_40.pdf>
+ <./figures/pwm_u.pdf>]
+<figures/dc_motor_closed_system.png, id=380, 220.1826pt x 83.3514pt>
 File: figures/dc_motor_closed_system.png Graphic file (type png)
 <use figures/dc_motor_closed_system.png>
 Package pdftex.def Info: figures/dc_motor_closed_system.png  used on input line
  572.
 (pdftex.def)             Requested size: 300.67065pt x 113.81102pt.
  [21 <./figures/dc_motor_closed_system.png (PNG copy)>]
-<figures/second_order_underdamped_response.png, id=389, 572.89032pt x 398.23781
-pt>
-File: figures/second_order_underdamped_response.png Graphic file (type png)
-<use figures/second_order_underdamped_response.png>
-Package pdftex.def Info: figures/second_order_underdamped_response.png  used on
- input line 603.
-(pdftex.def)             Requested size: 204.64938pt x 142.26378pt.
-<figures/temporary_figure_1.png, id=391, 917.67844pt x 588.69937pt>
-File: figures/temporary_figure_1.png Graphic file (type png)
-<use figures/temporary_figure_1.png>
-Package pdftex.def Info: figures/temporary_figure_1.png  used on input line 609
-.
-(pdftex.def)             Requested size: 426.79134pt x 273.79626pt.
- [22 <./figures/second_order_underdamped_response.png (PNG copy)> <./figures/te
-mporary_figure_1.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 635--636
+<figures/step_response_of_2nd_order_system_1.pdf, id=395, 924.45375pt x 350.308
+75pt>
+File: figures/step_response_of_2nd_order_system_1.pdf Graphic file (type pdf)
+<use figures/step_response_of_2nd_order_system_1.pdf>
+Package pdftex.def Info: figures/step_response_of_2nd_order_system_1.pdf  used 
+on input line 629.
+(pdftex.def)             Requested size: 525.60405pt x 199.16928pt.
+
+Overfull \hbox (70.35994pt too wide) in paragraph at lines 629--630
+ [][] 
+ []
+
+[22 <./figures/step_response_of_2nd_order_system_1.pdf>]
+<figures/possible_poles.pdf, id=445, 505.89pt x 501.875pt>
+File: figures/possible_poles.pdf Graphic file (type pdf)
+<use figures/possible_poles.pdf>
+Package pdftex.def Info: figures/possible_poles.pdf  used on input line 688.
+(pdftex.def)             Requested size: 200.76224pt x 199.16928pt.
+ [23]
+<figures/directed_speed_pwm_50_fitted.pdf, id=464, 426.59375pt x 426.59375pt>
+File: figures/directed_speed_pwm_50_fitted.pdf Graphic file (type pdf)
+<use figures/directed_speed_pwm_50_fitted.pdf>
+Package pdftex.def Info: figures/directed_speed_pwm_50_fitted.pdf  used on inpu
+t line 713.
+(pdftex.def)             Requested size: 199.17119pt x 199.16928pt.
+<figures/polemap_at_50.pdf, id=465, 505.89pt x 510.90875pt>
+File: figures/polemap_at_50.pdf Graphic file (type pdf)
+<use figures/polemap_at_50.pdf>
+Package pdftex.def Info: figures/polemap_at_50.pdf  used on input line 724.
+(pdftex.def)             Requested size: 197.21138pt x 199.16928pt.
+<figures/expected_50.pdf, id=466, 451.6875pt x 451.6875pt>
+File: figures/expected_50.pdf Graphic file (type pdf)
+<use figures/expected_50.pdf>
+Package pdftex.def Info: figures/expected_50.pdf  used on input line 730.
+(pdftex.def)             Requested size: 199.17043pt x 199.16928pt.
+<figures/controlled_50_p_02_i_11.pdf, id=467, 426.59375pt x 426.59375pt>
+File: figures/controlled_50_p_02_i_11.pdf Graphic file (type pdf)
+<use figures/controlled_50_p_02_i_11.pdf>
+Package pdftex.def Info: figures/controlled_50_p_02_i_11.pdf  used on input lin
+e 740.
+(pdftex.def)             Requested size: 199.17119pt x 199.16928pt.
+<figures/controlled_100_p_02_i_11.pdf, id=468, 426.59375pt x 426.59375pt>
+File: figures/controlled_100_p_02_i_11.pdf Graphic file (type pdf)
+<use figures/controlled_100_p_02_i_11.pdf>
+Package pdftex.def Info: figures/controlled_100_p_02_i_11.pdf  used on input li
+ne 746.
+(pdftex.def)             Requested size: 199.17119pt x 199.16928pt.
+<figures/controlled_50_p_02_i_002.pdf, id=469, 426.59375pt x 426.59375pt>
+File: figures/controlled_50_p_02_i_002.pdf Graphic file (type pdf)
+<use figures/controlled_50_p_02_i_002.pdf>
+Package pdftex.def Info: figures/controlled_50_p_02_i_002.pdf  used on input li
+ne 756.
+(pdftex.def)             Requested size: 199.17119pt x 199.16928pt.
+<figures/controlled_100_p_02_i_002.pdf, id=470, 426.59375pt x 426.59375pt>
+File: figures/controlled_100_p_02_i_002.pdf Graphic file (type pdf)
+<use figures/controlled_100_p_02_i_002.pdf>
+Package pdftex.def Info: figures/controlled_100_p_02_i_002.pdf  used on input l
+ine 762.
+(pdftex.def)             Requested size: 199.17119pt x 199.16928pt.
+ [24 <./figures/possible_poles.pdf> <./figures/directed_speed_pwm_50_fitted.pdf
+>]
+Underfull \hbox (badness 10000) in paragraph at lines 787--788
 []\OT1/cmr/m/n/12 http://iiot-world.com/artificial-intelligence/five-challenges
 -in-designing-a-fully-
  []
 
+[25 <./figures/polemap_at_50.pdf> <./figures/expected_50.pdf
 
-Underfull \hbox (badness 10000) in paragraph at lines 675--676
+pdfTeX warning: pdflatex.exe (file ./figures/expected_50.pdf): PDF inclusion: m
+ultiple pdfs with page group included in a single page
+> <./figures/controlled_50_p_02_i_11.pdf> <./figures/controlled_100_p_02_i_11.p
+df>]
+Underfull \hbox (badness 10000) in paragraph at lines 827--828
 []\OT1/cmr/m/n/12 https://www.elprocus.com/what-are-the-best-ways-to-control-th
 e-speed-of-dc-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 677--678
+Underfull \hbox (badness 10000) in paragraph at lines 829--830
 []\OT1/cmr/m/n/12 https://nathotron.wordpress.com/courses/engineering-design-pr
 ocess-530-
  []
 
-[23]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 685.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 685.
+[26 <./figures/controlled_50_p_02_i_002.pdf> <./figures/controlled_100_p_02_i_0
+02.pdf>]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 837.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 837.
  (final_thesis.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 685.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 685.
-Package rerunfilecheck Info: File `final_thesis.out' has not changed.
-(rerunfilecheck)             Checksum: 528526534A86623E028E1C9F2DF6905D;1831.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 837.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 837.
 
+
+Package rerunfilecheck Warning: File `final_thesis.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `final_thesis.out':
+(rerunfilecheck)             Before: D840083B1C3FA1CF23CE3D30E77DFAAE;1841
+(rerunfilecheck)             After:  26A7A16BC3CA7821924DC226EE79727F;1841.
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 685.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 837.
  ) 
 Here is how much of TeX's memory you used:
- 28213 strings out of 492972
- 668252 string characters out of 3135859
- 906163 words of memory out of 3000000
- 31438 multiletter control sequences out of 15000+200000
+ 28291 strings out of 492972
+ 670348 string characters out of 3135859
+ 906165 words of memory out of 3000000
+ 31483 multiletter control sequences out of 15000+200000
  15903 words of font info for 56 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  62i,11n,96p,1773b,609s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Pr
 ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Fi
 les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program Files/MiKT
-eX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files/MiKTeX 2.9/fo
-nts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1
-/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/a
-msfonts/cm/cmr17.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/c
-m/cmr8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.p
-fb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Pr
-ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on final_thesis.pdf (24 pages, 6811143 bytes).
+eX 2.9/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Program Files/MiKTeX 2.9/fo
+nts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1
+/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/a
+msfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/c
+m/cmr17.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr6.pf
+b><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Prog
+ram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program File
+s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Program Files/MiKTeX 
+2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Program Files/MiKTeX 2.9/fonts
+/type1/public/amsfonts/cm/cmti12.pfb>
+Output written on final_thesis.pdf (27 pages, 7063982 bytes).
 PDF statistics:
- 483 PDF objects out of 1000 (max. 8388607)
- 105 named destinations out of 1000 (max. 500000)
- 377 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 661 PDF objects out of 1000 (max. 8388607)
+ 131 named destinations out of 1000 (max. 500000)
+ 412 words of extra memory for PDF output out of 10000 (max. 10000000)
 

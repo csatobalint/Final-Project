@@ -543,7 +543,7 @@ The motors gave quite similar responses with respect to time constant and amplit
 \end{figure}
 \newpage Unfortunately, the problems were captured when the duty cycle of the pwm signal was decreased. Firstly, the prior guess that the pwm value provided in the MCU code will be proportional to the motor speeds was proven to be wrong. Furthermore one of the L298N module was functioning really poorly as it provided different voltage values for the same pwm signal which resulted that the Motor C was spinning remarkably slower. It is also clearly visible that the system is nonlinear as neither for the Motor A and B are the same dynamics with respect to rise time are obtained, thus even the shape is not similar.
 It is very straight forward that without proper control of the wheels it is impossible to achieve smooth and accurate movements. As a first approximation, it is worth neglecting the mentioned issues and handle the system as it would be completely linear. Problems could occur at low voltages where the system probably become extremely nonlinear as the motor will not move at small voltages due to the sticking friction. In the model only the linearly modeled viscous friction is included. A possible solution is to have the motor banned to work in this region. 
-\subsubsection{Controller design using blackbox model}
+\subsubsection{Controller design using blackbox model \cite{dc_motor_3}}
 Considering above all, based on the response function of the maximum pwm signal a controller can be designed for the whole range for each wheel separately. In order to do this, a black box model has to constructed. In case of DC motor it is a typical procedure to handle the system as a first order one. \cite{dc_motor_3} Beside the fact that a second-order model was derived in the previous chapter, the step response of the motor looks like that of a first-order system. After inspecting the actual step response of these motors, this looks as a good approximation. The reason for that the motor is an overdamped second-order system, thus it has two negative poles (roots of the denominator of the transfer function). The system is stable and has two time constants. In case of DC motors, the time constant of the mechanical dynamics is much higher compared to the time constant of the electrodynamics, thus the slower mechanical dynamics dominates the time response. 
 A first order system can be expressed as it follows:
 \begin{equation}
@@ -580,10 +580,12 @@ C(s) = K_p + \frac{K_i}{s}.
 The transfer function of the (positive feedback) closed-loop:
 \begin{equation}
 T(s) = \frac{C(s)P(s)}{1+C(s)P(s)}=\frac{A (K_i+K_p s)}{A K_i+A K_p s+s^2 \tau +s}
+\label{eq_transfer_function}
 \end{equation}
 The closed-loop system is almost a second-order one except for the presence of the zero (possible root in the denominator), thus it does not match with the canonical exactly:
 \begin{equation}
 G(s) = \frac{{k_{dc}\omega_n}^2}{s^2 + 2 \zeta \omega_n s +{\omega_n}^2}
+\label{eq_transfer_function_canonical}
 \end{equation}
 where
 \begin{itemize}
@@ -591,27 +593,177 @@ where
 	\item $\zeta$ - The damping ratio is a dimensionless quantity characterizing the rate at which an oscillation in the system's response 		decays due to effects such as viscous friction or electrical resistance,
 	\item $\omega_n$ - The natural frequency is the angular frequency that the system will oscillate at when there is no damping. \cite{dc_motor_3}
 \end{itemize}
+
 The original system is overdamped but the addition of a proportional controller can make it underdamped as it has similar behaviour like "virtual spring". For such special case several design equations are available if the parameters in the canonical form are known. The presence of the zero in closed-loop transfer function can be a cause of errors. However, as a first guess it can provide a good approximation for starting value for the controller if the presence of zero is not considered and the system is treated as if it was an underdamped second-order system.
+It is important to mention, that the closed-loop system would have a canonical form if only proportional type controller was used.
+
 
 The canonical second-order transfer function has two poles at:
 \begin{equation}
-s_p = -\zeta \omega_n \pm j \omega_n \sqrt{1-{\zeta}^2}.
+s_p = -\zeta \omega_n \pm j \omega_n \sqrt{1-{\zeta}^2} = -\sigma \pm j\omega_d.
+\label{eq_poles}
 \end{equation}
-If $\zeta<1$, then the system is underdamped, the two poles are both complex-valued with negative real parts. The system is asymptotically stable and oscillating with the damped natural frequency $\omega_d = \omega_n \sqrt{1-{\zeta}^2}$.
+If $\zeta<1$, then the system is underdamped, the two poles are both complex-valued with negative real parts. The system is asymptotically stable and oscillating with the damped natural frequency $\omega_d = \omega_n \sqrt{1-{\zeta}^2}$. Based on the value of damping the system can marginally stable and unstable, but those are not the cases which are have to be examined now.
+
+Combining the denumerators of equation (\ref{eq_transfer_function}) and (\ref{eq_transfer_function_canonical}) the following expressions can be obtained:
+\begin{equation}
+	{\omega_n}^2 = \frac{A K_i}{\tau},
+\end{equation}
+\begin{equation}
+	2\omega_n\zeta  = \frac{1+A K_p}{\tau}.
+\end{equation}
+Additionally using the equation \ref{eq_poles}, the relation between the poles of the closed loop and the controller parameters can be derived:
+\begin{equation}
+	%{\omega_d}^2 = \frac{A K_i (1-\zeta^2)}{\tau},
+	\sigma^2 + {\omega_d}^2 = \frac{A K_i}{\tau},
+	\label{eq_pi_from_poles_1}
+\end{equation}
+\begin{equation}
+	\sigma = \frac{1+A K_p}{2\tau}.
+	\label{eq_pi_from_poles_2}
+\end{equation}
+
+The figure \ref{second_order_underdamped_response} represents the step response of a canonical second order system and several properties are denoted to characterize itself.
 \begin{figure}[htb!]
 	\centering
-	\includegraphics[height=5cm]{figures/second_order_underdamped_response}
-	\caption{Step response characteristics \cite{mathworks}}
-	\label{second_order_underdamped_response}
-\end{figure}
-\begin{figure}[htb!]
-	\centering
-	\includegraphics[width=15cm]{figures/temporary_figure_1}
-	\caption{Step response characteristics \cite{mathworks}}
+	\includegraphics[height=7cm]{figures/step_response_of_2nd_order_system_1}
+	\caption{Step response characteristics}
 	\label{second_order_underdamped_response}
 \end{figure}
 
+\begin{itemize}
+	\item Settling Time is time that the system needs to have an output with a smaller deviation from the steady-state in terms of a given percentage. In case of second-order canonical system the following formula provides a good approximation:
+	\begin{equation}
+	T_s = -\frac{ln(tolerance)}{\zeta \omega_n} = -\frac{ln(tolerance)}{\sigma}
+	\label{eq_settling_time}
+	\end{equation}
+	\item Percent Overshoot characterize the output in terms of the ratio of maximum peak and the steady-state value expressed as a percentage.
+	\begin{equation}
+	Mp = e^{\frac{-\zeta \pi}{\sqrt{1-\zeta^2}}}
+	\label{eq_overshoot}
+	\end{equation}
+	The corresponding peak time is as follows:
+	\begin{equation}
+	T_p = \frac{\pi}{\omega_d}
+	\label{eq_overshoot_time}
+	\end{equation}
+\end{itemize}
+Ideally closed-loop respond with low settling time and overshoot is wanted. Limits can be defined in arbitrary way that suits are demands with respect to the former properties. Based on equations \ref{eq_settling_time}, \ref{eq_overshoot} and \ref{eq_overshoot_time} further limits can be derived for $\zeta$ and $\omega_d$.
+\begin{itemize}
+	\item 1 \% settling time:
+	\begin{equation}
+	T_s = -\frac{ln(0.01)}{\sigma} = \frac{4.605}{\sigma} < l_{T_s},
+	\end{equation}
+	\begin{equation}
+	\sigma > \frac{4.605}{l_{T_s}}.
+	\end{equation}
+	
+	\item peak time:
+	\begin{equation}
+	T_p = \frac{\pi}{\omega_d} < l_{T_s},
+	\end{equation}
+	\begin{equation}
+	\omega_d > \frac{\pi}{l_{T_p}}.
+	\end{equation}
+	
+	\item maximum percent overshoot:
+	\begin{equation}
+	Mp = e^{\frac{-\zeta \pi}{\sqrt{1-\zeta^2}}}  < l_{M_p},
+	\end{equation}
+	\begin{equation}
+	\zeta > \sqrt{\frac{ln^2(l_{M_p})}{\pi^2+ln^2(l_{M_p})}}.
+	\end{equation}
+\end{itemize}
+where $l_{T_s}$, $l_{T_p}$ and $l_{M_p}$ are the limits respectively.
+Considering the provided limits, some guidelines for seeking suitable poles can be obtained which probably result desired system dynamics. Rearranging the equations \ref{eq_pi_from_poles_1} and \ref{eq_pi_from_poles_2}, the controller gain estimations can be calculated:
+\begin{equation}
+	K_p = \frac{2 \sigma \tau - 1}{A},
+\end{equation}
+\begin{equation}
+	K_i = \frac{\tau(\sigma^2 + {\omega_d}^2)}{A}.
+\end{equation}
+As it was mentioned before, choosing the poles based on the above limits can not guarantee acceptable system behaviour as our system is not a canonical second-order, on the top of that the plan model is also simplified to a first order.
+\begin{figure}[htb!]
+	\centering
+	\includegraphics[height=7cm]{figures/possible_poles}
+	\caption{Pole parameter field considering the limits}
+	\label{possible_poles}
+\end{figure}
+The figure above shows the possible real and imaginary value pairs which satisfies the requirements. The real part of pole is $\sigma$, the imaginary part is $\omega_d$ and the angle $beta$ can calculated by means of $\zeta = cos(\beta)$.
+Let us have the following requirements:
+\begin{itemize}
+	\item Settling time for 1$\%$: 2[s]
+	\item Peak time: 1[s]
+	\item Max peak amplutude: 10\%
+\end{itemize}
+and let us use measurments corresponding to pwm value of 0.5. After fitting the first order balck box model the following values were obtained.
+\begin{table}[h]
+	\centering
+	\label{first_order_model_table_50}
+	\begin{tabular}{|c|c|c|c|}
+		\hline
+		& A  		& B  		& C   		\\ \hline
+		$\tau$ {[}s{]} 		& 0.2949 	& 0.2880 	& 0.3767 	\\ \hline
+		$k_{dc}$ {[}rpm{]}       & 93.8978 	& 94.9998 	& 80.5325   	\\ \hline
+	\end{tabular}
+	\caption{First-order model parameter estimations}
+\end{table}
+\begin{figure}[htb!]
+	\centering
+	\includegraphics[height=7cm]{figures/directed_speed_pwm_50_fitted}
+	\caption{Black box model at 0.5 PWM value}
+	\label{fitted_model}
+\end{figure}
+Considering the given requirements, as a first approximation placing the poles of the system to $\sigma = 5$ and $\omega_d = \pi$ point can be good.
+In this case, the $K_p = 0.021$ and $K_i = 0.11$ are obtained.
 
+\begin{figure}[htb!]
+	\centering
+	\minipage{0.45\textwidth}
+	\centering
+	\includegraphics[height=7cm]{figures/polemap_at_50}
+	\caption{Possible poles that suits the requirements}
+	\label{polemap_at_50}
+	\endminipage\hfill
+	\minipage{0.45\textwidth}
+	\centering
+	\includegraphics[height=7cm]{figures/expected_50}
+	\caption{Expected response}
+	\label{expected_response_50}
+	\endminipage\hfill
+\end{figure}
+
+\begin{figure}[htb!]
+	\centering
+	\minipage{0.45\textwidth}
+	\centering
+	\includegraphics[height=7cm]{figures/controlled_50_p_02_i_11}
+	\caption{Obtained response at target velocity 50 [rpm]}
+	\label{obtained_response_50}
+	\endminipage\hfill
+	\minipage{0.45\textwidth}
+	\centering
+	\includegraphics[height=7cm]{figures/controlled_100_p_02_i_11}
+	\caption{Obtained response at target velocity 100 [rpm]}
+	\label{obtained_response_100}
+	\endminipage\hfill
+\end{figure}
+
+\begin{figure}[htb!]
+	\centering
+	\minipage{0.45\textwidth}
+	\centering
+	\includegraphics[height=7cm]{figures/controlled_50_p_02_i_002}
+	\caption{Obtained response at target velocity 50 [rpm]}
+	\label{obtained_response_50_good}
+	\endminipage\hfill
+	\minipage{0.45\textwidth}
+	\centering
+	\includegraphics[height=7cm]{figures/controlled_100_p_02_i_002}
+	\caption{Obtained response at target velocity 100 [rpm]}
+	\label{obtained_response_100_good}
+	\endminipage\hfill
+\end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 											Bibliography
