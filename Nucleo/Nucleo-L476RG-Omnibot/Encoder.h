@@ -1,31 +1,22 @@
 #ifndef ENCODER_H
 #define ENCODER_H
 
+#include "mbed.h"
+
 class Encoder {
+private:
+  InterruptIn ch1, ch2;  
+  Timer* t_ptr;  
+  uint32_t encoder_pos;
+  uint32_t  time_micros;
+  void ch1rise();
+  void ch1fall();
+  void ch2rise();
+  void ch2fall();
 public:
-  virtual int get_position()=0;
-  virtual long int get_time_micros()=0;
-};
-
-class Encoder1 : public Encoder {
-public:
-  Encoder1();
-  int get_position();
-  long int get_time_micros();
-};
-
-class Encoder2 : public Encoder {
-public:
-  Encoder2();
-  int get_position();
-  long int get_time_micros();
-};
-
-class Encoder3 : public Encoder {
-public:
-  Encoder3();
-  int get_position();
-  long int get_time_micros();
+  Encoder(PinName pin_ch1, PinName pin_ch2, Timer* timer);
+  uint32_t get_position();
+  uint32_t  get_time_micros();
 };
 
 #endif
