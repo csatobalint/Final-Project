@@ -131,6 +131,18 @@ t = 1:length(x);
 plot(t,x,'--',t,y,'-')
 legend('Original Data','Filtered Data')
 
+%%
+measurement_case = 'max_speed_on_parketta.txt';
+max_speed_directed = dlmread(measurement_case,',',1,0)
+dataX = max_speed_directed(:,1);
+xLim = [0 5000];
+dataY = [max_speed_directed(:,2) max_speed_directed(:,3) max_speed_directed(:,4)];
+yLim = [0 120];
+displayNames = ["Motor A","Motor B","Motor C"];
+axisNames = ["$t\;[ms]$","$n\;[rpm]$"];
+currentFigure = createfigure3(dataX,dataY,axisNames,displayNames,xLim,yLim);
+%figsave(currentFigure,measurement_case,15,15);
 
-
+fit_x = dataX;
+fit_y = max_speed_directed(:,2);
 

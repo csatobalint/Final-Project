@@ -1,0 +1,16 @@
+%Initialize motor parameters
+DC_Motor_R = 1.0;
+DC_Motor_L = 1e-6;
+DC_Motor_K = 0.1;
+DC_Motor_J = 0.01;
+DC_Motor_B = 0.001;
+
+%Reverse Port Signal
+initialTime = 0.001;
+finalTime = 1;
+timeStep = 0.001;
+N=
+ReversePortTime = linspace(initialTime,finalTime,finalTime/timeStep);
+ReversePortVoltage = [zeros(1,25) 5*ones(1,25) zeros(1,25) 5*ones(1,25)];
+ReversePortVoltage = [zeros(1,25) zeros(1,25) zeros(1,25) zeros(1,25)];
+plot(ReversePortTime,ReversePortVoltage);

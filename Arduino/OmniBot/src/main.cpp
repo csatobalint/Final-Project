@@ -15,15 +15,17 @@ Motor motorA(MOTOR_A_IN1, MOTOR_A_IN2, MOTOR_A_EN, 0.00, 255);
 Motor motorB(MOTOR_B_IN1, MOTOR_B_IN2, MOTOR_B_EN, 0.00, 255);
 Motor motorC(MOTOR_C_IN1, MOTOR_C_IN2, MOTOR_C_EN, 0.00, 255);
 
-#define maxWheelSpeed 100
+#define robotCaseRadius 0.12   //[m]
+#define robotWheelRadius 0.03   //[m]
+#define maxWheelSpeed 100     //[rpm]
 #include "Encoder.h"
 #include "ControlledMotor.h"
 Encoder1 encoderA;
 Encoder2 encoderB;
 Encoder3 encoderC;
-ControlledMotor cMotorA(&motorA, &encoderA, 3960, 0.035);
-ControlledMotor cMotorB(&motorB, &encoderB, 3960, 0.035);
-ControlledMotor cMotorC(&motorC, &encoderC, 3960, 0.035);
+ControlledMotor cMotorA(&motorA, &encoderA, 3960, robotWheelRadius);
+ControlledMotor cMotorB(&motorB, &encoderB, 3960, robotWheelRadius);
+ControlledMotor cMotorC(&motorC, &encoderC, 3960, robotWheelRadius);
 
 /*
 #include "PollingEncoder.h"
@@ -46,7 +48,8 @@ void inceremental_loop();
 
 bool omni_dir_drive = true;
 bool incremental_header = true;
-
+bool measurement_on = false;
+float measurement_on_start_time = 0.0;
 bool led_red_on = true;
 //bool led_yel_on = true;
 
@@ -60,24 +63,27 @@ void setup() {
   Serial.begin(57600);
   RN42_SERIAL_PORT.begin(57600);
 
+  //RN42_SERIAL_PORT.println("BT serial");
+
   Serial.println(); Serial.println("Motor Speed Measurement");
   delay(measurementDelay);
-  Serial.print(measurementDelay); Serial.println(",0,0,0");
+  Serial.print(measurementDelay);
+  Serial.println("0,0,0,0");
 
-  /*float pwm = 0.5;
+  float pwm = 0.0;
   motorA.set_signed_speed(pwm); //-1...0...1
   motorB.set_signed_speed(pwm);
-  motorC.set_signed_speed(pwm);*/
+  motorC.set_signed_speed(pwm);
 
-  float t_velocity = maxWheelSpeed*1;
+/*  float t_velocity = maxWheelSpeed*0.05;
   cMotorA.set_target_velocity(t_velocity); //-700...0...700
   cMotorB.set_target_velocity(t_velocity);
-  cMotorC.set_target_velocity(t_velocity);
+  cMotorC.set_target_velocity(t_velocity);*/
 
   pinMode(LED_RED, OUTPUT);
   //pinMode(LED_YEL, OUTPUT);
 
-  t.every(10, control_loop); // Every 25 ms run the timed_loop, it works unitl the main loop is faster
+  t.every(25, control_loop); // Every 25 ms run the timed_loop, it works unitl the main loop is faster
   //t.every(200, inceremental_loop);
 
   digitalWrite(LED_RED, led_red_on);
@@ -95,20 +101,24 @@ void print_encoder_positions() {
 }
 
 void print_wheel_velocities() {
-  Serial.print(millis()); Serial.print(", ");
-  Serial.print(cMotorA.get_current_velocity()); Serial.print(", ");
-  Serial.print(cMotorB.get_current_velocity()); Serial.print(", ");
-  Serial.print(cMotorC.get_current_velocity()); Serial.print(", ");
-  Serial.print(cMotorA.get_current_acceleration()); Serial.print(", ");
-  Serial.print(cMotorB.get_current_acceleration()); Serial.print(", ");
-  Serial.print(cMotorC.get_current_acceleration()); Serial.println("");
-  RN42_SERIAL_PORT.print(millis()); RN42_SERIAL_PORT.print(", ");
-  RN42_SERIAL_PORT.print(cMotorA.get_current_velocity()); RN42_SERIAL_PORT.print(", ");
-  RN42_SERIAL_PORT.print(cMotorB.get_current_velocity()); RN42_SERIAL_PORT.print(", ");
-  RN42_SERIAL_PORT.print(cMotorC.get_current_velocity()); RN42_SERIAL_PORT.print(", ");
-  RN42_SERIAL_PORT.print(cMotorA.get_current_acceleration()); RN42_SERIAL_PORT.print(", ");
-  RN42_SERIAL_PORT.print(cMotorB.get_current_acceleration()); RN42_SERIAL_PORT.print(", ");
-  RN42_SERIAL_PORT.print(cMotorC.get_current_acceleration()); RN42_SERIAL_PORT.println("");
+  if(measurement_on){
+    Serial.print(millis()-measurement_on_start_time); Serial.print(", ");
+    Serial.print(cMotorA.get_current_velocity()); Serial.print(", ");
+    Serial.print(cMotorB.get_current_velocity()); Serial.print(", ");
+    Serial.print(cMotorC.get_current_velocity()); Serial.print(", ");
+    Serial.print(cMotorA.get_spd()); Serial.print(", ");
+    Serial.print(cMotorB.get_spd()); Serial.print(", ");
+    Serial.print(cMotorC.get_spd()); Serial.println("");
+  }
+  if(measurement_on){
+    RN42_SERIAL_PORT.print(millis()-measurement_on_start_time); RN42_SERIAL_PORT.print(", ");
+    RN42_SERIAL_PORT.print(cMotorA.get_current_velocity()); RN42_SERIAL_PORT.print(", ");
+    RN42_SERIAL_PORT.print(cMotorB.get_current_velocity()); RN42_SERIAL_PORT.print(", ");
+    RN42_SERIAL_PORT.print(cMotorC.get_current_velocity()); RN42_SERIAL_PORT.print(", ");
+    RN42_SERIAL_PORT.print(cMotorA.get_current_acceleration()); RN42_SERIAL_PORT.print(", ");
+    RN42_SERIAL_PORT.print(cMotorB.get_current_acceleration()); RN42_SERIAL_PORT.print(", ");
+    RN42_SERIAL_PORT.print(cMotorC.get_current_acceleration()); RN42_SERIAL_PORT.println("");
+  }
 }
 
 void print_bluetooth_joystick_data(){
@@ -178,6 +188,10 @@ void inceremental_loop() {
   if(ramp_up_value<0) ramp_up_value_increment *= -1;
 }
 
+void print_command_loop(){
+
+}
+
 void drive() {
   float x = bjc.getX()/100.0;
   float y = bjc.getY()/100.0;
@@ -185,9 +199,9 @@ void drive() {
   float vB = 0.0;
   float vC = 0.0;
   if (omni_dir_drive) {
-    float eAx = +0.5; float eAy = +0.866025;
-    float eBx = +0.5; float eBy = -0.866025;
-    float eCx = -1.0; float eCy = 0.0;
+    float eAx = -0.5; float eAy = +0.866025;
+    float eBx = -0.5; float eBy = -0.866025;
+    float eCx = +1.0; float eCy = 0.0;
     vA = eAx*x + eAy*y;
     vB = eBx*x + eBy*y;
     vC = eCx*x + eCy*y;
@@ -212,7 +226,30 @@ void drive() {
   cMotorB.set_target_velocity(vB*maxWheelSpeed);
   cMotorC.set_target_velocity(vC*maxWheelSpeed);
 }
+void omniDriveVelocity(float u, float v, float w){
+  float vA = 0.0;  float vB = 0.0;  float vC = 0.0; float scalingFactor = 1;
+  float eAx = -0.5; float eAy = +0.866025;
+  float eBx = -0.5; float eBy = -0.866025;
+  float eCx = +1.0; float eCy =  0.0;
+  vA = eAx*u + eAy*v;
+  vB = eBx*u + eBy*v;
+  vC = eCx*u + eCy*v;
+  vA += w*robotCaseRadius;
+  vB += w*robotCaseRadius;
+  vC += w*robotCaseRadius;
+  if(abs(vA)>1)       scalingFactor = abs(vA);
+  if(abs(vB)>abs(vA) && abs(vB)>1) scalingFactor = abs(vB);
+  if(abs(vC)>abs(vB) && abs(vC)>1) scalingFactor = abs(vC);
+  vA /= scalingFactor;
+  vB /= scalingFactor;
+  vC /= scalingFactor;
 
+  cMotorA.set_target_velocity(vA*maxWheelSpeed);
+  cMotorB.set_target_velocity(vB*maxWheelSpeed);
+  cMotorC.set_target_velocity(vC*maxWheelSpeed);
+}
+int BluetoothSerialCommand = -1;
+float globalOmega = 0;
 /****************************************************************************
 *********************************** LOOP ************************************
 *****************************************************************************/
@@ -223,25 +260,50 @@ void loop() {
   encoderB.encoder_update_position();
   encoderC.encoder_update_position();*/
 
-  t.update();
-
   // Update battery percentage and outcoming data
   /*battery.update(); bjc.setData3(String(battery.get_percent())+"%");*/
 
+  /*
   // Set dirve method
   bjc.setData1(omni_dir_drive ? "Omni" : "Car-like");
 
   // Process incoming data from BluetoothJoystickController
   int p = bjc.process();
-  if (p==2) {
+  if (p==2) { //Button packet
     //Serial.print("Buttons 1,2: ");
     //Serial.print(bjc.getB0()); Serial.print(", ");
     //Serial.println(bjc.getB1());
     omni_dir_drive = !bjc.getB0(); // B0 not pressed = omni_drive, B0 pressed = car-like drive
-  } else if (p==7) {
-    /*print_bluetooth_joystick_data()*/
-    drive();
+    globalOmega = bjc.getB1() ? 1 : 0;
+  } else if (p==7) { //Coordinates
+    //print_bluetooth_joystick_data()
+    //drive();
+    float x = bjc.getX()/100.0;
+    float y = bjc.getY()/100.0;
+    omniDriveVelocity(x, y, globalOmega);
   }
+  */
+
+  //ControlVia BT serial
+  int command = RN42_SERIAL_PORT.read();
+  if (command == 'g') {
+    RN42_SERIAL_PORT.println("Measurement Started!");
+    RN42_SERIAL_PORT.println("0,0,0,0,0,0,0");
+    measurement_on = true;
+    measurement_on_start_time = millis();
+    float pwm = 1.0;
+    motorA.set_signed_speed(pwm); //-1...0...1
+    motorB.set_signed_speed(pwm);
+    motorC.set_signed_speed(pwm);
+  } else if ((millis() - measurement_on_start_time) > 5001) {
+    measurement_on = false;
+    float pwm = 0.0;
+    motorA.set_signed_speed(pwm); //-1...0...1
+    motorB.set_signed_speed(pwm);
+    motorC.set_signed_speed(pwm);
+  }
+
+  t.update();
 
   //print_encoder_positions();
 
@@ -254,4 +316,11 @@ void loop() {
   motorC.set_signed_speed(valFloat);*/
   /*Serial.print(valFloat); Serial.println(",");*/
   //RN42_SERIAL_PORT.println(valFloat);
+}
+void serialBluetoothCommander(int command){
+  switch (command) {
+    case 'g':
+      //omni_rotate();
+      break;
+    }
 }
