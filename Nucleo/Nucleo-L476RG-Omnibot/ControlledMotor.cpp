@@ -66,7 +66,7 @@ void ControlledMotor::update() {
   int_error+=(av_target-av_current);
   double spd = av_target/700.0+(av_target-av_current)*P+int_error*I;
   //Serial.print(av_current); Serial.print(","); Serial.print(av_target); Serial.print(","); Serial.println(spd);
-  //m->set_signed_speed(spd);
+  m->set_signed_speed(spd);++
   // Update previous values
   prev_pos = pos;
   prev_time_micros = time_micros;

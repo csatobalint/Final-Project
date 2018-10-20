@@ -5,23 +5,29 @@
 #include "Drive.h"
 #include "Battery.h"
 #include "BluetoothJoystick.h"
-//#include "Encoder.h"
+#include "BNO055.h"
+#include "Encoder.h"
 //#include "ControlledMotor.h"
-//#include "Timer.h"
+
 
 Motor motorA(MOTOR_A_IN1, MOTOR_A_IN2, MOTOR_A_EN, 0, 255);
 Motor motorB(MOTOR_B_IN1, MOTOR_B_IN2, MOTOR_B_EN, 0, 255);
 Motor motorC(MOTOR_C_IN1, MOTOR_C_IN2, MOTOR_C_EN, 0, 255);
-/*Encoder1 encoderA;
-Encoder2 encoderB;
-Encoder3 encoderC;
-ControlledMotor cMotorA(&motorA, &encoderA, 4096, 0.035);
-ControlledMotor cMotorB(&motorB, &encoderB, 4096, 0.035);
-ControlledMotor cMotorC(&motorC, &encoderC, 4096, 0.035);*/
+Timer t;
+Encoder encoderA(ENCODER1_CH1, ENCODER1_CH2, &t);
+Encoder encoderB(ENCODER2_CH1, ENCODER3_CH2, &t);
+Encoder encoderC(ENCODER3_CH1, ENCODER3_CH2, &t);
+/*ControlledMotor cMotorA(&motorA, &encoderA, 3960, 0.035);
+ControlledMotor cMotorB(&motorB, &encoderB, 3960, 0.035);
+ControlledMotor cMotorC(&motorC, &encoderC, 3960, 0.035);*/
 
 Battery battery(3.2f, 4.2f, BATTERY_ANALOG_IN);
 Serial BT(RN42_TX, RN42_RX, 57600);
 BluetoothJoystickCommander bjc(&BT);
+I2C i2c(BNO_SDA, BNO_SCL);
+BNO055 bno(i2c, BNO_RESET, BNO055_G_CHIP_ADDR, MODE_NDOF);
+uint8_t calib;
+BNO055_EULER_TypeDef euler;
 
 void timed_loop();
 bool omni_dir_drive = true;
@@ -31,7 +37,7 @@ bool led_yel_on = true;
 //DigitalOut Red(LED_RED);
 //DigitalOut Yel(LED_YEL);
 
-//Serial PC(USBTX, USBRX, 57600);
+Serial PC(SERIAL_TX, SERIAL_RX, 57600);
 
 
 void setup() {
@@ -82,14 +88,29 @@ void drive() {
 
 char message[50];
 
+uint8_t csys,cmag,cacc,cgyr;
+
 void loop() {
   // Update timer which will trigger timed callbacks
   //t.update();
+  
+  // BNO
+  calib = bno.read_calib_status();
+  bno.get_Euler_Angles(&euler);
+  PC.printf("Calib state SGAM %d %d %d %d\n", 
+    (calib & 0b11000000) >> 6,
+    (calib & 0b00110000) >> 4, 
+    (calib & 0b00001100) >> 2, 
+    (calib & 0b00000011));
+  PC.printf("Heading, roll, pitch: %4.2f,%4.2f,%4.2f\n", 
+    euler.h, euler.r, euler.p);
   
   // Update battery percentage and outcoming data
   battery.update();
   sprintf(message, "%4.2f %%", battery.get_percent());
   bjc.setData3(string(message));
+  sprintf(message, "%4.2f,%4.2f,%4.2f", euler.h, euler.r, euler.p);
+  bjc.setData2(string(message));
   bjc.setData1(omni_dir_drive ? "Omni" : "Car-like");
 
   // Process incoming data from BluetoothJoystickController
