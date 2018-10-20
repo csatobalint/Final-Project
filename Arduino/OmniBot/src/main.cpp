@@ -65,10 +65,10 @@ void setup() {
 
   //RN42_SERIAL_PORT.println("BT serial");
 
-  Serial.println(); Serial.println("Motor Speed Measurement");
+  /*Serial.println(); Serial.println("Motor Speed Measurement");
   delay(measurementDelay);
   Serial.print(measurementDelay);
-  Serial.println("0,0,0,0");
+  Serial.println("0,0,0,0");*/
 
   float pwm = 0.0;
   motorA.set_signed_speed(pwm); //-1...0...1
@@ -83,7 +83,7 @@ void setup() {
   pinMode(LED_RED, OUTPUT);
   //pinMode(LED_YEL, OUTPUT);
 
-  t.every(25, control_loop); // Every 25 ms run the timed_loop, it works unitl the main loop is faster
+  t.every(10, control_loop); // Every 25 ms run the timed_loop, it works unitl the main loop is faster
   //t.every(200, inceremental_loop);
 
   digitalWrite(LED_RED, led_red_on);
@@ -291,17 +291,43 @@ void loop() {
     RN42_SERIAL_PORT.println("0,0,0,0,0,0,0");
     measurement_on = true;
     measurement_on_start_time = millis();
-    float pwm = 1.0;
-    motorA.set_signed_speed(pwm); //-1...0...1
-    motorB.set_signed_speed(pwm);
-    motorC.set_signed_speed(pwm);
-  } else if ((millis() - measurement_on_start_time) > 5001) {
-    measurement_on = false;
-    float pwm = 0.0;
-    motorA.set_signed_speed(pwm); //-1...0...1
-    motorB.set_signed_speed(pwm);
-    motorC.set_signed_speed(pwm);
   }
+
+  if(measurement_on){
+    float delta = millis() - measurement_on_start_time;
+  	if(delta< 2001){
+  		float pwm = 1.0;
+  		motorA.set_signed_speed(pwm); //-1...0...1
+  		motorB.set_signed_speed(pwm);
+  		motorC.set_signed_speed(pwm);
+  	}
+  	else if(delta>=2001 && delta<4001){
+  		float pwm = -1.0;
+  		motorA.set_signed_speed(pwm);
+  		motorB.set_signed_speed(pwm);
+  		motorC.set_signed_speed(pwm);
+  	}
+  	else if(delta>=4001 && delta<6001){
+  		float pwm = 1.0;
+  		motorA.set_signed_speed(pwm);
+  		motorB.set_signed_speed(pwm);
+  		motorC.set_signed_speed(pwm);
+  	}
+  	else if(delta>=6001 && delta<8001){
+  		float pwm = -1.0;
+  		motorA.set_signed_speed(pwm);
+  		motorB.set_signed_speed(pwm);
+  		motorC.set_signed_speed(pwm);
+  	}
+  	else if(delta >= 8001){
+  		measurement_on = false;
+  		float pwm = 0.0;
+  		motorA.set_signed_speed(pwm); //-1...0...1
+  		motorB.set_signed_speed(pwm);
+  		motorC.set_signed_speed(pwm);
+  	}
+  }
+
 
   t.update();
 
