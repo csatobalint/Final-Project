@@ -452,8 +452,257 @@ high radius path with low speed and accelerate moderately. In other words, a com
 
 To select a mobile configuration, the general purpose, working environment and concept of the robot have to be defined. Based on real life experience and possible future application needs, this study will focus on designing a transport robot which would operate in a plant, in a laboratory or on the streets carrying different shaped and weighted loads. Instead focusing on navigation, i.e. dead-reckoning, route planning and obstacle avoiding, the control of dynamic behaviour is to be examined in details. Beside the technological aspects also the practibality and costs have to be considered because the building of the mobile robot configuration is also the part of my thesis. The most important aspect of a study of such a advanced moving transport robot is the maneuverability. In terms of maneuverability, the omnidirectional robots show the best performance. Choosing a three-wheeled omnidirectional mobile robot configuration can be regarded the optimal choice. The controllability is more complex compared to anholonomic robots, but with the choice of minimum number of three wheels it is still a handleable design challenge. Application of more wheels could give more controllability which would be favoured, e.g. TUG is also four wheel driven omnidirectional configuration. However, it would make some additional issues appear such increased slip danger and more complex controllability. Compared to anholomic configuration, the holonomic configurations are less stable as mentioned before, but it can be regarded as an advantage in this case, because this study is willing to deal with stability issues, thus the main objective is to examine the behaviour of the system near stability and provide parameter estimation methods to avoid it.
 In other words, a transport robot might be preferred over others if it can be as stable as possible without loosing any maneuverability skill. For an omnidirectional drive configuration special wheels of higher price are need, thus the three-wheeled configuration is optimal from economic point of view.
-\subsubsection{Kinematic of three-wheeled omnidirectional robot}
-ide jöhetne egy kinematikai összefoglaló
+\subsection{Kinematics of three-wheeled omnidirectional robot}
+\subsubsection{Basic relationships}
+Let us define the global frame as [X,Y] coordinate system which represent the environment. The location and the orientation of the robot can be described with (X,Y,$\alpha$) or (X,Y,$\varphi$) vector, while the kinematic state as that of time-derivative, i.e. ($\dot X, \dot Y, \dot \alpha$) or ($\dot X, \dot Y, \dot \varphi$). Eventually, we are usually interested in the kinematics from global frame point of view, but from the design and user point of view it is more convenient to start writing the equations in the local frame of the robot and then transform the kinematics to the global frame if that is needed. Let us denote the local frame as $(x,y)$ which center is the center of gravity of the robot. The robot velocity as $v$ when that of components in the local frame are $(v_x,v_y) = (- v sin \gamma , v cos \gamma )$.
+
+\begin{figure}[htb!]
+	\centering
+	\includegraphics[width=7cm]{figures/global_local_frame}
+	\caption{Global and local frames of the robot}
+	\label{global_local_frame}
+\end{figure}
+The overall kinematic state of the case is a straightforward resultant of the wheel kinematic states. The velocity of wheels can have two type of components:
+\begin{itemize}
+	\item Translational velocity which actually equals with translational speed of the case because of the kinematic constraint. Additionally, it can be divided into two further parts:
+		\begin{itemize}
+			\item Its own velocity which can be called as pure translational wheel speed. It is proportional with the angular velocity of the wheel $v_{wheel,t} ~ r \omega_i$, where r is the wheel radius and $\omega$ is the angular velocity.
+			\item The rolling velocity $v_{roller}$ which is induced by the other wheels and realized by the free rollers. Its direction is determined by the construction of rollers, generally and also in this case let it assume to be 90$^{\circ}$.
+		\end{itemize}
+	\item Rotational velocity component which comes from the spinning of the whole robot case about its center of gravity which can be supposed to be in the geometrical center of the common wheel circle, therefore it can be formulated as $v_{wheel,r}  = R \dot \alpha$. This component is always the same for all wheels.
+\end{itemize}
+The resultant translational wheel velocity can be calculated as:
+\begin{equation}
+v^i = {v_{wheel,t}}^i + {v_{wheel,r}} = r \omega_i
+\end{equation}
+where $i$ is the index of the wheels and i=1,2,3 in case of a thee-wheeled omnidirectional robot.
+\begin{figure}[htb!]
+	\centering
+	\includegraphics[width=10cm]{figures/omni_wheel_vectors}
+	\caption{Wheel vectors in local (x,y) coordinate system}
+	\label{omni_wheel_vectors}
+\end{figure}
+
+The omniwheels are located along the common wheel circle (R) at $\varphi_1, \varphi_2, \varphi_3$ angles measured from the local $x$ axis. The pure translational part of the wheel velocity can be written as a combination of the x,y components of the robot translational velocity as:
+\begin{equation}
+	{v_{wheel,t}}^i = - v_x sin \varphi_i  + v_y cos \varphi_i .
+\end{equation}
+Considering the equations above the total wheel velocity is:
+\begin{equation}
+	v_i = - v_x sin \varphi_i + v_y cos \varphi_i  + R \omega_i,
+\end{equation}
+therefore the angular velocity of the wheel is:
+\begin{equation}
+	\omega_i = \frac{1}{r} (- v_x sin \varphi_i + v_y cos \varphi_i + R \omega_i),
+\end{equation}
+which can be generalized in vectorial form as:
+\begin{equation}
+	\boldsymbol{\omega} = \mathbf{J^{-1}} \mathbf{v}
+\end{equation}
+where
+\begin{itemize}
+	\item $\Omega = [\omega_1~\omega_2~\omega_3]^T$ is the wheel angular velocity vector,
+	\item $\mathbf{J^{-1}}$ is the inverse Jacobian matrix of the case velocities which is
+		\begin{eqnarray}
+		\mathbf{J^{-1}}=\frac{1}{r} \left[
+		\begin{array}{ccc}
+		sin \varphi_1 & cos \varphi_1 & R \\
+		sin \varphi_2 & cos \varphi_2 & R \\
+		sin \varphi_3 & cos \varphi_3 & R \\
+		\end{array}
+		\right],
+		\end{eqnarray}
+	\item $\mathbf{v} = [v_x~v_y~\omega]^T = [\dot x~\dot y~\dot \varphi]^T$ is the case velocity vector.
+\end{itemize}
+The inverse of determinant of J is never zero, thus its inverse always exists which means that kinematic relation between the wheels and the case is provided. In order to track the robot in the global configuration, the kinematic state has to be transformed from the local frame to the global frame which can be done by means of a simple rotation transformation perpendicular to (x,y) plane with $\alpha$ orientation angle:
+\begin{equation}
+\boldsymbol{x} = \mathbf{T}~\mathbf{X}
+\end{equation}, i.e.
+\begin{eqnarray}
+\left[
+\begin{array}{c}
+\dot x \\
+\dot y 	\\
+\dot \phi \\
+\end{array}
+\right]=
+\left[
+\begin{array}{ccc}
+cos \alpha 	& -sin \alpha & 0 \\
+sin \alpha 	& cos \alpha & 0 \\
+0	 		& 0 		 & 1 \\
+\end{array}
+\right]
+\left[
+\begin{array}{c}
+\dot X \\
+\dot Y 	\\
+\dot \Phi \\
+\end{array}
+\right].
+\end{eqnarray}
+\subsubsection{2D Simulations}
+Considering the equations above, a two-dimensional kinematic simulator was built-in Mathematica which could help to understand more accurately the robot locomotion mechanism by calculating and then visualizing the movements. The simulator has to be initialized with as follows:
+\begin{itemize}
+	\item Common wheel circle (R) which is in this case: caseR = 0.12 m,
+	\item Wheel position angles ($\varphi_i$) which is in this case $\varphi_1=30^{\circ}, \varphi_1=150^{\circ},\varphi_1=270^{\circ}$,
+	\item Initial position and orientation $\mathbf{X} = [X~Y~\alpha]^T$, i.e. $\mathbf{p}=[X~Y]^T$ and $\alpha$,
+	\item Initial velocity state in the local frame: $\mathbf{v} = [v_x~v_y~\omega]^T,$ i.e. $v,~\gamma$ and $\omega$.
+	\item The solution is obtained numerically, integrating the velocities over time steps, thus timestep size ($dt$ )and simulation time (T) has to be provided.
+\end{itemize}
+The basic equations are the followings:
+\begin{itemize}
+	\item The new position equation is
+	\begin{equation}
+		\mathbf{p}^{i+1} = \mathbf{p}^{i} + \mathbf{T} \mathbf{v}^i dt,
+	\end{equation}
+	\item The new orientation equation is
+	\begin{equation}
+		\alpha^{i+1} = \alpha^{i} + \omega^i dt.
+	\end{equation}
+	\item The new velocity magnitude equation is
+	\begin{equation}
+		v^{i+1} = F(v^{i},dt,\mathbf{p}^{i},...).
+	\end{equation}
+	\item The new velocity direction equation is
+	\begin{equation}
+		\gamma^{i+1} = F(\gamma^{i},dt,\omega,...).
+	\end{equation}
+	\item The new angluar velocity equation is
+	\begin{equation}
+	\omega^{i+1} = F(\omega^{i},dt,\mathbf{p}^{i},...).
+	\end{equation}
+\end{itemize}
+
+The Figure \ref{relation_v_1_g_0_w_0} depict a pure translation in forward direction. An interesting characteristic of the robot configuration can be observed, i.e. the resultant case velocity can be greater than the wheel velocities. The Figure \ref{relation_v_0_g_0_w_10} represent the case of pure rotation when the wheel velocities are equal.
+\begin{figure}[htb!]
+	\centering
+	\minipage{0.5\textwidth}
+	\centering
+	\includegraphics[height=7cm]{figures/2d_simulation/relation_v_1_g_0_w_0}
+	\caption{Pure forward translation}
+	\label{relation_v_1_g_0_w_0}
+	\endminipage\hfill
+	\minipage{0.5\textwidth}
+	\centering
+	\includegraphics[height=7cm]{figures/2d_simulation/relation_v_0_g_0_w_10}
+	\caption{Pure spinning}
+	\label{relation_v_0_g_0_w_10}
+	\endminipage\hfill
+\end{figure}
+The Figure \ref{relation_v_1_g_30_w_0} depicts another specific case of pure translation when the velocity of wheel A equals the robot velocity, while the others drive with same speed but the opposite direction. The Figure \ref{relation_v_06_g_45_w_6} represent a mixed case of translation in an arbitrary direction and rotation at the same time.
+\begin{figure}[htb!]
+	\centering
+	\minipage{0.5\textwidth}
+	\centering
+	\includegraphics[height=7cm]{figures/2d_simulation/relation_v_1_g_30_w_0}
+	\caption{Specific case of translation}
+	\label{relation_v_1_g_30_w_0}
+	\endminipage\hfill
+	\minipage{0.5\textwidth}
+	\centering
+	\includegraphics[height=7cm]{figures/2d_simulation/relation_v_06_g_45_w_6}
+	\caption{Translation \& rotation}
+	\label{relation_v_06_g_45_w_6}
+	\endminipage\hfill
+\end{figure}
+\newpage
+\noindent Moving along a circle without changing the orientation:
+\begin{itemize}
+	\item $v^{i+1} = v^{i} = v^{0}$ (constant speed),
+	\item $\omega^{i+1} = \omega^{i} = 0$ (no angular velocity),
+	\item $\gamma^{i+1} = \gamma^i + \dot \gamma dt$ where $\dot \gamma$ is a constant.
+\end{itemize}
+\begin{figure}[htb!]
+	\minipage{0.33\textwidth}
+	\centering
+	\includegraphics[height=5cm]{figures/2d_simulation/animations/2D_move_along_circle_not_rotating/20}
+	\caption{$0.20[s]$}
+	\endminipage\hfill
+	\minipage{0.33\textwidth}
+	\centering
+	\includegraphics[height=5cm]{figures/2d_simulation/animations/2D_move_along_circle_not_rotating/40}
+	\caption{$0.40[s]$}
+	\endminipage\hfill
+	\minipage{0.33\textwidth}
+	\centering
+	\includegraphics[height=5cm]{figures/2d_simulation/animations/2D_move_along_circle_not_rotating/60}
+	\caption{$0.60[s]$}
+	\endminipage\hfill
+\end{figure}
+\noindent Moving along a circle without like a car (anholonomic):
+\begin{itemize}
+	\item $v^{i+1} = v^{i} = v^{0}$ (constant speed),
+	\item $\omega^{i+1} = \omega^{i} = \omega^{0}$ (constant angular velocity),
+	\item $\gamma^{i+1} = \gamma^i = 0$
+\end{itemize}
+\begin{figure}[htb!]
+	\minipage{0.33\textwidth}
+	\centering
+	\includegraphics[height=5cm]{figures/2d_simulation/animations/2D_move_along_circle_rotating_car_like/20}
+	\caption{$0.20[s]$}
+	\endminipage\hfill
+	\minipage{0.33\textwidth}
+	\centering
+	\includegraphics[height=5cm]{figures/2d_simulation/animations/2D_move_along_circle_rotating_car_like/40}
+	\caption{$0.40[s]$}
+	\endminipage\hfill
+	\minipage{0.33\textwidth}
+	\centering
+	\includegraphics[height=5cm]{figures/2d_simulation/animations/2D_move_along_circle_rotating_car_like/60}
+	\caption{$0.60[s]$}
+	\endminipage\hfill
+\end{figure}
+\newpage
+\noindent Moving along a circle changing the orientation the reverse direction:
+\begin{itemize}
+	\item $v^{i+1} = v^{i} = v^{0}$ (constant speed),
+	\item $\omega^{i+1} = \omega^{i}<0$ (angular velocity),
+	\item $\gamma^{i+1} = \gamma^i + \dot \gamma dt -\omega^i dt$ where $\dot \gamma$ is a constant.
+\end{itemize}
+\begin{figure}[htb!]
+	\minipage{0.33\textwidth}
+	\centering
+	\includegraphics[height=5cm]{figures/2d_simulation/animations/2D_move_along_circle_rotating_reverse_direction/20}
+	\caption{$0.20[s]$}
+	\endminipage\hfill
+	\minipage{0.33\textwidth}
+	\centering
+	\includegraphics[height=5cm]{figures/2d_simulation/animations/2D_move_along_circle_rotating_reverse_direction/40}
+	\caption{$0.40[s]$}
+	\endminipage\hfill
+	\minipage{0.33\textwidth}
+	\centering
+	\includegraphics[height=5cm]{figures/2d_simulation/animations/2D_move_along_circle_rotating_reverse_direction/60}
+	\caption{$0.60[s]$}
+	\endminipage\hfill
+\end{figure}
+
+\noindent Moving along a line and changing the orientation:
+\begin{itemize}
+	\item $v^{i+1} = v^{i} = v^{0}$ (constant speed),
+	\item $\omega^{i+1} = \omega^{i}<0$ (angular velocity),
+	\item $\gamma^{i+1} = \gamma^i -\omega^i dt$ where $\dot \gamma$ is a constant.
+\end{itemize}
+\begin{figure}[htb!]
+	\minipage{0.33\textwidth}
+	\centering
+	\includegraphics[height=5cm]{figures/2d_simulation/animations/2D_move_along_line_and_rotating/20}
+	\caption{$0.20[s]$}
+	\endminipage\hfill
+	\minipage{0.33\textwidth}
+	\centering
+	\includegraphics[height=5cm]{figures/2d_simulation/animations/2D_move_along_line_and_rotating/40}
+	\caption{$0.40[s]$}
+	\endminipage\hfill
+	\minipage{0.33\textwidth}
+	\centering
+	\includegraphics[height=5cm]{figures/2d_simulation/animations/2D_move_along_line_and_rotating/60}
+	\caption{$0.60[s]$}
+	\endminipage\hfill
+\end{figure}
+
+\newpage
 \subsubsection{Realised robot config}
 wheels+case+motor bemutása
 \subsection{Control and parameter estimation problems}
