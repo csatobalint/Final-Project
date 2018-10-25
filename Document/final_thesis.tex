@@ -452,6 +452,14 @@ high radius path with low speed and accelerate moderately. In other words, a com
 
 To select a mobile configuration, the general purpose, working environment and concept of the robot have to be defined. Based on real life experience and possible future application needs, this study will focus on designing a transport robot which would operate in a plant, in a laboratory or on the streets carrying different shaped and weighted loads. Instead focusing on navigation, i.e. dead-reckoning, route planning and obstacle avoiding, the control of dynamic behaviour is to be examined in details. Beside the technological aspects also the practibality and costs have to be considered because the building of the mobile robot configuration is also the part of my thesis. The most important aspect of a study of such a advanced moving transport robot is the maneuverability. In terms of maneuverability, the omnidirectional robots show the best performance. Choosing a three-wheeled omnidirectional mobile robot configuration can be regarded the optimal choice. The controllability is more complex compared to anholonomic robots, but with the choice of minimum number of three wheels it is still a handleable design challenge. Application of more wheels could give more controllability which would be favoured, e.g. TUG is also four wheel driven omnidirectional configuration. However, it would make some additional issues appear such increased slip danger and more complex controllability. Compared to anholomic configuration, the holonomic configurations are less stable as mentioned before, but it can be regarded as an advantage in this case, because this study is willing to deal with stability issues, thus the main objective is to examine the behaviour of the system near stability and provide parameter estimation methods to avoid it.
 In other words, a transport robot might be preferred over others if it can be as stable as possible without loosing any maneuverability skill. For an omnidirectional drive configuration special wheels of higher price are need, thus the three-wheeled configuration is optimal from economic point of view.
+\newpage
+\subsection{The Hardware}
+\subsubsection{Robot case and actuators}
+\subsubsection{MCU}
+\subsubsection{Sensors, modules and battery}
+\subsubsection{Assembly}
+
+\newpage
 \subsection{Kinematics of three-wheeled omnidirectional robot}
 \subsubsection{Basic relationships}
 Let us define the global frame as [X,Y] coordinate system which represent the environment. The location and the orientation of the robot can be described with (X,Y,$\alpha$) or (X,Y,$\varphi$) vector, while the kinematic state as that of time-derivative, i.e. ($\dot X, \dot Y, \dot \alpha$) or ($\dot X, \dot Y, \dot \varphi$). Eventually, we are usually interested in the kinematics from global frame point of view, but from the design and user point of view it is more convenient to start writing the equations in the local frame of the robot and then transform the kinematics to the global frame if that is needed. Let us denote the local frame as $(x,y)$ which center is the center of gravity of the robot. The robot velocity as $v$ when that of components in the local frame are $(v_x,v_y) = (- v sin \gamma , v cos \gamma )$.
@@ -607,11 +615,13 @@ The Figure \ref{relation_v_1_g_30_w_0} depicts another specific case of pure tra
 	\endminipage\hfill
 \end{figure}
 \newpage
+The following figures represent the status of robots at given time steps during the simulations. The main equations that generates the shown motions are given. Generally there are 3 parameters to vary: the magnitude of the speed, the direction of the speed and the angular velocity.\\[0.3cm]
 \noindent Moving along a circle without changing the orientation:
 \begin{itemize}
+	\item $dt=0.1~[\text{s}]$ (timestep size), $T=10~[\text{s}]$ (simulation time),
 	\item $v^{i+1} = v^{i} = v^{0}$ (constant speed),
 	\item $\omega^{i+1} = \omega^{i} = 0$ (no angular velocity),
-	\item $\gamma^{i+1} = \gamma^i + \dot \gamma dt$ where $\dot \gamma$ is a constant.
+	\item $\gamma^{i+1} = \gamma^i + \dot \gamma dt$ where $\dot \gamma = \frac{2 \pi}{T}$
 \end{itemize}
 \begin{figure}[htb!]
 	\minipage{0.33\textwidth}
@@ -630,8 +640,10 @@ The Figure \ref{relation_v_1_g_30_w_0} depicts another specific case of pure tra
 	\caption{$0.60[s]$}
 	\endminipage\hfill
 \end{figure}
+The direction of the speed vector ($\gamma$) is defined in the local coordinate system and it has to be changed to make the robot move along a given curve, in this case along a circle.\\[0.3cm]
 \noindent Moving along a circle without like a car (anholonomic):
 \begin{itemize}
+	\item $dt=0.1~[\text{s}]$ (timestep size), $T=10~[\text{s}]$ (simulation time),
 	\item $v^{i+1} = v^{i} = v^{0}$ (constant speed),
 	\item $\omega^{i+1} = \omega^{i} = \omega^{0}$ (constant angular velocity),
 	\item $\gamma^{i+1} = \gamma^i = 0$
@@ -654,7 +666,8 @@ The Figure \ref{relation_v_1_g_30_w_0} depicts another specific case of pure tra
 	\endminipage\hfill
 \end{figure}
 \newpage
-\noindent Moving along a circle changing the orientation the reverse direction:
+The following two cases are further demonstration of the fact that the orientation can be controlled independently from the the orientation, i.e. the robot has 3 DoF. \\[0.3cm]
+\noindent Moving along a circle changing the orientation in reverse direction:
 \begin{itemize}
 	\item $v^{i+1} = v^{i} = v^{0}$ (constant speed),
 	\item $\omega^{i+1} = \omega^{i}<0$ (angular velocity),
@@ -677,7 +690,7 @@ The Figure \ref{relation_v_1_g_30_w_0} depicts another specific case of pure tra
 	\caption{$0.60[s]$}
 	\endminipage\hfill
 \end{figure}
-
+In this case also the robot orientation and also the speed direction is changing from step to step. The changed orientation ($\omega dt$) has to be considered in the equation of $\gamma$ as being defined in the local frame.\\[0.3cm] 
 \noindent Moving along a line and changing the orientation:
 \begin{itemize}
 	\item $v^{i+1} = v^{i} = v^{0}$ (constant speed),
@@ -701,64 +714,127 @@ The Figure \ref{relation_v_1_g_30_w_0} depicts another specific case of pure tra
 	\caption{$0.60[s]$}
 	\endminipage\hfill
 \end{figure}
-
+The kinematic simulation code is good tool to demonstrate the possibilites of such a robot configuration, but it does not give an analysis from dynamics point of view.
 \newpage
-\subsubsection{Realised robot config}
-wheels+case+motor bemutása
-\subsection{Control and parameter estimation problems}
-\begin{itemize}
-	\item Kerekek szabályozásának implementálása
-	\item Felboruáls állapotának elkerülése
-	\item fix kapcsolatos kialakítás, modell alapján gyorsulások számítása \\
-			*** egyszerűbb modell, erről van egy kezdetleges \\
-			*** veszélyes tartományban üzemel a robot, mivel már borulnia kell, hogy mérjünk valamit \\
-			*** legegyszerűbb megoldás, hogy a tömeget megmérjük lineáris gyorsulásból, a geometria ismert \\
-	\item rugós felfüggesztéses kialatkítás, modell alapján max gyorsulások számítása\\
-			*** nem veszélyes tartományban mér a  robot \\
-			*** bonyolultabb modell, rugalmas alapot is belekell rakni, adott gerjesztése adott válasz vizsgálata, rezgéses modell, kapott válasz alapján m,theta becslése \\
-	\item borulás elkerülés pusztán mérések alapján,\\ self-balancing üzemmód, nincs benne mechanikai egyenlet
-	\item mechanikai modell alapján optimális orientáció számítása (kész) és annak változtatása menet közben adott pálya mentén (laterális gyorsulás), motor nyomatékokból ki lehet számolni a pillanatyni gyorsulást elvileg --> ez is inkább szabályozási feladat már \\
-	\item esetleg valami teljesítmény optimalizálós dolog
-\end{itemize}
-\newpage
-\subsection{DC motor speed analysis}
+\subsection{Dynamic analysis of DC motors}
 \subsubsection{System modelling}
-The robot configuration is equipped by three officially identical 12V 107RPM DC motors which have to be driven in synchronously in order to obtain the desired movements. During operation the demand for having a variable motor speed is essential, thus control algorithm has to be developed. Briefly, the DC motor works on the principle that one when a current conductor wire (armature) is put in a magnetic field then it will be subjected to force in accordance with the direction and magnitude of current and magnetic field. The mechanical force is produced as result of the main magnetic field and the other magnetic field produced by the armature which is attracted to the permanent magnetic field, therefore the armature starts rotating.
+The robot configuration is equipped by three officially identical 12V DC motors with permanent magnets having the nominal rotational speed value of 107RPM at no load state. They have to be driven synchronously in order to obtain the desired movements. During operation the demand for having a variable motor speed is essential, thus control algorithm has to be developed. 
+Briefly, the DC motor works on the principle (Lorentz Law) that when a current conductor wire (armature) is put in a magnetic field then it will be subjected to electromagnetic force in accordance with the direction and magnitude of current and magnetic field,i.e. $\mathbf{F} = I~\mathbf{l} \times \mathbf{B}$. The coil is connected to a DC power source, thus current will flow through the wire producing its own magnetic field. The mechanical force is produced as result of the magnetic field of the permanent magnets and the magnetic field of the coil. The magnetic field of the coil is attracted to the permanent magnetic field, therefore the armature starts rotating due to the induced electromagnetic force.
 \begin{figure}[htb!]
 	\centering
 	\includegraphics[height=4cm]{figures/dc_conducting_wire.png}
-	\caption{A single current conductor in a static magnetic field}
+	\caption{A single current conductor in a static magnetic field \cite{dc_motor_2}}
 	\label{dc_conducting_wire}
 \end{figure}
-At some point the magnetic fields would align resulting in a zero torque. For a continuous rotation of the rotor several wire have to be used shifted from each other and only some of them which in their actual position does not align with the permanent magnetic field are to be switched. In brushed DC motors this switching mechanism is done by the so called commutator part. According to Faraday's law of electromagnetic induction, the rotating action of the armature produces an adverse electromotive force that (EMF) tends to decrease cause of the accelerating effect, i.e. the voltage. \cite{dc_motor_1} \cite{dc_motor_2}
+At some point the magnetic fields would align resulting in a zero torque. In brushed DC motors this switching mechanism is done by the so called commutator part. The Figure \ref{dc_conducting_wire} represent a single wire with a commutator. The commutator is a simple mechanical switch that changes the polarity of the voltage put on the wire by touching the brushes in order to make the current flow in such a direction that maintains the direction of the generated torque, therefore the armature continue rotating. A single wire would provide a fluctuating torque during the operation since the angle between the coil and static magnetic flux is changing. For a more smooth operation of the rotor, several separate wire loops have to be used shifted from each other and switched one after the. This can be realised by applying more pairs of commutators which enables to connect always that coil loop with power source that does not align with the permanent magnetic field, thus can produce maximum torque. In practical motors the rotating part is called armature and standing part is called stator. The stator can be a permanent magnetic pole in case of small DC motors, while in larger motors an electromagnet is used which also powered by the same DC source in serial or parallel connection. In my case, the motor has a permanent magnetic stator.
+According to Faraday's law of electromagnetic induction, a rotating loop of coil will produce an electromotive force called EMF. The case of the rotating armature loop is the same, thus in this case it produces an adverse electromotive force which is called back EMF that tends to decrease cause of the accelerating effect, i.e. the applied input voltage. As a result, the back EMF will decrease the armature current by a remarkable amount, thus the motor torque as well. \cite{dc_motor_1} \cite{dc_motor_2}
 
 The electrical equivalent circuit of the armature and the free-body diagram of the rotor can be modeled as follows.
 \begin{figure}[htb!]
 	\centering
-	\includegraphics[height=4cm]{figures/dc_motor_model.png}
+	\includegraphics[height=5cm]{figures/dc_motor_model.png}
 	\caption{DC motor electrical and mechanical model \cite{dc_motor_3}}
 	\label{dc_motor_model}
 \end{figure}
 
-The motor is supplied with $V$ voltage as an input, while the output is the rotational speed of the rotor and shaft (rigid connection). In the mechanical model also dissipation energy is considered as a being proportional with the angular speed. The torque is generally proportional to the armature current and the strength of the magnetic field, but in this model the magnetic field is assumed to be constant, thus the motor torque depends on the armature current ($i$) only. The emf ($e$) is proportional to the angular velocity of the shaft. If SI units are used then the contants of the torque and the emf are equal, thus the same ($K$) constant can be used for the following equations:
+The motor is supplied with $V$ voltage as an input, while the output is the rotational speed of the rotor and shaft (rigid connection). In the mechanical model the load torque ($T_L$) and also dissipation energy is considered as being proportional with the angular speed. The motor torque is generally proportional to the armature current and the strength of the magnetic field, but in this model the magnetic field is assumed to be constant, thus the motor torque depends on the armature current ($i$) only. The back emf ($e$) is proportional to the angular velocity of the shaft. If SI units are used then the constants of the torque and the emf are equal, thus the same ($K$) constant can be used for the following equations:\cite{dc_motor_3}\cite{dc_motor_4}
 \begin{equation}
-	T = K i
+T = K i
 \end{equation}
 \begin{equation}
-	e = K \dot \theta
+e = K \dot \theta
 \end{equation}		
-			
-Based on model in Figure \label{dc_motor_model} the following equations can be derived based on the Newtons's 2nd Law and Kirchoff's voltage law.
+
+Based on the model in Figure \label{dc_motor_model} the following equations can be derived by means of the Newtons's 2nd Law and Kirchoff's voltage law.
 \begin{equation}
-	J \ddot \theta + b \dot \theta = K i
+J \ddot \theta + b \dot \theta = K i - T_L
 \end{equation}
 \begin{equation}
-	L \frac{di}{dt} + R i = V - K \dot \theta
+L \frac{di}{dt} + R i = V - K \dot \theta
 \end{equation}
-Applying the Laplace transform and rearranging the transformed equations the transfer function of the system is as follows:
+The system can be described by a system of linear differential equations with respect to armature current and rotor angular velocity. A given system can be defined by 5 parameters, i.e. armature resitance (R), armature inductance (L), motor constant (K), damping constant (b) and motor inertia (J).
+\subsubsection{DC motor parameter identification}
+The motor parameters are essential to be known to develop a dynamic model. The L,J describes the dynamic behaviour of the motor, while the others characterize the system in a stationary aspect. Based on motor datasheet data (no load case, max efficiency case, max power case, stall torque case), only the stationary parameters can be estimated and you even cannot be sure about the values whether match the reality or not. Obviously, to get know about the dynamic parameters, measurements of dynamic operations of the motors are needed, e.g. measuring the step response to a given voltage. A robust technique for the parameter identification is to combine the measurement results with the capabilities of MATLAB Simulink and its Design Optimization tool. To carry out the following models and the parameter identificiation process the following references were considered: \cite{par_est_1}, \cite{par_est_2},\cite{par_est_3}. The Simscape library of the simulink makes it possible to make system models of coupled physical problems combining submodel elements, e.g. a DC motor which is an electromechanical system.
+Firstly, in accordance with the equations above the following model was made.
+\begin{figure}[htb!]
+	\centering
+	\includegraphics[height=5cm]{figures/simulink_dc_motor.png}
+	\caption{Simple DC motor electromechanical model in Simulink}
+	\label{simulink_dc_motor}
+\end{figure}
+The Figure \ref{simulink_dc_motor} represent the model in which the blue is the electrical circuit consisting a resistance $(R)$, inductance $(L)$, DC voltage source, electrical reference and current sensor, while the green elements are mechanical blocks, i.e. the inertia $(J)$, rotational damper $(B)$, rotational reference and a rotational speed sensor. The interface between the two domains is provided by the electromechanical converter which defines the $K$ constant. The $f(x)$ block defines solver settings for the numerical solution and the other two elements are blocks that monitors the current and shaft speed over time. This model has to match with equations above because actually those are solve numerically. The armature current has high peeks at the starting of DC motors due to the absence of the back emf which is proportional with rotational speed. The high gradients make the equation system to be stiff, thus ode15s solution method was chosen which a recommended one for such problems.
+
+\begin{figure}[htb!]
+	\centering
+	\includegraphics[height=8cm]{figures/simulink_dc_motor_complex.png}
+	\caption{Complex DC motor electromechanical model in Simulink}
+	\label{simulink_dc_motor_complex}
+\end{figure}
+In order to use the parameter estimation tool of the software, more complex voltage inputs have to defined. This model works with simple constant DC input voltage only. From the Simscape library, further electrical components can be added to the model such as the H-Bridge which can switch the rotational direction of the rotor or such as the PWM module which can produce a square wave with a given duty cycle to control the magnitude of the input voltage. The model shown in the Figure \ref{simulink_dc_motor_complex} has two inputs. One is the PWM reference signal which is a voltage value between 0 and 5V. The Controlled PWM unit generates from the reference signal a square wave which will be the input of the H-bridge motor drive component. This part can related to a voltage value of PWM type digital pin of the MCU. The following compoenent, the H-bridge motor drive, is actually the model of the L298N driver. Its magnitude of the output voltage is controlled by the PWM signal's duty cycle, while that of polarity is controlled by the digital signal at REV port. The second input of the model is Reverse Port Signal has to be a digital signal, thus 0V (LOW) correspond to no polarity change and 5V (HIGH) corresponds to switched polarity, thus reverse rotation of the rotor. The output of the model is shaft speed in rad/s. Transient operation of the system is provided by changing the reverse port digital signal. In order to make the parameter estimation, with the same inputs measurements for the output had to be taken before the simulation could be run. In addition, the parameters has to be initialized in the model as preliminary guess to have a combination of them to start the optimization from somewhere. Based the governing equations and motor data sheet values, a good initial guess could be given. In case of no load operation, $b=\frac{T}{\dot \theta}$ where $T=0.11$ [Nm] and $\dot \theta =11.21$ [rad/s] (107RPM), therefore $b=0.01[\frac{\text{Nms}}{rad}]$. Also other working points are known with respect to T-i values pairs, thus supposing linear relation the K can be estimated which was calculated to be 0.9338. Using these two values and supposing the steady state version of the Kirchoff law in case of no load, the resistance can be calculated as $R=\frac{V-K \dot \theta}{i} = 10.25$ [$\Omega$].
+Considering all above, the initial guess of the seeked parameters is as follows:
+$R=10[\Omega],~b=0.01[\frac{\text{Nms}}{rad}],~J=0.001[kgm^2],~L=0.01[H],~K=1$.
+\begin{figure}[htb!]
+	\centering
+	\includegraphics[height=10cm]{figures/simulink_par_est_1.png}
+	\caption{Simulation results before and after the optimization}
+	\label{simulink_par_est_1}
+\end{figure}
+ In the parameter estimation module both of the measurement and the simulation of the system can represented which is shown in the Figure \ref{simulink_par_est_1}. The plots on left side represent the simulation with the initial parameters. It can be seen that the steady-state value is close to the measured one, but the time-scales are quite different. The plot on the right side correspond to the optimized values which are the followings: $R=10[\Omega],~b=0.0197[\frac{\text{Nms}}{rad}],~J=0.0121[kgm^2],~L=0.166[H],~K=0.825[\frac{\text{Vs}}{rad}]$. The sum of squared errors were changed to be the cost function which converged from the initial value of 66.6 to 0.23 after 11 iterations. The obtained values are in a good relation with estimates, thus with the possible real values. The steady state current in the simulated free load case is 2 times higher, but the peak current is in a good order. Really high peaks can be extended when the polarity of the input voltage is switched, therefore higher torques that can be expected during such operations which means more risk for fall-over. The initial peak current can be estimated as $U/R = 12[V]/10.25[\Omega] = 1.17 [A]$ assuming zero initial shaft speed. Figure \ref{simulink_armature_current} shows similiar current peaks in the simulation.
+ \begin{figure}[htb!]
+ 	\minipage{0.45\textwidth}
+ 	\centering
+ 	\includegraphics[height=7cm]{figures/simulink_par_est_2.png}
+ 	\caption{Iterations of estimated parameters}
+ 	\endminipage\hfill
+ 	\minipage{0.45\textwidth}
+ 	\centering
+ 	\includegraphics[height=7cm]{figures/simulink_armature_current}
+ 	\caption{Aramature current of the optimzed model}
+ 	\label{simulink_armature_current}
+ 	\endminipage\hfill
+ \end{figure}
+The solution method was got numerically while the dynamic model of the robot is fully analytic and generally a more simple method is seeked that might be implemented also in the hardware code, thus it would be more convenient to find a good analytical formula too calculate the current, thus the motor torques exerted on the wheels. Firstly, in a similar way the numerical solution of the governing equations were implemented. Because of the high current peaks, implicit Euler-method was chosen combined with Newton-Raphson iterations because the built-in solver could not handle stiffness of the equation properly. The chosen method calculated the same dynamics for the system as the numerical solution in Simulink. Considering the governing equations, it can be said that let us omit the inductance of the armature, thus the "inertia" of the electric circuit. With this assumption combining the two constitutive equations, the following first-order linear differential equation can be derived:
 \begin{equation}
-T(s) = \frac{\dot \theta (s)}{V(s)} = \frac{K}{(Js+b)(Ls+R)+K^2}.
+	b \omega(t)+\theta \dot \omega(t)=\frac{K (V-K \omega(t))}{R},
 \end{equation} 
+which solution is:
+\begin{equation}
+	\omega(t) = \frac{e^{-\frac{b t}{\theta }-\frac{K^2 t}{\theta  R}} \left(K V e^{\frac{t \left(b R+K^2\right)}{\theta  R}}+b R \text{$\omega_0 $}+K^2 \text{$\omega_0 $}-K V\right)}{b R+K^2}
+\end{equation}
+where $\omega_0$ is the initial angular speed.
+The armature current can be extracted as
+\begin{equation}
+	i_a(t) =\frac{V-K\dot \theta}{R}.
+\end{equation}
+The Figure \ref{mahemetica_comparision_1} and \ref{mahemetica_comparision_2} depict the numerical and analytical solution for the shaft speed [rad/s] and armature current [A] where the oranges solid line is the analytical and dashed black is the numerical solution.
+ \begin{figure}[htb!]
+	\minipage{0.45\textwidth}
+	\centering
+	\includegraphics[height=7cm]{figures/mahemetica_comparision_1}
+	\caption{Angular velocity}
+	\label{mahemetica_comparision_1}
+	\endminipage\hfill
+	\minipage{0.45\textwidth}
+	\centering
+	\includegraphics[height=7cm]{figures/mahemetica_comparision_2}
+	\caption{Armature current}
+	\label{mahemetica_comparision_2}
+	\endminipage\hfill
+\end{figure}
+The analytical solution is in a good match with the more accurate numerical one (L is not assumed to be zero) and also higher current is estimated at start which is an conservative engineering approach. In this way, it is a good estimation to work with the analytical formula in the dynamic model of the robot.
+
+
+
+
+
+
+
+
+
+
+\subsection{Coupled dynamic model of the robot}
+\newpage
+\subsection{DC motor speed analysis}
 
 \subsubsection{Step response analysis of the motors}
 The motors are to be controlled via PWM and with the help of the rotary encoders the response function to any voltage value could be measured. It is more convenient to treat the PWM signal's duty cycle as the control input athough voltage level is applied to the armature of the motor. Firstly, let the pwm value be regarded as an input and the wheel speed as an output assuming that the transfer function of the gearbox and power electronic module are proportional type, thus it can be handled together with the motor as a plant element.
@@ -790,10 +866,22 @@ The motors gave quite similar responses with respect to time constant and amplit
 	\label{mecanum}
 	\endminipage\hfill
 \end{figure}
-\newpage Unfortunately, the problems were captured when the duty cycle of the pwm signal was decreased. Firstly, the prior guess that the pwm value provided in the MCU code will be proportional to the motor speeds was proven to be wrong. Furthermore one of the L298N module was functioning really poorly as it provided different voltage values for the same pwm signal which resulted that the Motor C was spinning remarkably slower. It is also clearly visible that the system is nonlinear as neither for the Motor A and B are the same dynamics with respect to rise time are obtained, thus even the shape is not similar.
+Unfortunately, the problems were captured when the duty cycle of the pwm signal was decreased. Firstly, the prior guess that the pwm value provided in the MCU code will be proportional to the motor speeds was proven to be wrong. Furthermore one of the L298N module was functioning really poorly as it provided different voltage values for the same pwm signal which resulted that the Motor C was spinning remarkably slower. It is also clearly visible that the system is nonlinear as neither for the Motor A and B are the same dynamics with respect to rise time are obtained, thus even the shape is not similar.
 It is very straight forward that without proper control of the wheels it is impossible to achieve smooth and accurate movements. As a first approximation, it is worth neglecting the mentioned issues and handle the system as it would be completely linear. Problems could occur at low voltages where the system probably become extremely nonlinear as the motor will not move at small voltages due to the sticking friction. In the model only the linearly modeled viscous friction is included. A possible solution is to have the motor banned to work in this region. 
 \subsubsection{Controller design using blackbox model \cite{dc_motor_3}}
-Considering above all, based on the response function of the maximum pwm signal a controller can be designed for the whole range for each wheel separately. In order to do this, a black box model has to constructed. In case of DC motor it is a typical procedure to handle the system as a first order one. \cite{dc_motor_3} Beside the fact that a second-order model was derived in the previous chapter, the step response of the motor looks like that of a first-order system. After inspecting the actual step response of these motors, this looks as a good approximation. The reason for that the motor is an overdamped second-order system, thus it has two negative poles (roots of the denominator of the transfer function). The system is stable and has two time constants. In case of DC motors, the time constant of the mechanical dynamics is much higher compared to the time constant of the electrodynamics, thus the slower mechanical dynamics dominates the time response. 
+Considering above all, based on the response function of the maximum pwm signal a controller can be designed for the whole range for each wheel separately. In order to do this, a black box model has to constructed. In case of DC motor it is a typical procedure to handle the system as a first order one. \cite{dc_motor_3} 
+The governing equations for the DC motor are the followings:
+\begin{equation}
+J \ddot \theta + b \dot \theta = K i
+\end{equation}
+\begin{equation}
+L \frac{di}{dt} + R i = V - K \dot \theta
+\end{equation}
+Applying the Laplace transform and rearranging the transformed equations the transfer function of the system is as follows:
+\begin{equation}
+T(s) = \frac{\dot \theta (s)}{V(s)} = \frac{K}{(Js+b)(Ls+R)+K^2}.
+\end{equation} 
+Beside the fact that a second-order model can be derived, the step response of the motor looks like that of a first-order system. After inspecting the actual step response of these motors, this looks as a good approximation. The reason for that the motor is an overdamped second-order system, thus it has two negative poles (roots of the denominator of the transfer function). The system is stable and has two time constants. In case of DC motors, the time constant of the mechanical dynamics is much higher compared to the time constant of the electrodynamics, thus the slower mechanical dynamics dominates the time response. 
 A first order system can be expressed as it follows:
 \begin{equation}
 	P(s) = \frac{\dot{\theta(s)}}{DC(s)}= \frac{k_{dc}}{1+\tau s},
@@ -1013,6 +1101,23 @@ In this case, the $K_p = 0.021$ and $K_i = 0.11$ are obtained.
 	\label{obtained_response_100_good}
 	\endminipage\hfill
 \end{figure}
+\newpage
+\subsection{Control and parameter estimation problems}
+\begin{itemize}
+	\item Kerekek szabályozásának implementálása
+	\item Felboruáls állapotának elkerülése
+	\item fix kapcsolatos kialakítás, modell alapján gyorsulások számítása \\
+	*** egyszerűbb modell, erről van egy kezdetleges \\
+	*** veszélyes tartományban üzemel a robot, mivel már borulnia kell, hogy mérjünk valamit \\
+	*** legegyszerűbb megoldás, hogy a tömeget megmérjük lineáris gyorsulásból, a geometria ismert \\
+	\item rugós felfüggesztéses kialatkítás, modell alapján max gyorsulások számítása\\
+	*** nem veszélyes tartományban mér a  robot \\
+	*** bonyolultabb modell, rugalmas alapot is belekell rakni, adott gerjesztése adott válasz vizsgálata, rezgéses modell, kapott válasz alapján m,theta becslése \\
+	\item borulás elkerülés pusztán mérések alapján,\\ self-balancing üzemmód, nincs benne mechanikai egyenlet
+	\item mechanikai modell alapján optimális orientáció számítása (kész) és annak változtatása menet közben adott pálya mentén (laterális gyorsulás), motor nyomatékokból ki lehet számolni a pillanatyni gyorsulást elvileg --> ez is inkább szabályozási feladat már \\
+	\item esetleg valami teljesítmény optimalizálós dolog
+\end{itemize}
+\newpage
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 											Bibliography
@@ -1024,13 +1129,19 @@ In this case, the $K_p = 0.021$ and $K_i = 0.11$ are obtained.
 
 \addcontentsline{toc}{section}{References}
 
+\bibitem {rirt}
+Dr. Tevesz Gábor:
+\emph{Robotirányítás rendszertechnikája}
 
-\bibitem {wiki} 
-\emph{Autonomous car}: https://en.wikipedia.org/wiki/Autonomous$\_$car 
-
+\bibitem {sieg}
+Roland Siegwart, Illah R. Nourbakhsh:
+\emph{Introduction to Autonomous Mobile Robots}
 
 \bibitem {c} 
 James M. Anderson, Nidhi Kalra, Karlyn D. Stanley, Paul Sorensen, Constantine Samaras, Oluwatobi A. Oluwatola: \emph{Autonomous Vehicle Technology}
+
+\bibitem {wiki} 
+\emph{Autonomous car}: https://en.wikipedia.org/wiki/Autonomous$\_$car 
 
 \bibitem {5c} 
 http://iiot-world.com/artificial-intelligence/five-challenges-in-designing-a-fully-autonomous-system-for-driverless-cars/
@@ -1047,31 +1158,17 @@ NEOBOTIX: https://http://www.neobotix-robots.com/ \href{http://www.neobotix-robo
 \bibitem {bmw} 
 BMW STR: http://www.bmwblog.com/ \href{http://www.bmwblog.com/2016/11/18/bmw-logistics-now-use-autonomous-transport-robots/}{[link]}
 
-\bibitem {apd} 
-Allonrobots: http://www.allonrobots.com/military-transportation-robots.html \href{http://www.allonrobots.com/military-transportation-robots.html}{[link]}
-
-\bibitem {rirt}
-Dr. Tevesz Gábor:
-\emph{Robotirányítás rendszertechnikája}
-
-\bibitem {sieg}
-Roland Siegwart, Illah R. Nourbakhsh:
-\emph{Introduction to Autonomous Mobile Robots}
-
+\bibitem {apd} Allonrobots: http://www.allonrobots.com/military-transportation-robots.html \href{http://www.allonrobots.com/military-transportation-robots.html}{[link]}
 
 \bibitem{whatisarduino} Alan G. Smith: \emph{Introduction to Arduino, 2011}
 
-
 \bibitem{communication_arduino} Brian W. Evans: \emph{Arduino Programming Notebook, 2007}
-
 
 \bibitem{i2c_communication_arduino} Alex Lange: \emph{I2C Communication with Arduino, 2015}
 
 \bibitem{i2C_communication_arduino_2} http://howtomechatronics.com \href{http://howtomechatronics.com/}{[link]}
 
 \bibitem{orientation_arduino} Kevin Townsend: \emph{Adafruit BNO055 Absolute Orientation Sensor, 2017}
-
-\bibitem{optical flow} https://github.com/Lauszus/ADNS3080 \href{https://github.com/Lauszus/ADNS3080}{[link]}
 	
 \bibitem{dc_motor_1}  https://www.elprocus.com/what-are-the-best-ways-to-control-the-speed-of-dc-motor/ \href{ https://www.elprocus.com/what-are-the-best-ways-to-control-the-speed-of-dc-motor/}{[link]}
 
@@ -1079,7 +1176,15 @@ Roland Siegwart, Illah R. Nourbakhsh:
 
 \bibitem{dc_motor_3}  http://ctms.engin.umich.edu/CTMS/index.php \href{ http://ctms.engin.umich.edu/CTMS/index.php}{[link]}
 
+\bibitem{dc_motor_4}  Dynamic Model of a Permanent Magnet DC Motor: http://users.isr.ist.utl.pt/~alex/micd0506/motordc.pdf \href{ http://users.isr.ist.utl.pt/~alex/micd0506/motordc.pdf}{[link]}
+
+http://users.isr.ist.utl.pt/~alex/micd0506/motordc.pdf
 \bibitem{mathworks}  https://www.mathworks.com/ \href{ https://www.mathworks.com/}{[link]}
+
+\bibitem{par_est_1} https://www.mathworks.com/videos/estimating-parameters-of-a-dc-motor-68856.html
+\bibitem{par_est_2} https://www.mathworks.com/videos/modeling-a-dc-motor-68852.html
+\bibitem{par_est_3} https://www.mathworks.com/products/simscape.html
+\bibitem{par_est_4} https://www.control.isy.liu.se/student/tsiu61/file/pm dcmotor.pdf
 
 \end{thebibliography}
 

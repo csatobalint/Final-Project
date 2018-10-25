@@ -16,13 +16,20 @@
 \contentsline {paragraph}{\numberline {2.3.2.2}Anholonomic robots}{14}{paragraph.2.3.2.2}
 \contentsline {section}{\numberline {3}Conditions of the robot application }{16}{section.3}
 \contentsline {subsection}{\numberline {3.1}Selecting a mobile robot configuration}{16}{subsection.3.1}
-\contentsline {subsection}{\numberline {3.2}Kinematics of three-wheeled omnidirectional robot}{17}{subsection.3.2}
-\contentsline {subsubsection}{\numberline {3.2.1}Basic relationships}{17}{subsubsection.3.2.1}
-\contentsline {subsubsection}{\numberline {3.2.2}2D Simulations}{19}{subsubsection.3.2.2}
-\contentsline {subsubsection}{\numberline {3.2.3}Realised robot config}{23}{subsubsection.3.2.3}
-\contentsline {subsection}{\numberline {3.3}Control and parameter estimation problems}{23}{subsection.3.3}
-\contentsline {subsection}{\numberline {3.4}DC motor speed analysis}{24}{subsection.3.4}
+\contentsline {subsection}{\numberline {3.2}The Hardware}{17}{subsection.3.2}
+\contentsline {subsubsection}{\numberline {3.2.1}Robot case and actuators}{17}{subsubsection.3.2.1}
+\contentsline {subsubsection}{\numberline {3.2.2}MCU}{17}{subsubsection.3.2.2}
+\contentsline {subsubsection}{\numberline {3.2.3}Sensors, modules and battery}{17}{subsubsection.3.2.3}
+\contentsline {subsubsection}{\numberline {3.2.4}Assembly}{17}{subsubsection.3.2.4}
+\contentsline {subsection}{\numberline {3.3}Kinematics of three-wheeled omnidirectional robot}{18}{subsection.3.3}
+\contentsline {subsubsection}{\numberline {3.3.1}Basic relationships}{18}{subsubsection.3.3.1}
+\contentsline {subsubsection}{\numberline {3.3.2}2D Simulations}{20}{subsubsection.3.3.2}
+\contentsline {subsection}{\numberline {3.4}Dynamic analysis of DC motors}{24}{subsection.3.4}
 \contentsline {subsubsection}{\numberline {3.4.1}System modelling}{24}{subsubsection.3.4.1}
-\contentsline {subsubsection}{\numberline {3.4.2}Step response analysis of the motors}{25}{subsubsection.3.4.2}
-\contentsline {subsubsection}{\numberline {3.4.3}Controller design using blackbox model \cite {dc_motor_3}}{26}{subsubsection.3.4.3}
-\contentsline {section}{References}{31}{figure.3.34}
+\contentsline {subsubsection}{\numberline {3.4.2}DC motor parameter identification}{25}{subsubsection.3.4.2}
+\contentsline {subsection}{\numberline {3.5}Coupled dynamic model of the robot}{29}{subsection.3.5}
+\contentsline {subsection}{\numberline {3.6}DC motor speed analysis}{30}{subsection.3.6}
+\contentsline {subsubsection}{\numberline {3.6.1}Step response analysis of the motors}{30}{subsubsection.3.6.1}
+\contentsline {subsubsection}{\numberline {3.6.2}Controller design using blackbox model \cite {dc_motor_3}}{31}{subsubsection.3.6.2}
+\contentsline {subsection}{\numberline {3.7}Control and parameter estimation problems}{35}{subsection.3.7}
+\contentsline {section}{References}{37}{subsection.3.7}

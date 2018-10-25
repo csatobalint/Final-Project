@@ -4,11 +4,18 @@ clc
 
 
 %Initialize motor parameters
-DC_Motor_R = 1.0;
-DC_Motor_L = 0;
-DC_Motor_K = 0.8;
-DC_Motor_J = 0.05;
-DC_Motor_B = 0.001;
+DC_Motor_R = 10;
+DC_Motor_L = 0.01;
+DC_Motor_K = 1;
+DC_Motor_J = 0.001;
+DC_Motor_B = 0.01;
+
+%Initialize motor parameters
+R = 10;
+L = 0.01;
+K = 1;
+J = 0.001;
+B = 0.01;
 
 %Reverse Port Signal
 initialTime = 0.001; finalTime = 8; timeStep = 0.001; N=finalTime/timeStep;
@@ -22,8 +29,10 @@ plot(ReversePortTime,ReversePortVoltage);
 figure(2)
 load('ShaftSpeedRPM.mat');
 rpm_to_rads = 0.104719755;
-MeasurementShaftSpeed = rpm_to_rads * MeasurementShaftSpeed;
+%MeasurementShaftSpeed = rpm_to_rads * MeasurementShaftSpeed;
 plot(MeasurementTime,MeasurementShaftSpeed);
 
-load('values_02.mat');
+load('values_03.mat');
+
+plot(tout,i_a)
 
