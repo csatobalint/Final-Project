@@ -27,9 +27,9 @@
 \contentsline {subsection}{\numberline {3.4}Dynamic analysis of DC motors}{24}{subsection.3.4}
 \contentsline {subsubsection}{\numberline {3.4.1}System modelling}{24}{subsubsection.3.4.1}
 \contentsline {subsubsection}{\numberline {3.4.2}DC motor parameter identification}{25}{subsubsection.3.4.2}
-\contentsline {subsection}{\numberline {3.5}Coupled dynamic model of the robot}{29}{subsection.3.5}
-\contentsline {subsection}{\numberline {3.6}DC motor speed analysis}{30}{subsection.3.6}
-\contentsline {subsubsection}{\numberline {3.6.1}Step response analysis of the motors}{30}{subsubsection.3.6.1}
-\contentsline {subsubsection}{\numberline {3.6.2}Controller design using blackbox model \cite {dc_motor_3}}{31}{subsubsection.3.6.2}
-\contentsline {subsection}{\numberline {3.7}Control and parameter estimation problems}{35}{subsection.3.7}
-\contentsline {section}{References}{37}{subsection.3.7}
+\contentsline {subsection}{\numberline {3.5}Coupled dynamic model of the robot}{30}{subsection.3.5}
+\contentsline {subsection}{\numberline {3.6}DC motor speed analysis}{31}{subsection.3.6}
+\contentsline {subsubsection}{\numberline {3.6.1}Step response analysis of the motors}{31}{subsubsection.3.6.1}
+\contentsline {subsubsection}{\numberline {3.6.2}Controller design using blackbox model \cite {dc_motor_3}}{32}{subsubsection.3.6.2}
+\contentsline {subsection}{\numberline {3.7}Control and parameter estimation problems}{36}{subsection.3.7}
+\contentsline {section}{References}{38}{subsection.3.7}
