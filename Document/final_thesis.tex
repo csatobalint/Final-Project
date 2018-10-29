@@ -779,7 +779,7 @@ $R=10[\Omega],~b=0.01[\frac{\text{Nms}}{rad}],~J=0.001[kgm^2],~L=0.01[H],~K=1$.
 	\caption{Simulation results before and after the optimization}
 	\label{simulink_par_est_1}
 \end{figure}
- In the parameter estimation module both of the measurement and the simulation of the system can represented which is shown in the Figure \ref{simulink_par_est_1}. The plots on left side represent the simulation with the initial parameters. It can be seen that the steady-state value is close to the measured one, but the time-scales are quite different. The plot on the right side correspond to the optimized values which are the followings: $R=10[\Omega],~b=0.0197[\frac{\text{Nms}}{rad}],~J=0.0121[kgm^2],~L=0.166[H],~K=0.825[\frac{\text{Vs}}{rad}]$. The sum of squared errors were changed to be the cost function which converged from the initial value of 66.6 to 0.23 after 11 iterations. The obtained values are in a good relation with estimates, thus with the possible real values. The steady state current in the simulated free load case is 2 times higher, but the peak current is in a good order. Really high peaks can be extended when the polarity of the input voltage is switched, therefore higher torques that can be expected during such operations which means more risk for fall-over. The initial peak current can be estimated as $U/R = 12[V]/10.25[\Omega] = 1.17 [A]$ assuming zero initial shaft speed. Figure \ref{simulink_armature_current} shows similiar current peaks in the simulation.
+ In the parameter estimation module both of the measurement and the simulation of the system can represented which is shown in the Figure \ref{simulink_par_est_1}. The plots on left side represent the simulation with the initial parameters. It can be seen that the steady-state value is close to the measured one, but the time-scales are quite different. The plot on the right side correspond to the optimized values which are the followings: $R=7.98[\Omega],~b=0.0197[\frac{\text{Nms}}{rad}],~J=0.0121[kgm^2],~L=0.166[H],~K=0.825[\frac{\text{Vs}}{rad}]$. The sum of squared errors were changed to be the cost function which converged from the initial value of 66.6 to 0.23 after 11 iterations. The obtained values are in a good relation with estimates, thus with the possible real values. The steady state current in the simulated free load case is 2 times higher, but the peak current is in a good order. Really high peaks can be extended when the polarity of the input voltage is switched, therefore higher torques that can be expected during such operations which means more risk for fall-over. The initial peak current can be estimated as $U/R = 12[V]/10.25[\Omega] = 1.17 [A]$ assuming zero initial shaft speed. Figure \ref{simulink_armature_current} shows similiar current peaks in the simulation.
  \begin{figure}[htb!]
  	\minipage{0.45\textwidth}
  	\centering
@@ -821,38 +821,104 @@ The Figure \ref{mahemetica_comparision_1} and \ref{mahemetica_comparision_2} dep
 	\label{mahemetica_comparision_2}
 	\endminipage\hfill
 \end{figure}
-The analytical solution is in a good match with the more accurate numerical one (L is not assumed to be zero) and also higher current is estimated at start which is an conservative engineering approach. In this way, it is a good estimation to work with the analytical formula in the dynamic model of the robot.
+The analytical solution is in a good match with the more accurate numerical one (L is not assumed to be zero) and also higher current is estimated at start which is an conservative engineering approach. In this way, it is a good estimation to work with the analytical formula in the dynamic model of the robot. In this way, the following general relationship between torque and input voltage can be derived:
+\begin{equation}
+	T(t,U,\omega_0,T_{Load}) = \frac{K \left(-\frac{K e^{-\frac{t \left(b R+K^2\right)}{\theta  R}} \left(\omega _0 \left(b R+K^2\right)-K U+R T_{\text{Load}}\right)}{R}+b U+K T_{\text{Load}}\right)}{b R+K^2}
+\end{equation}
 
 \newpage
-\subsection{Coupled dynamic model of the robot}
+\subsection{Mechanical dynamic model of the robot}
+A simplified dynamic model was made which is shown in Figure \ref{robotModel}. The robot model consist of the case, that of free-body diagram (FBD) is represented in Figure \ref{robotModel} and three wheels which are shown in Figure \ref{wheelsFBD}. The wheels are connected to the case via simply joints which can transfer only force components, i.e. no moments. The origin ($r_O$) of the global frame is defined as a center of gravity of the wheel center points ($r_A,r_B,r_C$) when the orientation angle of the robot is zero, as in the Figure \ref{robotModel} it is represented. The model of the case includes the followings.
+\begin{itemize}
+	\item The levels of the robot configuration are considered as equilateral triangles. The second moment of inertia around the z axis of a single triangle at its own mass center can be calculated as $\theta_z=\frac{m R^2}{3}$ where R is the common wheel radius.
+	\item The motors and that of brackets are considered as point mass at the wheel center points.
+	\item The package is considered as a cylinder shape object having $\theta_z=\frac{m_p r_p^2}{2}$.
+\end{itemize}
  \begin{figure}[htb!]
-	\minipage{0.45\textwidth}
+	\minipage{0.5\textwidth}
 	\centering
-	\includegraphics[height=7cm]{figures/robotModel}
-	\caption{Angular velocity}
+	\includegraphics[width=8cm]{figures/robotModel}
+	\caption{Simplified mechanical model of the robot}
 	\label{robotModel}
 	\endminipage\hfill
-	\minipage{0.45\textwidth}
+	\minipage{0.5\textwidth}
 	\centering
-	\includegraphics[height=8cm]{figures/caseFBD}
-	\caption{Armature current}
+	\includegraphics[width=8cm]{figures/caseFBD}
+	\caption{The case free body diagram}
 	\label{caseFBD}
 	\endminipage\hfill
 \end{figure}
+The equations of Newton's 2nd Law at common center of mass for the case is as follows:
+\begin{equation}
+	m_c \mathbf{a} = \mathbf{K_A} + \mathbf{K_B} + \mathbf{K_C} + \mathbf{G}
+\end{equation}
+where \begin{itemize}
+	\item $m_c~\text[kg]$ is the common mass of the case and the package,
+	\item $\mathbf{a}~\text[\frac{m}{s^2}]$ is the acceleration,
+	\item $\mathbf{K_i}~\text[N]$ is the force transfered at wheel connections, i=(A,B,C),
+	\item $\mathbf{G}~\text[N]$ is the weight force, $G=g m_R$.
+\end{itemize}
+\begin{equation}
+\boldsymbol{\theta_c} \boldsymbol{\varepsilon} = (\mathbf{r_A}-\mathbf{r_{CoM}}) \times \mathbf{K_A} + (\mathbf{r_B}-\mathbf{r_{CoM}}) \times \mathbf{K_B} + (\mathbf{r_C}-\mathbf{r_{CoM}}) \times  \mathbf{K_C}
+\end{equation}
+where \begin{itemize}
+	\item $\boldsymbol{\theta_c}~\text[kgm^2]$ is the common second moment of inertia matrix at the center of mass (CoM), $\boldsymbol{\theta_c} = \boldsymbol{\theta_{Case}} +\boldsymbol{\theta_{Package}} + \boldsymbol{\theta_{MotorA}} + \boldsymbol{\theta_{MotorB}} + \boldsymbol{\theta_{MotorC}} $,
+	\item $\boldsymbol{\varepsilon}~\text[\frac{1}{s^2}]$ is the angular acceleration,
+	\item $\mathbf{r_A},\mathbf{r_B},\mathbf{r_C}$ are the wheel position vectors and $\mathbf{r_{CoM}}$ is the position vector of the common center of mass which is
+	\begin{equation}
+		\mathbf{r_{CoM}} = 
+			\frac{
+				m_{Triangle} (\mathbf{r_1}+\mathbf{r_2})		+
+				3 \times m_{Motor} \mathbf{r_O}					+
+				m_{Others} \frac{(\mathbf{r_1}+\mathbf{r_2})}{2} 			+ 
+				m_{Package}
+				\mathbf{r_{Package,CoM}}
+			}{
+				m_{Case}+m_{Package}
+		}
+	\end{equation}
+	where \begin{itemize}
+		\item $m_{Case} = 2 \times m_{Triangle} + 3 \times m_{Motor} + m_{Others}$,
+		\item $m_{Triangle} = 0.184~[\text{g}]$ is the mass of the triangle-shaped case elements,
+		\item $m_{Motor} = 0.200~[\text{g}]$ is the mass of the motor and the bracket,
+		\item $m_{Others} = 0.4~[\text{g}]$ is the mass of the other electronic hardware elements which are considered as if it was in the center of mass of the triangles,
+		\item $m_{Package}$ is the arbitrary mass of the package.
+	\end{itemize}
+\end{itemize}
+The are 15 unknowns while 6 equations are known up to this point: \begin{center}
+	$a_x,a_y,a_z,\varepsilon_a,\varepsilon_b,\varepsilon_c,{K_x}^A,{K_y}^A,{K_z}^A,{K_x}^B,{K_y}^B,{K_z}^B,{K_x}^C,{K_y}^C,{K_z}^C$.
+\end{center}
+The mechanical equations are considered for each wheels in their local coordinate system which definition is depicted in the Figure \ref{wheelsFBD}. 
 \begin{figure}[htb!]
 	\minipage{0.45\textwidth}
 	\centering
 	\includegraphics[height=8cm]{figures/wheelsFBD}
-	\caption{Angular velocity}
+	\caption{The free-body diagrams of the wheels}
 	\label{wheelsFBD}
 	\endminipage\hfill
 	\minipage{0.45\textwidth}
 	\centering
 	\includegraphics[height=8cm]{figures/wheelFBD}
-	\caption{Armature current}
+	\caption{The free-body diagram of the wheel A}
 	\label{wheelFBD}
 	\endminipage\hfill
 \end{figure}
+Applying the Newton's 3rd Law and taking into consideration the given coordinate system tranformations, the following relationship can be written  regarding the transfered forces:
+\begin{equation}
+\mathbf{k_i} = -\left[
+\begin{array}{ccc}
+cos (-\varphi_i) 	& -sin (-\varphi_i)  	& 0 \\
+sin (-\varphi_i)  	& cos (-\varphi_i)  	& 0 \\
+0	 			& 0 				& 1 \\
+\end{array}
+\right] \mathbf{K_i}
+\end{equation}
+where $\mathbf{k_i}$ is the force in the joint in the local wheel frames and $i=[A,B,C]$. In other words, the components of $\mathbf{k_i}$ will not be new unknowns. Beside the forces in the connection, the gravitational body force and the contact forces ($N,S$) are considered in case of the wheels. As a first approximation, simple one-point contact and no slip condition is assumed which provides 6 kinematic constrain equations:
+\begin{flalign}
+{a_y}^i&=-r{\varepsilon_y}^i\\
+{a_z}^i&=0
+\end{flalign}
+where $i=[A,B,C]$.
 \newpage
 
 \subsection{DC motor speed analysis}

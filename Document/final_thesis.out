@@ -24,7 +24,7 @@
 \BOOKMARK [2][-]{subsection.3.4}{Dynamic analysis of DC motors}{section.3}% 24
 \BOOKMARK [3][-]{subsubsection.3.4.1}{System modelling}{subsection.3.4}% 25
 \BOOKMARK [3][-]{subsubsection.3.4.2}{DC motor parameter identification}{subsection.3.4}% 26
-\BOOKMARK [2][-]{subsection.3.5}{Coupled dynamic model of the robot}{section.3}% 27
+\BOOKMARK [2][-]{subsection.3.5}{Mechanical dynamic model of the robot}{section.3}% 27
 \BOOKMARK [2][-]{subsection.3.6}{DC motor speed analysis}{section.3}% 28
 \BOOKMARK [3][-]{subsubsection.3.6.1}{Step response analysis of the motors}{subsection.3.6}% 29
 \BOOKMARK [3][-]{subsubsection.3.6.2}{Controller design using blackbox model dcmotor3}{subsection.3.6}% 30
