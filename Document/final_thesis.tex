@@ -486,7 +486,7 @@ v^i = {v_{wheel,t}}^i + {v_{wheel,r}} = r \omega_i
 where $i$ is the index of the wheels and i=1,2,3 in case of a thee-wheeled omnidirectional robot.
 \begin{figure}[htb!]
 	\centering
-	\includegraphics[width=10cm]{figures/omni_wheel_vectors}
+	\includegraphics[width=9cm]{figures/omni_wheel_vectors}
 	\caption{Wheel vectors in local (x,y) coordinate system}
 	\label{omni_wheel_vectors}
 \end{figure}
@@ -507,6 +507,11 @@ which can be generalized in vectorial form as:
 \begin{equation}
 	\boldsymbol{\omega} = \mathbf{J^{-1}} \mathbf{v}
 \end{equation}
+\begin{equation}
+\mathbf{v_i} = r \mathbf{J^{-1}} \mathbf{v} = \mathbf{T_{velocity}} \mathbf{v}
+\label{velocity_tranformation}
+\end{equation}
+
 where
 \begin{itemize}
 	\item $\Omega = [\omega_1~\omega_2~\omega_3]^T$ is the wheel angular velocity vector,
@@ -519,7 +524,8 @@ where
 		sin \varphi_3 & cos \varphi_3 & R \\
 		\end{array}
 		\right],
-		\end{eqnarray}
+		\end{eqnarray},
+	\item $\mathbf{T_{velocity}}$ is the velocity transformation matrix,
 	\item $\mathbf{v} = [v_x~v_y~\omega]^T = [\dot x~\dot y~\dot \varphi]^T$ is the case velocity vector.
 \end{itemize}
 The inverse of determinant of J is never zero, thus its inverse always exists which means that kinematic relation between the wheels and the case is provided. In order to track the robot in the global configuration, the kinematic state has to be transformed from the local frame to the global frame which can be done by means of a simple rotation transformation perpendicular to (x,y) plane with $\alpha$ orientation angle:
@@ -821,19 +827,26 @@ The Figure \ref{mahemetica_comparision_1} and \ref{mahemetica_comparision_2} dep
 	\label{mahemetica_comparision_2}
 	\endminipage\hfill
 \end{figure}
-The analytical solution is in a good match with the more accurate numerical one (L is not assumed to be zero) and also higher current is estimated at start which is an conservative engineering approach. In this way, it is a good estimation to work with the analytical formula in the dynamic model of the robot. In this way, the following general relationship between torque and input voltage can be derived:
+The analytical solution is in a good match with the more accurate numerical one (L is not assumed to be zero) and also higher current is estimated at start which is an conservative engineering approach. In this way, it is a good estimation to work with the analytical formula in the dynamic model of the robot. The following general relationship between torque and input voltage can be derived:
 \begin{equation}
 	T(t,U,\omega_0,T_{Load}) = \frac{K \left(-\frac{K e^{-\frac{t \left(b R+K^2\right)}{\theta  R}} \left(\omega _0 \left(b R+K^2\right)-K U+R T_{\text{Load}}\right)}{R}+b U+K T_{\text{Load}}\right)}{b R+K^2}
+	\label{motor_load_equation}
 \end{equation}
-
-\newpage
-\subsection{Mechanical dynamic model of the robot}
-A simplified dynamic model was made which is shown in Figure \ref{robotModel}. The robot model consist of the case, that of free-body diagram (FBD) is represented in Figure \ref{robotModel} and three wheels which are shown in Figure \ref{wheelsFBD}. The wheels are connected to the case via simply joints which can transfer only force components, i.e. no moments. The origin ($r_O$) of the global frame is defined as a center of gravity of the wheel center points ($r_A,r_B,r_C$) when the orientation angle of the robot is zero, as in the Figure \ref{robotModel} it is represented. The model of the case includes the followings.
-\begin{itemize}
-	\item The levels of the robot configuration are considered as equilateral triangles. The second moment of inertia around the z axis of a single triangle at its own mass center can be calculated as $\theta_z=\frac{m R^2}{3}$ where R is the common wheel radius.
-	\item The motors and that of brackets are considered as point mass at the wheel center points.
-	\item The package is considered as a cylinder shape object having $\theta_z=\frac{m_p r_p^2}{2}$.
+where \begin{itemize}
+	\item $t~[\text{s}]$ is the time,
+	\item $U~[\text{V}]$ is the voltage,
+	\item $\omega_0~[\text{rad/s}]$ is the initial shaft speed,
+	\item $T_{LOAD}~[\text{rad/s}]$ is the load torque,
 \end{itemize}
+\subsubsection{Validation of the parameter estimation}
+\subsubsection{Rolling resistance measurements}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 											Mechanical model												
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\subsection{Mechanical model of the robot}
+A simplified dynamic model was made which is shown in Figure \ref{robotModel}. Its main purpose to provide a tool that can estimate given states of the robot. This model is not aimed to describe the details of the fall over of the robot. In order to handle it, a timed advanced solution should be provided by integrating the equations over time. Additionally, due the change of the orientation around the global x and y axis the problem would became nonlinear which solution would be time-demanding. The mechanical model should be much more detailed to capture properly the current inertias of robot. From practical point of view, it is enough to monitor the sign of the normal force ($N_i$) between the wheels and the ground. If its sign changes to negative from positive then the robot is possible at edge of the fall over. This kind of concept is reasonable since the more significant part of the configuration will be the package and that of the effect on the common center of mass. TODO!
  \begin{figure}[htb!]
 	\minipage{0.5\textwidth}
 	\centering
@@ -848,22 +861,31 @@ A simplified dynamic model was made which is shown in Figure \ref{robotModel}. T
 	\label{caseFBD}
 	\endminipage\hfill
 \end{figure}
+\subsubsection{Model of the robot case}
+The robot model consist of the case, that of free-body diagram (FBD) is represented in Figure \ref{robotModel} and three wheels which are shown in Figure \ref{wheelsFBD}. The wheels are connected to the case via simply joints which can transfer only force components, i.e. no moments. For istance, the pair of the motor torque exerted on the motor housing, thus on the bracket which is connected to the case with screws is not considered hereby since its magnitude is about 1\% because of the gearbox which has a ratio of 1/99. The origin ($r_O$) of the global frame is defined as a center of gravity of the wheel center points ($r_A,r_B,r_C$) when the orientation angle of the robot is zero, as in the Figure \ref{robotModel} it is represented.
+\begin{itemize}
+	\item The levels of the robot configuration are considered as equilateral triangles. The second moment of inertia around the z axis of a single triangle at its own mass center can be calculated as $\theta_z=\frac{m R^2}{3}$ where $R=0.12~\left[\text{m}\right]$ is the common wheel radius. The other components of the inertia matrix is calculated as if it was a disk for simplicity. As it was mentioned, the fall over is not calculated, thus these components are ignored in the calculation. 
+	\item The motors and that of brackets are considered as point mass at the wheel center points.
+	\item The package is considered as a cylinder shape object having $\theta_z=\frac{m_p r_p^2}{2}$. The contact between the case and the package is bonded.
+\end{itemize}
+
 The equations of Newton's 2nd Law at common center of mass for the case is as follows:
 \begin{equation}
 	m_c \mathbf{a} = \mathbf{K_A} + \mathbf{K_B} + \mathbf{K_C} + \mathbf{G}
 \end{equation}
 where \begin{itemize}
-	\item $m_c~\text[kg]$ is the common mass of the case and the package,
-	\item $\mathbf{a}~\text[\frac{m}{s^2}]$ is the acceleration,
-	\item $\mathbf{K_i}~\text[N]$ is the force transfered at wheel connections, i=(A,B,C),
-	\item $\mathbf{G}~\text[N]$ is the weight force, $G=g m_R$.
+	\item $m_c~[\text{kg}]$ is the common mass of the case and the package,
+	\item $\mathbf{a}~[\frac{\text{m}}{\text{s}^2}]$ is the acceleration,
+	\item $\mathbf{K_i}~[\text{N}]$ is the force transfered at wheel connections, i=(A,B,C),
+	\item $\mathbf{G}~[\text{N}]$ is the weight force, $G=g m_R$.
 \end{itemize}
 \begin{equation}
-\boldsymbol{\theta_c} \boldsymbol{\varepsilon} = (\mathbf{r_A}-\mathbf{r_{CoM}}) \times \mathbf{K_A} + (\mathbf{r_B}-\mathbf{r_{CoM}}) \times \mathbf{K_B} + (\mathbf{r_C}-\mathbf{r_{CoM}}) \times  \mathbf{K_C}
+\boldsymbol{\theta_c} \boldsymbol{\varepsilon} +\boldsymbol{\omega} \times (\boldsymbol{\omega} \times \boldsymbol{\theta_c \boldsymbol{\omega}}) = (\mathbf{r_A}-\mathbf{r_{CoM}}) \times \mathbf{K_A} + (\mathbf{r_B}-\mathbf{r_{CoM}}) \times \mathbf{K_B} + (\mathbf{r_C}-\mathbf{r_{CoM}}) \times  \mathbf{K_C}
 \end{equation}
 where \begin{itemize}
-	\item $\boldsymbol{\theta_c}~\text[kgm^2]$ is the common second moment of inertia matrix at the center of mass (CoM), $\boldsymbol{\theta_c} = \boldsymbol{\theta_{Case}} +\boldsymbol{\theta_{Package}} + \boldsymbol{\theta_{MotorA}} + \boldsymbol{\theta_{MotorB}} + \boldsymbol{\theta_{MotorC}} $,
-	\item $\boldsymbol{\varepsilon}~\text[\frac{1}{s^2}]$ is the angular acceleration,
+	\item $\boldsymbol{\theta_c}~[\text{kg m}^2]$ is the common second moment of inertia matrix at the center of mass (CoM), $\boldsymbol{\theta_c} = \boldsymbol{\theta_{Case}} +\boldsymbol{\theta_{Package}} + \boldsymbol{\theta_{MotorA}} + \boldsymbol{\theta_{MotorB}} + \boldsymbol{\theta_{MotorC}} $ (each inertia matrix of a given body is calculated at its own center of mass and then transformed to the common),
+	\item $\boldsymbol{\varepsilon}~[\frac{1}{\text{s}^2}]$ is the angular acceleration,
+	\item $\boldsymbol{\omega}~[\frac{1}{\text{s}}]$ is the angular velocity,
 	\item $\mathbf{r_A},\mathbf{r_B},\mathbf{r_C}$ are the wheel position vectors and $\mathbf{r_{CoM}}$ is the position vector of the common center of mass which is
 	\begin{equation}
 		\mathbf{r_{CoM}} = 
@@ -879,9 +901,9 @@ where \begin{itemize}
 	\end{equation}
 	where \begin{itemize}
 		\item $m_{Case} = 2 \times m_{Triangle} + 3 \times m_{Motor} + m_{Others}$,
-		\item $m_{Triangle} = 0.184~[\text{g}]$ is the mass of the triangle-shaped case elements,
-		\item $m_{Motor} = 0.200~[\text{g}]$ is the mass of the motor and the bracket,
-		\item $m_{Others} = 0.4~[\text{g}]$ is the mass of the other electronic hardware elements which are considered as if it was in the center of mass of the triangles,
+		\item $m_{Triangle} = 0.184~[\text{kg}]$ is the mass of the triangle-shaped case elements,
+		\item $m_{Motor} = 0.200~[\text{kg}]$ is the mass of the motor and the bracket,
+		\item $m_{Others} = 0.4~[\text{kg}]$ is the mass of the other electronic hardware elements which are considered as if it was in the center of mass of the triangles,
 		\item $m_{Package}$ is the arbitrary mass of the package.
 	\end{itemize}
 \end{itemize}
@@ -911,14 +933,67 @@ cos (-\varphi_i) 	& -sin (-\varphi_i)  	& 0 \\
 sin (-\varphi_i)  	& cos (-\varphi_i)  	& 0 \\
 0	 			& 0 				& 1 \\
 \end{array}
-\right] \mathbf{K_i}
+\right] \mathbf{K_i} = \boldsymbol{\sigma_i} \mathbf{K_i}
 \end{equation}
-where $\mathbf{k_i}$ is the force in the joint in the local wheel frames and $i=[A,B,C]$. In other words, the components of $\mathbf{k_i}$ will not be new unknowns. Beside the forces in the connection, the gravitational body force and the contact forces ($N,S$) are considered in case of the wheels. As a first approximation, simple one-point contact and no slip condition is assumed which provides 6 kinematic constrain equations:
+where $\mathbf{k_i}$ is the force in the joint in the local wheel frames and $i=[A,B,C]$. $\boldsymbol{\sigma}$ is the rotational transformation matrix between the global and local frame. In other words, the components of $\mathbf{k_i}$ will not be new unknowns having the relationship above. Beside the forces in the connection, the gravitational body force and the contact forces ($N,S$) are considered in case of the wheels. As a first approximation, simple one-point contact and no slip condition is assumed which provides 6 kinematic constrain equations:
 \begin{flalign}
 {a_y}^i&=-r{\varepsilon_y}^i\\
 {a_z}^i&=0
 \end{flalign}
-where $i=[A,B,C]$.
+where $i=[A,B,C]$.\\
+In the axial direction not even friction force is considered. In reality in case of an omni wheel, there are rollers in a circumferential alignment which can also spin. In this model, they are modeled as simple frictionless sliders. The possibility of the slippage of wheels are neglected as it would need precise measurements to have a dynamic friction coefficient. On the other hand, the so called rolling resistance can be defined as an adverse torque from point of the motor load torques ($M^i$) which could be taken into consideration in the DC motor equations as loads.\\
+The Newton equations for the wheels (i=A,B,C) are the followings:
+\begin{equation}
+m_i \mathbf{a_i} = \mathbf{k_i} + \mathbf{S_i} + \mathbf{G_i} + \mathbf{N_i}
+\end{equation}
+where \begin{itemize}
+	\item $\mathbf{k_i}~[\text{N}]$ is the force transfered by the joint,
+	\item $\mathbf{S_i}~[\text{N}]$ is the static friction force,
+	\item $\mathbf{G_i}~[\text{N}]$ is the gravitational force,
+	\item $\mathbf{N_i}~[\text{N}]$ is contact force.
+	\item $m_i  = 60~[\text{g}]$ is the mass of a single wheel,
+	\item $\mathbf{a_i}~[\frac{\text{m}}{\text{s}^2}]$ is the acceleration,
+\end{itemize}
+\begin{equation}
+\boldsymbol{\theta_i} \boldsymbol{\varepsilon_i} +\boldsymbol{\omega_i} \times (\boldsymbol{\omega_i} \times \boldsymbol{\theta_i \boldsymbol{\omega_i}}) = - \mathbf{M_i} + \mathbf{r_{S_i}} \times \mathbf{S_i}
+\end{equation}
+where \begin{itemize}
+	\item $\boldsymbol{\theta_i}~[\text{kg m}^2]$ is the second moment of inertia matrix of the wheel at the center of mass (CoM), its axial (x) component come froms the DC parameter identification, i.e. the total inertia of the rotating part is considered.
+	The other components are calculated as if it was a cylinder with the known geometry and mass. This simplification is only possible because of the fact that the fall over is not wanted to be treated by the model.
+	\item $\boldsymbol{\varepsilon_i}~[\frac{1}{\text{s}^2}]$ is the angular acceleration of the wheel,
+	\item $\boldsymbol{\omega_i}~[\frac{1}{\text{s}}]$ is the angular velocity of the wheel,
+	\item $\mathbf{M_i}$ is the motor torque exerted on the rotating part of the motor and the wheel.
+	\item $\mathbf{S_i}$ is the static force at the contact of the wheel and ground, while $\mathbf{r_{S_i}}$ is the vector pointing to the contact point from the wheel center of mass $(\mathbf{r_{i}})$.
+\end{itemize}
+There 24 additional unknowns which are the followings:
+\begin{center}
+	$\mathbf{a_x}^i,\mathbf{a_y}^i,\mathbf{a_z}^i,\mathbf{\varepsilon_x}^i,\mathbf{\varepsilon_y}^i,\mathbf{\varepsilon_z}^i,S^i,N^i$.
+\end{center}
+The Newton's 2nd Law provides 24 equations (6 for each wheels), the rolling constrains means 6 equations, thus in order to have the closure of the system 6 more equations are needed.
+The wheel-case connection can assumed to be a rigid body connection in which case the following equations stand and make the closure:
+\begin{equation}
+	\mathbf{a_i} = \boldsymbol{\sigma_i} (\mathbf{a}+\boldsymbol{\varepsilon} \times \mathbf{r_i}+\boldsymbol{\omega} \times (\boldsymbol{\omega} \times \mathbf{r_i}))
+\end{equation}
+The motor loads can be calculated by means of the Eq. \ref{motor_load_equation}, thus the coupling can be done leading to an electrodynamic model. The inputs are velocity states and the voltages at the pins of the motor, while the output is the acceleration state of the robot. The voltages can be calculated by means of the velocity transformation matrix derived in the previous chapter (see Eq. \ref{velocity_tranformation}) which was about the kinematics. This can be stated generally since the wheel speed is proportional with the applied voltage. The Figure \ref{accelerationState} represent a solution of a simple forward acceleration case. It can be seen that the contact forces of wheel A,B decreases while that of wheel C increases. In case of too high acceleration compared to the height and the inertias of robot, this phenomenon could lead to fall over. The Figure \ref{dangerousOri} depicts the parametric solution of the contact forces with respect to the $\gamma$ angle of the acceleration vector. The dependence can be described with trigonometric functions and it can be concluded that the most dangerous cases, i.e. minimum values of contact forces are present when the robot accelerates such a way that the direction of the acceleration vector is coincident with any of the wheel directions. A possible safety feature can be for such a robot to change its own rotation along a given curve that it takes into consideration the centrifugal acceleration due to the path and tries to set such an orientation where the reduction of contact forces are equally distributed between two wheels instead of one as in the worst case. The angular acceleration does not affect the contact forces based on this model.
+\begin{figure}[htb!]
+	\minipage{0.45\textwidth}
+	\centering
+	\includegraphics[height=7cm]{figures/accelerationState}
+	\caption{State at forward acceleration}
+	\label{accelerationState}
+	\endminipage\hfill
+	\minipage{0.45\textwidth}
+	\centering
+	\includegraphics[height=7cm]{figures/dangerousOri.png}
+	\caption{The free-body diagram of the wheel A}
+	\label{dangerousOri}
+	\endminipage\hfill
+\end{figure}
+\subsubsection{Rolling friction}
+\subsubsection{Mass estimation}
+\subsubsection{Comparision with measurements}
+
+
 \newpage
 
 \subsection{DC motor speed analysis}

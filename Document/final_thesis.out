@@ -24,9 +24,15 @@
 \BOOKMARK [2][-]{subsection.3.4}{Dynamic analysis of DC motors}{section.3}% 24
 \BOOKMARK [3][-]{subsubsection.3.4.1}{System modelling}{subsection.3.4}% 25
 \BOOKMARK [3][-]{subsubsection.3.4.2}{DC motor parameter identification}{subsection.3.4}% 26
-\BOOKMARK [2][-]{subsection.3.5}{Mechanical dynamic model of the robot}{section.3}% 27
-\BOOKMARK [2][-]{subsection.3.6}{DC motor speed analysis}{section.3}% 28
-\BOOKMARK [3][-]{subsubsection.3.6.1}{Step response analysis of the motors}{subsection.3.6}% 29
-\BOOKMARK [3][-]{subsubsection.3.6.2}{Controller design using blackbox model dcmotor3}{subsection.3.6}% 30
-\BOOKMARK [2][-]{subsection.3.7}{Control and parameter estimation problems}{section.3}% 31
-\BOOKMARK [1][-]{subsection.3.7}{References}{}% 32
+\BOOKMARK [3][-]{subsubsection.3.4.3}{Validation of the parameter estimation}{subsection.3.4}% 27
+\BOOKMARK [3][-]{subsubsection.3.4.4}{Rolling resistance measurements}{subsection.3.4}% 28
+\BOOKMARK [2][-]{subsection.3.5}{Mechanical model of the robot}{section.3}% 29
+\BOOKMARK [3][-]{subsubsection.3.5.1}{Model of the robot case}{subsection.3.5}% 30
+\BOOKMARK [3][-]{subsubsection.3.5.2}{Rolling friction}{subsection.3.5}% 31
+\BOOKMARK [3][-]{subsubsection.3.5.3}{Mass estimation}{subsection.3.5}% 32
+\BOOKMARK [3][-]{subsubsection.3.5.4}{Comparision with measurements}{subsection.3.5}% 33
+\BOOKMARK [2][-]{subsection.3.6}{DC motor speed analysis}{section.3}% 34
+\BOOKMARK [3][-]{subsubsection.3.6.1}{Step response analysis of the motors}{subsection.3.6}% 35
+\BOOKMARK [3][-]{subsubsection.3.6.2}{Controller design using blackbox model dcmotor3}{subsection.3.6}% 36
+\BOOKMARK [2][-]{subsection.3.7}{Control and parameter estimation problems}{section.3}% 37
+\BOOKMARK [1][-]{subsection.3.7}{References}{}% 38

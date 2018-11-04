@@ -36,3 +36,29 @@ load('values_03.mat');
 
 plot(tout,i_a)
 
+%% Validation
+clc
+clear all
+close all
+
+load('ShaftSpeedValidationOLD.mat');
+load('values_03.mat');
+load('ShaftSpeedValidation.mat');
+rpm_to_rads = 0.104719755;
+oldMaxSpeed = rpm_to_rads*mean(MeasurementShaftSpeedOLD([160:190],1));
+newMaxSpeed = mean(MeasurementShaftSpeed([1400:1450],1));
+scaleShaftSpeed = oldMaxSpeed/newMaxSpeed;
+%MeasurementShaftSpeed = scaleShaftSpeed * MeasurementShaftSpeed;
+
+figure(1)
+plot(MeasurementTime,MeasurementShaftSpeed);
+
+figure(2)
+%Reverse Port Signal
+initialTime = 0.001; finalTime = 20; timeStep = 0.001; N=finalTime/timeStep;
+InputVoltageTime = linspace(initialTime,finalTime,N)';
+InputVoltageSignal = 5/12*[9.60*ones(1,5*N/20) 10.98*ones(1,5*N/20) 12*ones(1,5*N/20) zeros(1,5*N/20)]';
+plot(InputVoltageTime,InputVoltageSignal);
+
+
+

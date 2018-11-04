@@ -45,6 +45,10 @@ Timer t;
 
 void control_loop();
 void inceremental_loop();
+void parameterEstimationMeasurement();
+void maxPowerSpeedAndAccelerationSpinningMeasurment();
+void maxPowerSpeedAndAccelerationForwardMeasurment();
+void parameterEstimationValidation();
 
 bool omni_dir_drive = true;
 bool incremental_header = true;
@@ -250,6 +254,7 @@ void omniDriveVelocity(float u, float v, float w){
 }
 int BluetoothSerialCommand = -1;
 float globalOmega = 0;
+
 /****************************************************************************
 *********************************** LOOP ************************************
 *****************************************************************************/
@@ -293,6 +298,30 @@ void loop() {
     measurement_on_start_time = millis();
   }
 
+  maxPowerSpeedAndAccelerationSpinningMeasurment();
+
+  t.update();
+
+  //print_encoder_positions();
+
+  //Serial.print("Loop time: "); Serial.print(millis()-startmillis); Serial.print(" [ms] "); Serial.print(micros()-startmicros); Serial.println(" [us] ");
+
+  /*val = analogRead(potPin);
+  float valFloat = (float)val/1023;
+  motorA.set_signed_speed(valFloat);
+  motorB.set_signed_speed(valFloat);
+  motorC.set_signed_speed(valFloat);*/
+  /*Serial.print(valFloat); Serial.println(",");*/
+  //RN42_SERIAL_PORT.println(valFloat);
+}
+void serialBluetoothCommander(int command){
+  switch (command) {
+    case 'g':
+      //omni_rotate();
+      break;
+    }
+}
+void parameterEstimationMeasurement(){
   if(measurement_on){
     float delta = millis() - measurement_on_start_time;
   	if(delta< 2001){
@@ -327,26 +356,68 @@ void loop() {
   		motorC.set_signed_speed(pwm);
   	}
   }
-
-
-  t.update();
-
-  //print_encoder_positions();
-
-  //Serial.print("Loop time: "); Serial.print(millis()-startmillis); Serial.print(" [ms] "); Serial.print(micros()-startmicros); Serial.println(" [us] ");
-
-  /*val = analogRead(potPin);
-  float valFloat = (float)val/1023;
-  motorA.set_signed_speed(valFloat);
-  motorB.set_signed_speed(valFloat);
-  motorC.set_signed_speed(valFloat);*/
-  /*Serial.print(valFloat); Serial.println(",");*/
-  //RN42_SERIAL_PORT.println(valFloat);
 }
-void serialBluetoothCommander(int command){
-  switch (command) {
-    case 'g':
-      //omni_rotate();
-      break;
-    }
+void maxPowerSpeedAndAccelerationSpinningMeasurment(){
+  float delta = millis() - measurement_on_start_time;
+  if(delta< 5001){
+    float pwm = 1.0;
+    motorA.set_signed_speed(pwm); //-1...0...1
+    motorB.set_signed_speed(pwm);
+    motorC.set_signed_speed(pwm);
+  }
+  else if(delta >= 5001){
+    measurement_on = false;
+    float pwm = 0.0;
+    motorA.set_signed_speed(pwm); //-1...0...1
+    motorB.set_signed_speed(pwm);
+    motorC.set_signed_speed(pwm);
+  }
+}
+void maxPowerSpeedAndAccelerationForwardMeasurment(){
+  float delta = millis() - measurement_on_start_time;
+  if(delta< 2001){
+    float pwm = 1.0;
+    motorA.set_signed_speed(pwm); //-1...0...1
+    motorB.set_signed_speed(-pwm);
+    motorC.set_signed_speed(0);
+  }
+  else if(delta >= 2001){
+    measurement_on = false;
+    float pwm = 0.0;
+    motorA.set_signed_speed(pwm); //-1...0...1
+    motorB.set_signed_speed(pwm);
+    motorC.set_signed_speed(pwm);
+  }
+}
+void parameterEstimationValidation(){
+  if(measurement_on){
+    float delta = millis() - measurement_on_start_time;
+  	if(delta< 5001){
+  		float pwm = 0.50;
+  		motorA.set_signed_speed(pwm); //-1...0...1
+  		motorB.set_signed_speed(pwm);
+  		motorC.set_signed_speed(pwm);
+  	}
+  	else if(delta>=5001 && delta<10001){
+  		float pwm = 0.75;
+  		motorA.set_signed_speed(pwm);
+  		motorB.set_signed_speed(pwm);
+  		motorC.set_signed_speed(pwm);
+  	}
+    else if(delta>=10001 && delta<15001){
+  		float pwm = 1.00;
+  		motorA.set_signed_speed(pwm);
+  		motorB.set_signed_speed(pwm);
+  		motorC.set_signed_speed(pwm);
+  	}
+    else if(delta>=15001 && delta<20001){
+  		float pwm = 0.00;
+  		motorA.set_signed_speed(pwm);
+  		motorB.set_signed_speed(pwm);
+  		motorC.set_signed_speed(pwm);
+  	}
+  	else if(delta >= 20001){
+  		measurement_on = false;
+  	}
+  }
 }

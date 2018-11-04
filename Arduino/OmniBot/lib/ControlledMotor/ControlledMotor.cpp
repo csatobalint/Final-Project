@@ -51,6 +51,7 @@ void ControlledMotor::update() {
   // Get current values
   int pos = e->get_position();
   long int time_micros = e->get_time_micros();
+	double dt = double((time_micros - time_micros_prev))*1e-6;
 
   // Check for pos overflow/underflow
   double dpos = double(pos)-double(pos_prev);
@@ -68,13 +69,13 @@ void ControlledMotor::update() {
     av_current = 0;
   }
 	else {
-    av_current = dpos/((time_micros-time_micros_prev)*1e-6);				//[counterStep/s]
+    av_current = dpos/dt;				//[counterStep/s]
 		av_current = av_current * stepToRad;																									//[rad/s]
-		av_current = av_current * radToRPM;																										//[rpm]
+		//av_current = av_current * radToRPM;																										//[rpm]
   }
 
   // Calculate angular acceleration
-  aa_current = (av_current-av_prev)/((time_micros-time_micros_prev)*1e-6) * stepToRad; 	//[rad/s2]
+  aa_current = (av_current-av_prev)/dt; 	//[rad/s2]
   if (abs(av_current-av_prev)<0.02) {
     aa_current = 0;
   }

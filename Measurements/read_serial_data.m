@@ -1,7 +1,7 @@
-%% Three motors max speed 
-measurement_case = 'controlled_100_p_02_i_11';
+%% Read and save serial data
+measurement_case = '2018_10_20/speed_and_acceleration';
 
-if 1
+if 0
     % Port reset:
     delete(instrfindall);
 
@@ -12,7 +12,7 @@ if 1
     fopen(arduino)
     fid = fopen(measurement_case,'wt');
     sampling_time = 25;
-    measurement_time = 5000;
+    measurement_time = 2000;
     for i=1:measurement_time/sampling_time
         y = fscanf(arduino,'%s');
         fprintf(fid,'%s\n',y);
@@ -22,7 +22,8 @@ if 1
     fclose(arduino);
 end
 
-data = dlmread(measurement_case,',',3,0)
+rowOffset = 3;
+data = dlmread(measurement_case,',',rowOffset,0)
 time = data(:,1)-1000;
 xLim = [0 measurement_time];
 accelerations = [data(:,2) data(:,3) data(:,4)];
@@ -32,130 +33,118 @@ axisNames = ["$t\;[ms]$","$n\;[rpm]$"];
 currentFigure = createfigure3(time,accelerations,axisNames,displayNames,xLim,yLim);
 figsave(currentFigure,measurement_case,15,15);
 
-
-%% Control design
-
-measurement_time = 5000/1000;
-measurement_case = 'directed_speed_pwm_50';
-data = dlmread(measurement_case,',',2,0)
-time = (data(:,1)-1000)/1000;
-xLim = [0 measurement_time];
-accelerations = [data(:,2) data(:,3) data(:,4)];
-yLim = [0 120];
-
-%amplitude
-A = mean(accelerations(end-50:end,:))
-%rise time
-A_T = 0.6321 * A;
-
-for i=1:3
-    T(i) = interp1q(accelerations(:,i),time,A_T(i))';
-end
-T
-%single storage plant
-dataYfitted = A.*(1-exp(-1./T.*time));
-measurement_case = 'directed_speed_pwm_50_fitted';
-displayNames = ["Motor A","Motor B","Motor C","Motor A (model)","Motor B (model)","Motor C (model)"];
-axisNames = ["$t\;[s]$","$n\;[rpm]$"];
-currentFigure = createfigure3(time,[accelerations dataYfitted],axisNames,displayNames,xLim,yLim);
-figsave(currentFigure,measurement_case,15,15);
-
-%% PWM characteristics
-pwmValues = [0.0 0.2 0.4 0.6 0.8 1];
-voltages =[ 0.0 4.88 9.10 10.63 11.40 12.00;
-            0.0 4.68 8.96 10.50 11.16 12.00;
-            0.0 2.88 7.59  9.65 10.68 12.00]';
-        
-time = pwmValues;
-xLim = [0 1];
-accelerations = [voltages(:,1) voltages(:,2) voltages(:,3)];
-yLim = [0 12];
-displayNames = ["Motor A","Motor B","Motor C"];
-axisNames = ["$PWM\;[-]$","$U\;[V]$"];
-measurement_case = 'pwm_u';
-createfigure(time,accelerations);
-figsave(gcf,measurement_case,15,15);
-
-
-%%
-zeta = 0.25;
-w0 = 3;
-H = tf([w0^2 1],[1,2*zeta*w0,w0^2])
-stepplot(H)
-
-
 %% Three motors max speed and acceleration
-measurement_case = '2018_10_07/speed_and_acceleration';
-measurement_time = 3;
+measurement_case = '2018_10_31/max_pwm_forward_10ms_0';
+measurement_time = 2;
+h = 0.010;
 
+%angular velocity
 a = 1;
 b = [1/4 1/4 1/4 1/4];
-data = dlmread(measurement_case,',',3,0)
-time = (data(:,1)-1000)/1000;
-xLim = [0 measurement_time];
-accelerations = [filter(b,a,data(:,5)) filter(b,a,data(:,6)) filter(b,a,data(:,7))];
-yLim = [0 1];
-displayNames = ["Motor A","Motor B","Motor C"];
-axisNames = ["$t\;[s]$","$n\;[rpm]$"];
-currentFigure = createfigure3(time,accelerations,axisNames,displayNames,xLim,yLim);
-figsave(currentFigure,measurement_case,15,15);
-
-%%
-t=time;
-x=data(:,5);
-
-y = filter(b,a,x);
-
-t = 1:length(x);
-plot(t,x,'--',t,y,'-')
-legend('Original Data','Filtered Data')
-
-%% Speed under load
-measurement_case = 'max_speed_on_parketta.txt';
-data = dlmread(measurement_case,',',1,0)
-time = data(:,1);
-xLim = [0 5000];
-accelerations = [data(:,2) data(:,3) data(:,4)];
-yLim = [0 120];
-displayNames = ["Motor A","Motor B","Motor C"];
-axisNames = ["$t\;[ms]$","$n\;[rpm]$"];
-currentFigure = createfigure3(time,accelerations,axisNames,displayNames,xLim,yLim);
-%figsave(currentFigure,measurement_case,15,15);
-
-fit_x = time;
-fit_y = data(:,2);
-
-%% Forward and backward
-measurement_case = 'forward_backward.txt';
-measurement_time = 8;
-
-data = dlmread(measurement_case,',',3,0);
-time = (data(:,1)-0)/1000;
+data = dlmread(strcat(measurement_case,'.txt'),',',0,0);
+time = data(:,1)/1000;
 xLim = [0 measurement_time];
 
-a = 1;
-b = [1/4 1/4 1/4 1/4];b=1;
-velocities = [filter(b,a,data(:,2)) filter(b,a,data(:,3)) filter(b,a,data(:,4))];
-yLim = [-120 120];
+angular_speeds = abs([filter(b,a,data(:,2)) filter(b,a,data(:,3)) filter(b,a,data(:,4))]);
+yLim = [0 1.2*max(max(data(:,[2 3 4])))];
+yLim = [0 15];
 displayNames = ["Motor A","Motor B","Motor C"];
-axisNames = ["$t\;[ms]$","$n'\;[rpm/s]$"];
-currentFigure = createfigure3(time,velocities,axisNames,displayNames,xLim,yLim);
+axisNames = ["$t\;[s]$","$\omega\;[rad/s]$"];
+currentFigure=createfigure3(time,angular_speeds,axisNames,displayNames,xLim,yLim);
+figsave(currentFigure,strcat(measurement_case,'_velocity'),15,15);
+
+%angular acceleration
+a = 1;
+filterFactor = 10;
+b=1/filterFactor*ones(1,filterFactor);
+angular_acceleration = abs([filter(b,a,data(:,5)) filter(b,a,data(:,6)) filter(b,a,data(:,7))]);
+%angular_acceleration =angular_acceleration/(2*pi/3960)/9.549296596425384;
+yLim = [0 1.2*max(max(angular_acceleration))];
+yLim = [0 100];
+displayNames = ["Motor A","Motor B","Motor C"];
+axisNames = ["$t\;[s]$","$\varepsilon\;[rad/s^2]$"];
+createfigure3(time,angular_acceleration,axisNames,displayNames,xLim,yLim);
 %figsave(currentFigure,measurement_case,15,15);
 
-MeasurementTime = time;
-MeasurementShaftSpeed = (filter(b,a,data(:,2))+filter(b,a,data(:,3))+filter(b,a,data(:,4)))/3;
+%Compare acceleration calculations
+
+%simple first order (arduino code)
+angular_acceleration_forward = zeros(1,length(data));
+for i=2:length(data)
+    angular_acceleration_forward(i) = (data(i,2)-data(i-1,2))...
+                                    /(time(i)-time(i-1));
+end
+
+%central differencing
+angular_acceleration_central = zeros(1,length(data));
+for i=2:length(data)-1
+    angular_acceleration_central(i) = (data(i+1,2)-data(i-1,2))...
+                                    /(time(i+1)-time(i-1));
+end
+
+%calculate acceleration with higher order discretization
+angular_acceleration_5_point = zeros(1,length(data));
+for i=3:length(data)-2
+    angular_acceleration_5_point(i) = ( -data(i+2,2) + 8*data(i+1,2) - 8*data(i-1,2) + data(i-2,2)   )...
+                                    /(12*h);
+end
 
 a = 1;
-b = [1/4 1/4 1/4 1/4];
-accelerations = [filter(b,a,data(:,5)) filter(b,a,data(:,6)) filter(b,a,data(:,7))];
-yLim = [-5 5];
-displayNames = ["Motor A","Motor B","Motor C"];
-axisNames = ["$t\;[ms]$","$n'\;[rpm/s]$"];
-currentFigure = createfigure3(time,accelerations,axisNames,displayNames,xLim,yLim);
-%figsave(currentFigure,measurement_case,15,15);
+filterFactor = 4;
+b=1/filterFactor*ones(1,filterFactor);
 
+hold on
+%plot(data(:,1),filter(b,a,data(:,5)))
+%plot(data(:,1),data(:,5))
+% plot(data(:,1),angular_acceleration_forward(:))
+% plot(data(:,1),angular_acceleration_central(:))
+% plot(data(:,1),angular_acceleration_5_point(:))
+plot(data(:,1),filter(b,a,angular_acceleration_forward(:)))
+plot(data(:,1),filter(b,a,angular_acceleration_central(:)))
+plot(data(:,1),filter(b,a,angular_acceleration_5_point(:)))
+hold off
 
+%% Rolling resistance spinnig
+measurement_case = '18_11_04/spinning_4213g';
+measurement_time = 2;
+h = 0.010;
+data = dlmread(strcat(measurement_case,''),',',0,0);
+spinning_4213g = data(:,2);
 
+a = 1;
+filterFactor = 10;
+b=1/filterFactor*ones(1,filterFactor);
+
+filtered_0 = filter(b,a,spinning_0g(:));
+filtered_2167 = filter(b,a,spinning_2167g(:));
+filtered_3187 = filter(b,a,spinning_3187g(:));
+filtered_4213 = filter(b,a,spinning_4213g(:));
+
+hold on
+lastNumber = 490;
+plot(filtered_0(end-lastNumber:end,1))
+plot(filtered_2167(end-lastNumber:end,1))
+plot(filtered_3187(end-lastNumber:end,1))
+plot(filtered_4213(end-lastNumber:end,1))
+hold off
+
+hold on
+lastNumber = 20;
+velocities_spinning = [velocity_1720(end-lastNumber:end,1) velocity_2240(end-lastNumber:end,1) velocity_3266(end-lastNumber:end,1) velocity_3744(end-lastNumber:end,1)]
+scaledMeanVelocities = mean(velocities_spinning)./max(mean(velocities_spinning))
+timeData = [1720,2240,3266,3744]-1720
+plot(timeData,scaledMeanVelocities)
+
+hold on
+lastNumber = 300;
+velocities_spinning = [filtered_0(end-lastNumber:end,1) filtered_2167(end-lastNumber:end,1) filtered_3187(end-lastNumber:end,1) filtered_4213(end-lastNumber:end,1)]
+scaledMeanVelocities = mean(velocities_spinning)./max(mean(velocities_spinning))
+timeData = [0,2167,3187,4213]
+plot(timeData,scaledMeanVelocities)
+
+lastNumber = 20;
+velocities_forward = [velocity_f_0(end-lastNumber:end,1) velocity_f_1720(end-lastNumber:end,1) velocity_f_2741(end-lastNumber:end,1) velocity_f_3744(end-lastNumber:end,1)];
+plot([0,1720,2741,3744],mean(velocities_forward))
 
 
 
