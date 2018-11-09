@@ -105,20 +105,20 @@ plot(data(:,1),filter(b,a,angular_acceleration_5_point(:)))
 hold off
 
 %% Rolling resistance spinnig
-measurement_case = '18_11_04/spinning_4213g';
+measurement_case = '2018_11_04/12_5_V/spinning_0g';
 measurement_time = 2;
 h = 0.010;
 data = dlmread(strcat(measurement_case,''),',',0,0);
-spinning_4213g = data(:,2);
+spinning_0 = data(:,2);
 
 a = 1;
 filterFactor = 10;
 b=1/filterFactor*ones(1,filterFactor);
 
-filtered_0 = filter(b,a,spinning_0g(:));
-filtered_2167 = filter(b,a,spinning_2167g(:));
-filtered_3187 = filter(b,a,spinning_3187g(:));
-filtered_4213 = filter(b,a,spinning_4213g(:));
+filtered_0 = filter(b,a,spinning_0(:));
+filtered_2167 = filter(b,a,spinning_2167(:));
+filtered_3187 = filter(b,a,spinning_3187(:));
+filtered_4213 = filter(b,a,spinning_4213(:));
 
 hold on
 lastNumber = 490;
@@ -128,12 +128,12 @@ plot(filtered_3187(end-lastNumber:end,1))
 plot(filtered_4213(end-lastNumber:end,1))
 hold off
 
-hold on
-lastNumber = 20;
-velocities_spinning = [velocity_1720(end-lastNumber:end,1) velocity_2240(end-lastNumber:end,1) velocity_3266(end-lastNumber:end,1) velocity_3744(end-lastNumber:end,1)]
-scaledMeanVelocities = mean(velocities_spinning)./max(mean(velocities_spinning))
-timeData = [1720,2240,3266,3744]-1720
-plot(timeData,scaledMeanVelocities)
+% hold on
+% lastNumber = 20;
+% velocities_spinning = [velocity_1720(end-lastNumber:end,1) velocity_2240(end-lastNumber:end,1) velocity_3266(end-lastNumber:end,1) velocity_3744(end-lastNumber:end,1)]
+% scaledMeanVelocities = mean(velocities_spinning)./max(mean(velocities_spinning))
+% timeData = [1720,2240,3266,3744]-1720
+% plot(timeData,scaledMeanVelocities)
 
 hold on
 lastNumber = 300;
@@ -142,9 +142,9 @@ scaledMeanVelocities = mean(velocities_spinning)./max(mean(velocities_spinning))
 timeData = [0,2167,3187,4213]
 plot(timeData,scaledMeanVelocities)
 
-lastNumber = 20;
-velocities_forward = [velocity_f_0(end-lastNumber:end,1) velocity_f_1720(end-lastNumber:end,1) velocity_f_2741(end-lastNumber:end,1) velocity_f_3744(end-lastNumber:end,1)];
-plot([0,1720,2741,3744],mean(velocities_forward))
+% lastNumber = 20;
+% velocities_forward = [velocity_f_0(end-lastNumber:end,1) velocity_f_1720(end-lastNumber:end,1) velocity_f_2741(end-lastNumber:end,1) velocity_f_3744(end-lastNumber:end,1)];
+% plot([0,1720,2741,3744],mean(velocities_forward))
 
 
 
