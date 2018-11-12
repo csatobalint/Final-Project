@@ -126,7 +126,7 @@ Control and Parameter Estimation Problems of Autonomous Transport Robots
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 													Preface
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section*{Preface}
+\section*{Abstract}
 Autonomous vehicle technology offers the possibility of fundamentally
 changing transportation. Equipping cars and light vehicles
 with this technology will likely reduce crashes, energy consumption,
@@ -135,7 +135,7 @@ blabalblablalblalba
 lablblablablalblballb
 labllablblalbalblalblbal
 
-\addcontentsline{toc}{section}{Preface}
+\addcontentsline{toc}{section}{Abstract}
 
 \newpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -443,7 +443,7 @@ Multi-degree-of-freedom robots have more than the needed three degrees of freedo
 \end{figure}
 
 \newpage
-\section{Conditions of the robot application }
+\section{The Mobile Robot}
 \subsection{Selecting a mobile robot configuration}
 In previous chapters the basic features of mobile robots and some real life application were presented. This final project basically aims at designing an autonomous transport robot to investigate its control and possible parameter estimation problems. Real world transport robots are usually capable to navigate along prescribed path, monitor their environment to handle unexpected obstacles, interact with the packages autonomously and communicate with users surrounding them. These are the most necessary features that are really needed during operation which have been mostly implemented in the past.
 
@@ -454,15 +454,397 @@ To select a mobile configuration, the general purpose, working environment and c
 In other words, a transport robot might be preferred over others if it can be as stable as possible without loosing any maneuverability skill. For an omnidirectional drive configuration special wheels of higher price are need, thus the three-wheeled configuration is optimal from economic point of view.
 \newpage
 \subsection{The Hardware}
-\subsubsection{Robot case and actuators}
-\subsubsection{MCU}
-\subsubsection{Sensors, modules and battery}
-\subsubsection{Assembly}
+The realised mobile robot was built from scratch ordering its part from different sources. In this chapter, the components of the mobile robot platform are presented.
+\subsubsection{Omni wheel}
+In order to fulfill, the maneuverability demand a configuration with omni wheels was looked for. As it was mentioned, the omni wheels are like regular ones which can roll around their axis but with additional passive rollers along its circumference which allows the wheel itself to move in the lateral direction as well. Because of the additional rollers, the contact point(s) (mainly there are two of them even if rigid wheels are considered) will not be always under the wheel center, e.g. when shifting between rollers occurs. As a result of that, the movement on flat surfaces will be less smooth compared to conventional wheels. Applying more rows of rollers, the uneven rolling characteristic (transition between passive rollers) can be improved. However, the contact point changes in the lateral direction too. \cite{owp1}
+\begin{figure}[htb!]
+	\centering
+	\includegraphics[width=10cm]{figures/omni_wheel.png}
+	\caption{Global and local frames of the robot}
+	\label{omni_wheel}
+\end{figure}
+The ordered wheel is shown in the Figure \ref{omni_wheel}. Such a wheel is made of plastic having maximum nominal load capacity of 3kg and 58mm diameter. It can be connected to the shaft of a DC Motor using a coupling hub and screws.
+\subsubsection{Gear Motor}
+In mobile robotics, the DC (direct current) motor is a general choice for actuation purposes. The points which are to be considered are as follows:
+\begin{itemize}
+	\item Its nominal operating voltage and the current consumption which is needed during the possible operating states. The energy source and the electronic devices have to be able to provide the electrical energy in the given needed form.
+	\item Motor torque has to be in match with the inertias of the robot configuration.
+	\item Motor speed has to be in match with the demands regarding the demanded locomotion speed of the case.
+\end{itemize}
+At the given scale, the DC motors are more commonly brushed permanent magnet type. They runs at quite high speed about 10,000-12,000 RPM having a little torque.\cite{dc_motor_5} For a robot application, it is too fast and the torque is too little, therefore motors with gearbox attachment are needed. The gearbox is a set of gears containing several stages to increase the motor torque at the cost of the shaft speed.
+\begin{table}[]
+	\begin{tabular}{lc}
+		\hline
+		\multicolumn{2}{l}{DC Gear Motor Datasheet}                                                   \\ \hline
+		Rated voltage                      & DC 12.0 V                                                \\
+		No-load speed parameter            & 107 {[}RPM{]}- 0.15 {[}A{]}                              \\
+		Maximum efficiency point parameter & 85 {[}RPM{]} - 0.6 {[}A{]} - 0.42 {[}Nm{]} - 3.8 {[}W{]} \\
+		Maximum power point parameter      & 52 {[}RPM{]} - 1.2 {[}A{]} - 0.98 {[}Nm{]} - 6.0 {[}W{]} \\
+		Blocking point parameter           & 3.4 {[}A{]} - 1.96 {[}Nm{]}                              \\
+		Gear ratio                         & 1:90                                                     \\
+		Encoder resolution                 & 1:11                                                    
+	\end{tabular}
+\end{table}
+The selected DC gear motors are represented in the Figure \ref{gear_motor1}.
+\begin{figure}[htb!]
+	\centering
+	\minipage{0.5\textwidth}
+	\centering
+	\includegraphics[width=6cm]{figures/gear_motor1}
+	\caption{Selected gear motor}
+	\label{gear_motor1}
+	\endminipage\hfill
+	\minipage{0.5\textwidth}
+	\centering
+	\includegraphics[width=8cm]{figures/gear_motor2}
+	\caption{Gear motor characteristics}
+	\label{gear_motor2}
+	\endminipage\hfill
+\end{figure}
+
+The supplier provided the nominal values of specific working points which are shown in the Figure \ref{gear_motor2} and listed in the table above.
+The motor is equipped by magnetic quadrature encoders in order to allow to count the revolutions. There are two Hall-effect sensor which are able to detect the changes of the magnetic field. If a gear teeth passes near in front of the sensor, the magnetic field will be changed which will cause the output of the sensor to either go high or low. The frequency of the generated square wave will be proportional with rotational speed of the shaft. In order to identify the direction of the rotation (clockwise or counter-clockwise) a second sensor is attached to motor. Eventually, the encoder provides $2 \times 2 \times 11 = 44$ counts per revolution considering that the observed gear has 11 tooth, two hall sensors are present and both rising and falling edge are counted. In addition, the motor has a gearbox with a ratio of 1:90, thus the Hall-effect sensor generated $44 \times 90 = 3960$ counts per revolution. Therefore the accuracy in theory is about $0.09^{\circ}$.
+\subsubsection{Case}
+In Figure \ref{case_1} a photo of the assembled robot case is shown. The DC motors are attached to the case using L shaped brackets. One, two or three levels can be built from triangle shaped metal sheets which have a black electrically insulating coating. The main purpose of the frame beside making connection between the wheels is to provide a safe place for all components of the robot, such as the electronic modules. Using the center free hole in the most upper level, a threaded rod can be attached to the case to provide a place for mounting additional payloads demonstrating the weight of an arbitrary package. The side size is 145mm, thus common wheel circle has a radius of 0.12m. The weight of the case, motors and the wheels is about 1.3kg.
+\begin{figure}[htb!]
+	\centering
+	\minipage{0.5\textwidth}
+	\centering
+	\includegraphics[width=7cm]{figures/case_1}
+	\caption{Robot case (bottom)}
+	\label{case_1}
+	\endminipage\hfill
+	\minipage{0.5\textwidth}
+	\centering
+	\includegraphics[width=7cm]{figures/case_2}
+	\caption{Robot case (top)}
+	\label{case_2}
+	\endminipage\hfill
+\end{figure}
+\subsubsection{Electronics}
+A RobotDyn Mega 2560 board with an ATmega2560 (16Mhz) microcontroller was chosen which is a cheap version of the original Arduino board having the same capabilities and compatibilites. Arduino is an open-source electronics platform including easy-to-use hardware and software.\cite{arduino} The programming language is based on C++, the Arduino library is well-documented, widely used and easy to learn. There are several boards compatible with Arduino at lower prices as well. The Mega actually was chosen for its increased number of pins compared to base models such as Uno.
+Considering the rated voltage of the DC motors and other aspects such as space and performance, 3-celled LiPo (litium polimer) with 3x3.7V rated voltage battery was chosen to power the mobile robot. This type is widely used for its good capacity over weight ratio, high current supply capability and fast charging. The main disadvantage of this kind of batteries that they can flame up in case of short circuit caused by a serious mechanical damage or some kind of unnormal use. For safety reason, an electrical fuse was added to protect the battery and also the electronic circuits from operating under overcurrent. Generally, two voltage levels have to be provided: a logic circuit with 5V and a power circuit that provides 12V at motor pins, in addition, a common ground has to be formed. This separation is essentially need since the microcontroller board works with an operating voltage of 5V and also other electronic circuits can operate on that voltage level, futhermore the board can provide maximum of 40mA at a single pin which would not be sufficient to drive the motors. The board has an own voltage regulator but it is recommended to power with a voltage less than 12V, thus for driving the motor a higer voltage circuit is essential. \cite{arduino} A DC motor can be switched on/off using a MOSFET transistor connecting a digital output of the board to its gate and providing high or low voltage, thus opening or closing it. The technique makes it possible to connect higher voltage and current to the motor directly from the power source using a programmable electronic device. If constant voltage is supplied, a DC motor will spin as fast as it can in accordance with inner and outer resistance type load which characteristic is shown in Figure \ref{case_2}. The most efficient way to control the speed of a permanent magnet type DC motor is using the PWM technique. The pulse-width modulation (PWM) technique gives an alternating voltage signal with a given period of time which can be only zero or high voltage values. The percentage of the time period when the voltage level is high called the duty cycle. If a pwm signal with a sufficiently high frequency is generated, the motor with a much larger time constant will sense as if it was a direct voltage input signal with a given average voltage value. This is because of the fact that a motor has inertias ($J,L$) and frictional losses, therefore it takes time to react to sudden changes and it will filter the PWM command resulting in an averaged signal.\cite{dc_motor_3} \cite{dc_motor_4} The average voltage value will be proportional with the duty cycle of the PWM signal. Such an alternating signal, e.g. a square-wave can be generated with an some of the digital output pins of the arduino board. Unfortunately, for controlling the direction of rotation speed further components are needed. The motor will spin in the reverse direction if the polarity of the voltage, thus direction of the armature current is switched. A general solution for that is to applying H-Bridge circuit which contains four switches, e.g. transistors, and the motor itself. By working the appropriate switches, the direction of the current flow can be changed. \cite{howtomech}
+The so called motor divers have these functionalities, in my case the usually used L298N driver was chosen as it is cheap and can do what is needed. The main disadvantage of such drives that they cause a substantial voltage drop, i.e. 1-2V in case of 12V supply voltage which will result in a lower motor speed. To handle this problem, an additional step-up converter was attached just after the battery to have a higher supply voltage. After some trial and error method the supply voltage it was found that if the supply voltage is stepped up to 13.4V, then the motors will get 12V at maximum duty cycle of the pwm signal. With this extra step up module, also the voltage drop of the battery (when it goes dead) can be handled and kept on a constant voltage with a higher supply current. The logic voltage high level (5V) is produced by a voltage regulator connected after the step-up module. The logic voltage levels have to be wire into all the devices, thus the motor encoders, microcontroller unit (MCU) and motor drivers (L298N) together with the common ground. The motor driver has to be connected also with the input voltage. The pwm signals are provided by specific pwm capable output pins of the board are to be connected to the Enable pins of the drivers. Additionally, two digital pins have to connected to the drivers which control the rotational direction of the motors. The motor encoders has two pins called CH1,CH2 which have to be connected to the special interrupt capable pins of the MCU. The interrupt technique guarantees to catch all the pulsed generated by the encoders. If a rising or a falling edge is sensed, then the main loop is interrupted while a predefined so called Interrupt Service Routine (ISR) is called and processed. 
+
+In order to be able to communicate wireless with robot, a bluetooth module (HC-05) was used by which serial communication could be realised. The serial communication is a process of sending data one bit at a time sequentially over a communication channel. For istance, the Arduino board can communicate with the computer via an USB type cable using the serial communication protocol, e.g. when the code is uploading or when commands are sent from the board to the pc or vice versa. The pins for serial communication are denoted as RX (Recieving) and TX(Transfering) letters, the USB connection is connected to RX1,TX1 serial channel on the Mega. In order to avoid the collision of communication of the bluetooth module and the USB port if both are in use at same time, the BT module was connected to the RX2,TX2 to channel.
+\newpage
+\subsubsection{Schematic diagram of the electronics}
+\begin{figure}[htb!]
+	\centering
+	\includegraphics[width=17cm]{figures/Rotated}
+	\label{schematic_drawing}
+\end{figure}
+\newpage
+\subsection{DC motor speed analysis}
+\subsubsection{System modelling}
+The robot configuration is equipped by three officially identical 12V DC motors with permanent magnets having the nominal rotational speed value of 107RPM at no load state. They have to be driven synchronously in order to obtain the desired movements. During operation the demand for having a variable motor speed is essential, thus control algorithm has to be developed. 
+Briefly, the DC motor works on the principle (Lorentz Law) that when a current conductor wire (armature) is put in a magnetic field then it will be subjected to electromagnetic force in accordance with the direction and magnitude of current and magnetic field, i.e. $\mathbf{F} = I~\mathbf{l} \times \mathbf{B}$. The coil is connected to a DC power source, thus current will flow through the wire producing its own magnetic field. The mechanical force is produced as result of the magnetic field of the permanent magnets and the magnetic field of the coil. The magnetic field of the coil is attracted to the permanent magnetic field, therefore the armature starts rotating due to the induced electromagnetic force.
+\begin{figure}[htb!]
+	\centering
+	\includegraphics[height=4cm]{figures/dc_conducting_wire.png}
+	\caption{A single current conductor in a static magnetic field \cite{dc_motor_2}}
+	\label{dc_conducting_wire}
+\end{figure}
+At some point the magnetic fields would align resulting in a zero torque. In brushed DC motors this switching mechanism is done by the so called commutator part. The Figure \ref{dc_conducting_wire} represent a single wire with a commutator. The commutator is a simple mechanical switch that changes the polarity of the voltage put on the wire by touching the brushes in order to make the current flow in such a direction that maintains the direction of the generated torque, therefore the armature continue rotating. A single wire would provide a fluctuating torque during the operation since the angle between the coil and static magnetic flux is changing. For a more smooth operation of the rotor, several separate wire loops have to be used shifted from each other and switched one after the other. This can be realized by applying more pairs of commutators which enables to connect always that coil loop with power source that does not align with the permanent magnetic field, thus can produce maximum torque. In practical motors the rotating part is called armature and standing part is called stator. The stator can be a permanent magnetic pole in case of small DC motors, while in larger motors an electromagnet is used which is also powered by the same DC source in serial or parallel connection. In my case, the motor has a permanent magnetic stator.
+According to Faraday's law of electromagnetic induction, a rotating loop of coil will produce an electromotive force called EMF. The case of the rotating armature loop is the same, thus in this case it produces an adverse electromotive force which is called back EMF that tends to decrease cause of the accelerating effect, i.e. the applied input voltage. As a result, the back EMF will decrease the armature current by a remarkable amount, thus the motor torque as well. \cite{dc_motor_1} \cite{dc_motor_2}
+
+The electrical equivalent circuit of the armature and the free-body diagram of the rotor can be modeled as follows.
+\begin{figure}[htb!]
+	\centering
+	\includegraphics[height=5cm]{figures/dc_motor_model.png}
+	\caption{DC motor electrical and mechanical model \cite{dc_motor_3}}
+	\label{dc_motor_model}
+\end{figure}
+
+The motor is supplied with $V$ voltage as an input, while the output is the rotational speed of the rotor and shaft (rigid connection). In the mechanical model the load torque ($T_L$) and also dissipation energy is considered as being proportional with the angular speed. The motor torque is generally proportional to the armature current and the strength of the magnetic field, but in this model the magnetic field is assumed to be constant, thus the motor torque depends on the armature current ($i$) only. The back emf ($e$) is proportional to the angular velocity of the shaft. If SI units are used then the constants of the torque and the emf are equal, thus the same ($K$) constant can be used for the following equations:\cite{dc_motor_3}\cite{dc_motor_4}
+\begin{equation}
+T = K i
+\end{equation}
+\begin{equation}
+e = K \dot \theta
+\end{equation}		
+
+Based on the model in Figure \ref{dc_motor_model} the following equations can be derived by means of the Newtons's 2nd Law and Kirchoff's voltage law.
+\begin{equation}
+J \ddot \theta + b \dot \theta = K i - T_L
+\label{dc_eq_1}
+\end{equation}
+\begin{equation}
+L \frac{di}{dt} + R i = V - K \dot \theta
+\label{dc_eq_2}
+\end{equation}
+The system can be described by a system of linear differential equations with respect to armature current and rotor angular velocity. A given system can be defined by 5 parameters, i.e. armature resitance (R), armature inductance (L), motor constant (K), damping constant (b) and motor inertia (J).
+\subsubsection{Step response analysis of the motors}
+The motors speeds can be changed via PWM and with the help of the rotary encoders the response function to any voltage value could be measured. It is more convenient to treat the PWM signal's duty cycle as the control input although voltage level is applied to the armature of the motor. The PWM signal's duty cycle is determined in the code by a floating point number between zero and one. Firstly, let the pwm value be regarded as an input and the wheel speed as an output assuming that the transfer function of the gearbox and power electronic module are proportional type, thus it can be handled together with the motor as a plant element. 
+The motors gave a quite similar responses with respect to time constant and amplitude and also the nominal value (107RPM at 12V no load case) was obtained with small deviations. 
+
+\begin{figure}[htb!]
+	\centering
+	\minipage{0.45\textwidth}
+	\centering
+	\includegraphics[height=7cm]{figures/directed_speed_pwm_100}
+	\caption{PWM=100\% step response of the motors}
+	\label{directed_speed_pwm_100}
+	\endminipage\hfill
+	\minipage{0.45\textwidth}
+	\centering
+	\includegraphics[height=7cm]{figures/pwm_u}
+	\caption{Nonlinearity of the PWM-U relation}
+	\label{pwm_characteristic}
+	\endminipage\hfill
+\end{figure}
+\begin{figure}[htb!]
+	\centering
+	\minipage{0.45\textwidth}
+	\centering
+	\includegraphics[height=7cm]{figures/directed_speed_pwm_60}
+	\caption{PWM=60\% step response of the motors}
+	\endminipage\hfill
+	\minipage{0.45\textwidth}
+	\centering
+	\includegraphics[height=7cm]{figures/directed_speed_pwm_40}
+	\caption{PWM=40\% step response of the motors}
+	\label{mecanum}
+	\endminipage\hfill
+\end{figure}
+Unfortunately, the problems were captured when the duty cycle of the pwm signal was decreased, i.e. the pwm value in the Arduino code. The prior guess that the pwm value provided in the MCU code will be proportional to the motor speeds was proven to be wrong. Furthermore one of the L298N module was functioning with a different characteristic as the other driver as it provided different voltage values for the same pwm signal which resulted that the Motor C was spinning remarkably slower. It is also clearly visible that the system is nonlinear as neither for the Motor A and B the same dynamics with respect to rise time were obtained, thus even the time constants were not similar.
+It is obvious that without proper control of the wheels it is hard to achieve smooth and accurate movements which is one of our main design criteria. As a first approximation, it is worth neglecting the mentioned issues and handle the system as it would be completely linear. This is defenietly not true but a good approcimation. Further problems could occur at low voltages, i.e. pwm values less than 0.2 where the system probably become extremely nonlinear as the motor will not move at such small voltages where the generated motor torque is not strong enough to overcome sticking friction. Though the linear viscous friction is included in the model presented in the next chapter as it is easy to calculate with. A possible practical solution is to have the motor banned to work in the problematic regions. 
+\subsubsection{Controller design using blackbox model \cite{dc_motor_3}}
+Considering the system as being linear in theory based on the response function corresponding to any pwm signal, a controller can be designed for the whole range for each wheel separately. In order to do this, a black box model has to constructed. In case of a DC motor it is a typical procedure to handle the system as a first order one. \cite{dc_motor_3} 
+Applying the Laplace transform on Eq.\ref{dc_eq_1} and \ref{dc_eq_2}, then rearranging the transformed equations the transfer function of the system is as follows:
+\begin{equation}
+G(s) = \frac{\dot \theta (s)}{V(s)} = \frac{K}{(Js+b)(Ls+R)+K^2}.
+\end{equation} 
+Beside the fact that a second-order model can be derived, the step response of dc motors usually looks like that of a first-order system. After inspecting the actual step response of the given motors, it looks as a good approximation. It can be explained by the fact that the motor is an overdamped second-order system, in other words it has two negative poles (roots of the denominator of the transfer function). Such a system is stable and has two time constants. In case of DC motors, the time constant of the mechanical dynamics is much higher compared to the time constant of the electrodynamics, thus the slower mechanical dynamics dominates the overall time response. 
+A first order system can be expressed as it follows:
+\begin{equation}
+P(s) = \frac{\dot{\theta}(s)}{DC(s)}= \frac{k}{1+\tau s},
+\end{equation}
+where
+\begin{itemize}
+	\item $DC(s)$ - Laplace tranform of the duty cycle signal, $P(s)$ - plant tranfer function
+	\item $\tau$ - time constant which equals the time it takes the system to reach the 63.2\% of steady-state step response of a unit step, more generally it represents the time scale of the system dynamics,
+	\item $k$ - gain, the ratio of the magnitude of the steady-state step response to the magnitude of the step input.
+\end{itemize}
+Based on the measurments shown in Figure \ref{directed_speed_pwm_100} the following values were calculated providing a really good agreement.
+\begin{table}[h]
+	\centering
+	\label{first_order_model_table}
+	\begin{tabular}{cccc}
+		\hline
+		& A  		& B  		& C   		\\ \hline
+		$k$ {[}rpm{]} 		& 111.05 	& 113.39 	& 109.07 	\\
+		$\tau$ {[}ms{]}       & 100.70 	& 99.88 	& 107.03   	\\ \hline
+	\end{tabular}
+	\caption{First-order model parameter estimations}
+\end{table}
+A common choice for such a system is a PI controller.\cite{dc_motor_3} The plant block is overall model of the power electronic module, the motor armature, rotary encoders and the signal processing on the MCU. 
+\begin{figure}[htb!]
+	\centering
+	\includegraphics[height=4cm]{figures/control_block_diagram}
+	\caption{Model of the closed (feedback controlled) system}
+	\label{dc_motor_closed_system}
+\end{figure}
+The transfer function of the controller PI (proportional-integrating) is as follows:
+\begin{equation}
+C(s) = K_p + \frac{K_i}{s}.
+\end{equation}
+The transfer function of the (negative feedback) closed-loop:
+\begin{equation}
+T(s) = \frac{C(s)P(s)}{1+C(s)P(s)}=\frac{A (K_i+K_p s)}{A K_i+A K_p s+s^2 \tau +s}
+\label{eq_transfer_function}
+\end{equation}
+The closed-loop system is almost a second-order one except for the presence of the zero (possible root in the denominator), thus it does not match with the canonical form exactly:
+\begin{equation}
+G(s) = \frac{{k \omega_n}^2}{s^2 + 2 \zeta \omega_n s +{\omega_n}^2}
+\label{eq_transfer_function_canonical}
+\end{equation}
+where
+\begin{itemize}
+	\item $k$ - gain is the ratio of the magnitude of the steady-state step response to the magnitude of the step input,
+	\item $\zeta$ - The damping ratio is a dimensionless quantity characterizing the rate at which an oscillation in the system's response 		decays due to effects such as viscous friction or electrical resistance,
+	\item $\omega_n$ - The natural frequency is the angular frequency that the system will oscillate at when there is no damping. \cite{dc_motor_3}
+\end{itemize}
+
+The original system is overdamped but the addition of a proportional controller can make it underdamped as it has similar behaviour like a "virtual spring". For such special case several design equations are available if the parameters in the canonical form are known. The presence of the zero in closed-loop transfer function can be a cause of errors. However, as a first guess it can provide a good approximation for starting value for the controller if the presence of zero is not considered and the system is treated as if it was an underdamped second-order system.
+It is important to mention, that the closed-loop system would have a canonical form if only proportional type controller was used.
+
+The canonical second-order transfer function has two poles at:
+\begin{equation}
+s_p = -\zeta \omega_n \pm j \omega_n \sqrt{1-{\zeta}^2} = -\sigma \pm j\omega_d.
+\label{eq_poles}
+\end{equation}
+If $\zeta<1$, then the system is underdamped, the two poles are both complex-valued with negative real parts. The system is asymptotically stable and oscillating with the damped natural frequency $\omega_d = \omega_n \sqrt{1-{\zeta}^2}$. Based on the value of damping the system can marginally stable and unstable, but those are not the cases which are have to be examined now.
+
+Combining the denumerators of equation (\ref{eq_transfer_function}) and (\ref{eq_transfer_function_canonical}) the following expressions can be obtained:
+\begin{equation}
+{\omega_n}^2 = \frac{A K_i}{\tau},
+\end{equation}
+\begin{equation}
+2\omega_n\zeta  = \frac{1+A K_p}{\tau}.
+\end{equation}
+Additionally using the equation \ref{eq_poles}, the relation between the poles of the closed loop and the controller parameters can be derived:
+\begin{equation}
+%{\omega_d}^2 = \frac{A K_i (1-\zeta^2)}{\tau},
+\sigma^2 + {\omega_d}^2 = \frac{A K_i}{\tau},
+\label{eq_pi_from_poles_1}
+\end{equation}
+\begin{equation}
+\sigma = \frac{1+A K_p}{2\tau}.
+\label{eq_pi_from_poles_2}
+\end{equation}
+
+The figure \ref{second_order_underdamped_response} represents the step response of a canonical second order system and several properties are denoted to characterize itself.
+\begin{figure}[htb!]
+	\centering
+	\includegraphics[height=7cm]{figures/step_response_of_2nd_order_system_1}
+	\caption{Step response characteristics}
+	\label{second_order_underdamped_response}
+\end{figure}
+
+\begin{itemize}
+	\item Settling Time is the time that the system needs to have an output with a smaller deviation from the steady-state in terms of a given percentage. In case of second-order canonical system the following formula provides a good approximation: \cite{dc_motor_3}
+	\begin{equation}
+	T_s = -\frac{ln(tolerance)}{\zeta \omega_n} = -\frac{ln(tolerance)}{\sigma}
+	\label{eq_settling_time}
+	\end{equation}
+	\item Percent Overshoot characterize the output in terms of the ratio of maximum peak and the steady-state value expressed as a percentage. \cite{dc_motor_3}
+	\begin{equation}
+	Mp = e^{\frac{-\zeta \pi}{\sqrt{1-\zeta^2}}}
+	\label{eq_overshoot}
+	\end{equation}
+	The corresponding peak time is as follows: \cite{dc_motor_3}
+	\begin{equation}
+	T_p = \frac{\pi}{\omega_d}
+	\label{eq_overshoot_time}
+	\end{equation}
+\end{itemize}
+Ideally closed-loop respond with low settling time and overshoot is wanted. Limits can be defined in arbitrary way that suits are demands with respect to the former properties. Based on equations \ref{eq_settling_time}, \ref{eq_overshoot} and \ref{eq_overshoot_time} further limits can be derived for $\zeta$ and $\omega_d$.
+\begin{itemize}
+	\item 1 \% settling time:
+	\begin{equation}
+	T_s = -\frac{ln(0.01)}{\sigma} = \frac{4.605}{\sigma} < l_{T_s},
+	\end{equation}
+	\begin{equation}
+	\sigma > \frac{4.605}{l_{T_s}}.
+	\end{equation}
+	
+	\item peak time:
+	\begin{equation}
+	T_p = \frac{\pi}{\omega_d} < l_{T_s},
+	\end{equation}
+	\begin{equation}
+	\omega_d > \frac{\pi}{l_{T_p}}.
+	\end{equation}
+	
+	\item maximum percent overshoot:
+	\begin{equation}
+	Mp = e^{\frac{-\zeta \pi}{\sqrt{1-\zeta^2}}}  < l_{M_p},
+	\end{equation}
+	\begin{equation}
+	\zeta > \sqrt{\frac{ln^2(l_{M_p})}{\pi^2+ln^2(l_{M_p})}}.
+	\end{equation}
+\end{itemize}
+where $l_{T_s}$, $l_{T_p}$ and $l_{M_p}$ are the limits respectively.
+Considering the provided limits, some guidelines for seeking suitable poles can be obtained which probably result desired system dynamics. Rearranging the equations \ref{eq_pi_from_poles_1} and \ref{eq_pi_from_poles_2}, the controller gain estimations can be calculated:
+\begin{equation}
+K_p = \frac{2 \sigma \tau - 1}{A},
+\end{equation}
+\begin{equation}
+K_i = \frac{\tau(\sigma^2 + {\omega_d}^2)}{A}.
+\end{equation}
+As it was mentioned before, choosing the poles based on the above limits can not guarantee acceptable system behaviour as our system is not a canonical second-order, on the top of that the plan model is also simplified to a first order and not even any nonlinearity is considered.
+\begin{figure}[htb!]
+	\centering
+	\minipage{0.45\textwidth}
+	\centering
+	\includegraphics[height=7cm]{figures/possible_poles}
+	\caption{Pole parameter field considering the limits}
+	\label{possible_poles}
+	\endminipage\hfill
+	\minipage{0.45\textwidth}
+	\centering
+	\includegraphics[height=7cm]{figures/directed_speed_pwm_50_fitted}
+	\caption{Black box model at 0.5 PWM value}
+	\label{fitted_model}
+	\endminipage\hfill
+\end{figure}
+
+The Figure \ref{possible_poles} shows the possible real and imaginary value pairs which satisfies the requirements. The real part of pole is $\sigma$, the imaginary part is $\omega_d$ and the angle $beta$ can calculated by means of $\zeta = cos(\beta)$. \\[2mm]
+\noindent Let us have the following requirements:
+\begin{itemize}
+	\item Settling time for 1$\%$: 2[s]
+	\item Peak time: 1[s]
+	\item Max peak amplutude: 10\%
+\end{itemize}
+\noindent and let us use measurments corresponding to pwm value of 0.5. After fitting the first order balck box model the following values were obtained.
+\begin{table}[h]
+	\centering
+	\label{first_order_model_table_50}
+	\begin{tabular}{cccc}
+		\hline
+		& A  		& B  		& C   		\\ \hline
+		$\tau$ {[}s{]} 		& 0.2949 	& 0.2880 	& 0.3767 	 \\
+		$k$ {[}rpm{]}       & 93.8978 	& 94.9998 	& 80.5325   	\\ \hline
+	\end{tabular}
+	\caption{First-order model parameter estimations}
+\end{table}
+Considering the given requirements, as a first approximation placing the poles of the system to $\sigma = 5$ and $\omega_d = \pi$ point can be good.
+In this case, the $K_p = 0.021$ and $K_i = 0.11$ are obtained.
+\begin{figure}[htb!]
+	\centering
+	\minipage{0.45\textwidth}
+	\centering
+	\includegraphics[height=7.5cm]{figures/polemap_at_50}
+	\caption{Possible poles that suits the requirements}
+	\label{polemap_at_50}
+	\endminipage\hfill
+	\minipage{0.45\textwidth}
+	\centering
+	\includegraphics[height=7.5cm]{figures/expected_50}
+	\caption{Expected response}
+	\label{expected_response_50}
+	\endminipage\hfill
+\end{figure}
+The system responses are shown in Figure \ref{obtained_response_50} and \ref{obtained_response_100}. In case of target speed of 100 rpm, the controller makes a really bad performance with so high oscillations. The oscillations vanishes if the integral type controller gain is set to zero, but the final value will be uncertain. After some trial and error for seeking a better integral gain an acceptable combination were found. The corresponding system responses are presented in Figure  \ref{obtained_response_50_good} and \ref{obtained_response_100_good}. The only prelimanary criteria which was not fulfilled is the max peak amplitude in case of $50\%$ PWM, when it was about $15\%$ instead of $10\%$. However, better peak and settling times were obtained.
+\newpage
+\begin{figure}[htb!]
+	\centering
+	\minipage{0.45\textwidth}
+	\centering
+	\includegraphics[height=7.5cm]{figures/controlled_50_p_02_i_11}
+	\caption{Obtained response at target velocity 50 [rpm]}
+	\label{obtained_response_50}
+	\endminipage\hfill
+	\minipage{0.45\textwidth}
+	\centering
+	\includegraphics[height=7.5cm]{figures/controlled_100_p_02_i_11}
+	\caption{Obtained response at target velocity 100 [rpm]}
+	\label{obtained_response_100}
+	\endminipage\hfill
+\end{figure}
+\begin{figure}[htb!]
+	\centering
+	\minipage{0.45\textwidth}
+	\centering
+	\includegraphics[height=8cm]{figures/controlled_50_p_02_i_002}
+	\caption{Obtained response at target velocity 50 [rpm]}
+	\label{obtained_response_50_good}
+	\endminipage\hfill
+	\minipage{0.45\textwidth}
+	\centering
+	\includegraphics[height=8cm]{figures/controlled_100_p_02_i_002}
+	\caption{Obtained response at target velocity 100 [rpm]}
+	\label{obtained_response_100_good}
+	\endminipage\hfill
+\end{figure}
+\newpage
 
 \newpage
+\section{Motion Analysis of The Robot}
 \subsection{Kinematics of three-wheeled omnidirectional robot}
 \subsubsection{Basic relationships}
-Let us define the global frame as [X,Y] coordinate system which represent the environment. The location and the orientation of the robot can be described with (X,Y,$\alpha$) or (X,Y,$\varphi$) vector, while the kinematic state as that of time-derivative, i.e. ($\dot X, \dot Y, \dot \alpha$) or ($\dot X, \dot Y, \dot \varphi$). Eventually, we are usually interested in the kinematics from global frame point of view, but from the design and user point of view it is more convenient to start writing the equations in the local frame of the robot and then transform the kinematics to the global frame if that is needed. Let us denote the local frame as $(x,y)$ which center is the center of gravity of the robot. The robot velocity as $v$ when that of components in the local frame are $(v_x,v_y) = (- v sin \gamma , v cos \gamma )$.
+Let us define the global frame as [X,Y] coordinate system which represents the environment. The location and the orientation of the robot can be described with (X,Y,$\alpha$) or (X,Y,$\varphi$) vector, while the kinematic state is that of time-derivative, i.e. ($\dot X, \dot Y, \dot \alpha$) or ($\dot X, \dot Y, \dot \varphi$). Eventually, we are usually interested in the kinematics from global frame point of view, but from the design and user point of view it is more convenient to start writing the equations in the local frame of the robot and then transform the kinematics to the global frame if that is needed. Let us denote the local frame as $(x,y)$ which center is the center of gravity of the robot. The robot velocity as $v$ when that of components in the local frame are $(v_x,v_y) = (- v sin \gamma , v cos \gamma )$.
 
 \begin{figure}[htb!]
 	\centering
@@ -474,7 +856,7 @@ The overall kinematic state of the case is a straightforward resultant of the wh
 \begin{itemize}
 	\item Translational velocity which actually equals with translational speed of the case because of the kinematic constraint. Additionally, it can be divided into two further parts:
 		\begin{itemize}
-			\item Its own velocity which can be called as pure translational wheel speed. It is proportional with the angular velocity of the wheel $v_{wheel,t} ~ r \omega_i$, where r is the wheel radius and $\omega$ is the angular velocity.
+			\item Its own velocity which can be called as pure translational wheel speed. It is proportional with the angular velocity of the wheel: $v_{wheel,t} \sim r \omega_i$, where r is the wheel radius and $\omega$ is the angular velocity.
 			\item The rolling velocity $v_{roller}$ which is induced by the other wheels and realized by the free rollers. Its direction is determined by the construction of rollers, generally and also in this case let it assume to be 90$^{\circ}$.
 		\end{itemize}
 	\item Rotational velocity component which comes from the spinning of the whole robot case about its center of gravity which can be supposed to be in the geometrical center of the common wheel circle, therefore it can be formulated as $v_{wheel,r}  = R \dot \alpha$. This component is always the same for all wheels.
@@ -486,7 +868,7 @@ v^i = {v_{wheel,t}}^i + {v_{wheel,r}} = r \omega_i
 where $i$ is the index of the wheels and i=1,2,3 in case of a thee-wheeled omnidirectional robot.
 \begin{figure}[htb!]
 	\centering
-	\includegraphics[width=9cm]{figures/omni_wheel_vectors}
+	\includegraphics[width=7cm]{figures/omni_wheel_vectors}
 	\caption{Wheel vectors in local (x,y) coordinate system}
 	\label{omni_wheel_vectors}
 \end{figure}
@@ -556,7 +938,7 @@ sin \alpha 	& cos \alpha & 0 \\
 \right].
 \end{eqnarray}
 \subsubsection{2D Simulations}
-Considering the equations above, a two-dimensional kinematic simulator was built-in Mathematica which could help to understand more accurately the robot locomotion mechanism by calculating and then visualizing the movements. The simulator has to be initialized with as follows:
+Considering the equations above, a two-dimensional kinematic simulator was built-in Wolfram Mathematica which could help to understand more accurately the robot locomotion mechanism by calculating and then visualizing the movements. The simulator has to be initialized with as follows:
 \begin{itemize}
 	\item Common wheel circle (R) which is in this case: caseR = 0.12 m,
 	\item Wheel position angles ($\varphi_i$) which is in this case $\varphi_1=30^{\circ}, \varphi_1=150^{\circ},\varphi_1=270^{\circ}$,
@@ -720,48 +1102,13 @@ In this case also the robot orientation and also the speed direction is changing
 	\caption{$0.60[s]$}
 	\endminipage\hfill
 \end{figure}
-The kinematic simulation code is good tool to demonstrate the possibilites of such a robot configuration, but it does not give an analysis from dynamics point of view.
+The kinematic simulation code is a handy tool to demonstrate the possibilities of such a robot configuration, but it does not give any details from dynamics point of view. As it can be seen in previous chapter the real world is not as ideal, thus such a simple kinematic point of view is not enough to give a detailed analysis.
 \newpage
 \subsection{Dynamic analysis of DC motors}
-\subsubsection{System modelling}
-The robot configuration is equipped by three officially identical 12V DC motors with permanent magnets having the nominal rotational speed value of 107RPM at no load state. They have to be driven synchronously in order to obtain the desired movements. During operation the demand for having a variable motor speed is essential, thus control algorithm has to be developed. 
-Briefly, the DC motor works on the principle (Lorentz Law) that when a current conductor wire (armature) is put in a magnetic field then it will be subjected to electromagnetic force in accordance with the direction and magnitude of current and magnetic field,i.e. $\mathbf{F} = I~\mathbf{l} \times \mathbf{B}$. The coil is connected to a DC power source, thus current will flow through the wire producing its own magnetic field. The mechanical force is produced as result of the magnetic field of the permanent magnets and the magnetic field of the coil. The magnetic field of the coil is attracted to the permanent magnetic field, therefore the armature starts rotating due to the induced electromagnetic force.
-\begin{figure}[htb!]
-	\centering
-	\includegraphics[height=4cm]{figures/dc_conducting_wire.png}
-	\caption{A single current conductor in a static magnetic field \cite{dc_motor_2}}
-	\label{dc_conducting_wire}
-\end{figure}
-At some point the magnetic fields would align resulting in a zero torque. In brushed DC motors this switching mechanism is done by the so called commutator part. The Figure \ref{dc_conducting_wire} represent a single wire with a commutator. The commutator is a simple mechanical switch that changes the polarity of the voltage put on the wire by touching the brushes in order to make the current flow in such a direction that maintains the direction of the generated torque, therefore the armature continue rotating. A single wire would provide a fluctuating torque during the operation since the angle between the coil and static magnetic flux is changing. For a more smooth operation of the rotor, several separate wire loops have to be used shifted from each other and switched one after the. This can be realised by applying more pairs of commutators which enables to connect always that coil loop with power source that does not align with the permanent magnetic field, thus can produce maximum torque. In practical motors the rotating part is called armature and standing part is called stator. The stator can be a permanent magnetic pole in case of small DC motors, while in larger motors an electromagnet is used which also powered by the same DC source in serial or parallel connection. In my case, the motor has a permanent magnetic stator.
-According to Faraday's law of electromagnetic induction, a rotating loop of coil will produce an electromotive force called EMF. The case of the rotating armature loop is the same, thus in this case it produces an adverse electromotive force which is called back EMF that tends to decrease cause of the accelerating effect, i.e. the applied input voltage. As a result, the back EMF will decrease the armature current by a remarkable amount, thus the motor torque as well. \cite{dc_motor_1} \cite{dc_motor_2}
-
-The electrical equivalent circuit of the armature and the free-body diagram of the rotor can be modeled as follows.
-\begin{figure}[htb!]
-	\centering
-	\includegraphics[height=5cm]{figures/dc_motor_model.png}
-	\caption{DC motor electrical and mechanical model \cite{dc_motor_3}}
-	\label{dc_motor_model}
-\end{figure}
-
-The motor is supplied with $V$ voltage as an input, while the output is the rotational speed of the rotor and shaft (rigid connection). In the mechanical model the load torque ($T_L$) and also dissipation energy is considered as being proportional with the angular speed. The motor torque is generally proportional to the armature current and the strength of the magnetic field, but in this model the magnetic field is assumed to be constant, thus the motor torque depends on the armature current ($i$) only. The back emf ($e$) is proportional to the angular velocity of the shaft. If SI units are used then the constants of the torque and the emf are equal, thus the same ($K$) constant can be used for the following equations:\cite{dc_motor_3}\cite{dc_motor_4}
-\begin{equation}
-T = K i
-\end{equation}
-\begin{equation}
-e = K \dot \theta
-\end{equation}		
-
-Based on the model in Figure \label{dc_motor_model} the following equations can be derived by means of the Newtons's 2nd Law and Kirchoff's voltage law.
-\begin{equation}
-J \ddot \theta + b \dot \theta = K i - T_L
-\end{equation}
-\begin{equation}
-L \frac{di}{dt} + R i = V - K \dot \theta
-\end{equation}
-The system can be described by a system of linear differential equations with respect to armature current and rotor angular velocity. A given system can be defined by 5 parameters, i.e. armature resitance (R), armature inductance (L), motor constant (K), damping constant (b) and motor inertia (J).
+In order to have a correct dynamic model, the source of forces, i.e. the motors have to be analysed and modeled. As it was mentioned before, the permanent magnet type DC motors are easy to be described using 5 parameters (L,J,R,B,K), thus the primary goal is estimate their values.
 \subsubsection{DC motor parameter identification}
 The motor parameters are essential to be known to develop a dynamic model. The L,J describes the dynamic behaviour of the motor, while the others characterize the system in a stationary aspect. Based on motor datasheet data (no load case, max efficiency case, max power case, stall torque case), only the stationary parameters can be estimated and you even cannot be sure about the values whether match the reality or not. Obviously, to get know about the dynamic parameters, measurements of dynamic operations of the motors are needed, e.g. measuring the step response to a given voltage. A robust technique for the parameter identification is to combine the measurement results with the capabilities of MATLAB Simulink and its Design Optimization tool. To carry out the following models and the parameter identificiation process the following references were considered: \cite{par_est_1}, \cite{par_est_2},\cite{par_est_3}. The Simscape library of the simulink makes it possible to make system models of coupled physical problems combining submodel elements, e.g. a DC motor which is an electromechanical system.
-Firstly, in accordance with the equations above the following model was made.
+Firstly, in accordance with the equations of DC motor, the following model was made.
 \begin{figure}[htb!]
 	\centering
 	\includegraphics[height=5cm]{figures/simulink_dc_motor.png}
@@ -989,282 +1336,14 @@ The motor loads can be calculated by means of the Eq. \ref{motor_load_equation},
 	\label{dangerousOri}
 	\endminipage\hfill
 \end{figure}
+\newpage
 \subsubsection{Rolling friction}
 \subsubsection{Mass estimation}
 \subsubsection{Comparision with measurements}
 
 
 \newpage
-
-\subsection{DC motor speed analysis}
-
-\subsubsection{Step response analysis of the motors}
-The motors are to be controlled via PWM and with the help of the rotary encoders the response function to any voltage value could be measured. It is more convenient to treat the PWM signal's duty cycle as the control input athough voltage level is applied to the armature of the motor. Firstly, let the pwm value be regarded as an input and the wheel speed as an output assuming that the transfer function of the gearbox and power electronic module are proportional type, thus it can be handled together with the motor as a plant element.
-\begin{figure}[htb!]
-	\centering
-	\includegraphics[height=7cm]{figures/directed_speed_pwm_100}
-	\caption{PWM=100\% step response of the motors}
-	\label{directed_speed_pwm_100}
-\end{figure}
-The motors gave quite similar responses with respect to time constant and amplitude and also the nominal value (107RPM at 12V no load case) was also obtained with small deviations.
-
-\begin{figure}[htb!]
-	\centering
-	\minipage{0.32\textwidth}
-	\centering
-	\includegraphics[height=5cm]{figures/directed_speed_pwm_60}
-	\caption{PWM=60\% step response of the motors}
-	\endminipage\hfill
-	\minipage{0.32\textwidth}
-	\centering
-	\includegraphics[height=5cm]{figures/directed_speed_pwm_40}
-	\caption{PWM=40\% step response of the motors}
-	\label{mecanum}
-	\endminipage\hfill
-	\minipage{0.32\textwidth}
-	\centering
-	\includegraphics[height=5cm]{figures/pwm_u}
-	\caption{PWM=40\% step response of the motors}
-	\label{mecanum}
-	\endminipage\hfill
-\end{figure}
-Unfortunately, the problems were captured when the duty cycle of the pwm signal was decreased. Firstly, the prior guess that the pwm value provided in the MCU code will be proportional to the motor speeds was proven to be wrong. Furthermore one of the L298N module was functioning really poorly as it provided different voltage values for the same pwm signal which resulted that the Motor C was spinning remarkably slower. It is also clearly visible that the system is nonlinear as neither for the Motor A and B are the same dynamics with respect to rise time are obtained, thus even the shape is not similar.
-It is very straight forward that without proper control of the wheels it is impossible to achieve smooth and accurate movements. As a first approximation, it is worth neglecting the mentioned issues and handle the system as it would be completely linear. Problems could occur at low voltages where the system probably become extremely nonlinear as the motor will not move at small voltages due to the sticking friction. In the model only the linearly modeled viscous friction is included. A possible solution is to have the motor banned to work in this region. 
-\subsubsection{Controller design using blackbox model \cite{dc_motor_3}}
-Considering above all, based on the response function of the maximum pwm signal a controller can be designed for the whole range for each wheel separately. In order to do this, a black box model has to constructed. In case of DC motor it is a typical procedure to handle the system as a first order one. \cite{dc_motor_3} 
-The governing equations for the DC motor are the followings:
-\begin{equation}
-J \ddot \theta + b \dot \theta = K i
-\end{equation}
-\begin{equation}
-L \frac{di}{dt} + R i = V - K \dot \theta
-\end{equation}
-Applying the Laplace transform and rearranging the transformed equations the transfer function of the system is as follows:
-\begin{equation}
-T(s) = \frac{\dot \theta (s)}{V(s)} = \frac{K}{(Js+b)(Ls+R)+K^2}.
-\end{equation} 
-Beside the fact that a second-order model can be derived, the step response of the motor looks like that of a first-order system. After inspecting the actual step response of these motors, this looks as a good approximation. The reason for that the motor is an overdamped second-order system, thus it has two negative poles (roots of the denominator of the transfer function). The system is stable and has two time constants. In case of DC motors, the time constant of the mechanical dynamics is much higher compared to the time constant of the electrodynamics, thus the slower mechanical dynamics dominates the time response. 
-A first order system can be expressed as it follows:
-\begin{equation}
-	P(s) = \frac{\dot{\theta(s)}}{DC(s)}= \frac{k_{dc}}{1+\tau s},
-\end{equation}
-where
-\begin{itemize}
-	\item $\tau$ - time constant which equals the time it takes the system to reach the 63.2\% of steady-state step response of a unit step, more generally it represents the time scale of the system dynamics
-	\item $k_{dc}$ - DC gain, the ratio of the magnitude of the steady-state step response to the magnitude of the step input
-\end{itemize}
-Based on the measurments shown in Figure \ref{directed_speed_pwm_100} the following values were calculated providing a really good agreement.
-\begin{table}[h]
-	\centering
-	\label{first_order_model_table}
-	\begin{tabular}{|c|c|c|c|}
-		\hline
-							& A  		& B  		& C   		\\ \hline
-		$\tau$ {[}s{]} 		& 111.05 	& 113.39 	& 109.07 	\\ \hline
-		$k_{dc}$ {[}rpm{]}       & 100.70 	& 99.88 	& 107.03   	\\ \hline
-	\end{tabular}
-	\caption{First-order model parameter estimations}
-\end{table}
-A common choice for such a system is a PI controller.\cite{dc_motor_3} The plant block is overall model of the power electronic module, the motor armature, rotary encoders and the signal processing on the MCU. 
-\begin{figure}[htb!]
-	\centering
-	\includegraphics[height=4cm]{figures/dc_motor_closed_system}
-	\caption{Model of the closed (feedback controlled) system}
-	\label{dc_motor_closed_system}
-\end{figure}
-The transfer function of the controller is as follows:
-\begin{equation}
-C(s) = K_p + \frac{K_i}{s}.
-\end{equation}
-The transfer function of the (positive feedback) closed-loop:
-\begin{equation}
-T(s) = \frac{C(s)P(s)}{1+C(s)P(s)}=\frac{A (K_i+K_p s)}{A K_i+A K_p s+s^2 \tau +s}
-\label{eq_transfer_function}
-\end{equation}
-The closed-loop system is almost a second-order one except for the presence of the zero (possible root in the denominator), thus it does not match with the canonical exactly:
-\begin{equation}
-G(s) = \frac{{k_{dc}\omega_n}^2}{s^2 + 2 \zeta \omega_n s +{\omega_n}^2}
-\label{eq_transfer_function_canonical}
-\end{equation}
-where
-\begin{itemize}
-	\item $k_{dc}$ - DC gain is the ratio of the magnitude of the steady-state step response to the magnitude of the step input,
-	\item $\zeta$ - The damping ratio is a dimensionless quantity characterizing the rate at which an oscillation in the system's response 		decays due to effects such as viscous friction or electrical resistance,
-	\item $\omega_n$ - The natural frequency is the angular frequency that the system will oscillate at when there is no damping. \cite{dc_motor_3}
-\end{itemize}
-
-The original system is overdamped but the addition of a proportional controller can make it underdamped as it has similar behaviour like "virtual spring". For such special case several design equations are available if the parameters in the canonical form are known. The presence of the zero in closed-loop transfer function can be a cause of errors. However, as a first guess it can provide a good approximation for starting value for the controller if the presence of zero is not considered and the system is treated as if it was an underdamped second-order system.
-It is important to mention, that the closed-loop system would have a canonical form if only proportional type controller was used.
-
-
-The canonical second-order transfer function has two poles at:
-\begin{equation}
-s_p = -\zeta \omega_n \pm j \omega_n \sqrt{1-{\zeta}^2} = -\sigma \pm j\omega_d.
-\label{eq_poles}
-\end{equation}
-If $\zeta<1$, then the system is underdamped, the two poles are both complex-valued with negative real parts. The system is asymptotically stable and oscillating with the damped natural frequency $\omega_d = \omega_n \sqrt{1-{\zeta}^2}$. Based on the value of damping the system can marginally stable and unstable, but those are not the cases which are have to be examined now.
-
-Combining the denumerators of equation (\ref{eq_transfer_function}) and (\ref{eq_transfer_function_canonical}) the following expressions can be obtained:
-\begin{equation}
-	{\omega_n}^2 = \frac{A K_i}{\tau},
-\end{equation}
-\begin{equation}
-	2\omega_n\zeta  = \frac{1+A K_p}{\tau}.
-\end{equation}
-Additionally using the equation \ref{eq_poles}, the relation between the poles of the closed loop and the controller parameters can be derived:
-\begin{equation}
-	%{\omega_d}^2 = \frac{A K_i (1-\zeta^2)}{\tau},
-	\sigma^2 + {\omega_d}^2 = \frac{A K_i}{\tau},
-	\label{eq_pi_from_poles_1}
-\end{equation}
-\begin{equation}
-	\sigma = \frac{1+A K_p}{2\tau}.
-	\label{eq_pi_from_poles_2}
-\end{equation}
-
-The figure \ref{second_order_underdamped_response} represents the step response of a canonical second order system and several properties are denoted to characterize itself.
-\begin{figure}[htb!]
-	\centering
-	\includegraphics[height=7cm]{figures/step_response_of_2nd_order_system_1}
-	\caption{Step response characteristics}
-	\label{second_order_underdamped_response}
-\end{figure}
-
-\begin{itemize}
-	\item Settling Time is time that the system needs to have an output with a smaller deviation from the steady-state in terms of a given percentage. In case of second-order canonical system the following formula provides a good approximation:
-	\begin{equation}
-	T_s = -\frac{ln(tolerance)}{\zeta \omega_n} = -\frac{ln(tolerance)}{\sigma}
-	\label{eq_settling_time}
-	\end{equation}
-	\item Percent Overshoot characterize the output in terms of the ratio of maximum peak and the steady-state value expressed as a percentage.
-	\begin{equation}
-	Mp = e^{\frac{-\zeta \pi}{\sqrt{1-\zeta^2}}}
-	\label{eq_overshoot}
-	\end{equation}
-	The corresponding peak time is as follows:
-	\begin{equation}
-	T_p = \frac{\pi}{\omega_d}
-	\label{eq_overshoot_time}
-	\end{equation}
-\end{itemize}
-Ideally closed-loop respond with low settling time and overshoot is wanted. Limits can be defined in arbitrary way that suits are demands with respect to the former properties. Based on equations \ref{eq_settling_time}, \ref{eq_overshoot} and \ref{eq_overshoot_time} further limits can be derived for $\zeta$ and $\omega_d$.
-\begin{itemize}
-	\item 1 \% settling time:
-	\begin{equation}
-	T_s = -\frac{ln(0.01)}{\sigma} = \frac{4.605}{\sigma} < l_{T_s},
-	\end{equation}
-	\begin{equation}
-	\sigma > \frac{4.605}{l_{T_s}}.
-	\end{equation}
-	
-	\item peak time:
-	\begin{equation}
-	T_p = \frac{\pi}{\omega_d} < l_{T_s},
-	\end{equation}
-	\begin{equation}
-	\omega_d > \frac{\pi}{l_{T_p}}.
-	\end{equation}
-	
-	\item maximum percent overshoot:
-	\begin{equation}
-	Mp = e^{\frac{-\zeta \pi}{\sqrt{1-\zeta^2}}}  < l_{M_p},
-	\end{equation}
-	\begin{equation}
-	\zeta > \sqrt{\frac{ln^2(l_{M_p})}{\pi^2+ln^2(l_{M_p})}}.
-	\end{equation}
-\end{itemize}
-where $l_{T_s}$, $l_{T_p}$ and $l_{M_p}$ are the limits respectively.
-Considering the provided limits, some guidelines for seeking suitable poles can be obtained which probably result desired system dynamics. Rearranging the equations \ref{eq_pi_from_poles_1} and \ref{eq_pi_from_poles_2}, the controller gain estimations can be calculated:
-\begin{equation}
-	K_p = \frac{2 \sigma \tau - 1}{A},
-\end{equation}
-\begin{equation}
-	K_i = \frac{\tau(\sigma^2 + {\omega_d}^2)}{A}.
-\end{equation}
-As it was mentioned before, choosing the poles based on the above limits can not guarantee acceptable system behaviour as our system is not a canonical second-order, on the top of that the plan model is also simplified to a first order.
-\begin{figure}[htb!]
-	\centering
-	\includegraphics[height=7cm]{figures/possible_poles}
-	\caption{Pole parameter field considering the limits}
-	\label{possible_poles}
-\end{figure}
-The figure above shows the possible real and imaginary value pairs which satisfies the requirements. The real part of pole is $\sigma$, the imaginary part is $\omega_d$ and the angle $beta$ can calculated by means of $\zeta = cos(\beta)$.
-Let us have the following requirements:
-\begin{itemize}
-	\item Settling time for 1$\%$: 2[s]
-	\item Peak time: 1[s]
-	\item Max peak amplutude: 10\%
-\end{itemize}
-and let us use measurments corresponding to pwm value of 0.5. After fitting the first order balck box model the following values were obtained.
-\begin{table}[h]
-	\centering
-	\label{first_order_model_table_50}
-	\begin{tabular}{|c|c|c|c|}
-		\hline
-		& A  		& B  		& C   		\\ \hline
-		$\tau$ {[}s{]} 		& 0.2949 	& 0.2880 	& 0.3767 	\\ \hline
-		$k_{dc}$ {[}rpm{]}       & 93.8978 	& 94.9998 	& 80.5325   	\\ \hline
-	\end{tabular}
-	\caption{First-order model parameter estimations}
-\end{table}
-\begin{figure}[htb!]
-	\centering
-	\includegraphics[height=7cm]{figures/directed_speed_pwm_50_fitted}
-	\caption{Black box model at 0.5 PWM value}
-	\label{fitted_model}
-\end{figure}
-Considering the given requirements, as a first approximation placing the poles of the system to $\sigma = 5$ and $\omega_d = \pi$ point can be good.
-In this case, the $K_p = 0.021$ and $K_i = 0.11$ are obtained.
-
-\begin{figure}[htb!]
-	\centering
-	\minipage{0.45\textwidth}
-	\centering
-	\includegraphics[height=7cm]{figures/polemap_at_50}
-	\caption{Possible poles that suits the requirements}
-	\label{polemap_at_50}
-	\endminipage\hfill
-	\minipage{0.45\textwidth}
-	\centering
-	\includegraphics[height=7cm]{figures/expected_50}
-	\caption{Expected response}
-	\label{expected_response_50}
-	\endminipage\hfill
-\end{figure}
-
-\begin{figure}[htb!]
-	\centering
-	\minipage{0.45\textwidth}
-	\centering
-	\includegraphics[height=7cm]{figures/controlled_50_p_02_i_11}
-	\caption{Obtained response at target velocity 50 [rpm]}
-	\label{obtained_response_50}
-	\endminipage\hfill
-	\minipage{0.45\textwidth}
-	\centering
-	\includegraphics[height=7cm]{figures/controlled_100_p_02_i_11}
-	\caption{Obtained response at target velocity 100 [rpm]}
-	\label{obtained_response_100}
-	\endminipage\hfill
-\end{figure}
-
-\begin{figure}[htb!]
-	\centering
-	\minipage{0.45\textwidth}
-	\centering
-	\includegraphics[height=7cm]{figures/controlled_50_p_02_i_002}
-	\caption{Obtained response at target velocity 50 [rpm]}
-	\label{obtained_response_50_good}
-	\endminipage\hfill
-	\minipage{0.45\textwidth}
-	\centering
-	\includegraphics[height=7cm]{figures/controlled_100_p_02_i_002}
-	\caption{Obtained response at target velocity 100 [rpm]}
-	\label{obtained_response_100_good}
-	\endminipage\hfill
-\end{figure}
-\newpage
-\subsection{Control and parameter estimation problems}
+\section*{Summary}
 \begin{itemize}
 	\item Kerekek szabályozásának implementálása
 	\item Felboruáls állapotának elkerülése
@@ -1279,6 +1358,9 @@ In this case, the $K_p = 0.021$ and $K_i = 0.11$ are obtained.
 	\item mechanikai modell alapján optimális orientáció számítása (kész) és annak változtatása menet közben adott pálya mentén (laterális gyorsulás), motor nyomatékokból ki lehet számolni a pillanatyni gyorsulást elvileg --> ez is inkább szabályozási feladat már \\
 	\item esetleg valami teljesítmény optimalizálós dolog
 \end{itemize}
+\addcontentsline{toc}{section}{Summary}
+
+
 \newpage
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1328,7 +1410,7 @@ BMW STR: http://www.bmwblog.com/ \href{http://www.bmwblog.com/2016/11/18/bmw-log
 
 \bibitem{i2c_communication_arduino} Alex Lange: \emph{I2C Communication with Arduino, 2015}
 
-\bibitem{i2C_communication_arduino_2} http://howtomechatronics.com \href{http://howtomechatronics.com/}{[link]}
+\bibitem{howtomech} http://howtomechatronics.com \href{http://howtomechatronics.com/}{[link]}
 
 \bibitem{orientation_arduino} Kevin Townsend: \emph{Adafruit BNO055 Absolute Orientation Sensor, 2017}
 	
@@ -1340,13 +1422,21 @@ BMW STR: http://www.bmwblog.com/ \href{http://www.bmwblog.com/2016/11/18/bmw-log
 
 \bibitem{dc_motor_4}  Dynamic Model of a Permanent Magnet DC Motor: http://users.isr.ist.utl.pt/~alex/micd0506/motordc.pdf \href{ http://users.isr.ist.utl.pt/~alex/micd0506/motordc.pdf}{[link]}
 
-http://users.isr.ist.utl.pt/~alex/micd0506/motordc.pdf
+\bibitem{dc_motor_5} Phidigets: DC Motor And Controller Primer
+
 \bibitem{mathworks}  https://www.mathworks.com/ \href{ https://www.mathworks.com/}{[link]}
 
 \bibitem{par_est_1} https://www.mathworks.com/videos/estimating-parameters-of-a-dc-motor-68856.html
 \bibitem{par_est_2} https://www.mathworks.com/videos/modeling-a-dc-motor-68852.html
 \bibitem{par_est_3} https://www.mathworks.com/products/simscape.html
 \bibitem{par_est_4} https://www.control.isy.liu.se/student/tsiu61/file/pm dcmotor.pdf
+
+\bibitem{owp1} Magnus Jonason Bjärenstam: Development of a ball balancing robot
+with omni wheels, 2012 Lund University
+
+\bibitem{arduino} Arduino Documentation: https://www.arduino.cc
+
+
 
 \end{thebibliography}
 
