@@ -8,8 +8,8 @@
 #define MOTOR_C_IN1 6
 #define MOTOR_C_IN2 5
 #define MOTOR_C_EN  4
-#define ENCODER3_CH1  3
-#define ENCODER3_CH2  2
+#define ENCODER3_CH1  50
+#define ENCODER3_CH2  51
 
 // Motor B
 #define MOTOR_B_IN1 22 //7
@@ -22,8 +22,8 @@
 #define MOTOR_A_IN1  24 //10
 #define MOTOR_A_IN2  25 //11
 #define MOTOR_A_EN  7 //12
-#define ENCODER1_CH1  20
-#define ENCODER1_CH2  21
+#define ENCODER1_CH1  2
+#define ENCODER1_CH2  3
 
 // Serial connection of RN42 BT (TX2,RX2) Serial2 on Mega
 //#define RN42_TX 16

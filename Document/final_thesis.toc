@@ -36,8 +36,8 @@
 \contentsline {subsubsection}{\numberline {4.2.3}Rolling resistance measurements}{41}{subsubsection.4.2.3}
 \contentsline {subsection}{\numberline {4.3}Mechanical model of the robot}{42}{subsection.4.3}
 \contentsline {subsubsection}{\numberline {4.3.1}Model of the robot case}{42}{subsubsection.4.3.1}
-\contentsline {subsubsection}{\numberline {4.3.2}Rolling friction}{48}{subsubsection.4.3.2}
-\contentsline {subsubsection}{\numberline {4.3.3}Mass estimation}{48}{subsubsection.4.3.3}
-\contentsline {subsubsection}{\numberline {4.3.4}Comparision with measurements}{48}{subsubsection.4.3.4}
-\contentsline {section}{Summary}{49}{subsubsection.4.3.4}
-\contentsline {section}{References}{50}{subsubsection.4.3.4}
+\contentsline {subsubsection}{\numberline {4.3.2}Comparision with measurements}{48}{subsubsection.4.3.2}
+\contentsline {subsubsection}{\numberline {4.3.3}Rolling friction}{49}{subsubsection.4.3.3}
+\contentsline {subsubsection}{\numberline {4.3.4}Mass estimation}{49}{subsubsection.4.3.4}
+\contentsline {section}{Summary}{50}{subsubsection.4.3.4}
+\contentsline {section}{References}{51}{subsubsection.4.3.4}

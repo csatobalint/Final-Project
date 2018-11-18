@@ -1361,9 +1361,22 @@ The Figure \ref{braking_1_0_kg_1_0_m} shows that in case of max braking power, t
 	\label{braking_1_0_kg_1_0_m}
 \end{figure}
 It is important to emphasize that the presence of the negative forces does not guarantee that the robot will fall over. If the forces last for only moments, there will not be enough work to overcome the reversing torque exerted by the gravitational force. Eventually, it can be concluded that all in all a conservative engineering approach to tune the braking profile such a way that the no negative forces are calculated by the model. The tuned voltage profile in the simulation is obtained such a way that resultant torque profile is the one-third of the maximal one at each time step. If mass of the disk or that of position along the rod or the lenght of the rod changes, this calibration will likely not work. If only the mass of the disk is the changing variable, then combining the above force prediction model with a mass estimator one, a more general prediction tool can be got.
+\subsubsection{Comparision with measurements}
+\begin{figure}[htb!]
+	\centering
+	\includegraphics[height=7cm]{figures/fallover_video_05kg.png}
+	\caption{Braking with max torque and reduced torque in case of 0.5[kg] disk at the top of the rod at 1[m] height}
+	\label{fallover_video_05kg}
+\end{figure}
+\begin{figure}[htb!]
+	\centering
+	\includegraphics[height=7cm]{figures/fallover_video_1kg.png}
+	\caption{Braking with max torque and reduced torque in case of 1.0[kg] disk at the top of the rod at 1[m] height}
+	\label{fallover_video_1kg}
+\end{figure}
 \subsubsection{Rolling friction}
 \subsubsection{Mass estimation}
-\subsubsection{Comparision with measurements}
+
 
 
 \newpage

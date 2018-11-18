@@ -6,9 +6,11 @@
 
 #include "Timer.h"
 
-/*#include <Adafruit_Sensor.h>
+#include <Adafruit_Sensor.h>
 #include <Adafruit_BNO055.h>
-#include <utility/imumaths.h>*/
+#include <utility/imumaths.h>
+
+Adafruit_BNO055 bno = Adafruit_BNO055();
 
 
 Motor motorA(MOTOR_A_IN1, MOTOR_A_IN2, MOTOR_A_EN, 0.00, 255);
@@ -44,11 +46,14 @@ BluetoothJoystickCommander bjc(&RN42_SERIAL_PORT);
 Timer t;
 
 void control_loop();
+void bno_read_loop();
 void inceremental_loop();
 void parameterEstimationMeasurement();
 void maxPowerSpeedAndAccelerationSpinningMeasurment();
 void maxPowerSpeedAndAccelerationForwardMeasurment();
 void parameterEstimationValidation();
+void accelerateAndStop();
+void accelerateAndReverse();
 
 bool omni_dir_drive = true;
 bool incremental_header = true;
@@ -66,6 +71,21 @@ void setup() {
 
   Serial.begin(57600);
   RN42_SERIAL_PORT.begin(57600);
+
+  if(!bno.begin())
+  {
+    Serial.print("Ooops, no BNO055 detected ... Check your wiring or I2C ADDR!");
+    while(1);
+  }
+  delay(100);
+
+  int8_t temp = bno.getTemp();
+  Serial.print("Current Temperature: ");
+  Serial.print(temp);
+  Serial.println(" C");
+  Serial.println("");
+  bno.setExtCrystalUse(false);
+  Serial.println("Calibration status values: 0=uncalibrated, 3=fully calibrated");
 
   //RN42_SERIAL_PORT.println("BT serial");
 
@@ -89,6 +109,7 @@ void setup() {
 
   t.every(10, control_loop); // Every 25 ms run the timed_loop, it works unitl the main loop is faster
   //t.every(200, inceremental_loop);
+  t.every(1000, bno_read_loop);
 
   digitalWrite(LED_RED, led_red_on);
   randomSeed(analogRead(1));
@@ -105,14 +126,21 @@ void print_encoder_positions() {
 }
 
 void print_wheel_velocities() {
+
+  imu::Vector<3> linAcceleration = bno.getVector(Adafruit_BNO055::VECTOR_LINEARACCEL);
+  imu::Vector<3> angVelocity = bno.getVector(Adafruit_BNO055::VECTOR_GYROSCOPE);
+
   if(measurement_on){
     Serial.print(millis()-measurement_on_start_time); Serial.print(", ");
     Serial.print(cMotorA.get_current_velocity()); Serial.print(", ");
     Serial.print(cMotorB.get_current_velocity()); Serial.print(", ");
     Serial.print(cMotorC.get_current_velocity()); Serial.print(", ");
-    Serial.print(cMotorA.get_spd()); Serial.print(", ");
-    Serial.print(cMotorB.get_spd()); Serial.print(", ");
-    Serial.print(cMotorC.get_spd()); Serial.println("");
+    Serial.print(cMotorA.get_current_acceleration()); Serial.print(", ");
+    Serial.print(cMotorB.get_current_acceleration()); Serial.print(", ");
+    Serial.print(cMotorC.get_current_acceleration()); Serial.print(", ");
+    Serial.print(linAcceleration.x());Serial.print(", ");
+    Serial.print(linAcceleration.y());Serial.print(", ");
+    Serial.print(linAcceleration.z());Serial.println("");
   }
   if(measurement_on){
     RN42_SERIAL_PORT.print(millis()-measurement_on_start_time); RN42_SERIAL_PORT.print(", ");
@@ -121,7 +149,13 @@ void print_wheel_velocities() {
     RN42_SERIAL_PORT.print(cMotorC.get_current_velocity()); RN42_SERIAL_PORT.print(", ");
     RN42_SERIAL_PORT.print(cMotorA.get_current_acceleration()); RN42_SERIAL_PORT.print(", ");
     RN42_SERIAL_PORT.print(cMotorB.get_current_acceleration()); RN42_SERIAL_PORT.print(", ");
-    RN42_SERIAL_PORT.print(cMotorC.get_current_acceleration()); RN42_SERIAL_PORT.println("");
+    RN42_SERIAL_PORT.print(cMotorC.get_current_acceleration()); RN42_SERIAL_PORT.print(", ");
+    RN42_SERIAL_PORT.print(linAcceleration.x()); RN42_SERIAL_PORT.print(", ");
+    RN42_SERIAL_PORT.print(linAcceleration.y()); RN42_SERIAL_PORT.print(", ");
+    /*RN42_SERIAL_PORT.print(linAcceleration.z()); RN42_SERIAL_PORT.print(", ");
+    RN42_SERIAL_PORT.print(angVelocity.x());RN42_SERIAL_PORT.print(", ");
+    RN42_SERIAL_PORT.print(angVelocity.y());RN42_SERIAL_PORT.print(", ");*/
+    RN42_SERIAL_PORT.print(angVelocity.z());RN42_SERIAL_PORT.println("");
   }
 }
 
@@ -160,11 +194,35 @@ void ledController(bool omni_dir_drive, int x){
 
 float currentVelocity = 0;
 
-void control_loop() {
-  cMotorA.update();
-  cMotorB.update();
-  cMotorC.update();
-  print_wheel_velocities();
+void bno_read_loop() {
+  imu::Vector<3> linAcceleration = bno.getVector(Adafruit_BNO055::VECTOR_LINEARACCEL);
+  imu::Vector<3> angVelocity = bno.getVector(Adafruit_BNO055::VECTOR_GYROSCOPE);
+  Serial.print("X: ");
+  Serial.print(linAcceleration.x());
+  Serial.print(" Y: ");
+  Serial.print(linAcceleration.y());
+  Serial.print(" Z: ");
+  Serial.print(linAcceleration.z());
+  Serial.print("\t\t");
+
+  Serial.print("X: ");
+  Serial.print(angVelocity.x());
+  Serial.print(" Y: ");
+  Serial.print(angVelocity.y());
+  Serial.print(" Z: ");
+  Serial.print(angVelocity.z());
+  Serial.print("\t\t");
+
+  uint8_t system, gyro, accel, mag = 0;
+  bno.getCalibration(&system, &gyro, &accel, &mag);
+  Serial.print("CALIBRATION: Sys=");
+  Serial.print(system, DEC);
+  Serial.print(" Gyro=");
+  Serial.print(gyro, DEC);
+  Serial.print(" Accel=");
+  Serial.print(accel, DEC);
+  Serial.print(" Mag=");
+  Serial.println(mag, DEC);
 }
 
 float ramp_up_value = 0;
@@ -192,8 +250,11 @@ void inceremental_loop() {
   if(ramp_up_value<0) ramp_up_value_increment *= -1;
 }
 
-void print_command_loop(){
-
+void control_loop(){
+  cMotorA.update();
+  cMotorB.update();
+  cMotorC.update();
+  print_wheel_velocities();
 }
 
 void drive() {
@@ -268,12 +329,12 @@ void loop() {
   // Update battery percentage and outcoming data
   /*battery.update(); bjc.setData3(String(battery.get_percent())+"%");*/
 
-  /*
+
   // Set dirve method
   bjc.setData1(omni_dir_drive ? "Omni" : "Car-like");
 
   // Process incoming data from BluetoothJoystickController
-  int p = bjc.process();
+  /*int p = bjc.process();
   if (p==2) { //Button packet
     //Serial.print("Buttons 1,2: ");
     //Serial.print(bjc.getB0()); Serial.print(", ");
@@ -358,15 +419,23 @@ void parameterEstimationMeasurement(){
   }
 }
 void maxPowerSpeedAndAccelerationSpinningMeasurment(){
-  float delta = millis() - measurement_on_start_time;
-  if(delta< 5001){
-    float pwm = 1.0;
-    motorA.set_signed_speed(pwm); //-1...0...1
-    motorB.set_signed_speed(pwm);
-    motorC.set_signed_speed(pwm);
+  if(measurement_on){
+    float delta = millis() - measurement_on_start_time;
+    if(delta< 5001){
+      float pwm = 1.0;
+      motorA.set_signed_speed(pwm); //-1...0...1
+      motorB.set_signed_speed(pwm);
+      motorC.set_signed_speed(pwm);
+    }
+    else if(delta >= 5001){
+      measurement_on = false;
+      float pwm = 0.0;
+      motorA.set_signed_speed(pwm); //-1...0...1
+      motorB.set_signed_speed(pwm);
+      motorC.set_signed_speed(pwm);
+    }
   }
-  else if(delta >= 5001){
-    measurement_on = false;
+  else{
     float pwm = 0.0;
     motorA.set_signed_speed(pwm); //-1...0...1
     motorB.set_signed_speed(pwm);
@@ -419,5 +488,65 @@ void parameterEstimationValidation(){
   	else if(delta >= 20001){
   		measurement_on = false;
   	}
+  }
+}
+
+int ramped_velocity = 10;
+
+void accelerateAndStop(){
+  if(measurement_on){
+    float delta = millis() - measurement_on_start_time;
+    if(delta< 2001){
+      float pwm = 1.0;
+      cMotorA.set_target_velocity(pwm*maxWheelSpeed); //-1...0...1
+      cMotorB.set_target_velocity(-pwm*maxWheelSpeed);
+      cMotorC.set_target_velocity(0*maxWheelSpeed);
+    }
+    else if(delta >= 2001 && delta<3001){
+      //measurement_on = false;
+      float pwm = 0.0;
+      cMotorA.set_target_velocity(pwm); //-1...0...1
+      cMotorB.set_target_velocity(pwm);
+      cMotorC.set_target_velocity(pwm);
+    }
+    else if(delta >= 3001){
+      measurement_on = false;
+    }
+  }
+  else{
+    float pwm = 0.0;
+    cMotorA.set_target_velocity(pwm); //-1...0...1
+    cMotorB.set_target_velocity(pwm);
+    cMotorC.set_target_velocity(pwm);
+  }
+}
+void accelerateAndReverse(){
+  if(measurement_on){
+    float delta = millis() - measurement_on_start_time;
+    if(delta< 2001){
+      float pwm = 1.0;
+      motorA.set_signed_speed(pwm); //-1...0...1
+      motorB.set_signed_speed(-pwm);
+      motorC.set_signed_speed(0);
+    }
+    else if(delta >= 2001 && delta<3000){
+      float pwm = 1.0;
+      motorA.set_signed_speed(-pwm); //-1...0...1
+      motorB.set_signed_speed(pwm);
+      motorC.set_signed_speed(0);
+    }
+    else if(delta >= 3001){
+      measurement_on = false;
+      float pwm = 0.0;
+      motorA.set_signed_speed(pwm); //-1...0...1
+      motorB.set_signed_speed(pwm);
+      motorC.set_signed_speed(pwm);
+    }
+  }
+  else{
+    float pwm = 0.0;
+    motorA.set_signed_speed(pwm); //-1...0...1
+    motorB.set_signed_speed(pwm);
+    motorC.set_signed_speed(pwm);
   }
 }
