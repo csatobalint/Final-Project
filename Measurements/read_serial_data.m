@@ -51,7 +51,7 @@ yLim = [0 15];
 displayNames = ["Motor A","Motor B","Motor C"];
 axisNames = ["$t\;[s]$","$\omega\;[rad/s]$"];
 currentFigure=createfigure3(time,angular_speeds,axisNames,displayNames,xLim,yLim);
-figsave(currentFigure,strcat(measurement_case,'_velocity'),15,15);
+%figsave(currentFigure,strcat(measurement_case,'_velocity'),15,15);
 
 %angular acceleration
 a = 1;
