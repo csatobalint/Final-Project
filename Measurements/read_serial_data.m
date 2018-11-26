@@ -34,7 +34,7 @@ currentFigure = createfigure3(time,accelerations,axisNames,displayNames,xLim,yLi
 figsave(currentFigure,measurement_case,15,15);
 
 %% Three motors max speed and acceleration
-measurement_case = '2018_10_31/max_pwm_forward_10ms_0';
+measurement_case = '2018_10_31/max_pwm_forward_10ms_3744';
 measurement_time = 2;
 h = 0.010;
 
@@ -47,7 +47,7 @@ xLim = [0 measurement_time];
 
 angular_speeds = abs([filter(b,a,data(:,2)) filter(b,a,data(:,3)) filter(b,a,data(:,4))]);
 yLim = [0 1.2*max(max(data(:,[2 3 4])))];
-yLim = [0 15];
+yLim = [0 12];
 displayNames = ["Motor A","Motor B","Motor C"];
 axisNames = ["$t\;[s]$","$\omega\;[rad/s]$"];
 currentFigure=createfigure3(time,angular_speeds,axisNames,displayNames,xLim,yLim);
@@ -55,7 +55,7 @@ currentFigure=createfigure3(time,angular_speeds,axisNames,displayNames,xLim,yLim
 
 %angular acceleration
 a = 1;
-filterFactor = 10;
+filterFactor = 4;
 b=1/filterFactor*ones(1,filterFactor);
 angular_acceleration = abs([filter(b,a,data(:,5)) filter(b,a,data(:,6)) filter(b,a,data(:,7))]);
 %angular_acceleration =angular_acceleration/(2*pi/3960)/9.549296596425384;
@@ -65,6 +65,17 @@ displayNames = ["Motor A","Motor B","Motor C"];
 axisNames = ["$t\;[s]$","$\varepsilon\;[rad/s^2]$"];
 createfigure3(time,angular_acceleration,axisNames,displayNames,xLim,yLim);
 %figsave(currentFigure,measurement_case,15,15);
+
+measuredEpsilon=abs(data(:,6));
+mTime=data(:,1)/1000;
+a = 1;filterFactor = 4;b=1/filterFactor*ones(1,filterFactor);
+measuredEpsilonFilter4=abs(filter(b,a,data(:,6)));
+a = 1;filterFactor = 10;b=1/filterFactor*ones(1,filterFactor);
+measuredEpsilonFilter10=abs(filter(b,a,data(:,6)));
+plot(epsilonSimulation(:,1),epsilonSimulation(:,2),epsilonSimulation(:,1),102.568*exp(-8.6799*epsilonSimulation(:,1)),mTime,[measuredEpsilon measuredEpsilonFilter4 measuredEpsilonFilter10]);
+epsilonCompare(epsilonSimulation(:,1),[epsilonSimulation(:,2) epsilonSimulationAnal(:,2)],mTime,[measuredEpsilon measuredEpsilonFilter4 measuredEpsilonFilter10]);
+
+epsilonSimulationAnal(:,2)=102.568*exp(-8.6799*epsilonSimulation(:,1));
 
 %Compare acceleration calculations
 

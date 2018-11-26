@@ -1105,17 +1105,18 @@ In this case also the robot orientation and also the speed direction is changing
 The kinematic simulation code is a handy tool to demonstrate the possibilities of such a robot configuration, but it does not give any details from dynamics point of view. As it can be seen in previous chapter the real world is not as ideal, thus such a simple kinematic point of view is not enough to give a detailed analysis.
 \newpage
 \subsection{Dynamic analysis of DC motors}
-In order to have a proper dynamic model, the source of forces, i.e. the motors have to be analysed and modeled. As it was mentioned before, the permanent magnet type DC motors are easy to be described using 5 parameters (L,J,R,B,K), thus the primary goal is estimate their values.
+In order to have a proper dynamic model, the source of forces, i.e. the motors have to be analysed and modeled in details. As it was mentioned before, the permanent magnet type DC motors are easy to be described using 5 parameters (L,J,R,B,K), thus the primary goal is estimate their values.
 \subsubsection{DC motor parameter identification}
-The L,J describes the dynamic behaviour of the motor, while the others characterize the system in a stationary aspect. Based on motor datasheet informations (no load case, max efficiency case, max power case, stall torque case), only the stationary parameters can be estimated and you can even not be sure about the values whether they match the reality or not. Obviously, to get know about the dynamic parameters, measurements of dynamic operations of the motors are needed, e.g. measuring the step response to a given function of voltage over time. A robust technique for the parameter identification is to combine the measurement results with the capabilities of MATLAB Simulink and its Design Optimization tool. To carry out the following models and the parameter identificiation process the following references were considered: \cite{par_est_1}, \cite{par_est_2},\cite{par_est_3}. The Simscape library of the Simulink makes it possible to make system models of coupled physical problems combining submodel elements, e.g. a DC motor which is an electromechanical system can be built using mechanical and electrical components.
-Firstly, in accordance with the equations of DC motor, the following model was made.
+The L (inductance) and J(secnond moment of inertia) describes the dynamic behavior of the motor, while the others characterize the system in a stationary aspect. Based on motor datasheet informations (no load case, max efficiency case, max power case, stall torque case), only the stationary parameters can be estimated and you can even not be sure about the values whether they match the reality or not. Obviously, to get know about the dynamic parameters, measurements of dynamic operations of the motors are needed, e.g. measuring the step response to a given function of voltage over time. A robust technique for the parameter identification is to combine the measurement results with the capabilities of MATLAB Simulink and its Design Optimization tool. To carry out the following models and the parameter identification process the following references were considered: \cite{par_est_1}, \cite{par_est_2},\cite{par_est_3}. The Simscape library of the Simulink makes it possible to make system models of coupled physical problems combining submodel elements, e.g. a DC motor which is an electromechanical system can be built using simple elementary mechanical and electrical components.
+
+Firstly, in accordance with the equations of DC motor a basic model was made.
 \begin{figure}[htb!]
 	\centering
 	\includegraphics[height=5cm]{figures/simulink_dc_motor.png}
 	\caption{Simple DC motor electromechanical model in Simulink}
 	\label{simulink_dc_motor}
 \end{figure}
-The Figure \ref{simulink_dc_motor} represent the model in which the blue is the electrical circuit consisting a resistance $(R)$, inductance $(L)$, DC voltage source, electrical reference and current sensor, while the green elements are mechanical blocks, i.e. the inertia $(J)$, rotational damper $(B)$, rotational reference and a rotational speed sensor. The interface between the two domains is provided by the electromechanical converter which defines the $K$ constant. The $f(x)$ block defines solver settings for the numerical solution and the other two elements are blocks that monitors the current and shaft speed over time. This model has to match with the governing equations because actually those are solved numerically. The armature current has high peeks at the starting of DC motors due to the absence of the back emf which is proportional with rotational speed. The high gradients make the equation system to be a stiff one, thus ode15s solution method was chosen which is a recommended one for such problems by means of the Matlab help.
+The Figure \ref{simulink_dc_motor} represent the first model in which the blue is the electrical circuit consisting a resistance $(R)$, inductance $(L)$, DC voltage source, electrical reference and current sensor, while the green elements are mechanical blocks, i.e. the inertia $(J)$, rotational damper $(B)$, rotational reference and a rotational speed sensor. The interface between the two domains is provided by the electromechanical converter which defines the $K$ constant. The $f(x)$ block defines solver settings for the numerical solution and the other two elements are blocks that monitors the current and shaft speed over time. This model has to match with the governing equations because actually those are solved numerically. The armature current has high peeks at the starting of DC motors due to the absence of the back emf which is proportional with rotational speed. The high gradients make the equation system to be a stiff one, thus ode15s solution method was chosen which is a recommended one for such problems by means of the MATLAB help.
 
 \begin{figure}[htb!]
 	\centering
@@ -1123,7 +1124,9 @@ The Figure \ref{simulink_dc_motor} represent the model in which the blue is the 
 	\caption{Complex DC motor electromechanical model in Simulink}
 	\label{simulink_dc_motor_complex}
 \end{figure}
-In order to use the parameter estimation tool of the software, more complex voltage inputs have to defined. This model works with simple constant DC input voltage only. From the Simscape library, further electrical components can be added to the model such as the H-Bridge which can switch the rotational direction of the rotor or such as the PWM module which can produce a square wave with a given duty cycle to control the magnitude of the input voltage. The model shown in the Figure \ref{simulink_dc_motor_complex} has two inputs. One is the PWM reference signal which is a voltage value between 0 and 5V. The Controlled PWM unit generates from the reference signal a square wave which will be the input of the H-bridge motor drive component. This part can be related to a voltage value of PWM type digital pin of the MCU. The following component, the H-bridge motor drive, is actually the model of the L298N driver. The magnitude of its output voltage is controlled by the PWM signal's duty cycle, while that of polarity is controlled by the digital signal at REV port. The second input of the model is the Reverse Port Signal which has to be a digital signal, thus 0V (LOW) correspond to no polarity change and 5V (HIGH) corresponds to switched polarity, thus reverse rotation of the rotor. The output of the model is shaft speed considered in rad/s. Transient operation of the system is provided by changing the reverse port digital signal. In order to make the parameter estimation with the same inputs, measurements for the output had to be taken before the simulation could be run. In addition, the parameters has to be initialized in the model as a preliminary guess to have a combination of them to start the optimization from somewhere. Based the governing equations and motor data sheet values, a good initial guess could be given. In case of no load operation, $b=\frac{T}{\dot \theta}$ where $T=0.11$ [Nm] and $\dot \theta =11.21$ [rad/s] (107RPM), therefore $b=0.01[\frac{\text{Nms}}{rad}]$. Also other working points are known with respect to T-i values pairs, thus supposing linear relation the K can be estimated which was calculated to be 0.9338. Using these two values and supposing the steady state version of the Kirchoff law in case of no load, the resistance can be calculated as $R=\frac{V-K \dot \theta}{i} = 10.25$ [$\Omega$].
+In order to use the parameter estimation tool of the software, more complex voltage inputs have to defined. This model works with simple constant DC input voltage only. From the Simscape library, further electrical components can be added to the model such as the H-Bridge which can switch the rotational direction of the rotor or such as the PWM module which can produce a square wave with a given duty cycle to control the magnitude of the input voltage. The model shown in the Figure \ref{simulink_dc_motor_complex} has two inputs. One is the PWM reference signal which is a voltage value between 0 and 5V. The Controlled PWM unit generates from the reference signal a square wave which will be the input of the H-bridge motor drive component. This part can be related to a voltage value of PWM type digital pin of the MCU. The following component, the H-bridge motor drive, is actually the model of the L298N driver. The magnitude of its output voltage is controlled by the PWM signal's duty cycle, while that of polarity is controlled by the digital signal at REV port. The second input of the model is the Reverse Port Signal which has to be a digital signal, thus 0V (LOW) correspond to no polarity change and 5V (HIGH) corresponds to switched polarity, thus reverse rotation of the rotor. The output of the model is shaft speed considered in rad/s. Transient operation of the system is provided by changing the reverse port digital signal. 
+
+In order to make the parameter estimation with the specified inputs, measurements for the output speed had to be taken before the simulation could be run. In addition, the parameters has to be initialized in the model as a preliminary guess to have a combination of them to start the optimization from somewhere. Based the governing equations and motor data sheet values, a good initial guess could be given. In case of no load operation, $b=\frac{T}{\dot \theta}$ where $T=0.11$ [Nm] and $\dot \theta =11.21$ [rad/s] (107RPM), therefore $b=0.01[\frac{\text{Nms}}{rad}]$. Also other working points are known with respect to T-i values pairs, thus supposing linear relation the K can be estimated which was calculated to be 0.9338. Using these two values and supposing the steady state version of the Kirchoff law in case of no load, the resistance can be calculated as $R=\frac{V-K \dot \theta}{i} = 10.25$ [$\Omega$].
 Considering all above, the initial guess of the seeked parameters is as follows:
 $R=10[\Omega],~b=0.01[\frac{\text{Nms}}{rad}],~J=0.001[kgm^2],~L=0.01[H],~K=1$.
 \begin{figure}[htb!]
@@ -1132,7 +1135,7 @@ $R=10[\Omega],~b=0.01[\frac{\text{Nms}}{rad}],~J=0.001[kgm^2],~L=0.01[H],~K=1$.
 	\caption{Simulation results before and after the optimization}
 	\label{simulink_par_est_1}
 \end{figure}
- In the parameter estimation module both of the measurement and the simulation of the system can represented which is shown in the Figure \ref{simulink_par_est_1}. The plots on left side represent the simulation with the initial parameters. It can be seen that the steady-state value is close to the measured one, but the time-scales are quite different. The plot on the right side correspond to the optimized values which are the followings: $R=7.98[\Omega],~b=0.0197[\frac{\text{Nms}}{rad}],~J=0.0121[kgm^2],~L=0.166[H],~K=0.825[\frac{\text{Vs}}{rad}]$. The sum of squared errors were changed to be the cost function which converged from the initial value of 66.6 to 0.23 after 11 iterations. The obtained values are in a good relation with estimates, thus with the possible real values. The steady state current in the simulated free load case is 2 times higher, but the peak current is in a good order. Really high peaks can be extended when the polarity of the input voltage is switched, therefore higher torques can be expected during such operations which means more risk for fall over for instance. The initial peak current can be estimated as $U/R = 12[V]/10.25[\Omega] = 1.17 [A]$ assuming zero initial shaft speed. Figure \ref{simulink_armature_current} shows a similar current peaks in the simulation.
+ In the parameter estimation module both of the measurement and the simulation of the system can be represented which is shown in the Figure \ref{simulink_par_est_1}. The plots on left side represent the simulation with the initial parameters. It can be seen that the steady-state value is close to the measured one, but the time-scales are quite different. The plot on the right side correspond to the estimated values which are the followings: $R=7.98[\Omega],~b=0.0197[\frac{\text{Nms}}{rad}],~J=0.0121[kgm^2],~L=0.166[H],~K=0.825[\frac{\text{Vs}}{rad}]$. The sum of squared error was selected to be the cost function which converged from the initial value of 66.6 to 0.23 after 11 iterations. The obtained values are in a good relation with estimates, thus with the possible real values. The steady state current in the simulated free load case is 2 times higher, but the peak current is in a good order. Really high peaks can be got when the polarity of the input voltage is switched, therefore higher torques can be expected during such operations which means more risk for fall over for instance. The initial peak current can be estimated as $U/R = 12[V]/10.25[\Omega] = 1.17 [A]$ assuming zero initial shaft speed. Figure \ref{simulink_armature_current} shows a similar current peaks in the simulation.
  \begin{figure}[htb!]
  	\minipage{0.45\textwidth}
  	\centering
@@ -1142,11 +1145,76 @@ $R=10[\Omega],~b=0.01[\frac{\text{Nms}}{rad}],~J=0.001[kgm^2],~L=0.01[H],~K=1$.
  	\minipage{0.45\textwidth}
  	\centering
  	\includegraphics[height=7cm]{figures/simulink_armature_current}
- 	\caption{Aramature current of the optimzed model}
+ 	\caption{Aramature current of the estimated model}
  	\label{simulink_armature_current}
  	\endminipage\hfill
  \end{figure}
-The solution method was got numerically while the dynamic model of the robot can be solved analytically in special cases. Generally a more simple method is seeked that might be implemented also in the hardware code, thus it would be more convenient to find a good analytical formula too calculate the current, thus the motor torques exerted on the wheels. Firstly, in a similar way the numerical solution of the governing equations were implemented to have more control and to implement in a mechanical model later on. Because of the high current peaks, implicit Euler-method was chosen combined with Newton-Raphson iterations because the built-in solver could not handle stiffness of the equation properly. The chosen method calculated the same dynamics for the system as the numerical solution in Simulink. Considering the governing equations, it can be said that let us omit the inductance of the armature, thus the "inertia" of the electric circuit. With this assumption combining the two constitutive equations, the following first-order linear differential equation can be derived:
+
+
+The solution method was got numerically while the dynamic model of the robot can be solved analytically in special cases. Generally a more simple method is seeked that might be implemented also in the hardware code, thus it would be more convenient to find a good analytical formula too calculate the current, thus the motor torques exerted on the wheels. Firstly, in a similar way the numerical solution of the governing equations were implemented in Wolfram Mathematica to have a more flexible control on the solution and to have the possibility to implement it in a mechanical model later on. Because of the high current peaks, implicit Euler-method was chosen combined with Newton-Raphson iterations because the built-in solver could not handle stiffness of the equation properly. The chosen method calculated the same dynamics for the system as the numerical solution in Simulink. 
+The dynamic system model is as follows:
+\begin{eqnarray}
+\left[
+\begin{array}{c}
+\dot \omega\\[2ex]
+\dot i \\
+\end{array}
+\right]=
+\left[
+\begin{array}{ccc}
+-\frac{b}{\theta } & \frac{k}{\theta } \\[2ex]
+-\frac{k}{L} & -\frac{R}{L} \\
+\end{array}
+\right]
+\left[
+\begin{array}{c}
+ \omega  \\[2ex]
+ i 	\\
+\end{array}
+\right]
++
+\left[
+\begin{array}{c}
+-\frac{T_{LOAD}}{\theta}  \\[2ex]
+\frac{V}{L} 	\\
+\end{array}
+\right] = \left[
+\begin{array}{c}
+f_1(t,\omega,i)\\[2ex]
+f_2(t,\omega,i)\\
+\end{array}
+\right]=\mathbf{f}(t,\omega,i)
+.
+\end{eqnarray}
+Let us denote $\mathbf{x}=[\omega,i]$. Applying the discretization by means of Implicit-Euler technique the following equations are obtained:
+\begin{eqnarray}
+	\left[
+	\begin{array}{c}
+	F_1(t,\mathbf{x}_{k},\mathbf{x}_{k+1})\\[2ex]
+	F_2(t,\mathbf{x}_{k},\mathbf{x}_{k+1})\\
+	\end{array}
+	\right] = \mathbf{x}_{k+1} - \mathbf{x}_{k} - h \mathbf{f}(t_{k+1},\mathbf{x}_{k+1})
+	=\mathbf{F}(t_{k+1},\mathbf{x}_{k},\mathbf{x}_{k+1})
+	\label{euler_eq}
+\end{eqnarray}
+where
+\begin{itemize}
+	\item $\mathbf{x}_{k}$ is the current time step variable vector,
+	\item $\mathbf{x}_{k+1}$ is the next time step variable vector,
+	\item $h$ is the time step,
+	\item $t_{k+1}$ is time at the $(k+1)^{th}$ timestep
+\end{itemize}
+Using the Newton's method an inner iteration equation of a given step is as follows:
+\begin{equation}
+	\mathbf{x_{k+1}}^* = \mathbf{x_{k+1}}-\mathbf{J}^{-1}_{\omega,i}(\mathbf{x}_{k+1})\mathbf{F}(t_{{k+1}},\mathbf{x}_{k},\mathbf{x}_{k+1})  
+		\label{newton_eq}
+\end{equation}
+where
+\begin{equation}
+\mathbf{J}_{\omega,i}=\grad \mathbf{F}(t_{{k+1}},\mathbf{x}_{k},\mathbf{x}_{k+1}).
+\end{equation}
+The solution can be calculated by means of \ref{euler_eq} by proceeding in time and at the given time steps the solution of the algebraic equation is obtained by Newton's iteration using the equation \ref{newton_eq}. The $h$ time step was chosen to be 0.001s and the 3 inner iteration were used in equation \ref{newton_eq} which provided sufficiently accurate solution.
+Considering the governing equations, it can be said that let us omit the inductance of the armature, thus the "inertia" of the electric circuit. With this assumption combining the two constitutive equations, the following first-order linear differential equation for $\omega[t]$ rotational speed can be derived:
 \begin{equation}
 	b \omega(t)+\theta \dot \omega(t)=\frac{K (V-K \omega(t))}{R},
 \end{equation} 
@@ -1157,7 +1225,7 @@ which solution is:
 where $\omega_0$ is the initial angular speed.
 The armature current can be extracted as
 \begin{equation}
-	i_a(t) =\frac{V-K\dot \theta}{R}.
+	i_a(t) =\frac{V-K\omega}{R}.
 \end{equation}
 The Figure \ref{mahemetica_comparision_1} and \ref{mahemetica_comparision_2} depict the numerical and analytical solution for the shaft speed [rad/s] and armature current [A] where the orange solid line is the analytical and dashed black is the numerical solution.
  \begin{figure}[htb!]
@@ -1174,6 +1242,7 @@ The Figure \ref{mahemetica_comparision_1} and \ref{mahemetica_comparision_2} dep
 	\label{mahemetica_comparision_2}
 	\endminipage\hfill
 \end{figure}
+
 The analytical solution is in an acceptable match with the more accurate numerical one (where L is not assumed to be zero) and also higher current is estimated at start which is an conservative engineering approach. In this way, it is a good estimation to work with the analytical formula in the dynamic model of the robot. The following general relationship between torque and input voltage can be derived:
 \begin{equation}
 	T(t,U,\omega_0,T_{Load}) = \frac{K \left(-\frac{K e^{-\frac{t \left(b R+K^2\right)}{\theta  R}} \left(\omega _0 \left(b R+K^2\right)-K U+R T_{\text{Load}}\right)}{R}+b U+K T_{\text{Load}}\right)}{b R+K^2}
@@ -1389,14 +1458,28 @@ With the given weights also the fall over was tested in case of opposite directi
 
 In this demonstrative configuration, it can be said that the height of the attachment point of the disk is kept constant, then only the disk mass remains as an unknown if the acceleration state is known.
 \subsubsection{Mass estimation}
-A more general model can be developed if a mass estimation algorithm is provided. For instance, the acceleration of the robot case has to depend on the robot mass. Although, the dependence is not trivial as the common acceleration is the resultant of three accelerating wheels. Parametric solution for the initial acceleration in case of the braking is shown in Figure \ref{massDep}. Compared to the weight of the robot (which is about 2[kg]), a quite high mass of payload is needed to have noticeable difference in the initial acceleration peak. In this consideration the rolling friction is not included, the acceleration dependence is caused by changes of inner joint force components only. In my case, the robot hardware was able to have extra load about 2[kg] without having too high case deformations that can be harmful, thus this configuration is probably not able to work in a range where remarkable derivatives of the acceleration state could be experienced. Another problem is that in the model a simplified geometrical approach is used, while in the reality the peak is not at the very first moment. Additionally, the height of the peak is hard task to measure using the rotary encoder since it needs double differentiation. (ERRE CSINÁLTAM MÉRÉST ? TODO, esetleg a numerikussal érdemes lehet összehasonlítani, ide mellé egy plot numerikus, analitikusm, mérés, sűrt mérés 4in1 plot-al)
-vannak azok amik üresjáratban forogtak, illetve van rolling resistance forqard mérés is
+A more general model can be developed if a mass estimation algorithm is provided. For instance, the acceleration of the robot case has to depend on the robot mass. Although, the dependence is not trivial as the common acceleration is the resultant of three accelerating wheels. Parametric solution for the initial acceleration in case of the braking is shown in Figure \ref{massDep}. Compared to the weight of the robot (which is about 2[kg]), a quite high mass of payload is needed to have noticeable difference in the initial acceleration peak. In this consideration the rolling friction is not included, the acceleration dependence is caused by changes of inner joint force components only. In my case, the robot hardware was able to have extra load about 2[kg] without having too high case deformations that can be harmful, thus this configuration is probably not able to work in a range where remarkable derivatives of the acceleration state could be experienced. Another problem is that in the model a simplified geometrical approach is used, while in the reality the peak is not at the very first moment. Additionally, the height of the peak is hard task to measure accurately using the rotary encoder since it uses double differentiation. The 
 \begin{figure}[htb!]
+	\minipage{0.45\textwidth}
 	\centering
 	\includegraphics[height=7cm]{figures/massDep}
 	\caption{Mass of payload dependence of acceleration state}
 	\label{massDep}
+	\endminipage\hfill
+	\minipage{0.45\textwidth}
+	\centering
+	\includegraphics[height=7cm]{figures/epsilonCompare}
+	\caption{Comparision of angular accelerations of the motors}
+	\label{epsCompare}
+	\endminipage\hfill
 \end{figure}
+Figure \ref{epsCompare} represent measurement and simulation results of a no load case for a motor. It is enough to analyze a single wheel dynamics as the resultant linear acceleration of the case is a that of resultant. The pure measurement is quite noisy as such high accelerations are calculated even if the the velocity of the wheel is constant. A moving average filter was tested to make correction on the data. If the averaging is taken on the two previous and proceeding timesteps (MA4) then the oscillation in case of steady state vanishes and the peak gets closer to the simulated ones. On the other hand, also the peak time is shifted which originally matches quite well with the numerical simulation. The same tendency can be experienced with a longer averaging function (MA10). Then the same measurements were carried out with package loads up to ~1.7 [kg]. As it was mentioned, for structural reasons it was the maximum that this simple mobile robot could hold without harmful deformations. The measurements results showed little difference regarding the wheel accelerations. As in the Figure \ref{massDep} shown, the relative changes of the initial peak of linear acceleration as a function of payload of the given robot hardware is too small compared to the measurement and processing errors (numerical differentiation) of the rotary encoders. It can be stated that the errors are more significant then the sensitivity to the payload mass, therefore monitoring the acceleration state is not suitable for developing a mass estimator algorithm. 
+
+Itt még elsütni a rolling resistance mérést...
+	- végülis biztonságosabb egy helyben mozogni
+	- hasonlóan kicsit érzékeny...
+	- egy adott felületre be kell kalibrálni
+	- a mért érték talán jobban megbízható ha sokáig átlagolok
 
 Measurements... TODO
 

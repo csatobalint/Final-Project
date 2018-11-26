@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6800 64-bit) (preloaded format=pdflatex 2018.10.7)  24 NOV 2018 06:18
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6800 64-bit) (preloaded format=pdflatex 2018.10.7)  25 NOV 2018 09:36
 entering extended mode
 **./final_thesis.tex
 (final_thesis.tex
@@ -1547,91 +1547,101 @@ cluded in a single page
 <figures/simulink_dc_motor.png, id=1122, 1048.66782pt x 574.39594pt>
 File: figures/simulink_dc_motor.png Graphic file (type png)
 <use figures/simulink_dc_motor.png>
-Package pdftex.def Info: figures/simulink_dc_motor.png  used on input line 1114
+Package pdftex.def Info: figures/simulink_dc_motor.png  used on input line 1115
 .
 (pdftex.def)             Requested size: 259.7181pt x 142.26378pt.
 <figures/simulink_dc_motor_complex.png, id=1124, 982.42032pt x 551.81157pt>
 File: figures/simulink_dc_motor_complex.png Graphic file (type png)
 <use figures/simulink_dc_motor_complex.png>
 Package pdftex.def Info: figures/simulink_dc_motor_complex.png  used on input l
-ine 1122.
+ine 1123.
 (pdftex.def)             Requested size: 405.25339pt x 227.62204pt.
-<figures/simulink_par_est_1.png, id=1126, 892.08281pt x 604.50844pt>
+ [37 <./figures/simulink_dc_motor.png>]
+<figures/simulink_par_est_1.png, id=1135, 892.08281pt x 604.50844pt>
 File: figures/simulink_par_est_1.png Graphic file (type png)
 <use figures/simulink_par_est_1.png>
 Package pdftex.def Info: figures/simulink_par_est_1.png  used on input line 113
-1.
+4.
 (pdftex.def)             Requested size: 419.87791pt x 284.52756pt.
-<figures/simulink_par_est_2.png, id=1129, 385.44pt x 365.86688pt>
+<figures/simulink_par_est_2.png, id=1138, 385.44pt x 365.86688pt>
 File: figures/simulink_par_est_2.png Graphic file (type png)
 <use figures/simulink_par_est_2.png>
-Package pdftex.def Info: figures/simulink_par_est_2.png  used on input line 113
-9.
+Package pdftex.def Info: figures/simulink_par_est_2.png  used on input line 114
+2.
 (pdftex.def)             Requested size: 209.82243pt x 199.16928pt.
 
-Overfull \hbox (4.96397pt too wide) in paragraph at lines 1139--1140
+Overfull \hbox (4.96397pt too wide) in paragraph at lines 1142--1143
  [][] 
  []
 
-<figures/simulink_armature_current.pdf, id=1130, 400.11473pt x 406.68536pt>
+<figures/simulink_armature_current.pdf, id=1139, 400.11473pt x 406.68536pt>
 File: figures/simulink_armature_current.pdf Graphic file (type pdf)
 <use figures/simulink_armature_current.pdf>
 Package pdftex.def Info: figures/simulink_armature_current.pdf  used on input l
-ine 1144.
+ine 1147.
 (pdftex.def)             Requested size: 195.95413pt x 199.16928pt.
-[37 <./figures/simulink_dc_motor.png>] [38 <./figures/simulink_dc_motor_complex
-.png>] [39 <./figures/simulink_par_est_1.png> <./figures/simulink_par_est_2.png
-> <./figures/simulink_armature_current.pdf>]
+[38 <./figures/simulink_dc_motor_complex.png>] [39 <./figures/simulink_par_est_
+1.png> <./figures/simulink_par_est_2.png> <./figures/simulink_armature_current.
+pdf>]
+
+LaTeX Warning: Reference `euler_eq' on page 40 undefined on input line 1216.
+
+
+LaTeX Warning: Reference `newton_eq' on page 40 undefined on input line 1216.
+
+
+LaTeX Warning: Reference `newton_eq' on page 40 undefined on input line 1216.
+
 <figures/mahemetica_comparision_1.pdf, id=1159, 469.755pt x 460.72125pt>
 File: figures/mahemetica_comparision_1.pdf Graphic file (type pdf)
 <use figures/mahemetica_comparision_1.pdf>
 Package pdftex.def Info: figures/mahemetica_comparision_1.pdf  used on input li
-ne 1166.
+ne 1234.
 (pdftex.def)             Requested size: 203.07306pt x 199.16928pt.
 <figures/mahemetica_comparision_2.pdf, id=1160, 469.755pt x 462.72874pt>
 File: figures/mahemetica_comparision_2.pdf Graphic file (type pdf)
 <use figures/mahemetica_comparision_2.pdf>
 Package pdftex.def Info: figures/mahemetica_comparision_2.pdf  used on input li
-ne 1172.
+ne 1240.
 (pdftex.def)             Requested size: 202.1914pt x 199.16928pt.
- [40 <./figures/mahemetica_comparision_1.pdf> <./figures/mahemetica_comparision
-_2.pdf
+[40] [41 <./figures/mahemetica_comparision_1.pdf> <./figures/mahemetica_compari
+sion_2.pdf
 
 pdfTeX warning: pdflatex.exe (file ./figures/mahemetica_comparision_2.pdf): PDF
  inclusion: multiple pdfs with page group included in a single page
->] [41]
-<figures/robotModel.pdf, id=1210, 569.12625pt x 418.56375pt>
+>]
+<figures/robotModel.pdf, id=1214, 569.12625pt x 418.56375pt>
 File: figures/robotModel.pdf Graphic file (type pdf)
 <use figures/robotModel.pdf>
-Package pdftex.def Info: figures/robotModel.pdf  used on input line 1201.
+Package pdftex.def Info: figures/robotModel.pdf  used on input line 1270.
 (pdftex.def)             Requested size: 227.62204pt x 167.40337pt.
-<figures/caseFBD.pdf, id=1211, 597.5916pt x 520.9775pt>
+<figures/caseFBD.pdf, id=1215, 597.5916pt x 520.9775pt>
 File: figures/caseFBD.pdf Graphic file (type pdf)
 <use figures/caseFBD.pdf>
-Package pdftex.def Info: figures/caseFBD.pdf  used on input line 1207.
+Package pdftex.def Info: figures/caseFBD.pdf  used on input line 1276.
 (pdftex.def)             Requested size: 227.62204pt x 198.44252pt.
  [42 <./figures/robotModel.pdf> <./figures/caseFBD.pdf
 
 pdfTeX warning: pdflatex.exe (file ./figures/caseFBD.pdf): PDF inclusion: multi
 ple pdfs with page group included in a single page
 >] [43]
-<figures/wheelsFBD.pdf, id=1244, 616.10939pt x 520.96935pt>
+<figures/wheelsFBD.pdf, id=1248, 616.10939pt x 520.96935pt>
 File: figures/wheelsFBD.pdf Graphic file (type pdf)
 <use figures/wheelsFBD.pdf>
-Package pdftex.def Info: figures/wheelsFBD.pdf  used on input line 1265.
+Package pdftex.def Info: figures/wheelsFBD.pdf  used on input line 1334.
 (pdftex.def)             Requested size: 269.18996pt x 227.62204pt.
 
-Overfull \hbox (64.3315pt too wide) in paragraph at lines 1265--1266
+Overfull \hbox (64.3315pt too wide) in paragraph at lines 1334--1335
  [][] 
  []
 
-<figures/wheelFBD.pdf, id=1245, 693.59125pt x 693.59125pt>
+<figures/wheelFBD.pdf, id=1249, 693.59125pt x 693.59125pt>
 File: figures/wheelFBD.pdf Graphic file (type pdf)
 <use figures/wheelFBD.pdf>
-Package pdftex.def Info: figures/wheelFBD.pdf  used on input line 1271.
+Package pdftex.def Info: figures/wheelFBD.pdf  used on input line 1340.
 (pdftex.def)             Requested size: 227.61581pt x 227.62204pt.
 
-Overfull \hbox (22.75735pt too wide) in paragraph at lines 1271--1272
+Overfull \hbox (22.75735pt too wide) in paragraph at lines 1340--1341
  [][] 
  []
 
@@ -1640,156 +1650,164 @@ Overfull \hbox (22.75735pt too wide) in paragraph at lines 1271--1272
 pdfTeX warning: pdflatex.exe (file ./figures/wheelFBD.pdf): PDF inclusion: mult
 iple pdfs with page group included in a single page
 >] [45]
-<figures/accelerationState.pdf, id=1276, 626.34pt x 550.055pt>
+<figures/accelerationState.pdf, id=1280, 626.34pt x 550.055pt>
 File: figures/accelerationState.pdf Graphic file (type pdf)
 <use figures/accelerationState.pdf>
-Package pdftex.def Info: figures/accelerationState.pdf  used on input line 1334
+Package pdftex.def Info: figures/accelerationState.pdf  used on input line 1403
 .
 (pdftex.def)             Requested size: 226.79155pt x 199.16928pt.
 
-Overfull \hbox (21.93309pt too wide) in paragraph at lines 1334--1335
+Overfull \hbox (21.93309pt too wide) in paragraph at lines 1403--1404
  [][] 
  []
 
-<figures/dangerousOri.png, id=1277, 832.61063pt x 977.15062pt>
+<figures/dangerousOri.png, id=1281, 832.61063pt x 977.15062pt>
 File: figures/dangerousOri.png Graphic file (type png)
 <use figures/dangerousOri.png>
-Package pdftex.def Info: figures/dangerousOri.png  used on input line 1340.
+Package pdftex.def Info: figures/dangerousOri.png  used on input line 1409.
 (pdftex.def)             Requested size: 169.70802pt x 199.16928pt.
 [46]
-<figures/fallover_ppt.png, id=1287, 604.50844pt x 570.63188pt>
+<figures/fallover_ppt.png, id=1291, 604.50844pt x 570.63188pt>
 File: figures/fallover_ppt.png Graphic file (type png)
 <use figures/fallover_ppt.png>
-Package pdftex.def Info: figures/fallover_ppt.png  used on input line 1351.
+Package pdftex.def Info: figures/fallover_ppt.png  used on input line 1420.
 (pdftex.def)             Requested size: 210.99078pt x 199.16928pt.
  [47 <./figures/accelerationState.pdf> <./figures/dangerousOri.png> <./figures/
 fallover_ppt.png>]
 
 pdfTeX warning: pdflatex.exe (file ./figures/braking_1_0_kg_1_0_m.pdf): PDF inc
 lusion: found PDF version <1.6>, but at most version <1.5> allowed
-<figures/braking_1_0_kg_1_0_m.pdf, id=1302, 1399.4152pt x 486.21649pt>
+<figures/braking_1_0_kg_1_0_m.pdf, id=1306, 1399.4152pt x 486.21649pt>
 File: figures/braking_1_0_kg_1_0_m.pdf Graphic file (type pdf)
 <use figures/braking_1_0_kg_1_0_m.pdf>
 Package pdftex.def Info: figures/braking_1_0_kg_1_0_m.pdf  used on input line 1
-361.
+430.
 (pdftex.def)             Requested size: 491.36147pt x 170.71652pt.
 
-Overfull \hbox (36.11736pt too wide) in paragraph at lines 1361--1362
+Overfull \hbox (36.11736pt too wide) in paragraph at lines 1430--1431
  [][] 
  []
 
 [48 <./figures/braking_1_0_kg_1_0_m.pdf>]
-<figures/fallover_video_05kg.png, id=1327, 1401.73688pt x 591.71063pt>
+<figures/fallover_video_05kg.png, id=1331, 1401.73688pt x 591.71063pt>
 File: figures/fallover_video_05kg.png Graphic file (type png)
 <use figures/fallover_video_05kg.png>
-Package pdftex.def Info: figures/fallover_video_05kg.png  used on input line 13
-70.
+Package pdftex.def Info: figures/fallover_video_05kg.png  used on input line 14
+39.
 (pdftex.def)             Requested size: 471.81454pt x 199.16928pt.
 
-Overfull \hbox (16.57043pt too wide) in paragraph at lines 1370--1371
+Overfull \hbox (16.57043pt too wide) in paragraph at lines 1439--1440
  [][] 
  []
 
-<figures/fallover_video_1kg.png, id=1329, 1397.22pt x 587.94656pt>
+<figures/fallover_video_1kg.png, id=1333, 1397.22pt x 587.94656pt>
 File: figures/fallover_video_1kg.png Graphic file (type png)
 <use figures/fallover_video_1kg.png>
-Package pdftex.def Info: figures/fallover_video_1kg.png  used on input line 137
-7.
+Package pdftex.def Info: figures/fallover_video_1kg.png  used on input line 144
+6.
 (pdftex.def)             Requested size: 473.3003pt x 199.16928pt.
 
-Overfull \hbox (18.05618pt too wide) in paragraph at lines 1377--1378
+Overfull \hbox (18.05618pt too wide) in paragraph at lines 1446--1447
  [][] 
  []
 
-<figures/contactForce2D_1.pdf, id=1331, 527.9725pt x 258.9675pt>
+<figures/contactForce2D_1.pdf, id=1335, 527.9725pt x 258.9675pt>
 File: figures/contactForce2D_1.pdf Graphic file (type pdf)
 <use figures/contactForce2D_1.pdf>
-Package pdftex.def Info: figures/contactForce2D_1.pdf  used on input line 1384.
+Package pdftex.def Info: figures/contactForce2D_1.pdf  used on input line 1453.
 
 (pdftex.def)             Requested size: 232.0347pt x 113.81102pt.
 [49 <./figures/fallover_video_05kg.png>] [50 <./figures/fallover_video_1kg.png>
  <./figures/contactForce2D_1.pdf>]
-<figures/massDep.pdf, id=1351, 433.62pt x 421.575pt>
+<figures/massDep.pdf, id=1355, 433.62pt x 421.575pt>
 File: figures/massDep.pdf Graphic file (type pdf)
 <use figures/massDep.pdf>
-Package pdftex.def Info: figures/massDep.pdf  used on input line 1396.
+Package pdftex.def Info: figures/massDep.pdf  used on input line 1465.
 (pdftex.def)             Requested size: 204.86006pt x 199.16928pt.
- [51 <./figures/massDep.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 1409--1413
+<figures/epsilonCompare.pdf, id=1356, 339.90088pt x 332.61766pt>
+File: figures/epsilonCompare.pdf Graphic file (type pdf)
+<use figures/epsilonCompare.pdf>
+Package pdftex.def Info: figures/epsilonCompare.pdf  used on input line 1471.
+(pdftex.def)             Requested size: 203.53236pt x 199.16928pt.
+ [51 <./figures/massDep.pdf> <./figures/epsilonCompare.pdf>] [52]
+Underfull \hbox (badness 10000) in paragraph at lines 1492--1496
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1413--1416
+Underfull \hbox (badness 10000) in paragraph at lines 1496--1499
 
  []
 
 
-Overfull \hbox (7.30942pt too wide) in paragraph at lines 1417--1418
+Overfull \hbox (7.30942pt too wide) in paragraph at lines 1500--1501
 []\OT1/cmr/m/n/12 mechanikai mod-ell alapjan op-timalis ori-entacio szam
 tasa (kesz) es an-nak valtoztatasa
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1417--1418
+Underfull \hbox (badness 10000) in paragraph at lines 1500--1501
 
  []
 
-[52]
-Underfull \hbox (badness 10000) in paragraph at lines 1450--1451
+[53]
+Underfull \hbox (badness 10000) in paragraph at lines 1533--1534
 []\OT1/cmr/m/n/12 http://iiot-world.com/artificial-intelligence/five-challenges
 -in-designing-a-fully-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1464--1465
+Underfull \hbox (badness 10000) in paragraph at lines 1547--1548
 []\OT1/cmr/m/n/12 Allonrobots: http://www.allonrobots.com/military-transportati
 on-robots.html
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1476--1477
+Underfull \hbox (badness 10000) in paragraph at lines 1559--1560
 []\OT1/cmr/m/n/12 https://www.elprocus.com/what-are-the-best-ways-to-control-th
 e-speed-of-dc-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1478--1479
+Underfull \hbox (badness 10000) in paragraph at lines 1561--1562
 []\OT1/cmr/m/n/12 https://nathotron.wordpress.com/courses/engineering-design-pr
 ocess-530-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1482--1483
+Underfull \hbox (badness 10000) in paragraph at lines 1565--1566
 []\OT1/cmr/m/n/12 Dynamic Model of a Per-ma-nent Mag-net DC Mo-tor:
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1488--1489
+Underfull \hbox (badness 10000) in paragraph at lines 1571--1572
 []\OT1/cmr/m/n/12 https://www.mathworks.com/videos/estimating-parameters-of-a-d
 c-motor-
  []
 
-[53] [54]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1502.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1502.
+[54] [55]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1585.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1585.
  (final_thesis.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1502.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1502.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1585.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1585.
 
 Package rerunfilecheck Info: File `final_thesis.out' has not changed.
-(rerunfilecheck)             Checksum: 6E9062A552D54394871B66E3DB9845F6;3127.
+(rerunfilecheck)             Checksum: ADAC9E8F88F5484527512BFF61EE66C0;3127.
+
+
+LaTeX Warning: There were undefined references.
 
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1502.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1585.
  ) 
 Here is how much of TeX's memory you used:
- 28693 strings out of 492972
- 682640 string characters out of 3135859
- 912164 words of memory out of 3000000
- 31723 multiletter control sequences out of 15000+200000
+ 28705 strings out of 492972
+ 682892 string characters out of 3135859
+ 911165 words of memory out of 3000000
+ 31728 multiletter control sequences out of 15000+200000
  17046 words of font info for 60 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  62i,13n,96p,3271b,609s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1810,9 +1828,9 @@ ype1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/pub
 lic/amsfonts/cm/cmsy6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfo
 nts/cm/cmsy8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cm
 ti12.pfb>
-Output written on final_thesis.pdf (55 pages, 9803936 bytes).
+Output written on final_thesis.pdf (56 pages, 9846136 bytes).
 PDF statistics:
- 1519 PDF objects out of 1728 (max. 8388607)
- 251 named destinations out of 1000 (max. 500000)
- 763 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1548 PDF objects out of 1728 (max. 8388607)
+ 257 named destinations out of 1000 (max. 500000)
+ 768 words of extra memory for PDF output out of 10000 (max. 10000000)
 

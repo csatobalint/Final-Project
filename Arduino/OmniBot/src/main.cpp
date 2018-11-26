@@ -71,6 +71,7 @@ void setup() {
 
   Serial.begin(57600);
   RN42_SERIAL_PORT.begin(57600);
+  Serial.println("Orientation Sensor Raw Data Test"); Serial.println("");
 
   if(!bno.begin())
   {
@@ -84,7 +85,9 @@ void setup() {
   Serial.print(temp);
   Serial.println(" C");
   Serial.println("");
+
   bno.setExtCrystalUse(false);
+
   Serial.println("Calibration status values: 0=uncalibrated, 3=fully calibrated");
 
   //RN42_SERIAL_PORT.println("BT serial");
@@ -138,9 +141,9 @@ void print_wheel_velocities() {
     Serial.print(cMotorA.get_current_acceleration()); Serial.print(", ");
     Serial.print(cMotorB.get_current_acceleration()); Serial.print(", ");
     Serial.print(cMotorC.get_current_acceleration()); Serial.print(", ");
-    Serial.print(linAcceleration.x());Serial.print(", ");
-    Serial.print(linAcceleration.y());Serial.print(", ");
-    Serial.print(linAcceleration.z());Serial.println("");
+    Serial.print(angVelocity.x());Serial.print(", ");
+    Serial.print(angVelocity.y());Serial.print(", ");
+    Serial.print(angVelocity.z());Serial.println("");
   }
   if(measurement_on){
     RN42_SERIAL_PORT.print(millis()-measurement_on_start_time); RN42_SERIAL_PORT.print(", ");
@@ -152,9 +155,6 @@ void print_wheel_velocities() {
     RN42_SERIAL_PORT.print(cMotorC.get_current_acceleration()); RN42_SERIAL_PORT.print(", ");
     RN42_SERIAL_PORT.print(linAcceleration.x()); RN42_SERIAL_PORT.print(", ");
     RN42_SERIAL_PORT.print(linAcceleration.y()); RN42_SERIAL_PORT.print(", ");
-    /*RN42_SERIAL_PORT.print(linAcceleration.z()); RN42_SERIAL_PORT.print(", ");
-    RN42_SERIAL_PORT.print(angVelocity.x());RN42_SERIAL_PORT.print(", ");
-    RN42_SERIAL_PORT.print(angVelocity.y());RN42_SERIAL_PORT.print(", ");*/
     RN42_SERIAL_PORT.print(angVelocity.z());RN42_SERIAL_PORT.println("");
   }
 }
@@ -195,34 +195,36 @@ void ledController(bool omni_dir_drive, int x){
 float currentVelocity = 0;
 
 void bno_read_loop() {
-  imu::Vector<3> linAcceleration = bno.getVector(Adafruit_BNO055::VECTOR_LINEARACCEL);
-  imu::Vector<3> angVelocity = bno.getVector(Adafruit_BNO055::VECTOR_GYROSCOPE);
-  Serial.print("X: ");
-  Serial.print(linAcceleration.x());
-  Serial.print(" Y: ");
-  Serial.print(linAcceleration.y());
-  Serial.print(" Z: ");
-  Serial.print(linAcceleration.z());
-  Serial.print("\t\t");
+  if(!measurement_on){
+    imu::Vector<3> linAcceleration = bno.getVector(Adafruit_BNO055::VECTOR_LINEARACCEL);
+    imu::Vector<3> angVelocity = bno.getVector(Adafruit_BNO055::VECTOR_GYROSCOPE);
+    RN42_SERIAL_PORT.print("X: ");
+    RN42_SERIAL_PORT.print(linAcceleration.x());
+    RN42_SERIAL_PORT.print(" Y: ");
+    RN42_SERIAL_PORT.print(linAcceleration.y());
+    RN42_SERIAL_PORT.print(" Z: ");
+    RN42_SERIAL_PORT.print(linAcceleration.z());
+    RN42_SERIAL_PORT.print("\t\t");
 
-  Serial.print("X: ");
-  Serial.print(angVelocity.x());
-  Serial.print(" Y: ");
-  Serial.print(angVelocity.y());
-  Serial.print(" Z: ");
-  Serial.print(angVelocity.z());
-  Serial.print("\t\t");
+    RN42_SERIAL_PORT.print("X: ");
+    RN42_SERIAL_PORT.print(angVelocity.x());
+    RN42_SERIAL_PORT.print(" Y: ");
+    RN42_SERIAL_PORT.print(angVelocity.y());
+    RN42_SERIAL_PORT.print(" Z: ");
+    RN42_SERIAL_PORT.print(angVelocity.z());
+    RN42_SERIAL_PORT.print("\t\t");
 
-  uint8_t system, gyro, accel, mag = 0;
-  bno.getCalibration(&system, &gyro, &accel, &mag);
-  Serial.print("CALIBRATION: Sys=");
-  Serial.print(system, DEC);
-  Serial.print(" Gyro=");
-  Serial.print(gyro, DEC);
-  Serial.print(" Accel=");
-  Serial.print(accel, DEC);
-  Serial.print(" Mag=");
-  Serial.println(mag, DEC);
+    uint8_t system, gyro, accel, mag = 0;
+    bno.getCalibration(&system, &gyro, &accel, &mag);
+    RN42_SERIAL_PORT.print("CALIBRATION: Sys=");
+    RN42_SERIAL_PORT.print(system, DEC);
+    RN42_SERIAL_PORT.print(" Gyro=");
+    RN42_SERIAL_PORT.print(gyro, DEC);
+    RN42_SERIAL_PORT.print(" Accel=");
+    RN42_SERIAL_PORT.print(accel, DEC);
+    RN42_SERIAL_PORT.print(" Mag=");
+    RN42_SERIAL_PORT.println(mag, DEC);
+  }
 }
 
 float ramp_up_value = 0;
@@ -360,7 +362,7 @@ void loop() {
   }
 
   maxPowerSpeedAndAccelerationSpinningMeasurment();
-
+  //maxPowerSpeedAndAccelerationForwardMeasurment();
   t.update();
 
   //print_encoder_positions();
