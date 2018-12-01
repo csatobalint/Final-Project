@@ -112,7 +112,7 @@ void setup() {
 
   t.every(10, control_loop); // Every 25 ms run the timed_loop, it works unitl the main loop is faster
   //t.every(200, inceremental_loop);
-  t.every(1000, bno_read_loop);
+  //t.every(1000, bno_read_loop);
 
   digitalWrite(LED_RED, led_red_on);
   randomSeed(analogRead(1));
@@ -361,8 +361,10 @@ void loop() {
     measurement_on_start_time = millis();
   }
 
-  maxPowerSpeedAndAccelerationSpinningMeasurment();
+  //maxPowerSpeedAndAccelerationSpinningMeasurment();
   //maxPowerSpeedAndAccelerationForwardMeasurment();
+  parameterEstimationValidation();
+  //parameterEstimationMeasurement();
   t.update();
 
   //print_encoder_positions();
@@ -385,8 +387,8 @@ void serialBluetoothCommander(int command){
     }
 }
 void parameterEstimationMeasurement(){
+  float delta = millis() - measurement_on_start_time;
   if(measurement_on){
-    float delta = millis() - measurement_on_start_time;
   	if(delta< 2001){
   		float pwm = 1.0;
   		motorA.set_signed_speed(pwm); //-1...0...1
@@ -411,14 +413,17 @@ void parameterEstimationMeasurement(){
   		motorB.set_signed_speed(pwm);
   		motorC.set_signed_speed(pwm);
   	}
-  	else if(delta >= 8001){
-  		measurement_on = false;
+  	else if(delta >= 8001 && delta<10001){
   		float pwm = 0.0;
   		motorA.set_signed_speed(pwm); //-1...0...1
   		motorB.set_signed_speed(pwm);
   		motorC.set_signed_speed(pwm);
   	}
+    else if(delta >= 10001){
+  		measurement_on = false;
+  	}
   }
+
 }
 void maxPowerSpeedAndAccelerationSpinningMeasurment(){
   if(measurement_on){
@@ -453,7 +458,7 @@ void maxPowerSpeedAndAccelerationForwardMeasurment(){
     motorC.set_signed_speed(0);
   }
   else if(delta >= 2001){
-    measurement_on = false;
+    //measurement_on = false;
     float pwm = 0.0;
     motorA.set_signed_speed(pwm); //-1...0...1
     motorB.set_signed_speed(pwm);

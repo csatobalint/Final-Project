@@ -46,4 +46,7 @@ currentFigure = createfigure3(time,velocities,axisNames,displayNames,xLim,yLim);
 %figsave(currentFigure,measurement_case,15,15);
 
 MeasurementTime = time;
-MeasurementShaftSpeed = filter(b,a,data(:,2));
+MeasurementShaftSpeed = (filter(b,a,data(:,2))+filter(b,a,data(:,3)))/2;
+
+validation_figure(tout,yout,MeasurementTime,MeasurementShaftSpeed)
+figsave(gcf,'validation_figure_current',15,15);

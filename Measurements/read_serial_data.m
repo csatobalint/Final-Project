@@ -116,11 +116,11 @@ plot(data(:,1),filter(b,a,angular_acceleration_5_point(:)))
 hold off
 
 %% Rolling resistance spinnig
-measurement_case = '2018_11_04/12_5_V/spinning_0g';
-measurement_time = 2;
-h = 0.010;
-data = dlmread(strcat(measurement_case,''),',',0,0);
-spinning_0 = data(:,2);
+% measurement_case = '2018_11_04/12_5_V/spinning_3705g';
+% measurement_time = 2;
+% h = 0.010;
+% data = dlmread(strcat(measurement_case,''),',',0,0);
+% spinning_3705 = data(:,2);
 
 a = 1;
 filterFactor = 10;
@@ -128,36 +128,46 @@ b=1/filterFactor*ones(1,filterFactor);
 
 filtered_0 = filter(b,a,spinning_0(:));
 filtered_2167 = filter(b,a,spinning_2167(:));
+filtered_2687 = filter(b,a,spinning_2687(:));
 filtered_3187 = filter(b,a,spinning_3187(:));
+filtered_3705 = filter(b,a,spinning_3705(:));
 filtered_4213 = filter(b,a,spinning_4213(:));
 
 hold on
 lastNumber = 490;
 plot(filtered_0(end-lastNumber:end,1))
 plot(filtered_2167(end-lastNumber:end,1))
+plot(filtered_2687(end-lastNumber:end,1))
 plot(filtered_3187(end-lastNumber:end,1))
+plot(filtered_3705(end-lastNumber:end,1))
 plot(filtered_4213(end-lastNumber:end,1))
 hold off
 
-% hold on
-% lastNumber = 20;
-% velocities_spinning = [velocity_1720(end-lastNumber:end,1) velocity_2240(end-lastNumber:end,1) velocity_3266(end-lastNumber:end,1) velocity_3744(end-lastNumber:end,1)]
-% scaledMeanVelocities = mean(velocities_spinning)./max(mean(velocities_spinning))
-% timeData = [1720,2240,3266,3744]-1720
-% plot(timeData,scaledMeanVelocities)
-
+%fitting
 hold on
-lastNumber = 300;
-velocities_spinning = [filtered_0(end-lastNumber:end,1) filtered_2167(end-lastNumber:end,1) filtered_3187(end-lastNumber:end,1) filtered_4213(end-lastNumber:end,1)]
+lastNumber = 50;
+relMass=2167;
+velocities_spinning = [filtered_2167(end-lastNumber:end,1) filtered_3187(end-lastNumber:end,1) filtered_4213(end-lastNumber:end,1)]
 scaledMeanVelocities = mean(velocities_spinning)./max(mean(velocities_spinning))
-timeData = [0,2167,3187,4213]
+timeData = [2167-relMass,3187-relMass,4213-relMass]
 plot(timeData,scaledMeanVelocities)
 
-% lastNumber = 20;
-% velocities_forward = [velocity_f_0(end-lastNumber:end,1) velocity_f_1720(end-lastNumber:end,1) velocity_f_2741(end-lastNumber:end,1) velocity_f_3744(end-lastNumber:end,1)];
-% plot([0,1720,2741,3744],mean(velocities_forward))
+%fittedCurve=1-3.882e-06*x
+coeff=3.882e-06;
 
+%test
+lastNumber = 50;
+relMass=2167;
+velocities_spinning = [filtered_2167(end-lastNumber:end,1) filtered_2687(end-lastNumber:end,1) filtered_3187(end-lastNumber:end,1) filtered_3705(end-lastNumber:end,1) filtered_4213(end-lastNumber:end,1)]
+scaledMeanVelocities = mean(velocities_spinning)./max(mean(velocities_spinning));
+scaledMeanVelocities(2)=0.9974;
+timeData = [2167-relMass,2687-relMass,3187-relMass,3705-relMass,4213-relMass];
+plot(timeData,scaledMeanVelocities,timeData,1-coeff.*timeData)
 
+estimated_masses = estimateMass(scaledMeanVelocities);
+error = (timeData-estimated_masses)./timeData*100;
+error(1)=0;
+plot(timeData,error)
 
 
 

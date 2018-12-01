@@ -14,7 +14,7 @@
 \contentsline {subsubsection}{\numberline {2.3.2}Wheel configurations}{12}{subsubsection.2.3.2}
 \contentsline {paragraph}{\numberline {2.3.2.1}Holonomic robots}{12}{paragraph.2.3.2.1}
 \contentsline {paragraph}{\numberline {2.3.2.2}Anholonomic robots}{14}{paragraph.2.3.2.2}
-\contentsline {section}{\numberline {3}The Mobile Robot}{16}{section.3}
+\contentsline {section}{\numberline {3}The Mobile Robot Hardware}{16}{section.3}
 \contentsline {subsection}{\numberline {3.1}Selecting a mobile robot configuration}{16}{subsection.3.1}
 \contentsline {subsection}{\numberline {3.2}The Hardware}{17}{subsection.3.2}
 \contentsline {subsubsection}{\numberline {3.2.1}Omni wheel}{17}{subsubsection.3.2.1}
@@ -32,12 +32,11 @@
 \contentsline {subsubsection}{\numberline {4.1.2}2D Simulations}{33}{subsubsection.4.1.2}
 \contentsline {subsection}{\numberline {4.2}Dynamic analysis of DC motors}{37}{subsection.4.2}
 \contentsline {subsubsection}{\numberline {4.2.1}DC motor parameter identification}{37}{subsubsection.4.2.1}
-\contentsline {subsubsection}{\numberline {4.2.2}Validation of the parameter estimation}{41}{subsubsection.4.2.2}
-\contentsline {subsubsection}{\numberline {4.2.3}Rolling resistance measurements}{41}{subsubsection.4.2.3}
-\contentsline {subsection}{\numberline {4.3}Mechanical model of the robot}{42}{subsection.4.3}
-\contentsline {subsubsection}{\numberline {4.3.1}Model of the robot case}{42}{subsubsection.4.3.1}
-\contentsline {subsubsection}{\numberline {4.3.2}Simulations of motor states}{46}{subsubsection.4.3.2}
-\contentsline {subsubsection}{\numberline {4.3.3}Comparision with measurements}{49}{subsubsection.4.3.3}
-\contentsline {subsubsection}{\numberline {4.3.4}Mass estimation}{51}{subsubsection.4.3.4}
-\contentsline {section}{Summary}{53}{figure.4.38}
-\contentsline {section}{References}{54}{figure.4.38}
+\contentsline {subsubsection}{\numberline {4.2.2}Validation of the parameter estimation}{42}{subsubsection.4.2.2}
+\contentsline {subsection}{\numberline {4.3}Mechanical model of the robot}{43}{subsection.4.3}
+\contentsline {subsubsection}{\numberline {4.3.1}Model of the robot case}{43}{subsubsection.4.3.1}
+\contentsline {subsubsection}{\numberline {4.3.2}Simulations of motor states}{47}{subsubsection.4.3.2}
+\contentsline {subsubsection}{\numberline {4.3.3}Comparision with measurements}{50}{subsubsection.4.3.3}
+\contentsline {subsubsection}{\numberline {4.3.4}Mass estimation}{53}{subsubsection.4.3.4}
+\contentsline {section}{Summary}{56}{figure.4.45}
+\contentsline {section}{References}{57}{figure.4.45}

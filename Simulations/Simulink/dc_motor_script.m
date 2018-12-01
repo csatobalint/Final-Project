@@ -44,11 +44,12 @@ close all
 load('ShaftSpeedValidationOLD.mat');
 load('values_03.mat');
 load('ShaftSpeedValidation.mat');
+
 rpm_to_rads = 0.104719755;
-oldMaxSpeed = rpm_to_rads*mean(MeasurementShaftSpeedOLD([160:190],1));
-newMaxSpeed = mean(MeasurementShaftSpeed([1400:1450],1));
-scaleShaftSpeed = oldMaxSpeed/newMaxSpeed;
-%MeasurementShaftSpeed = scaleShaftSpeed * MeasurementShaftSpeed;
+% oldMaxSpeed = rpm_to_rads*mean(MeasurementShaftSpeedOLD([160:190],1));
+% newMaxSpeed = mean(MeasurementShaftSpeed([1400:1450],1));
+% scaleShaftSpeed = oldMaxSpeed/newMaxSpeed;
+% MeasurementShaftSpeed = scaleShaftSpeed * MeasurementShaftSpeed;
 
 figure(1)
 plot(MeasurementTime,MeasurementShaftSpeed);
