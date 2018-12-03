@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6800 64-bit) (preloaded format=pdflatex 2018.10.7)  1 DEC 2018 18:20
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6800 64-bit) (preloaded format=pdflatex 2018.10.7)  3 DEC 2018 01:29
 entering extended mode
 **./final_thesis.tex
 (final_thesis.tex
@@ -826,9 +826,6 @@ File: babel.def 2018/09/02 3.23 Babel common definitions
 ))
 (final_thesis.aux
 
-LaTeX Warning: Label `fig1' multiply defined.
-
-
 LaTeX Warning: Label `bmw' multiply defined.
 
 
@@ -991,173 +988,161 @@ been already used, duplicate ignored
                    \relax 
 l.125 \newpage
                [1] [2]
+<figures/evot.png, id=228, 767.2665pt x 90.3375pt>
+File: figures/evot.png Graphic file (type png)
+<use figures/evot.png>
+Package pdftex.def Info: figures/evot.png  used on input line 151.
+(pdftex.def)             Requested size: 362.48851pt x 42.67912pt.
+ [3 <./figures/evot.png>]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 171.
 
-pdfTeX warning: pdflatex.exe (file ./figures/evot.pdf): PDF inclusion: found PD
-F version <1.6>, but at most version <1.5> allowed
-<figures/evot.pdf, id=232, 402.00188pt x 72.27pt>
-File: figures/evot.pdf Graphic file (type pdf)
-<use figures/evot.pdf>
-Package pdftex.def Info: figures/evot.pdf  used on input line 151.
-(pdftex.def)             Requested size: 284.52756pt x 51.15103pt.
-[3 <./figures/evot.pdf>]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 172.
 
- ("C:\Program Files\MiKTeX 2.9\tex\latex\base\omscmr.fd"
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\omscmr.fd"
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 172.
- [4]
-<figures/starship.jpg, id=253, 716.6775pt x 402.75468pt>
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 171.
+ [4] [5]
+<figures/starship.jpg, id=257, 716.6775pt x 402.75468pt>
 File: figures/starship.jpg Graphic file (type jpg)
 <use figures/starship.jpg>
-Package pdftex.def Info: figures/starship.jpg  used on input line 215.
-(pdftex.def)             Requested size: 199.16928pt x 111.9286pt.
- [5]
-<figures/smp.jpg, id=260, 301.125pt x 201.00093pt>
+Package pdftex.def Info: figures/starship.jpg  used on input line 217.
+(pdftex.def)             Requested size: 202.51645pt x 113.81102pt.
+<figures/smp.jpg, id=259, 301.125pt x 201.00093pt>
 File: figures/smp.jpg Graphic file (type jpg)
 <use figures/smp.jpg>
-Package pdftex.def Info: figures/smp.jpg  used on input line 227.
-(pdftex.def)             Requested size: 199.16928pt x 132.94931pt.
+Package pdftex.def Info: figures/smp.jpg  used on input line 223.
+(pdftex.def)             Requested size: 170.50351pt x 113.81102pt.
  [6 <./figures/starship.jpg> <./figures/smp.jpg>]
-<figures/neo1.jpg, id=272, 100.375pt x 151.3655pt>
+<figures/neo1.jpg, id=273, 100.375pt x 151.3655pt>
 File: figures/neo1.jpg Graphic file (type jpg)
 <use figures/neo1.jpg>
-Package pdftex.def Info: figures/neo1.jpg  used on input line 240.
+Package pdftex.def Info: figures/neo1.jpg  used on input line 238.
 (pdftex.def)             Requested size: 94.34177pt x 142.26378pt.
-<figures/neo2.jpg, id=273, 200.75pt x 309.155pt>
+<figures/neo2.jpg, id=275, 200.75pt x 309.155pt>
 File: figures/neo2.jpg Graphic file (type jpg)
 <use figures/neo2.jpg>
-Package pdftex.def Info: figures/neo2.jpg  used on input line 245.
+Package pdftex.def Info: figures/neo2.jpg  used on input line 243.
 (pdftex.def)             Requested size: 92.38287pt x 142.26378pt.
-<figures/bmw.jpg, id=275, 866.48718pt x 578.16pt>
+<figures/bmw.jpg, id=278, 866.48718pt x 578.16pt>
 File: figures/bmw.jpg Graphic file (type jpg)
 <use figures/bmw.jpg>
-Package pdftex.def Info: figures/bmw.jpg  used on input line 257.
+Package pdftex.def Info: figures/bmw.jpg  used on input line 255.
 (pdftex.def)             Requested size: 256.0748pt x 170.86449pt.
-<figures/tug.png, id=276, 367.3725pt x 411.78844pt>
+<figures/tug.png, id=280, 367.3725pt x 411.78844pt>
 File: figures/tug.png Graphic file (type png)
 <use figures/tug.png>
-Package pdftex.def Info: figures/tug.png  used on input line 266.
+Package pdftex.def Info: figures/tug.png  used on input line 264.
 (pdftex.def)             Requested size: 199.16928pt x 223.25467pt.
  [7 <./figures/neo1.jpg> <./figures/neo2.jpg> <./figures/bmw.jpg>]
-<figures/apd.jpg, id=288, 284.20787pt x 183.58241pt>
+<figures/apd.jpg, id=291, 284.20787pt x 183.58241pt>
 File: figures/apd.jpg Graphic file (type jpg)
 <use figures/apd.jpg>
-Package pdftex.def Info: figures/apd.jpg  used on input line 275.
+Package pdftex.def Info: figures/apd.jpg  used on input line 273.
 (pdftex.def)             Requested size: 199.16928pt x 128.65247pt.
- [8 <./figures/tug.png> <./figures/apd.jpg>]
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 291.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 291.
-
-[9]
+ [8 <./figures/tug.png> <./figures/apd.jpg>] [9]
 
 pdfTeX warning: pdflatex.exe (file ./figures/legged2.pdf): PDF inclusion: found
  PDF version <1.6>, but at most version <1.5> allowed
-<figures/legged2.pdf, id=304, 293.55574pt x 93.75627pt>
+<figures/legged2.pdf, id=309, 293.55574pt x 93.75627pt>
 File: figures/legged2.pdf Graphic file (type pdf)
 <use figures/legged2.pdf>
-Package pdftex.def Info: figures/legged2.pdf  used on input line 335.
+Package pdftex.def Info: figures/legged2.pdf  used on input line 329.
 (pdftex.def)             Requested size: 199.16928pt x 63.61177pt.
 [10 <./figures/legged2.pdf, page is rotated 90 degrees>]
-<figures/triangle.pdf, id=319, 373.12097pt x 364.71455pt>
+<figures/triangle.pdf, id=324, 373.12097pt x 364.71455pt>
 File: figures/triangle.pdf Graphic file (type pdf)
 <use figures/triangle.pdf>
-Package pdftex.def Info: figures/triangle.pdf  used on input line 348.
+Package pdftex.def Info: figures/triangle.pdf  used on input line 342.
 (pdftex.def)             Requested size: 113.81102pt x 111.24611pt.
  [11 <./figures/triangle.pdf>]
-<figures/wheels4.png, id=355, 962.09438pt x 351.56343pt>
+<figures/wheels4.png, id=345, 962.09438pt x 351.56343pt>
 File: figures/wheels4.png Graphic file (type png)
 <use figures/wheels4.png>
-Package pdftex.def Info: figures/wheels4.png  used on input line 367.
+Package pdftex.def Info: figures/wheels4.png  used on input line 361.
 (pdftex.def)             Requested size: 199.16928pt x 72.77907pt.
-<figures/omniconfig.png, id=356, 1301.61281pt x 355.3275pt>
+<figures/omniconfig.png, id=346, 1301.61281pt x 355.3275pt>
 File: figures/omniconfig.png Graphic file (type png)
 <use figures/omniconfig.png>
-Package pdftex.def Info: figures/omniconfig.png  used on input line 381.
+Package pdftex.def Info: figures/omniconfig.png  used on input line 375.
 (pdftex.def)             Requested size: 426.79134pt x 116.51021pt.
-<figures/uranus.png, id=358, 721.94719pt x 435.87843pt>
+<figures/uranus.png, id=348, 721.94719pt x 435.87843pt>
 File: figures/uranus.png Graphic file (type png)
 <use figures/uranus.png>
-Package pdftex.def Info: figures/uranus.png  used on input line 393.
+Package pdftex.def Info: figures/uranus.png  used on input line 387.
 (pdftex.def)             Requested size: 141.3795pt x 85.35826pt.
-<figures/mecanum.png, id=359, 932.73468pt x 402.75468pt>
+<figures/mecanum.png, id=349, 932.73468pt x 402.75468pt>
 File: figures/mecanum.png Graphic file (type png)
 <use figures/mecanum.png>
-Package pdftex.def Info: figures/mecanum.png  used on input line 398.
+Package pdftex.def Info: figures/mecanum.png  used on input line 392.
 (pdftex.def)             Requested size: 197.67334pt x 85.35826pt.
  [12 <./figures/wheels4.png>]
-<figures/differential.png, id=368, 451.6875pt x 192.28983pt>
+<figures/differential.png, id=358, 451.6875pt x 192.28983pt>
 File: figures/differential.png Graphic file (type png)
 <use figures/differential.png>
-Package pdftex.def Info: figures/differential.png  used on input line 410.
+Package pdftex.def Info: figures/differential.png  used on input line 404.
 (pdftex.def)             Requested size: 284.52756pt x 121.13441pt.
  [13 <./figures/omniconfig.png> <./figures/uranus.png> <./figures/mecanum.png>]
-<figures/ackerman2.png, id=380, 661.72218pt x 436.63126pt>
+<figures/ackerman2.png, id=370, 661.72218pt x 436.63126pt>
 File: figures/ackerman2.png Graphic file (type png)
 <use figures/ackerman2.png>
-Package pdftex.def Info: figures/ackerman2.png  used on input line 421.
+Package pdftex.def Info: figures/ackerman2.png  used on input line 415.
 (pdftex.def)             Requested size: 258.71683pt x 170.71652pt.
  [14 <./figures/differential.png> <./figures/ackerman2.png>]
-<figures/uniq.png, id=391, 590.205pt x 378.66469pt>
+<figures/uniq.png, id=381, 590.205pt x 378.66469pt>
 File: figures/uniq.png Graphic file (type png)
 <use figures/uniq.png>
-Package pdftex.def Info: figures/uniq.png  used on input line 434.
+Package pdftex.def Info: figures/uniq.png  used on input line 428.
 (pdftex.def)             Requested size: 221.74059pt x 142.26378pt.
-<figures/rover.png, id=392, 454.69875pt x 340.27126pt>
+<figures/rover.png, id=382, 454.69875pt x 340.27126pt>
 File: figures/rover.png Graphic file (type png)
 <use figures/rover.png>
-Package pdftex.def Info: figures/rover.png  used on input line 439.
+Package pdftex.def Info: figures/rover.png  used on input line 433.
 (pdftex.def)             Requested size: 190.1049pt x 142.26378pt.
  [15 <./figures/uniq.png> <./figures/rover.png>] [16]
-<figures/omni_wheel.png, id=405, 542.77782pt x 222.8325pt>
+<figures/omni_wheel.png, id=395, 542.77782pt x 222.8325pt>
 File: figures/omni_wheel.png Graphic file (type png)
 <use figures/omni_wheel.png>
-Package pdftex.def Info: figures/omni_wheel.png  used on input line 462.
+Package pdftex.def Info: figures/omni_wheel.png  used on input line 456.
 (pdftex.def)             Requested size: 284.52756pt x 116.8154pt.
 
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 475.
+               Default added (so using `tbp') on input line 469.
 
-<figures/gear_motor1.png, id=409, 614.295pt x 418.56375pt>
+<figures/gear_motor1.png, id=399, 614.295pt x 418.56375pt>
 File: figures/gear_motor1.png Graphic file (type png)
 <use figures/gear_motor1.png>
-Package pdftex.def Info: figures/gear_motor1.png  used on input line 493.
+Package pdftex.def Info: figures/gear_motor1.png  used on input line 487.
 (pdftex.def)             Requested size: 170.71652pt x 116.32205pt.
-<figures/gear_motor2.png, id=410, 317.68687pt x 261.22594pt>
+<figures/gear_motor2.png, id=400, 317.68687pt x 261.22594pt>
 File: figures/gear_motor2.png Graphic file (type png)
 <use figures/gear_motor2.png>
-Package pdftex.def Info: figures/gear_motor2.png  used on input line 499.
+Package pdftex.def Info: figures/gear_motor2.png  used on input line 493.
 (pdftex.def)             Requested size: 227.62204pt x 187.1737pt.
 [17 <./figures/omni_wheel.png>]
-<figures/case_1.png, id=422, 614.295pt x 460.72125pt>
+<figures/case_1.png, id=412, 614.295pt x 460.72125pt>
 File: figures/case_1.png Graphic file (type png)
 <use figures/case_1.png>
-Package pdftex.def Info: figures/case_1.png  used on input line 513.
+Package pdftex.def Info: figures/case_1.png  used on input line 507.
 (pdftex.def)             Requested size: 199.16928pt x 149.3741pt.
-<figures/case_2.png, id=423, 614.295pt x 460.72125pt>
+<figures/case_2.png, id=413, 614.295pt x 460.72125pt>
 File: figures/case_2.png Graphic file (type png)
 <use figures/case_2.png>
-Package pdftex.def Info: figures/case_2.png  used on input line 519.
+Package pdftex.def Info: figures/case_2.png  used on input line 513.
 (pdftex.def)             Requested size: 199.16928pt x 149.3741pt.
  [18 <./figures/gear_motor1.png> <./figures/gear_motor2.png>] [19 <./figures/ca
 se_1.png> <./figures/case_2.png>] [20]
 
 pdfTeX warning: pdflatex.exe (file ./figures/Rotated.pdf): PDF inclusion: found
  PDF version <1.6>, but at most version <1.5> allowed
-<figures/Rotated.pdf, id=450, 354.03468pt x 456.64302pt>
+<figures/Rotated.pdf, id=440, 354.03468pt x 456.64302pt>
 File: figures/Rotated.pdf Graphic file (type pdf)
 <use figures/Rotated.pdf>
-Package pdftex.def Info: figures/Rotated.pdf  used on input line 534.
+Package pdftex.def Info: figures/Rotated.pdf  used on input line 528.
 (pdftex.def)             Requested size: 483.69684pt x 623.8831pt.
 
-Overfull \hbox (28.45273pt too wide) in paragraph at lines 534--536
+Overfull \hbox (28.45273pt too wide) in paragraph at lines 528--530
  [][] 
  []
 
@@ -1166,101 +1151,101 @@ Overfull \hbox (28.45273pt too wide) in paragraph at lines 534--536
 pdfTeX warning: pdflatex.exe (file ./figures/Rotated.pdf): PDF inclusion: inval
 id other resource which is no dict (key 'ProcSets', type <array>); ignored.
 >]
-<figures/dc_conducting_wire.png, id=475, 479.54156pt x 208.52907pt>
+<figures/dc_conducting_wire.png, id=465, 479.54156pt x 208.52907pt>
 File: figures/dc_conducting_wire.png Graphic file (type png)
 <use figures/dc_conducting_wire.png>
-Package pdftex.def Info: figures/dc_conducting_wire.png  used on input line 544
+Package pdftex.def Info: figures/dc_conducting_wire.png  used on input line 538
 .
 (pdftex.def)             Requested size: 261.72913pt x 113.81102pt.
-<figures/dc_motor_model.png, id=480, 316.18124pt x 206.27063pt>
+<figures/dc_motor_model.png, id=470, 316.18124pt x 206.27063pt>
 File: figures/dc_motor_model.png Graphic file (type png)
 <use figures/dc_motor_model.png>
-Package pdftex.def Info: figures/dc_motor_model.png  used on input line 554.
+Package pdftex.def Info: figures/dc_motor_model.png  used on input line 548.
 (pdftex.def)             Requested size: 218.0688pt x 142.26378pt.
  [22 <./figures/dc_conducting_wire.png>]
-<figures/directed_speed_pwm_100.pdf, id=493, 426.59375pt x 426.59375pt>
+<figures/directed_speed_pwm_100.pdf, id=483, 426.59375pt x 426.59375pt>
 File: figures/directed_speed_pwm_100.pdf Graphic file (type pdf)
 <use figures/directed_speed_pwm_100.pdf>
 Package pdftex.def Info: figures/directed_speed_pwm_100.pdf  used on input line
- 585.
+ 579.
 (pdftex.def)             Requested size: 199.17119pt x 199.16928pt.
-<figures/pwm_u.pdf, id=494, 426.59375pt x 426.59375pt>
+<figures/pwm_u.pdf, id=484, 426.59375pt x 426.59375pt>
 File: figures/pwm_u.pdf Graphic file (type pdf)
 <use figures/pwm_u.pdf>
-Package pdftex.def Info: figures/pwm_u.pdf  used on input line 591.
+Package pdftex.def Info: figures/pwm_u.pdf  used on input line 585.
 (pdftex.def)             Requested size: 199.17119pt x 199.16928pt.
-<figures/directed_speed_pwm_60.pdf, id=495, 426.59375pt x 426.59375pt>
+<figures/directed_speed_pwm_60.pdf, id=485, 426.59375pt x 426.59375pt>
 File: figures/directed_speed_pwm_60.pdf Graphic file (type pdf)
 <use figures/directed_speed_pwm_60.pdf>
 Package pdftex.def Info: figures/directed_speed_pwm_60.pdf  used on input line 
-600.
+594.
 (pdftex.def)             Requested size: 199.17119pt x 199.16928pt.
-<figures/directed_speed_pwm_40.pdf, id=496, 426.59375pt x 426.59375pt>
+<figures/directed_speed_pwm_40.pdf, id=486, 426.59375pt x 426.59375pt>
 File: figures/directed_speed_pwm_40.pdf Graphic file (type pdf)
 <use figures/directed_speed_pwm_40.pdf>
 Package pdftex.def Info: figures/directed_speed_pwm_40.pdf  used on input line 
-605.
+599.
 (pdftex.def)             Requested size: 199.17119pt x 199.16928pt.
  [23 <./figures/dc_motor_model.png>]
 [24 <./figures/directed_speed_pwm_100.pdf> <./figures/pwm_u.pdf> <./figures/dir
 ected_speed_pwm_60.pdf> <./figures/directed_speed_pwm_40.pdf>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 612.
+(hyperref)                removing `\@ifnextchar' on input line 606.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `subscript' on input line 612.
+(hyperref)                removing `subscript' on input line 606.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `subscript' on input line 612.
+(hyperref)                removing `subscript' on input line 606.
 
-<figures/control_block_diagram.pdf, id=530, 353.03494pt x 111.34297pt>
+<figures/control_block_diagram.pdf, id=520, 353.03494pt x 111.34297pt>
 File: figures/control_block_diagram.pdf Graphic file (type pdf)
 <use figures/control_block_diagram.pdf>
 Package pdftex.def Info: figures/control_block_diagram.pdf  used on input line 
-644.
+638.
 (pdftex.def)             Requested size: 360.87735pt x 113.81102pt.
 [25] [26 <./figures/control_block_diagram.pdf>]
-<figures/step_response_of_2nd_order_system_1.pdf, id=574, 711.22586pt x 347.925
+<figures/step_response_of_2nd_order_system_1.pdf, id=564, 711.22586pt x 347.925
 pt>
 File: figures/step_response_of_2nd_order_system_1.pdf Graphic file (type pdf)
 <use figures/step_response_of_2nd_order_system_1.pdf>
 Package pdftex.def Info: figures/step_response_of_2nd_order_system_1.pdf  used 
-on input line 700.
+on input line 694.
 (pdftex.def)             Requested size: 407.13934pt x 199.16928pt.
  [27 <./figures/step_response_of_2nd_order_system_1.pdf>]
-<figures/possible_poles.pdf, id=632, 505.89pt x 501.875pt>
+<figures/possible_poles.pdf, id=622, 505.89pt x 501.875pt>
 File: figures/possible_poles.pdf Graphic file (type pdf)
 <use figures/possible_poles.pdf>
-Package pdftex.def Info: figures/possible_poles.pdf  used on input line 761.
+Package pdftex.def Info: figures/possible_poles.pdf  used on input line 755.
 (pdftex.def)             Requested size: 200.76224pt x 199.16928pt.
-<figures/directed_speed_pwm_50_fitted.pdf, id=633, 426.59375pt x 426.59375pt>
+<figures/directed_speed_pwm_50_fitted.pdf, id=623, 426.59375pt x 426.59375pt>
 File: figures/directed_speed_pwm_50_fitted.pdf Graphic file (type pdf)
 <use figures/directed_speed_pwm_50_fitted.pdf>
 Package pdftex.def Info: figures/directed_speed_pwm_50_fitted.pdf  used on inpu
-t line 767.
+t line 761.
 (pdftex.def)             Requested size: 199.17119pt x 199.16928pt.
  [28 <./figures/possible_poles.pdf> <./figures/directed_speed_pwm_50_fitted.pdf
 >]
-<figures/polemap_at_50.pdf, id=678, 505.89pt x 510.90875pt>
+<figures/polemap_at_50.pdf, id=668, 505.89pt x 510.90875pt>
 File: figures/polemap_at_50.pdf Graphic file (type pdf)
 <use figures/polemap_at_50.pdf>
-Package pdftex.def Info: figures/polemap_at_50.pdf  used on input line 798.
+Package pdftex.def Info: figures/polemap_at_50.pdf  used on input line 792.
 (pdftex.def)             Requested size: 211.29901pt x 213.39566pt.
 
-Overfull \hbox (6.44055pt too wide) in paragraph at lines 798--799
+Overfull \hbox (6.44055pt too wide) in paragraph at lines 792--793
  [][] 
  []
 
-<figures/expected_50.pdf, id=679, 451.6875pt x 451.6875pt>
+<figures/expected_50.pdf, id=669, 451.6875pt x 451.6875pt>
 File: figures/expected_50.pdf Graphic file (type pdf)
 <use figures/expected_50.pdf>
-Package pdftex.def Info: figures/expected_50.pdf  used on input line 804.
+Package pdftex.def Info: figures/expected_50.pdf  used on input line 798.
 (pdftex.def)             Requested size: 213.39589pt x 213.39566pt.
 
-Overfull \hbox (8.53743pt too wide) in paragraph at lines 804--805
+Overfull \hbox (8.53743pt too wide) in paragraph at lines 798--799
  [][] 
  []
 
@@ -1269,47 +1254,47 @@ Overfull \hbox (8.53743pt too wide) in paragraph at lines 804--805
 pdfTeX warning: pdflatex.exe (file ./figures/expected_50.pdf): PDF inclusion: m
 ultiple pdfs with page group included in a single page
 >]
-<figures/controlled_50_p_02_i_11.pdf, id=735, 426.59375pt x 426.59375pt>
+<figures/controlled_50_p_02_i_11.pdf, id=725, 426.59375pt x 426.59375pt>
 File: figures/controlled_50_p_02_i_11.pdf Graphic file (type pdf)
 <use figures/controlled_50_p_02_i_11.pdf>
 Package pdftex.def Info: figures/controlled_50_p_02_i_11.pdf  used on input lin
-e 815.
+e 809.
+(pdftex.def)             Requested size: 213.40048pt x 213.39566pt.
+
+Overfull \hbox (8.54202pt too wide) in paragraph at lines 809--810
+ [][] 
+ []
+
+<figures/controlled_100_p_02_i_11.pdf, id=726, 426.59375pt x 426.59375pt>
+File: figures/controlled_100_p_02_i_11.pdf Graphic file (type pdf)
+<use figures/controlled_100_p_02_i_11.pdf>
+Package pdftex.def Info: figures/controlled_100_p_02_i_11.pdf  used on input li
+ne 815.
 (pdftex.def)             Requested size: 213.40048pt x 213.39566pt.
 
 Overfull \hbox (8.54202pt too wide) in paragraph at lines 815--816
  [][] 
  []
 
-<figures/controlled_100_p_02_i_11.pdf, id=736, 426.59375pt x 426.59375pt>
-File: figures/controlled_100_p_02_i_11.pdf Graphic file (type pdf)
-<use figures/controlled_100_p_02_i_11.pdf>
-Package pdftex.def Info: figures/controlled_100_p_02_i_11.pdf  used on input li
-ne 821.
-(pdftex.def)             Requested size: 213.40048pt x 213.39566pt.
-
-Overfull \hbox (8.54202pt too wide) in paragraph at lines 821--822
- [][] 
- []
-
-<figures/controlled_50_p_02_i_002.pdf, id=737, 426.59375pt x 426.59375pt>
+<figures/controlled_50_p_02_i_002.pdf, id=727, 426.59375pt x 426.59375pt>
 File: figures/controlled_50_p_02_i_002.pdf Graphic file (type pdf)
 <use figures/controlled_50_p_02_i_002.pdf>
 Package pdftex.def Info: figures/controlled_50_p_02_i_002.pdf  used on input li
-ne 830.
+ne 824.
 (pdftex.def)             Requested size: 227.62979pt x 227.62204pt.
 
-Overfull \hbox (22.77133pt too wide) in paragraph at lines 830--831
+Overfull \hbox (22.77133pt too wide) in paragraph at lines 824--825
  [][] 
  []
 
-<figures/controlled_100_p_02_i_002.pdf, id=738, 426.59375pt x 426.59375pt>
+<figures/controlled_100_p_02_i_002.pdf, id=728, 426.59375pt x 426.59375pt>
 File: figures/controlled_100_p_02_i_002.pdf Graphic file (type pdf)
 <use figures/controlled_100_p_02_i_002.pdf>
 Package pdftex.def Info: figures/controlled_100_p_02_i_002.pdf  used on input l
-ine 836.
+ine 830.
 (pdftex.def)             Requested size: 227.62979pt x 227.62204pt.
 
-Overfull \hbox (22.77133pt too wide) in paragraph at lines 836--837
+Overfull \hbox (22.77133pt too wide) in paragraph at lines 830--831
  [][] 
  []
 
@@ -1319,50 +1304,50 @@ _002.pdf>]
 
 pdfTeX warning: pdflatex.exe (file ./figures/global_local_frame.pdf): PDF inclu
 sion: found PDF version <1.7>, but at most version <1.5> allowed
-<figures/global_local_frame.pdf, id=752, 409.9181pt x 400.76535pt>
+<figures/global_local_frame.pdf, id=742, 409.9181pt x 400.76535pt>
 File: figures/global_local_frame.pdf Graphic file (type pdf)
 <use figures/global_local_frame.pdf>
-Package pdftex.def Info: figures/global_local_frame.pdf  used on input line 851
+Package pdftex.def Info: figures/global_local_frame.pdf  used on input line 845
 .
 (pdftex.def)             Requested size: 199.16928pt x 194.72563pt.
 
 
 pdfTeX warning: pdflatex.exe (file ./figures/omni_wheel_vectors.pdf): PDF inclu
 sion: found PDF version <1.7>, but at most version <1.5> allowed
-<figures/omni_wheel_vectors.pdf, id=753, 586.18951pt x 753.54031pt>
+<figures/omni_wheel_vectors.pdf, id=743, 586.18951pt x 753.54031pt>
 File: figures/omni_wheel_vectors.pdf Graphic file (type pdf)
 <use figures/omni_wheel_vectors.pdf>
-Package pdftex.def Info: figures/omni_wheel_vectors.pdf  used on input line 871
+Package pdftex.def Info: figures/omni_wheel_vectors.pdf  used on input line 865
 .
 (pdftex.def)             Requested size: 199.16928pt x 256.02785pt.
 [31 <./figures/global_local_frame.pdf>] [32 <./figures/omni_wheel_vectors.pdf>]
-<figures/2d_simulation/relation_v_1_g_0_w_0.pdf, id=792, 505.89pt x 482.80376pt
+<figures/2d_simulation/relation_v_1_g_0_w_0.pdf, id=782, 505.89pt x 482.80376pt
 >
 File: figures/2d_simulation/relation_v_1_g_0_w_0.pdf Graphic file (type pdf)
 <use figures/2d_simulation/relation_v_1_g_0_w_0.pdf>
 Package pdftex.def Info: figures/2d_simulation/relation_v_1_g_0_w_0.pdf  used o
-n input line 978.
+n input line 972.
 (pdftex.def)             Requested size: 208.68991pt x 199.16928pt.
-<figures/2d_simulation/relation_v_0_g_0_w_10.pdf, id=793, 505.89pt x 482.80376p
+<figures/2d_simulation/relation_v_0_g_0_w_10.pdf, id=783, 505.89pt x 482.80376p
 t>
 File: figures/2d_simulation/relation_v_0_g_0_w_10.pdf Graphic file (type pdf)
 <use figures/2d_simulation/relation_v_0_g_0_w_10.pdf>
 Package pdftex.def Info: figures/2d_simulation/relation_v_0_g_0_w_10.pdf  used 
-on input line 984.
+on input line 978.
 (pdftex.def)             Requested size: 208.68991pt x 199.16928pt.
-<figures/2d_simulation/relation_v_1_g_30_w_0.pdf, id=796, 505.89pt x 482.80376p
+<figures/2d_simulation/relation_v_1_g_30_w_0.pdf, id=786, 505.89pt x 482.80376p
 t>
 File: figures/2d_simulation/relation_v_1_g_30_w_0.pdf Graphic file (type pdf)
 <use figures/2d_simulation/relation_v_1_g_30_w_0.pdf>
 Package pdftex.def Info: figures/2d_simulation/relation_v_1_g_30_w_0.pdf  used 
-on input line 994.
+on input line 988.
 (pdftex.def)             Requested size: 208.68991pt x 199.16928pt.
-<figures/2d_simulation/relation_v_06_g_45_w_6.pdf, id=797, 505.89pt x 482.80376
+<figures/2d_simulation/relation_v_06_g_45_w_6.pdf, id=787, 505.89pt x 482.80376
 pt>
 File: figures/2d_simulation/relation_v_06_g_45_w_6.pdf Graphic file (type pdf)
 <use figures/2d_simulation/relation_v_06_g_45_w_6.pdf>
 Package pdftex.def Info: figures/2d_simulation/relation_v_06_g_45_w_6.pdf  used
- on input line 1000.
+ on input line 994.
 (pdftex.def)             Requested size: 208.68991pt x 199.16928pt.
 [33] [34 <./figures/2d_simulation/relation_v_1_g_0_w_0.pdf> <./figures/2d_simul
 ation/relation_v_0_g_0_w_10.pdf
@@ -1380,58 +1365,58 @@ _6.pdf): PDF inclusion: multiple pdfs with page group included in a single page
 
 >]
 <figures/2d_simulation/animations/2D_move_along_circle_not_rotating/20.pdf, id=
-923, 505.89pt x 482.80376pt>
+913, 505.89pt x 482.80376pt>
 File: figures/2d_simulation/animations/2D_move_along_circle_not_rotating/20.pdf
  Graphic file (type pdf)
 <use figures/2d_simulation/animations/2D_move_along_circle_not_rotating/20.pdf>
 
 Package pdftex.def Info: figures/2d_simulation/animations/2D_move_along_circle_
-not_rotating/20.pdf  used on input line 1017.
+not_rotating/20.pdf  used on input line 1011.
 (pdftex.def)             Requested size: 149.06642pt x 142.26378pt.
 <figures/2d_simulation/animations/2D_move_along_circle_not_rotating/40.pdf, id=
-924, 505.89pt x 482.80376pt>
+914, 505.89pt x 482.80376pt>
 File: figures/2d_simulation/animations/2D_move_along_circle_not_rotating/40.pdf
  Graphic file (type pdf)
 <use figures/2d_simulation/animations/2D_move_along_circle_not_rotating/40.pdf>
 
 Package pdftex.def Info: figures/2d_simulation/animations/2D_move_along_circle_
-not_rotating/40.pdf  used on input line 1022.
+not_rotating/40.pdf  used on input line 1016.
 (pdftex.def)             Requested size: 149.06642pt x 142.26378pt.
 <figures/2d_simulation/animations/2D_move_along_circle_not_rotating/60.pdf, id=
-925, 505.89pt x 482.80376pt>
+915, 505.89pt x 482.80376pt>
 File: figures/2d_simulation/animations/2D_move_along_circle_not_rotating/60.pdf
  Graphic file (type pdf)
 <use figures/2d_simulation/animations/2D_move_along_circle_not_rotating/60.pdf>
 
 Package pdftex.def Info: figures/2d_simulation/animations/2D_move_along_circle_
-not_rotating/60.pdf  used on input line 1027.
+not_rotating/60.pdf  used on input line 1021.
 (pdftex.def)             Requested size: 149.06642pt x 142.26378pt.
 <figures/2d_simulation/animations/2D_move_along_circle_rotating_car_like/20.pdf
-, id=926, 505.89pt x 482.80376pt>
+, id=916, 505.89pt x 482.80376pt>
 File: figures/2d_simulation/animations/2D_move_along_circle_rotating_car_like/2
 0.pdf Graphic file (type pdf)
 <use figures/2d_simulation/animations/2D_move_along_circle_rotating_car_like/20
 .pdf>
 Package pdftex.def Info: figures/2d_simulation/animations/2D_move_along_circle_
-rotating_car_like/20.pdf  used on input line 1042.
+rotating_car_like/20.pdf  used on input line 1036.
 (pdftex.def)             Requested size: 149.06642pt x 142.26378pt.
 <figures/2d_simulation/animations/2D_move_along_circle_rotating_car_like/40.pdf
-, id=927, 505.89pt x 482.80376pt>
+, id=917, 505.89pt x 482.80376pt>
 File: figures/2d_simulation/animations/2D_move_along_circle_rotating_car_like/4
 0.pdf Graphic file (type pdf)
 <use figures/2d_simulation/animations/2D_move_along_circle_rotating_car_like/40
 .pdf>
 Package pdftex.def Info: figures/2d_simulation/animations/2D_move_along_circle_
-rotating_car_like/40.pdf  used on input line 1047.
+rotating_car_like/40.pdf  used on input line 1041.
 (pdftex.def)             Requested size: 149.06642pt x 142.26378pt.
 <figures/2d_simulation/animations/2D_move_along_circle_rotating_car_like/60.pdf
-, id=928, 505.89pt x 482.80376pt>
+, id=918, 505.89pt x 482.80376pt>
 File: figures/2d_simulation/animations/2D_move_along_circle_rotating_car_like/6
 0.pdf Graphic file (type pdf)
 <use figures/2d_simulation/animations/2D_move_along_circle_rotating_car_like/60
 .pdf>
 Package pdftex.def Info: figures/2d_simulation/animations/2D_move_along_circle_
-rotating_car_like/60.pdf  used on input line 1052.
+rotating_car_like/60.pdf  used on input line 1046.
 (pdftex.def)             Requested size: 149.06642pt x 142.26378pt.
  [35 <./figures/2d_simulation/animations/2D_move_along_circle_not_rotating/20.p
 df> <./figures/2d_simulation/animations/2D_move_along_circle_not_rotating/40.pd
@@ -1465,55 +1450,55 @@ long_circle_rotating_car_like/60.pdf): PDF inclusion: multiple pdfs with page g
 roup included in a single page
 >]
 <figures/2d_simulation/animations/2D_move_along_circle_rotating_reverse_directi
-on/20.pdf, id=1018, 505.89pt x 482.80376pt>
+on/20.pdf, id=1008, 505.89pt x 482.80376pt>
 File: figures/2d_simulation/animations/2D_move_along_circle_rotating_reverse_di
 rection/20.pdf Graphic file (type pdf)
 <use figures/2d_simulation/animations/2D_move_along_circle_rotating_reverse_dir
 ection/20.pdf>
 Package pdftex.def Info: figures/2d_simulation/animations/2D_move_along_circle_
-rotating_reverse_direction/20.pdf  used on input line 1067.
+rotating_reverse_direction/20.pdf  used on input line 1061.
 (pdftex.def)             Requested size: 149.06642pt x 142.26378pt.
 <figures/2d_simulation/animations/2D_move_along_circle_rotating_reverse_directi
-on/40.pdf, id=1019, 505.89pt x 482.80376pt>
+on/40.pdf, id=1009, 505.89pt x 482.80376pt>
 File: figures/2d_simulation/animations/2D_move_along_circle_rotating_reverse_di
 rection/40.pdf Graphic file (type pdf)
 <use figures/2d_simulation/animations/2D_move_along_circle_rotating_reverse_dir
 ection/40.pdf>
 Package pdftex.def Info: figures/2d_simulation/animations/2D_move_along_circle_
-rotating_reverse_direction/40.pdf  used on input line 1072.
+rotating_reverse_direction/40.pdf  used on input line 1066.
 (pdftex.def)             Requested size: 149.06642pt x 142.26378pt.
 <figures/2d_simulation/animations/2D_move_along_circle_rotating_reverse_directi
-on/60.pdf, id=1020, 505.89pt x 482.80376pt>
+on/60.pdf, id=1010, 505.89pt x 482.80376pt>
 File: figures/2d_simulation/animations/2D_move_along_circle_rotating_reverse_di
 rection/60.pdf Graphic file (type pdf)
 <use figures/2d_simulation/animations/2D_move_along_circle_rotating_reverse_dir
 ection/60.pdf>
 Package pdftex.def Info: figures/2d_simulation/animations/2D_move_along_circle_
-rotating_reverse_direction/60.pdf  used on input line 1077.
+rotating_reverse_direction/60.pdf  used on input line 1071.
 (pdftex.def)             Requested size: 149.06642pt x 142.26378pt.
 <figures/2d_simulation/animations/2D_move_along_line_and_rotating/20.pdf, id=10
-21, 505.89pt x 482.80376pt>
+11, 505.89pt x 482.80376pt>
 File: figures/2d_simulation/animations/2D_move_along_line_and_rotating/20.pdf G
 raphic file (type pdf)
 <use figures/2d_simulation/animations/2D_move_along_line_and_rotating/20.pdf>
 Package pdftex.def Info: figures/2d_simulation/animations/2D_move_along_line_an
-d_rotating/20.pdf  used on input line 1091.
+d_rotating/20.pdf  used on input line 1085.
 (pdftex.def)             Requested size: 149.06642pt x 142.26378pt.
 <figures/2d_simulation/animations/2D_move_along_line_and_rotating/40.pdf, id=10
-22, 505.89pt x 482.80376pt>
+12, 505.89pt x 482.80376pt>
 File: figures/2d_simulation/animations/2D_move_along_line_and_rotating/40.pdf G
 raphic file (type pdf)
 <use figures/2d_simulation/animations/2D_move_along_line_and_rotating/40.pdf>
 Package pdftex.def Info: figures/2d_simulation/animations/2D_move_along_line_an
-d_rotating/40.pdf  used on input line 1096.
+d_rotating/40.pdf  used on input line 1090.
 (pdftex.def)             Requested size: 149.06642pt x 142.26378pt.
 <figures/2d_simulation/animations/2D_move_along_line_and_rotating/60.pdf, id=10
-23, 505.89pt x 482.80376pt>
+13, 505.89pt x 482.80376pt>
 File: figures/2d_simulation/animations/2D_move_along_line_and_rotating/60.pdf G
 raphic file (type pdf)
 <use figures/2d_simulation/animations/2D_move_along_line_and_rotating/60.pdf>
 Package pdftex.def Info: figures/2d_simulation/animations/2D_move_along_line_an
-d_rotating/60.pdf  used on input line 1101.
+d_rotating/60.pdf  used on input line 1095.
 (pdftex.def)             Requested size: 149.06642pt x 142.26378pt.
  [36 <./figures/2d_simulation/animations/2D_move_along_circle_rotating_reverse_
 direction/20.pdf> <./figures/2d_simulation/animations/2D_move_along_circle_rota
@@ -1544,69 +1529,69 @@ pdfTeX warning: pdflatex.exe (file ./figures/2d_simulation/animations/2D_move_a
 long_line_and_rotating/60.pdf): PDF inclusion: multiple pdfs with page group in
 cluded in a single page
 >]
-<figures/simulink_dc_motor.png, id=1117, 1048.66782pt x 574.39594pt>
+<figures/simulink_dc_motor.png, id=1107, 1048.66782pt x 574.39594pt>
 File: figures/simulink_dc_motor.png Graphic file (type png)
 <use figures/simulink_dc_motor.png>
-Package pdftex.def Info: figures/simulink_dc_motor.png  used on input line 1115
+Package pdftex.def Info: figures/simulink_dc_motor.png  used on input line 1109
 .
 (pdftex.def)             Requested size: 259.7181pt x 142.26378pt.
-<figures/simulink_dc_motor_complex.png, id=1119, 982.42032pt x 551.81157pt>
+<figures/simulink_dc_motor_complex.png, id=1109, 982.42032pt x 551.81157pt>
 File: figures/simulink_dc_motor_complex.png Graphic file (type png)
 <use figures/simulink_dc_motor_complex.png>
 Package pdftex.def Info: figures/simulink_dc_motor_complex.png  used on input l
-ine 1123.
+ine 1117.
 (pdftex.def)             Requested size: 405.25339pt x 227.62204pt.
  [37 <./figures/simulink_dc_motor.png>]
-<figures/simulink_par_est_1.png, id=1130, 892.08281pt x 604.50844pt>
+<figures/simulink_par_est_1.png, id=1120, 892.08281pt x 604.50844pt>
 File: figures/simulink_par_est_1.png Graphic file (type png)
 <use figures/simulink_par_est_1.png>
-Package pdftex.def Info: figures/simulink_par_est_1.png  used on input line 113
-4.
+Package pdftex.def Info: figures/simulink_par_est_1.png  used on input line 112
+8.
 (pdftex.def)             Requested size: 419.87791pt x 284.52756pt.
-<figures/simulink_par_est_2.png, id=1133, 385.44pt x 365.86688pt>
+<figures/simulink_par_est_2.png, id=1123, 385.44pt x 365.86688pt>
 File: figures/simulink_par_est_2.png Graphic file (type png)
 <use figures/simulink_par_est_2.png>
-Package pdftex.def Info: figures/simulink_par_est_2.png  used on input line 114
-2.
+Package pdftex.def Info: figures/simulink_par_est_2.png  used on input line 113
+6.
 (pdftex.def)             Requested size: 209.82243pt x 199.16928pt.
 
-Overfull \hbox (4.96397pt too wide) in paragraph at lines 1142--1143
+Overfull \hbox (4.96397pt too wide) in paragraph at lines 1136--1137
  [][] 
  []
 
-<figures/simulink_armature_current.pdf, id=1134, 400.11473pt x 406.68536pt>
+<figures/simulink_armature_current.pdf, id=1124, 400.11473pt x 406.68536pt>
 File: figures/simulink_armature_current.pdf Graphic file (type pdf)
 <use figures/simulink_armature_current.pdf>
 Package pdftex.def Info: figures/simulink_armature_current.pdf  used on input l
-ine 1147.
+ine 1141.
 (pdftex.def)             Requested size: 195.95413pt x 199.16928pt.
 [38 <./figures/simulink_dc_motor_complex.png>] [39 <./figures/simulink_par_est_
 1.png> <./figures/simulink_par_est_2.png> <./figures/simulink_armature_current.
 pdf>] [40]
-<figures/mahemetica_comparision_1.pdf, id=1169, 469.755pt x 460.72125pt>
+<figures/mahemetica_comparision_1.pdf, id=1159, 469.755pt x 460.72125pt>
 File: figures/mahemetica_comparision_1.pdf Graphic file (type pdf)
 <use figures/mahemetica_comparision_1.pdf>
 Package pdftex.def Info: figures/mahemetica_comparision_1.pdf  used on input li
-ne 1285.
+ne 1279.
 (pdftex.def)             Requested size: 203.07306pt x 199.16928pt.
-<figures/mahemetica_comparision_2.pdf, id=1170, 469.755pt x 462.72874pt>
+<figures/mahemetica_comparision_2.pdf, id=1160, 469.755pt x 462.72874pt>
 File: figures/mahemetica_comparision_2.pdf Graphic file (type pdf)
 <use figures/mahemetica_comparision_2.pdf>
 Package pdftex.def Info: figures/mahemetica_comparision_2.pdf  used on input li
-ne 1291.
+ne 1285.
 (pdftex.def)             Requested size: 202.1914pt x 199.16928pt.
  [41]
-<figures/validation_figure.pdf, id=1184, 426.59375pt x 426.59375pt>
+<figures/validation_figure.pdf, id=1174, 426.59375pt x 426.59375pt>
 File: figures/validation_figure.pdf Graphic file (type pdf)
 <use figures/validation_figure.pdf>
-Package pdftex.def Info: figures/validation_figure.pdf  used on input line 1307
+Package pdftex.def Info: figures/validation_figure.pdf  used on input line 1301
 .
 (pdftex.def)             Requested size: 199.17119pt x 199.16928pt.
-<figures/validation_figure_current.pdf, id=1185, 426.59375pt x 426.59375pt>
+<figures/validation_figure_current.pdf, id=1175, 426.59375pt x 426.59375pt>
 File: figures/validation_figure_current.pdf Graphic file (type pdf)
 <use figures/validation_figure_current.pdf>
 Package pdftex.def Info: figures/validation_figure_current.pdf  used on input l
-ine 1313.
+ine 1307.
 (pdftex.def)             Requested size: 199.17119pt x 199.16928pt.
  [42 <./figures/mahemetica_comparision_1.pdf> <./figures/mahemetica_comparision
 _2.pdf
@@ -1614,15 +1599,15 @@ _2.pdf
 pdfTeX warning: pdflatex.exe (file ./figures/mahemetica_comparision_2.pdf): PDF
  inclusion: multiple pdfs with page group included in a single page
 > <./figures/validation_figure.pdf> <./figures/validation_figure_current.pdf>]
-<figures/robotModel.pdf, id=1254, 569.12625pt x 418.56375pt>
+<figures/robotModel.pdf, id=1244, 569.12625pt x 418.56375pt>
 File: figures/robotModel.pdf Graphic file (type pdf)
 <use figures/robotModel.pdf>
-Package pdftex.def Info: figures/robotModel.pdf  used on input line 1329.
+Package pdftex.def Info: figures/robotModel.pdf  used on input line 1323.
 (pdftex.def)             Requested size: 227.62204pt x 167.40337pt.
-<figures/caseFBD.pdf, id=1255, 597.5916pt x 520.9775pt>
+<figures/caseFBD.pdf, id=1245, 597.5916pt x 520.9775pt>
 File: figures/caseFBD.pdf Graphic file (type pdf)
 <use figures/caseFBD.pdf>
-Package pdftex.def Info: figures/caseFBD.pdf  used on input line 1335.
+Package pdftex.def Info: figures/caseFBD.pdf  used on input line 1329.
 (pdftex.def)             Requested size: 227.62204pt x 198.44252pt.
 
 [43 <./figures/robotModel.pdf> <./figures/caseFBD.pdf
@@ -1630,23 +1615,23 @@ Package pdftex.def Info: figures/caseFBD.pdf  used on input line 1335.
 pdfTeX warning: pdflatex.exe (file ./figures/caseFBD.pdf): PDF inclusion: multi
 ple pdfs with page group included in a single page
 >] [44]
-<figures/wheelsFBD.pdf, id=1288, 616.10939pt x 520.96935pt>
+<figures/wheelsFBD.pdf, id=1278, 616.10939pt x 520.96935pt>
 File: figures/wheelsFBD.pdf Graphic file (type pdf)
 <use figures/wheelsFBD.pdf>
-Package pdftex.def Info: figures/wheelsFBD.pdf  used on input line 1393.
+Package pdftex.def Info: figures/wheelsFBD.pdf  used on input line 1387.
 (pdftex.def)             Requested size: 269.18996pt x 227.62204pt.
 
-Overfull \hbox (64.3315pt too wide) in paragraph at lines 1393--1394
+Overfull \hbox (64.3315pt too wide) in paragraph at lines 1387--1388
  [][] 
  []
 
-<figures/wheelFBD.pdf, id=1289, 693.59125pt x 693.59125pt>
+<figures/wheelFBD.pdf, id=1279, 693.59125pt x 693.59125pt>
 File: figures/wheelFBD.pdf Graphic file (type pdf)
 <use figures/wheelFBD.pdf>
-Package pdftex.def Info: figures/wheelFBD.pdf  used on input line 1399.
+Package pdftex.def Info: figures/wheelFBD.pdf  used on input line 1393.
 (pdftex.def)             Requested size: 227.61581pt x 227.62204pt.
 
-Overfull \hbox (22.75735pt too wide) in paragraph at lines 1399--1400
+Overfull \hbox (22.75735pt too wide) in paragraph at lines 1393--1394
  [][] 
  []
 
@@ -1655,53 +1640,53 @@ Overfull \hbox (22.75735pt too wide) in paragraph at lines 1399--1400
 pdfTeX warning: pdflatex.exe (file ./figures/wheelFBD.pdf): PDF inclusion: mult
 iple pdfs with page group included in a single page
 >] [46]
-<figures/accelerationState.pdf, id=1320, 626.34pt x 550.055pt>
+<figures/accelerationState.pdf, id=1310, 626.34pt x 550.055pt>
 File: figures/accelerationState.pdf Graphic file (type pdf)
 <use figures/accelerationState.pdf>
-Package pdftex.def Info: figures/accelerationState.pdf  used on input line 1464
+Package pdftex.def Info: figures/accelerationState.pdf  used on input line 1458
 .
 (pdftex.def)             Requested size: 226.79155pt x 199.16928pt.
 
-Overfull \hbox (21.93309pt too wide) in paragraph at lines 1464--1465
+Overfull \hbox (21.93309pt too wide) in paragraph at lines 1458--1459
  [][] 
  []
 
-<figures/dangerousOri.png, id=1321, 832.61063pt x 977.15062pt>
+<figures/dangerousOri.png, id=1311, 832.61063pt x 977.15062pt>
 File: figures/dangerousOri.png Graphic file (type png)
 <use figures/dangerousOri.png>
-Package pdftex.def Info: figures/dangerousOri.png  used on input line 1470.
+Package pdftex.def Info: figures/dangerousOri.png  used on input line 1464.
 (pdftex.def)             Requested size: 169.70802pt x 199.16928pt.
 [47]
-<figures/fallover_ppt.png, id=1331, 604.50844pt x 570.63188pt>
+<figures/fallover_ppt.png, id=1321, 604.50844pt x 570.63188pt>
 File: figures/fallover_ppt.png Graphic file (type png)
 <use figures/fallover_ppt.png>
-Package pdftex.def Info: figures/fallover_ppt.png  used on input line 1481.
+Package pdftex.def Info: figures/fallover_ppt.png  used on input line 1475.
 (pdftex.def)             Requested size: 210.99078pt x 199.16928pt.
  [48 <./figures/accelerationState.pdf> <./figures/dangerousOri.png>]
-<figures/draw_robot_baking.pdf, id=1345, 396.82985pt x 464.28177pt>
+<figures/draw_robot_baking.pdf, id=1335, 396.82985pt x 464.28177pt>
 File: figures/draw_robot_baking.pdf Graphic file (type pdf)
 <use figures/draw_robot_baking.pdf>
-Package pdftex.def Info: figures/draw_robot_baking.pdf  used on input line 1493
+Package pdftex.def Info: figures/draw_robot_baking.pdf  used on input line 1487
 .
 (pdftex.def)             Requested size: 170.23386pt x 199.16928pt.
-<figures/draw_robot_accelerating.pdf, id=1346, 425.97113pt x 488.0639pt>
+<figures/draw_robot_accelerating.pdf, id=1336, 425.97113pt x 488.0639pt>
 File: figures/draw_robot_accelerating.pdf Graphic file (type pdf)
 <use figures/draw_robot_accelerating.pdf>
 Package pdftex.def Info: figures/draw_robot_accelerating.pdf  used on input lin
-e 1499.
+e 1493.
 (pdftex.def)             Requested size: 173.83032pt x 199.16928pt.
 
 
 pdfTeX warning: pdflatex.exe (file ./figures/braking_1_0_kg_1_0_m.pdf): PDF inc
 lusion: found PDF version <1.6>, but at most version <1.5> allowed
-<figures/braking_1_0_kg_1_0_m.pdf, id=1350, 1399.4152pt x 486.21649pt>
+<figures/braking_1_0_kg_1_0_m.pdf, id=1340, 1399.4152pt x 486.21649pt>
 File: figures/braking_1_0_kg_1_0_m.pdf Graphic file (type pdf)
 <use figures/braking_1_0_kg_1_0_m.pdf>
 Package pdftex.def Info: figures/braking_1_0_kg_1_0_m.pdf  used on input line 1
-508.
+502.
 (pdftex.def)             Requested size: 491.36147pt x 170.71652pt.
 
-Overfull \hbox (36.11736pt too wide) in paragraph at lines 1508--1509
+Overfull \hbox (36.11736pt too wide) in paragraph at lines 1502--1503
  [][] 
  []
 
@@ -1711,138 +1696,132 @@ raw_robot_accelerating.pdf
 pdfTeX warning: pdflatex.exe (file ./figures/draw_robot_accelerating.pdf): PDF 
 inclusion: multiple pdfs with page group included in a single page
 >]
-<figures/fallover_video_05kg.png, id=1370, 1401.73688pt x 591.71063pt>
+<figures/fallover_video_05kg.png, id=1360, 1401.73688pt x 591.71063pt>
 File: figures/fallover_video_05kg.png Graphic file (type png)
 <use figures/fallover_video_05kg.png>
 Package pdftex.def Info: figures/fallover_video_05kg.png  used on input line 15
-19.
+13.
 (pdftex.def)             Requested size: 471.81454pt x 199.16928pt.
 
-Overfull \hbox (16.57043pt too wide) in paragraph at lines 1519--1520
+Overfull \hbox (16.57043pt too wide) in paragraph at lines 1513--1514
  [][] 
  []
 
-<figures/fallover_video_1kg.png, id=1372, 1397.22pt x 587.94656pt>
+<figures/fallover_video_1kg.png, id=1362, 1397.22pt x 587.94656pt>
 File: figures/fallover_video_1kg.png Graphic file (type png)
 <use figures/fallover_video_1kg.png>
 Package pdftex.def Info: figures/fallover_video_1kg.png  used on input line 152
-6.
+0.
 (pdftex.def)             Requested size: 473.3003pt x 199.16928pt.
 
-Overfull \hbox (18.05618pt too wide) in paragraph at lines 1526--1527
+Overfull \hbox (18.05618pt too wide) in paragraph at lines 1520--1521
  [][] 
  []
 
 [50 <./figures/braking_1_0_kg_1_0_m.pdf>]
-<figures/simulation_0_5_1_0.png, id=1395, 944.5689pt x 336.0555pt>
+<figures/simulation_0_5_1_0.png, id=1385, 944.5689pt x 336.0555pt>
 File: figures/simulation_0_5_1_0.png Graphic file (type png)
 <use figures/simulation_0_5_1_0.png>
-Package pdftex.def Info: figures/simulation_0_5_1_0.png  used on input line 153
-5.
+Package pdftex.def Info: figures/simulation_0_5_1_0.png  used on input line 152
+9.
 (pdftex.def)             Requested size: 479.85008pt x 170.71652pt.
 
-Overfull \hbox (24.60597pt too wide) in paragraph at lines 1535--1536
+Overfull \hbox (24.60597pt too wide) in paragraph at lines 1529--1530
  [][] 
  []
 
-<figures/contactForce2D_1.pdf, id=1397, 527.9725pt x 258.9675pt>
+<figures/contactForce2D_1.pdf, id=1387, 527.9725pt x 258.9675pt>
 File: figures/contactForce2D_1.pdf Graphic file (type pdf)
 <use figures/contactForce2D_1.pdf>
-Package pdftex.def Info: figures/contactForce2D_1.pdf  used on input line 1543.
+Package pdftex.def Info: figures/contactForce2D_1.pdf  used on input line 1537.
 
 (pdftex.def)             Requested size: 232.0347pt x 113.81102pt.
 [51 <./figures/fallover_video_05kg.png> <./figures/fallover_video_1kg.png>]
-<figures/massDep.pdf, id=1405, 433.62pt x 421.575pt>
+<figures/massDep.pdf, id=1395, 433.62pt x 421.575pt>
 File: figures/massDep.pdf Graphic file (type pdf)
 <use figures/massDep.pdf>
-Package pdftex.def Info: figures/massDep.pdf  used on input line 1555.
+Package pdftex.def Info: figures/massDep.pdf  used on input line 1549.
 (pdftex.def)             Requested size: 204.86006pt x 199.16928pt.
-<figures/epsilonCompare.pdf, id=1406, 339.90088pt x 332.61766pt>
+<figures/epsilonCompare.pdf, id=1396, 339.90088pt x 332.61766pt>
 File: figures/epsilonCompare.pdf Graphic file (type pdf)
 <use figures/epsilonCompare.pdf>
-Package pdftex.def Info: figures/epsilonCompare.pdf  used on input line 1561.
+Package pdftex.def Info: figures/epsilonCompare.pdf  used on input line 1555.
 (pdftex.def)             Requested size: 203.53236pt x 199.16928pt.
 
 [52 <./figures/simulation_0_5_1_0.png> <./figures/contactForce2D_1.pdf>]
 [53 <./figures/massDep.pdf> <./figures/epsilonCompare.pdf>]
-<figures/rolling_fric_meas.pdf, id=1461, 365.72937pt x 331.56471pt>
+<figures/rolling_fric_meas.pdf, id=1451, 365.72937pt x 331.56471pt>
 File: figures/rolling_fric_meas.pdf Graphic file (type pdf)
 <use figures/rolling_fric_meas.pdf>
-Package pdftex.def Info: figures/rolling_fric_meas.pdf  used on input line 1574
+Package pdftex.def Info: figures/rolling_fric_meas.pdf  used on input line 1568
 .
 (pdftex.def)             Requested size: 219.69043pt x 199.16928pt.
 
-Overfull \hbox (14.83197pt too wide) in paragraph at lines 1574--1575
+Overfull \hbox (14.83197pt too wide) in paragraph at lines 1568--1569
  [][] 
  []
 
-<figures/mass_estimate.pdf, id=1462, 343.39192pt x 337.69765pt>
+<figures/mass_estimate.pdf, id=1452, 343.39192pt x 337.69765pt>
 File: figures/mass_estimate.pdf Graphic file (type pdf)
 <use figures/mass_estimate.pdf>
-Package pdftex.def Info: figures/mass_estimate.pdf  used on input line 1580.
+Package pdftex.def Info: figures/mass_estimate.pdf  used on input line 1574.
 (pdftex.def)             Requested size: 202.53134pt x 199.16928pt.
 [54 <./figures/rolling_fric_meas.pdf> <./figures/mass_estimate.pdf>] [55]
 [56]
-Underfull \hbox (badness 10000) in paragraph at lines 1624--1625
+Underfull \hbox (badness 10000) in paragraph at lines 1618--1619
 []\OT1/cmr/m/n/12 http://iiot-world.com/artificial-intelligence/five-challenges
 -in-designing-a-fully-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1638--1639
+Underfull \hbox (badness 10000) in paragraph at lines 1632--1633
 []\OT1/cmr/m/n/12 Allonrobots: http://www.allonrobots.com/military-transportati
 on-robots.html
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1650--1651
+Underfull \hbox (badness 10000) in paragraph at lines 1644--1645
 []\OT1/cmr/m/n/12 https://www.elprocus.com/what-are-the-best-ways-to-control-th
 e-speed-of-dc-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1652--1653
+Underfull \hbox (badness 10000) in paragraph at lines 1646--1647
 []\OT1/cmr/m/n/12 https://nathotron.wordpress.com/courses/engineering-design-pr
 ocess-530-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1656--1657
+Underfull \hbox (badness 10000) in paragraph at lines 1650--1651
 []\OT1/cmr/m/n/12 Dynamic Model of a Per-ma-nent Mag-net DC Mo-tor:
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1662--1663
+Underfull \hbox (badness 10000) in paragraph at lines 1656--1657
 []\OT1/cmr/m/n/12 https://www.mathworks.com/videos/estimating-parameters-of-a-d
 c-motor-
  []
 
 [57] [58]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1676.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1676.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1671.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1671.
  (final_thesis.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1676.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1676.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1671.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1671.
 
+Package rerunfilecheck Info: File `final_thesis.out' has not changed.
+(rerunfilecheck)             Checksum: 10D73E69E96249559F00CB39B0F6BC95;3036.
 
-
-Package rerunfilecheck Warning: File `final_thesis.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `final_thesis.out':
-(rerunfilecheck)             Before: 8ABC0B747A448A0C8C6CCA616D8A64AB;3035
-(rerunfilecheck)             After:  C10BA47CBE5C984D4EF3B9DE5844CB7B;3044.
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1676.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1671.
  ) 
 Here is how much of TeX's memory you used:
- 28760 strings out of 492972
- 684470 string characters out of 3135859
- 911165 words of memory out of 3000000
- 31760 multiletter control sequences out of 15000+200000
+ 28762 strings out of 492972
+ 684467 string characters out of 3135859
+ 911164 words of memory out of 3000000
+ 31761 multiletter control sequences out of 15000+200000
  17046 words of font info for 60 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  62i,15n,96p,3271b,609s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1863,9 +1842,9 @@ ype1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/pub
 lic/amsfonts/cm/cmsy6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfo
 nts/cm/cmsy8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cm
 ti12.pfb>
-Output written on final_thesis.pdf (59 pages, 10285989 bytes).
+Output written on final_thesis.pdf (59 pages, 10339400 bytes).
 PDF statistics:
- 1652 PDF objects out of 1728 (max. 8388607)
- 273 named destinations out of 1000 (max. 500000)
+ 1642 PDF objects out of 1728 (max. 8388607)
+ 274 named destinations out of 1000 (max. 500000)
  795 words of extra memory for PDF output out of 10000 (max. 10000000)
 

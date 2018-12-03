@@ -144,24 +144,23 @@ labllablblalbalblalblbal
 \section{Introduction to Autonomous Transport Robots}
 \subsection{History of transportation}
 
-Since the early days of the human civilization, one of the most common problem has been the transportation. The first major development was the domestication of animals what made it possible to transport more and heavier loads or humans themselves in order to achieve greater speed and duration. The next substantial invention was the wheel which increased the efficiency of animal transport introducing the concept of vehicles. Until the Industrial Revolution, the water transport facilities proved to be the most effective way. With the development of the combustion engines and automobiles around the end of the $19^{st}$ century, road transport became competitive again. Today trucks transport cargos over thousands of miles, but light items are still being carried in wheelbarrows or trailers attached to more compact vehicles. 
+Since the early days of human civilization, one of the most common problem has been the transportation. The first major development was the domestication of animals that made it possible to transport more and heavier loads or humans themselves in order to achieve greater speed and duration capability. The next substantial invention was the wheel which increased the efficiency of animal based transportation introducing the concept of vehicles. Until the Industrial Revolution, the water transport facilities proved to be the most effective way. With the development of the combustion engines and automobiles around the end of the $19^{st}$ century, road transport became competitive again. Today trucks move remarkable amount of cargo over thousands of miles, but light items in the environments near humans are still being carried in wheelbarrows or trailers attached to more compact vehicles. 
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=10cm]{figures/evot}
-	\label{fig1}
-	\caption{Evolution of Transportation}
+	\includegraphics[height=1.5cm]{figures/evot.png}
+	\caption{Evolution of Transportation \cite{google1}}
 \end{figure}
 
-\noindent One of the most dominant development tendency in almost every field of the industry is the automation of processes and procedures. Automation means the reduction of human intervention in the operation of machines. The benefit of automation include labor savings, savings in electricity costs, savings in material costs, and improvements to quality, accuracy and precision. The most trending application of the automation regarding the transportation is the autonomous cars on the roads. 
+\noindent One of the most dominant development tendency in almost every field of the industry is the automation of processes and procedures. Automation means the reduction of human intervention in the operation of machines. The prior benefit of automation is saving cost in terms of labor hours, therefore savings in costs regarding consumption such as electricity or some kind of material. Additionally, it helps to improve the quality and accuracy of processes by increasing the overall precision and making methods repeatable. The most trending application of the automation regarding transportation is the autonomous cars on the roads.
 \subsection{Autonomous vehicles}
-An autonomous car which is also known as a self-driving car or a driverless car, is a vehicle that can operate without a certain amount of human control using its sensors to monitor the informations coming from the environment. Great variety of techniques are used to detect the surroundings, such as radar, laser light, GPS, odometry and computer vision. The collected information provides a decent input to the control system which is the soul of the self-driving cars. Several control problems have to be solved continuously during driving on the roads, such as identifying obstacles and avoiding them, following transportation rules or navigating along a predefined path.
+An autonomous car which is also known as a self-driving car or a driverless car is a vehicle that can operate without a certain amount of human control using its sensors to monitor the information coming from the environment. Great variety of techniques are used to detect the surroundings, such as radar, laser light, GPS, odometry and computer vision. The collected information provides a decent input to the control system which is the soul of the self-driving cars. Several control problems have to be solved continuously during driving on the roads, such as identifying obstacles and avoiding them, following transportation rules or navigating along a predefined path. 
 
 Autonomous vehicle technology offers the possibility of fundamentally
 changing transportation. Equipping cars and light vehicles
-with this technology will likely reduce traffic collisions, thus the resulting injuries and the related costs including less need for insurance. Autonomous cars are predicted to increase the traffic flow and the mobility of citizens. Reduced traffic congestion and the improvements in traffic flow due to widespread use of autonomous cars will also result in better fuel efficiency and reduced pollution in cities.
+with this technology will likely reduce traffic collisions, thus the resulting injuries and the related costs including less need for insurance. Autonomous cars are predicted to increase the traffic flow and the mobility of citizens. Reduced traffic congestion and the improvements in traffic flow due to the widespread use of autonomous cars will also result in better fuel efficiency and reduced pollution in cities.
 
-In spite of the various benefits also several issues exist such as technology challenges, disputes concerning liability, customer concerns about the safety of driverless cars, risk of loss of privacy and security concerns against hackers, risk of negative effects on the society and economy and finally moral issues when car's software is forced to choose between multiple harmful alternatives during an inevitable accident. \cite{wiki}
+In spite of the various benefits also several issues exist such as technology challenges, disputes concerning liability, customer concerns about the safety of driverless cars, risk of loss of privacy and security concerns against hackers, risk of negative effects on the society and economy and finally moral issues when car's software is forced to choose between multiple undesired, e.g. harmful, alternatives during an inevitable accident. \cite{wiki}
  
 
 The autonomous driving technology can be most easily conceptualized using a five-part
@@ -177,15 +176,16 @@ at different levels of automation:
 \end{itemize}
 \noindent
 
-From engineering point of view, the most important issues are the technological challenges, i.e. how to design a driverless vehicle system which is capable of handling vehicle's performance like human in all possible conditions. An autonomous vehicle is a combination of sensors and actuators, sophisticated algorithms executed as a software on a processor.
-The sensory system can be classified into three different classes:
+From an engineering point of view, the most important issues are the technological challenges, i.e. how to design a driverless vehicle which is at least as capable of handling vehicle's performance as a human in all possible conditions, or it may step beyond the edge of human capabilities. An autonomous vehicle is a combination of sensors and actuators, sophisticated algorithms executed as a software on a processor.
+
+The sensory system can be classified into three different classes according to an article of IIoT World: \cite{5c}
 \begin{itemize}
-	\item \textbf{Navigation and guidance:} the system which determines – where you are, where you want to go, and how do you get there. In the most common applications different techniques such as GPS, compass and dead reckoning are used.
-	\item \textbf{Driving and Safety:} Directing the vehicle and making sure that vehicle follows the rules of the road. The autonomous car must be able to see and interpret what is in front of it when it is going forward (and behind when in reverse). It is also necessary to see what is on either side, in other words, it needs a 360$^{\circ}$ view. A set of video cameras is an obvious choice by which location of lanes and surrounding objects or markers on the road can determined.
-	\item \textbf{Performance:} managing car's internal system. Several application specific, unique circuit boards and subsystems are added to a conventional vehicle to provide the functions needed for autonomous operation. Much of the system-level operation involves measuring and managing the power requirements to control power, overall consumption, and thermal dissipation.
+	\item \textbf{Navigation and guidance:} Basically, the system that deals with the localization and the control of movements of vehicles from a global point of view. In order to determine the location, the target place and the corresponding track between the two different techniques are used. The most common and well-know applications are the GPS, compass and dead reckoning.
+	\item \textbf{Driving and Safety:} Directing the vehicle and making sure that vehicle follows the rules of the road. The autonomous car must be able to see and interpret what is in front of it when it is going forward (and behind in reversing case). It is also necessary to see what is on either side, in other words, it needs a 360$^{\circ}$ view. A set of video cameras is an obvious choice by which location of lanes and surrounding objects or markers on the road can determined.
+	\item \textbf{Performance:} The most indispensable function is the management of the internal system of the car. Even the human driven vehicles have to be equipped by several specific sensors by means of feedbacks can be provided of essential parameters such as the speedometer or fuel load monitor. In case of an autonomous vehicle that tends to operate in a more sophisticated way, several unique electronic circuits and special sensors have to be added compared to a conventional vehicle to provide the functions needed for autonomous driving. With the help of more complex sensory system, a more accurately and robustly optimized power control is possible during operation with ceratin conditions in terms of overall consumption, component amortization, thermal and noise dissipation.
 \end{itemize}
 
-The concept of driverless cars made a lot of attention over the past ten years. Generally speaking it can be said that one of the most determining development directions in the automotive industry are related to automated solutions. Many people still do not believe that there could be such a possibility with fully driverless vehicles due to the fact that there so many parameters in the driving function that have to be controlled simultaneously and continuously and even a single failure could cause catastrophy. Nowadays after a lot of research and experiments self-driving cars can be seen as a reality, or at least close future. Still, there are many challenges in designing a fully autonomous system for a self-driving car. The challenges of driverless cars can be sorted into five groups:
+The concept of driverless cars made a lot of attention over the past ten years. Generally speaking, it can be said that one of the most determining development directions in the automotive industry are related to automated solutions. Many people still do not believe that there could be such a possibility with fully driverless vehicles due to the fact that there so many parameters in the driving functions that have to be controlled simultaneously and continuously and even a single failure could cause serious catastrophe. Nowadays after a lot of research and experiments, self-driving cars can be seen as a reality, or at least something that can be a close future. Still, there are many challenges in designing a fully autonomous system for a self-driving car. The challenges of driverless cars can be sorted into five groups: \cite{5c}
 
 \begin{itemize}
 	\item  \textbf{Road conditions:} 
@@ -195,68 +195,66 @@ The concept of driverless cars made a lot of attention over the past ten years. 
 	It can be sunny and clear or rainy and stormy weather. Autonomous cars have to work in all weather conditions, there is no scope for any failure.
 	
 	\item \textbf{Traffic conditions:}
-	Maybe this is the most complex problem as the human behaviour and autonomous car algorithm have to be matched with each other. The cars would have to drive in all sorts of traffic conditions as humans can do it. The people are emotional beings operating irrationally sometimes. Beside the fact that the traffic would be highly self-regulated, in certain cases some people might break the rules resulting an unpredictable situation in point of a self-driving car. An object may turn up in an unexpected conditions, e.g. crashed car which have to be bypassed ignoring some traffic rules. It can be handled by humans easily but for an artificial intelligence it is a harder task as its operation is ruled by rule-following conditions and this kind of situation needs the capability of detecting the need to ignore the rules in that specific case. The lack of intelligence of several autonomous cars on the roads could result in traffic deadlock.
+	Maybe this is the most complex problem as the human behavior and autonomous car algorithm have to be matched with each other. The cars would have to drive in all sorts of traffic conditions as humans are capable of. The people are emotional beings operating irrationally sometimes which is basically hardly foreseeable. Besides the fact that the traffic would be highly self-regulated, in certain cases some people might break the rules resulting an unpredictable situation in point of a self-driving car. Additionally, also an object may turn up in an unexpected conditions, e.g. crashed car which have to be bypassed ignoring some traffic rules. It can be handled by humans easily but for an artificial intelligence it is a harder task as its operation is ruled by rule-following conditions and this kind of situation needs the capability of detecting the need to ignore the rules in that specific case. The lack of intelligence of several autonomous cars on the roads could result in traffic deadlock or even crashes.
 	
 	\item \textbf{Accident Liability:}
-	One of the most important aspect of autonomous cars is accidents liability. Who is liable for accidents caused by a self-driving car?
-	Generally, the software will be the main component that will drive the car and will make all the good and bad decisions. At initial levels of design there is a person who is physically behind the steering wheel and can take over the control, but in newer designs does not have even any dashboard, pedals and steering wheel. In such cars the driver, who is actually almost just a passenger cannot be the liable for an accident. Furthermore, due to the nature of autonomous cars, the drivers can be supposed to be in a relaxed state without paying sufficient attention to handle unexpected traffic conditions, thus by the time they need to act, it may be too late.
+	One of the most important aspects of autonomous cars are accidents liability questions, thus the liable for the accident caused by a driverless car has to be determined.
+	Typically, the software will be the main component that drives the car and makes all the good and bad decisions. At initial levels of design there is a person who is physically behind the steering wheel and can take over the control, but in newer designs does not have even any dashboard, pedals and steering wheel. In such cars, the driver who is actually almost just a passenger cannot be liable for an accident. Furthermore, due to the nature of autonomous cars, the drivers can be supposed to be in a relaxed state without paying sufficient attention to handle unexpected traffic conditions, thus by the time the intervention action would be needed, it may be too late.
 	
 	\item \textbf{Radar Interference:}
-	Autonomous cars use lasers and radar for navigation. The principle of radar works by detecting reflections of radio waves from surrounding objects. The time taken for the reflection is measured to calculate the distance between the car and the object and appropriate action is then taken based on the radar readings. The problems will come up when thousands of cars on the roads try to use the technology because the reflected radar signals can interfere making it difficult to distinguish which signal was emitted by which vehicle. Even if choosing a different radio frequency can eliminate the issue, the available frequency range is unlikely to be sufficient for all the vehicles manufactured.
+	Autonomous cars use lasers and radar for navigation. The principle of work of radar is based on detecting reflections of radio waves from surrounding objects. The time taken for the reflection is measured to calculate the distance between the car and the object and appropriate action is then taken based on the radar readings. The problems will come up when thousands of cars on the roads try to use the technology because the reflected radar signals can interfere with each other making it difficult to distinguish which signal was emitted by which vehicle. Even if choosing a different radio frequency can eliminate the issue, the available frequency range is unlikely sufficient for all the vehicles manufactured.
 	\cite{5c}
 \end{itemize}
-As a conclusion it can be stated that there are still lot of challenges beside the fact that there have been already some autonomous cars on the roads nowadays, but mostly for development and research purposes. Probably, the collective effort of the industry will definitely make the autonomous car in everyday life a reality one day because the benefits are considered to be remarkable. The most important expected benefit would be the reduction of losses of live in road accidents. Benefits with secondary importance are the reduction of fuel consumption, therefore the environment pollution caused by the vehicles, furthermore time and cost savings could be realized due to optimized behaviour. Time, cost and energy savings are top wanted purposes in almost every field of industry and everyday life, therefore autonomous solutions with such desired features will likely appear in more and more applications. 
+As a conclusion, it can be stated that there are still a lot of challenges besides the fact that there have been already some autonomous cars on the roads nowadays, but mostly for development and research purposes. Probably, the collective effort of the industry will definitely make the autonomous car in everyday life a reality one day since the benefits are considered to be remarkable. The most important expected benefit would be the reduction of losses of life in road accidents. Benefits with secondary importance are the reduction of fuel consumption, therefore the environmental pollution caused by vehicles, furthermore time and cost savings could be realized due to optimized behavior, e.g. traffic congestion free cities. Time, cost and energy savings are top wanted purposes in almost every field of industry and everyday life, therefore autonomous solutions with such desired features will likely appear in more and more applications. 
 
 \subsection{Application of autonomous transport robots}
 The conventional ways of transporting could be appropriate for most of the cases but not in those when repeated passages to specific locations in small distances have to be taken.
 One of the latest trends in technology is to create such driverless robots that can help people in their everyday life, i.e. bringing any kind of products to customers. A company called Starship launched a several self-driving robotic vehicles on the streets of Washington, D.C. that can transport food and other small items to customers ordering via app.
-\begin{figure}[h]
+
+\begin{figure}[htb!]
+	\minipage{0.50\textwidth}
 	\centering
-	\includegraphics[width=7cm]{figures/starship.jpg}
+	\includegraphics[height=4cm]{figures/starship.jpg}
 	\label{fig1}
-	\caption{Starship Technologies}
-\end{figure}
-The robotic vehicles move themeselves along sidewalks using camera and tracking technology to avoid any obstacle and its location can be tracked from the distance in order to know the time of arrival. The six-wheeled electric machine sits about a half-meter high having a lockable cargo bay to carry food products up to nine kilograms in weight.\cite{starship}
-
-
-
-
-A company called SMP Robotics made automated guided vehicles that can remove grass clippings and fallen leaves or construct garbage collection in a garden. 
-\begin{figure}[h]
+	\caption{Starship Technologies \cite{starship}}
+	\endminipage\hfill
+	\minipage{0.50\textwidth}
 	\centering
-	\includegraphics[width=7cm]{figures/smp.jpg}
+	\includegraphics[height=4cm]{figures/smp.jpg}
 	\label{smp}
-	\caption{SMP Robotics}
-\end{figure}
+	\caption{SMP Robotics \cite{smp}}
+	\endminipage\hfill
+\end{figure} 
+The robotic vehicles move themselves along sidewalks using camera and tracking technology to avoid any obstacle and its location can be tracked from the distance in order to know the time of arrival. The six-wheeled electric machine sits about a half-meter high having a lockable cargo bay to carry food products up to nine kilograms in weight.\cite{starship}
 
-\noindent These small-sized mobile robots have a trailer attached to the back. They are powered by electrical engines, thus noise and smell emission is minimized which allow for operation around people. The built-in accumulators stores the needed energy and can last for several days of cyclical operation. Two ways of route following methods are available. The first option is to choose a root in advance with the help of the attached PC tablet. The second way is to set the robot in its 'follow me' algorithm whereby it is going to follow the operator and learn the path. The collected goods on the trailer can be unloaded automatically using a mechanism without any human intervention. The trailer can be fitted with a water tank which can be used for watering of grass and other plants, furthermore automatic water refill algorithm is implemented. This kind of automatic self-moving watering system suits really well such occasions when a fixed irrigation systems are not worth being built due to climate characteristics.\cite{smp}
+A company called SMP Robotics made automated guided vehicles that can remove grass clippings and fallen leaves or construct garbage collection in a garden. These small-sized mobile robots have a trailer attached to the back. They are powered by electrical engines, thus noise and smell emission is minimized what allows operation around people. The built-in accumulators stores the needed energy and can last for several days of cyclical operation. Two ways of route following methods are available. The first option is to choose a root in advance with the help of the attached PC tablet. The second way is to set the robot in its 'follow me' algorithm whereby it is going to follow the operator and learn the path. The collected goods on the trailer can be unloaded automatically using a mechanism without any human intervention. The trailer can be fitted with a water tank which can be used for watering of grass and other plants, furthermore automatic water refill algorithm is implemented. This kind of automatic self-moving watering system suits really well such occasions when a fixed irrigation systems are not worth being built due to climate characteristics.\cite{smp}
 
-A firm named NEOBOTIX made autonomous transport systems for daily use in industrial applications. The robots are equipped with laser scanners that permanently detect landmarks and obstacles what allows the robot to react dynamically to unexpected changes of their surrounding, i.e. to safely operate between human and other moving objects. This flexibility makes them suited for dynamic transportation tasks with frequent changes. For instance, they can complement roller or belt conveyors and take parts to machines or workplaces that are not connected to the conveyor system. \cite{neo}
+A firm named NEOBOTIX made autonomous transport systems for daily use in industrial applications. The robots are equipped with laser scanners that permanently detect landmarks and obstacles which allows the robot to react dynamically to unexpected changes of their surrounding, i.e. to safely operate between human and other moving objects. This flexibility makes them suited for dynamic transportation tasks with frequent changes. For instance, they can complement roller or belt conveyors and take parts to machines or workplaces that are not connected to the conveyor system. \cite{neo}
 
 \begin{figure}[htb!]
 	\centering
 	\minipage{0.50\textwidth}
 	\centering
 	\includegraphics[height=5cm]{figures/neo1.jpg}
-	\caption{{\small MT-400}}
+	\caption{{\small MT-400 \cite{neo}}}
 	\endminipage\hfill
 	\minipage{0.50\textwidth}
 	\centering
 	\includegraphics[height=5cm]{figures/neo2.jpg}
-	\caption{{\small MT-500}}
+	\caption{{\small MT-500 \cite{neo}}}
 	\label{conv2}
 	\endminipage\hfill
 \end{figure} 
 
 \noindent Possible applications are taking parts to and from workplaces, transporting in direct interaction with humans or dynamic picking of parts for later assembly
 
-BMW logistics also uses autonomous transport robots similarly in industrial environment. The well-known car manufacturer has been working hard to reduce emissions in all steps of the manufacturing process of a car, not only in the final product. This application shows really well that the autonomous developments in the automotive industry is not just about the autonomous driving on the roads but the manufacturing processes as well. Smart Transport Robots (STR) transport components through logistics at the Wackersdorf plant. They measures the distance to wireless transmitters which are located at in the logistics hall to calculate its exact position and route. Using sensors to identify and react to critical situations, it is able to share the route with humans and other vehicles. \cite{bmw}
+BMW logistics also uses autonomous transport robots similarly in industrial environment. The well-known car manufacturer has been working hard to reduce emissions in all steps of the manufacturing process of a car, not only in the final product. This application shows really well that the autonomous developments in the automotive industry is not just about the autonomous driving on the roads but the manufacturing processes as well. Smart Transport Robots (STR) transport components through logistics at the Wackersdorf plant. They measures the distance to wireless transmitters which are located at in the logistics hall to calculate its exact position and route. The robot is capable of sharing the route with humans and other vehicles with the help of its sensors by identifying and reacting to critical situations. \cite{bmw}
 
 \begin{figure}[htb!]
 	\centering
 	\includegraphics[width=9cm]{figures/bmw.jpg}
 	\label{bmw}
-	\caption{BMW: Smart Transport Robots}
+	\caption{BMW: Smart Transport Robots  \cite{bmw}}
 \end{figure}
 
 A company, named AETHON, made fully autonomous robot called TUG that automates the transport of materials and supplies in commercial environments. It can automatically drop off and pickup of carts, navigates on internal map of facility using laser and it has a omnidirectional 4 wheel driven drive system for higher maneuverability.
@@ -268,7 +266,7 @@ A company, named AETHON, made fully autonomous robot called TUG that automates t
 	\caption{AETHON: TUG mobile transport robot}
 \end{figure}
 
-Another interesting field of application of transportation robots is the military. By putting humans to this work they are often exposed to a risk that could be avoided. The Autonomous Platform Demonstrator is a military transportation robot developed by the U.S. It has a hybrid-electric drive train with six in-hub electric motors powered by li-ion batteries charged using an on-board diesel generator. 
+Another interesting field of application of transportation robots is the military. Humans doing this kind of work are often exposed to a risk which would be great to avoid. The Autonomous Platform Demonstrator is a military transportation robot developed by the U.S. It has a hybrid-electric drive train with six in-hub electric motors powered by li-ion batteries charged using an on-board diesel generator. 
 
 \begin{figure}[h]
 	\centering
@@ -280,15 +278,11 @@ Another interesting field of application of transportation robots is the militar
 From control point of view it can be controlled in real-time by a soldier or it can operate autonomously. Autonomously it can operate at speeds up to 50 mph. Furthermore, it can travel along a GPS way point route and avoid obstacles in its way. \cite{apd}
 
 
-
-
-
-
 \newpage
 
-\section{Mobile Robots}
-The general platform of the transportation robots is obviously the family of mobile robots. Generally a mobile robot faces more design challenges compared to robots that operates in fixed positions as it is left alone in the world. The most critical design problem is related to the locomotion which has to be suited with the conditions of the given ground. In order to handle the changes of the environment and to be able to make decisions during runtime as function of actual state, the robots need to have more intelligence and self-determination. The mobile robots are still not reliable enough nowadays to operate in wide ranges outside of laboratory walls. They need to have a built-in model about their environment, furthermore they need to detect and analyse that of changes and their actual positions have to be found in order to be able to design and perform the next movements. In other words, a sequence of intelligent acts are expected to carry out based on interactions with the dynamically changing outside world.
-\subsection{Classification of mobile robots {\normalsize \cite{sieg}\cite{rirt}}}
+\section{Mobile Robotics}
+The general platform of the transportation robots is obviously the family of mobile robots. Usually, a mobile robot faces more design challenges compared to robots that operates in fixed positions as it is left alone in the world. The most critical design problem is related to the locomotion which has to be suited with the conditions of the given ground. In order to handle the changes of the environment and to be able to make decisions during runtime as function of actual state, the robots need to have more intelligence and self-determination. The mobile robots are still not reliable enough nowadays to operate in wide ranges outside of laboratory walls. They need to have a built-in model about their environment, furthermore they need to detect and analyze that of changes and their actual positions have to be found in order to be able to design and perform the next movements. In other words, a sequence of intelligent acts are expected to be carried out based on interactions with the dynamically changing outside world.
+\subsection{Classification of mobile robots}
 \subsubsection{Based on the medium in which the robot moves}
 \begin{itemize}
 	\item \textbf{Air/Space} \\
@@ -296,7 +290,7 @@ The general platform of the transportation robots is obviously the family of mob
 	\item \textbf{Water} \\
 		Automated Underwater Vehicles (AUV) are generally used in seas and oceans for research and industrial purposes. One of the most interesting field is the development of amphibious vehicle that can operate either on earth or on water.
 	\item \textbf{Earth} \\
-		As it is our natural habitat, the robots operating on earth are the most common.	
+		As it is our natural habitat, the robots operating on earth are the most common.	\cite{sieg}\cite{rirt}
 \end{itemize}
 \subsubsection{Based on the locomotion mechanism}
 Mobile robots generally locomote either using wheeled mechanism, a well-known human technology for vehicles, or using a small number of articulated legs being inspired by biological systems. In general, legged locomotion requires higher degrees of freedom and therefore greater mechanical complexity than wheeled locomotion. Wheels, in addition to being simple, are extremely well suited to flat and hard ground, thus their energy need is radically less compared to legged locomotion. However, the softer the surface, the higher the rolling friction which results a dramatic efficiency loss in case of wheeled robots. The efficiency of wheeled locomotion depends on the flatness and hardness of the ground, while the efficiency of legged locomotion depends on the leg mass and body mass. The nature prefers the legged locomotion since they must operate on rough and unstructured terrain where a wheeled vehicle could get stuck easily, e.g. in case of Sojourner Mars rover in 1997. They are simply unable to step over an obstacle, the only chance is to avoid it.
@@ -443,15 +437,15 @@ Multi-degree-of-freedom robots have more than the needed three degrees of freedo
 \end{figure}
 
 \newpage
-\section{The Mobile Robot Hardware}
+\section{The Hardware Application}
 \subsection{Selecting a mobile robot configuration}
 In previous chapters the basic features of mobile robots and some real life application were presented. This final project basically aims at designing an autonomous transport robot to investigate its control and possible parameter estimation problems. Real world transport robots are usually capable to navigate along prescribed path, monitor their environment to handle unexpected obstacles, interact with the packages autonomously and communicate with users surrounding them. These are the most necessary features that are really needed during operation which have been mostly implemented in the past.
 
 The development of kinematic and dynamic properties have been taken less attention so far, therefore this field can contain remarkable development potential in my opinion. The transport robots in industrial application are designed such a way that during their movement they will not likely face issues regarding the stability because they move along
 high radius path with low speed and accelerate moderately. In other words, a compromise is made between the configuration costs and the productivity, between the security and effectiveness. Sooner or later, the demand for a more dynamic, faster and smoother operation of transport robots can come into being just like in automotive industry. The problem can be more complex as well in certain situations. For instance, a transport robot operating in a plant that carries loads with different properties such as mass, moment of inertia or height would face a more challenging situation in dynamic stability point of view than a car with more or less known and constant physical parameters.
 
-To select a mobile configuration, the general purpose, working environment and concept of the robot have to be defined. Based on real life experience and possible future application needs, this study will focus on designing a transport robot which would operate in a plant, in a laboratory or on the streets carrying different shaped and weighted loads. Instead focusing on navigation, i.e. dead-reckoning, route planning and obstacle avoiding, the control of dynamic behaviour is to be examined in details. Beside the technological aspects also the practibality and costs have to be considered because the building of the mobile robot configuration is also the part of my thesis. The most important aspect of a study of such a advanced moving transport robot is the maneuverability. In terms of maneuverability, the omnidirectional robots show the best performance. Choosing a three-wheeled omnidirectional mobile robot configuration can be regarded the optimal choice. The controllability is more complex compared to anholonomic robots, but with the choice of minimum number of three wheels it is still a handleable design challenge. Application of more wheels could give more controllability which would be favoured, e.g. TUG is also four wheel driven omnidirectional configuration. However, it would make some additional issues appear such increased slip danger and more complex controllability. Compared to anholomic configuration, the holonomic configurations are less stable as mentioned before, but it can be regarded as an advantage in this case, because this study is willing to deal with stability issues, thus the main objective is to examine the behaviour of the system near stability and provide parameter estimation methods to avoid it.
-In other words, a transport robot might be preferred over others if it can be as stable as possible without loosing any maneuverability skill. For an omnidirectional drive configuration special wheels of higher price are need, thus the three-wheeled configuration is optimal from economic point of view.
+To select a mobile configuration, the general purpose, working environment and concept of the robot have to be defined. Based on real life experiences and possible future application needs, this study will focus on designing a transport robot which would operate in a plant, in a laboratory or on the streets carrying different shaped and weighted loads. Instead focusing on navigation, i.e. dead-reckoning, route planning and obstacle avoiding, the control of dynamic behavior is to be examined in details. Beside the technological aspects also the practicability and costs have to be considered because the building of the mobile robot configuration is also the part of my thesis. The most important aspect of a study of such a advanced moving transport robot is the maneuverability. In terms of maneuverability, the omnidirectional robots show the best performance. Choosing a three-wheeled omnidirectional mobile robot configuration can be regarded the optimal choice. The controllability is more complex compared to anholonomic robots, but with the choice of minimum number of three wheels it is still a handleable design challenge. Application of more wheels could give more controllability which would be favored, e.g. TUG is also four wheel driven omnidirectional configuration. However, it would make some additional issues appear such increased slip danger and more complex controllability. Compared to anholonomic configuration, the holonomic configurations are less stable as mentioned before, but it can be regarded as an advantage in this case, because this study is willing to deal with stability issues, thus the main objective is to examine the behavior of the system near stability and provide parameter estimation methods to avoid it.
+In other words, a transport robot might be preferred over others if it can be as stable as possible without loosing any maneuverability skill. For an omnidirectional drive configuration special wheels of higher price are needed, thus the three-wheeled configuration is optimal from economic point of view as well.
 \newpage
 \subsection{The Hardware}
 The realised mobile robot was built from scratch ordering its part from different sources. In this chapter, the components of the mobile robot platform are presented.
@@ -1670,6 +1664,7 @@ with omni wheels, 2012 Lund University
 \bibitem{arduino} Arduino Documentation: https://www.arduino.cc
  \bibitem{eqworld} EqWorld: http://eqworld.ipmnet.ru/
 
+\bibitem{google1} Google Photo Search: "Evolution of transportation"
 
 \end{thebibliography}
 
