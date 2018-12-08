@@ -1,0 +1,39 @@
+Doksi megjegyzések
+	- review doksiba kommentek
+	- ferromágneses enkóderek
+	- elektronikus rész tagolása / vázlatos felsorolás az elejére ami segít áttekinteni
+	- hosszabb kép magyarázós szövegekek
+	- mostani állapotról egy kép, nyilakkal magyarázattal hogy mi-micsoda
+	- legelejére egy célkitűzés, abstract..
+	- kód max a mellékletbe
+	- bluetooth remote controller applikáció, meg leírni csak hogy szabályozás után tök jól mozgott stb..
+	
+	
+	
+Doksi új vonal ötlet
+	Első gondolatok a dolgozat "előtt":
+		- Előzmények leírása, hogy volt a teamwork project ahol environmental mapping és obstacle avoidinggal foglalkoztam. Maga a hardver nem volt kifaszázva, ezért
+	      nehezen lehetett pontosan produkálni valamit annak ellenére, hogy a szimulátorban algoritmusok szintjén meg lett oldva a történet.
+		- Alapvetően mások is ezzel foglalkoztak (ide pár referencia hivatkozás), autonóm robotoknál legfontosabb topicoc:
+			o pályatervezés
+			o feltérképezés
+		  => ezek már léteznek, van hozzá pl. ez a ROS szimulációs környezet, ahol ha beadom az adott robotot, amit mint egy eszközt
+	         ismert inputokkal tud használni, akkor tudok már megírt algoritmusokat applikálni a robotra (pl. robot szolgáltatja a szenzor adatokat cserébe kapja mozgás utasításokat a ROS-tól)
+		- Nekem az volt a tapasztalatom, hogy ahhoz hogy ez működjön mélyebb szintre kell lemenni, illetve a szimulációs környezetnek is akkor van csak lényege
+			pl. a robot pontosna azt csinálja amit akarok -> hely orientáció
+		- Dolgozat célja hogy az alacsonyszintű dolgok működjenek, ha az megvan akkor arra lehet építkezni további
+	Megvalósulás most:
+		- Transzport robotos koncepció: becsli a borulás veszélyét, tömeget mér és kalkulálja a lehetséges kontakt erőket, autonóm működése abban rejlik, hogy egy
+		  remote controllert felül tud bírálni mondjuk
+		- Továbbá sikerült megvalósítani, hogy jelenleg a kerekek elég jól szabályozhatóak
+		- Ennek az eredménye, hogy odometriával elég jól lehet a pozíciót becsülni  -> adott pályán való mozgatáshoz a feltételek adottak, lehet erre szabályozni,
+		  applikációkat kivitelezni
+		- Innentől kezdve további szenzorokat lehetne/kellene még hozzáadni, hogy a korábban említett algoritmusokat végezhesse a ROS környezetben
+			o bno sensor ami az orientációt tudja mérni nagyobb pontossággal pontosan
+			o Kinect, Lidar sensor, lézeres távolságmérő, hogy a mapping ill. obstacle avoidance megvalósítható legyen
+			o Rasberry PI board (erősebb, Wifis kommunikációÖ
+			=> ha ezek megvannak akkor ROS kompatibilis, lehet csinálni ez-azt:
+				pl. SLAM, pályatervezés A->B
+		- Ezt mint kitekintést megcsinálni és visszacsatolni, hogy most hogy végre az alacsonyszintű dolgok jól működnek, lehet foglalkozni egy későbbi munka
+		  kereteiben az érdekesebb algoritmusokkal
+		- Azért jó ez a kiszervezés, mert egy idő után ezek a mikrokontrollerek nem bírják számítási kapacitással ezeket az algoritmusokat
