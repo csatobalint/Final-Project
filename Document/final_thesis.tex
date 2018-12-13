@@ -99,12 +99,10 @@
 \\
 Faculty of Mechanical Engineering \\
 Department of Applied Mechanics}}
-\newcommand{\szerzo}{}
+\newcommand{\szerzo}{Bálint CSATÓ}
 \newcommand{\konzulensek}{
 \parbox[t]{20cm}
 {\normalsize
-\hspace*{25em} Made by:\\
-\hspace*{28em}Bálint CSATÓ\\
 \hspace*{25em}Supervisor:\\
 \hspace*{28em}Gergely GYEBRÓSZKI \\
 }\hfill}
@@ -133,27 +131,52 @@ Control and Parameter Estimation Problems of Autonomous Transport Robots
 
 \maketitle
 \thispagestyle{empty}
-
-
-
 \newpage
-\pagenumbering{arabic}
+
+\thispagestyle{empty}
+$~$
+\newpage
+
+
+\section*{Student declaration}
+$~$\\[12mm]
+I, Bálint Csató, the undersigned, hereby declare that the present thesis work has been prepared by myself without any unauthorized help or assistance such that only the specified sources (references, tools, etc.) were used. All parts taken from other sources word by word or after rephrasing but with identical meaning were unambiguously identified with explicit reference to the sources utilized.\\[8mm]
+I authorize the Faculty of Mechanical Engineering of the Budapest University of Technology and Economics to publish the principal data of the thesis work (author's name, title, abstracts in English and in Hungarian, year of preparation, supervisor's name, etc.) in a searchable, public, electronic and online database and to publish the full text of the thesis work on the internal network of the university (or for authenticated users). I declare that the submitted hard copy of the thesis work and its electronic version are identical. Full text of thesis works classified upon the decision of the Dean will be published after two years.\\[8mm]
+
+Done at Budapest, 2018.12.14.\\[8mm]
+
+\begin{flushright}
+	Bálint Csató
+\end{flushright}
+\thispagestyle{empty}
+\newpage
+
+\thispagestyle{empty}
+$~$
+\newpage
+
 \renewcommand{\contentsname}{Contents}
 \renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
 \tableofcontents
 \numberwithin{equation}{section} % Number equations within sections
 \numberwithin{figure}{section} % Number figures within sections
 \numberwithin{table}{section} % Number tables within sections
-
+\thispagestyle{empty}
 \newpage
 
+\thispagestyle{empty}
+$~$
+\newpage
+
+\pagenumbering{arabic}
 \section*{Abstract}
 In this Final Project work the control and parameter estimation problems of an autonomous transport robot were investigated. A three-wheeled omnidirectional robot platform was built from scratch combined with the widely spread Arduino platform. In order to have a robot that behaves just as the user want, a detailed dynamic analysis and classical control of motors were carried out with great improvements in terms of location and orientation control. Additionally, the possibility of developing an on the go fall over avoidance autonomous feature was investigated for which a coupled electro-mechanical model was elaborated considering several details of the given hardware application. The developed fall over estimator model was compared with measurements and good agreements were obtained.
-
 \addcontentsline{toc}{section}{Abstract}
-
 \newpage
 
+\thispagestyle{empty}
+$~$
+\newpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 													Preface
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -334,7 +357,7 @@ From control point of view it can be controlled in real-time by a soldier or it 
 \section{Mobile Robotics}
 The general platform of the transportation robots is obviously the family of mobile robots. Usually, a mobile robot faces more design challenges compared to robots that operates in fixed positions as it is left alone in the world. The most critical design problem is related to the locomotion which has to be suited with the conditions of the given ground. In order to handle the changes of the environment and to be able to make decisions during runtime as a function of actual state, the robots need to have more intelligence and self-determination. The mobile robots are still not reliable enough nowadays to operate in wide ranges outside of laboratory walls. They need to have a built-in model about their environment, furthermore they need to detect and analyze that of changes and their actual positions have to be found in order to be able to design and perform the next movements. In other words, a sequence of intelligent acts are expected to be carried out based on interactions with the dynamically changing outside world.
 \subsection{Classification of mobile robots}
-\subsubsection{Based on the medium in which the robot moves}
+\subsubsection*{Based on the medium in which the robot moves}
 \begin{itemize}
 	\item \textbf{Air/Space} \\
 		These are mostly applied in space flight and military. The most well known application is the Unmanned Aerial Vehicle (UAV), commonly known as drone which is an aircraft without a pilot. The drones develop fast as they are easier to build and control as they do not have to navigate between obstacles.
@@ -343,7 +366,7 @@ The general platform of the transportation robots is obviously the family of mob
 	\item \textbf{Earth} \\
 		As it is our natural habitat, the robots operating on earth are the most common.	\cite{sieg} \cite{rirt}
 \end{itemize}
-\subsubsection{Based on the locomotion mechanism}
+\subsubsection*{Based on the locomotion mechanism}
 Mobile robots generally locomote either using wheeled mechanism, a well-known human technology for vehicles, or using a small number of articulated legs being inspired by biological systems. Generally, legged locomotion demand more degrees of freedom and therefore greater mechanical complexity than wheeled locomotion. Wheels, in addition to being simple, are extremely well suited to flat and hard ground, thus their energy need is radically less compared to legged locomotion. However, the softer the surface, the higher the rolling friction which results a dramatic efficiency loss in case of wheeled robots. The efficiency of wheeled locomotion depends on the flatness and hardness of the ground, while the efficiency of legged locomotion depends on the leg mass and body mass. Nature prefers the legged locomotion since they must operate on rough and unstructured terrain where a wheeled vehicle could get stuck easily, e.g. in case of Sojourner Mars rover in 1997. They are simply unable to step over an obstacle, the only chance is to avoid it.
 On the other hand, it is also understandable that the most of the industrial applications of mobile robotics utilize some form of wheeled locomotion due to the fact that the human environment mostly consists of smooth surfaces, both indoors and outdoors. In such conditions, the wheeled configurations are currently faster, less complex to design and more mobile.
 
@@ -436,15 +459,15 @@ In addition, also four wheels or even more can be built-in, but in this case it 
 Four-wheeled arrangement with 45$^{\circ}$ Swedish wheels, each driven by a separate motor, has been used in several research and industrial projects. A good example is Uranus that can rotate and translate independently without any constraints with the help of omnidirectional wheels.
 \begin{figure}[htb!]
 	\centering
-	\minipage{0.47\textwidth}
+	\minipage{0.51\textwidth}
 	\centering
 	\includegraphics[height=3cm]{figures/uranus}
-	\caption{Carnegie Mellon Uranus robot}
+	\caption{Carnegie Mellon Uranus robot \cite{rirt}}
 	\endminipage\hfill
-	\minipage{0.53\textwidth}
+	\minipage{0.48\textwidth}
 	\centering
 	\includegraphics[height=3cm]{figures/mecanum}
-	\caption{Mecanum AB robot}
+	\caption{Mecanum AB robot \cite{rirt}}
 	\label{mecanum}
 	\endminipage\hfill
 \end{figure} \\
@@ -490,7 +513,9 @@ Multi-degree-of-freedom robots have more than the needed three degrees of freedo
 	\label{mecanum}
 	\endminipage\hfill
 \end{figure}
-
+\newpage
+\thispagestyle{empty}
+$~$
 \newpage
 \section{The Hardware Application}
 \subsection{Selecting a mobile robot configuration}
@@ -638,7 +663,7 @@ Briefly, the DC motor works on the principle (Lorentz Law) that when a current c
 At some point the magnetic fields would align resulting in a zero torque. In brushed DC motors this switching mechanism is done by the so called commutator part. Figure \ref{dc_conducting_wire} represent a single wire with a commutator. The commutator is a simple mechanical switch that changes the polarity of the voltage put on the wire by touching the brushes in order to make the current flow in such a direction that maintains the direction of the generated torque, therefore the armature continue rotating. A single wire would provide a fluctuating torque during the operation since the angle between the coil and static magnetic flux is changing. For a more smooth operation of the rotor, several separate wire loops have to be used shifted from each other and switched one after the other. This can be realized by applying more pairs of commutators which enables to connect always that coil loop with power source that does not align with the permanent magnetic field, thus can produce maximum torque. In practical motors the rotating part is called armature and standing part is called stator. The stator can be a permanent magnetic pole in case of small DC motors, while in larger motors an electromagnet is used which is also powered by the same DC source in serial or parallel connection. In my case, the motor has a permanent magnetic stator.
 According to Faraday's law of electromagnetic induction, a rotating loop of coil will produce an electromotive force called EMF. The case of the rotating armature loop is the same, thus in this case it produces an adverse electromotive force which is called back EMF that tends to decrease cause of the accelerating effect, i.e. the applied input voltage. As a result, the back EMF will decrease the armature current by a remarkable amount, thus the motor torque as well. \cite{dc_motor_1} \cite{dc_motor_2}
 
-The electrical equivalent circuit of the armature and the free-body diagram of the rotor can be modeled as follows.
+The electrical equivalent circuit of the armature and the free-body diagram of the rotor can be modeled as shown in Figure \ref{dc_motor_model}.
 \begin{figure}[htb!]
 	\centering
 	\includegraphics[height=7cm]{figures/dc_motor_model.png}
@@ -646,7 +671,7 @@ The electrical equivalent circuit of the armature and the free-body diagram of t
 	\label{dc_motor_model}
 \end{figure}
 
-The motor is supplied with $V$ voltage as an input, while the output is the rotational speed of the rotor and shaft (rigid connection). In the mechanical model the load torque ($T_L$) and also dissipation energy is considered as being proportional with the angular speed. The motor torque is generally proportional to the armature current and the strength of the magnetic field, but in this model the magnetic field is assumed to be constant, thus the motor torque depends on the armature current ($i$) only. The back emf ($e$) is proportional to the angular velocity of the shaft. If SI units are used then the constants of the torque and the emf are equal, thus the same ($K$) constant can be used for the following equations:\cite{dc_motor_3}\cite{dc_motor_4}
+The motor is supplied with $V$ voltage as an input, while the output is the rotational speed of the rotor and shaft (rigid connection). In the mechanical model the load torque ($T_L$) and also dissipation energy is considered as being proportional with the angular speed. The motor torque is generally proportional to the armature current and the strength of the magnetic field, but in this model the magnetic field is assumed to be constant, thus the motor torque depends on the armature current ($i$) only. The back emf ($e$) is proportional to the angular velocity of the shaft. If SI units are used then the constants of the torque and the emf are equal, thus the same ($K$) constant can be used for the following equations: \cite{dc_motor_3}\cite{dc_motor_4}
 \begin{equation}
 T = K i
 \end{equation}
@@ -663,7 +688,7 @@ J \ddot \theta + b \dot \theta = K i - T_L
 L \frac{di}{dt} + R i = V - K \dot \theta
 \label{dc_eq_2}
 \end{equation}
-The system can be described by a system of linear differential equations with respect to armature current and rotor angular velocity. A given system can be defined by 5 parameters, i.e. armature resitance (R), armature inductance (L), motor constant (K), damping constant (b) and motor inertia (J).
+The system can be described by a system of linear differential equations with respect to armature current and rotor angular velocity. A given system can be defined by 5 parameters, i.e. armature resitance (R), armature inductance (L), motor constant (K), damping constant (b) and motor inertia (J). \newpage
 \subsubsection{Step response analysis of the motors}
 The motors speeds can be changed via PWM and with the help of the rotary encoders the response function to any voltage value could be measured. It is more convenient to treat the PWM signal's duty cycle as the control input although voltage level is applied to the armature of the motor. The PWM signal's duty cycle is determined in the code by a floating point number between zero and one. Firstly, let the pwm value be regarded as an input and the wheel speed as an output assuming that the transfer function of the gearbox and power electronic module are proportional type, thus it can be handled together with the motor as a plant element. 
 The motors gave a quite similar responses with respect to time constant and amplitude and also the nominal value (107RPM at 12V no load case) was obtained with small deviations. 
@@ -846,13 +871,13 @@ K_i = \frac{\tau(\sigma^2 + {\omega_d}^2)}{A}.
 As it was mentioned before, choosing the poles based on the above limits can not guarantee acceptable system behaviour as our system is not a canonical second-order, on the top of that the plan model is also simplified to a first order and not even any nonlinearity is considered.
 \begin{figure}[htb!]
 	\centering
-	\minipage{0.45\textwidth}
+	\minipage{0.46\textwidth}
 	\centering
 	\includegraphics[width=\textwidth]{figures/possible_poles}
 	\caption{Pole parameter field considering the limits: settling time limit (blue), peak time limit (orange) and overshoot limit (green)}
 	\label{possible_poles}
 	\endminipage\hfill
-	\minipage{0.45\textwidth}
+	\minipage{0.50\textwidth}
 	\centering
 	\includegraphics[width=\textwidth]{figures/directed_speed_pwm_50_fitted}
 	\caption{Black box model at 0.5 PWM value}
@@ -861,6 +886,7 @@ As it was mentioned before, choosing the poles based on the above limits can not
 \end{figure}
 
 Figure \ref{possible_poles} shows the possible real and imaginary value pairs which satisfies the requirements. The real part of pole is $\sigma$, the imaginary part is $\omega_d$ and the angle $beta$ can calculated by means of $\zeta = cos(\beta)$. \\[2mm]
+\newpage
 \noindent Let us have the following requirements:
 \begin{itemize}
 	\item Settling time for 1$\%$: 2[s]
@@ -892,7 +918,7 @@ In this case, the $K_p = 0.021$ and $K_i = 0.11$ are obtained.
 	\minipage{0.45\textwidth}
 	\centering
 	\includegraphics[width=\textwidth]{figures/expected_50}
-	\caption{Expected response}
+	\caption{Expected response function for a unit step with the chosen poles}
 	\label{expected_response_50}
 	\endminipage\hfill
 \end{figure}
@@ -904,13 +930,13 @@ The system responses are shown in Figure \ref{obtained_response_50} and \ref{obt
 	\minipage{0.45\textwidth}
 	\centering
 	\includegraphics[height=7.5cm]{figures/controlled_50_p_02_i_11}
-	\caption{Obtained response at target velocity 50 [rpm]}
+	\caption{Obtained response at target velocity 50 [rpm] with the first approximation controller gains}
 	\label{obtained_response_50}
 	\endminipage\hfill
 	\minipage{0.45\textwidth}
 	\centering
 	\includegraphics[height=7.5cm]{figures/controlled_100_p_02_i_11}
-	\caption{Obtained response at target velocity 100 [rpm]}
+	\caption{Obtained response at target velocity 100 [rpm] with the first approximation controller gains}
 	\label{obtained_response_100}
 	\endminipage\hfill
 \end{figure}
@@ -919,13 +945,13 @@ The system responses are shown in Figure \ref{obtained_response_50} and \ref{obt
 	\minipage{0.45\textwidth}
 	\centering
 	\includegraphics[height=8cm]{figures/controlled_50_p_02_i_002}
-	\caption{Obtained response at target velocity 50 [rpm]}
+	\caption{Obtained response at target velocity 50 [rpm] with the final controller gains}
 	\label{obtained_response_50_good}
 	\endminipage\hfill
 	\minipage{0.45\textwidth}
 	\centering
 	\includegraphics[height=8cm]{figures/controlled_100_p_02_i_002}
-	\caption{Obtained response at target velocity 100 [rpm]}
+	\caption{Obtained response at target velocity 100 [rpm] with the final controller gains}
 	\label{obtained_response_100_good}
 	\endminipage\hfill
 \end{figure}
@@ -1066,13 +1092,13 @@ Figure \ref{relation_v_1_g_0_w_0} depict a pure translation in forward direction
 	\centering
 	\minipage{0.5\textwidth}
 	\centering
-	\includegraphics[height=7cm]{figures/2d_simulation/relation_v_1_g_0_w_0}
+	\includegraphics[height=7cm]{figures/2d_simulation/state_v_1_g_0_w_0}
 	\caption{Pure forward translation}
 	\label{relation_v_1_g_0_w_0}
 	\endminipage\hfill
 	\minipage{0.5\textwidth}
 	\centering
-	\includegraphics[height=7cm]{figures/2d_simulation/relation_v_0_g_0_w_10}
+	\includegraphics[height=7cm]{figures/2d_simulation/state_v_0_g_0_w_10}
 	\caption{Pure spinning}
 	\label{relation_v_0_g_0_w_10}
 	\endminipage\hfill
@@ -1082,13 +1108,13 @@ Figure \ref{relation_v_1_g_30_w_0} depicts another specific case of pure transla
 	\centering
 	\minipage{0.5\textwidth}
 	\centering
-	\includegraphics[height=7cm]{figures/2d_simulation/relation_v_1_g_30_w_0}
+	\includegraphics[height=7cm]{figures/2d_simulation/state_v_1_g_30_w_0}
 	\caption{Specific case of translation}
 	\label{relation_v_1_g_30_w_0}
 	\endminipage\hfill
 	\minipage{0.5\textwidth}
 	\centering
-	\includegraphics[height=7cm]{figures/2d_simulation/relation_v_06_g_45_w_6}
+	\includegraphics[height=7cm]{figures/2d_simulation/state_v_06_g_45_w_6}
 	\caption{Translation \& rotation}
 	\label{relation_v_06_g_45_w_6}
 	\endminipage\hfill
@@ -1105,19 +1131,17 @@ The following figures represent the status of robots at given time steps during 
 \begin{figure}[htb!]
 	\minipage{0.33\textwidth}
 	\centering
-	\includegraphics[height=5cm]{figures/2d_simulation/animations/2D_move_along_circle_not_rotating/20}
-	\caption{$0.20[s]$}
+	\includegraphics[height=5cm]{figures/2d_simulation/animations2/2D_move_along_circle_not_rotating/20}
 	\endminipage\hfill
 	\minipage{0.33\textwidth}
 	\centering
-	\includegraphics[height=5cm]{figures/2d_simulation/animations/2D_move_along_circle_not_rotating/40}
-	\caption{$0.40[s]$}
+	\includegraphics[height=5cm]{figures/2d_simulation/animations2/2D_move_along_circle_not_rotating/40}
 	\endminipage\hfill
 	\minipage{0.33\textwidth}
 	\centering
-	\includegraphics[height=5cm]{figures/2d_simulation/animations/2D_move_along_circle_not_rotating/60}
-	\caption{$0.60[s]$}
+	\includegraphics[height=5cm]{figures/2d_simulation/animations2/2D_move_along_circle_not_rotating/60}
 	\endminipage\hfill
+	\caption{Snapshots of the states at 0.20[s], 0.40[s] and 0.60[s]}
 \end{figure}
 The direction of the speed vector ($\gamma$) is defined in the local coordinate system and it has to be changed to make the robot move along a given curve, in this case along a circle.\\[0.3cm]
 \noindent \textbf{Moving along a circle like a car (anholonomic):}
@@ -1130,19 +1154,17 @@ The direction of the speed vector ($\gamma$) is defined in the local coordinate 
 \begin{figure}[htb!]
 	\minipage{0.33\textwidth}
 	\centering
-	\includegraphics[height=5cm]{figures/2d_simulation/animations/2D_move_along_circle_rotating_car_like/20}
-	\caption{$0.20[s]$}
+	\includegraphics[height=5cm]{figures/2d_simulation/animations2/2D_move_along_circle_rotating_car_like/20}
 	\endminipage\hfill
 	\minipage{0.33\textwidth}
 	\centering
-	\includegraphics[height=5cm]{figures/2d_simulation/animations/2D_move_along_circle_rotating_car_like/40}
-	\caption{$0.40[s]$}
+	\includegraphics[height=5cm]{figures/2d_simulation/animations2/2D_move_along_circle_rotating_car_like/40}
 	\endminipage\hfill
 	\minipage{0.33\textwidth}
 	\centering
-	\includegraphics[height=5cm]{figures/2d_simulation/animations/2D_move_along_circle_rotating_car_like/60}
-	\caption{$0.60[s]$}
+	\includegraphics[height=5cm]{figures/2d_simulation/animations2/2D_move_along_circle_rotating_car_like/60}
 	\endminipage\hfill
+	\caption{Snapshots of the states at 0.20[s], 0.40[s] and 0.60[s]}
 \end{figure}
 \newpage
 The following two cases are further demonstration of the fact that the orientation can be controlled independently from the linear motion, i.e. the robot has 3 DoF. \\[0.3cm]
@@ -1155,19 +1177,17 @@ The following two cases are further demonstration of the fact that the orientati
 \begin{figure}[htb!]
 	\minipage{0.33\textwidth}
 	\centering
-	\includegraphics[height=5cm]{figures/2d_simulation/animations/2D_move_along_circle_rotating_reverse_direction/20}
-	\caption{$0.20[s]$}
+	\includegraphics[height=5cm]{figures/2d_simulation/animations2/2D_move_along_circle_rotating_reverse_direction/20}
 	\endminipage\hfill
 	\minipage{0.33\textwidth}
 	\centering
-	\includegraphics[height=5cm]{figures/2d_simulation/animations/2D_move_along_circle_rotating_reverse_direction/40}
-	\caption{$0.40[s]$}
+	\includegraphics[height=5cm]{figures/2d_simulation/animations2/2D_move_along_circle_rotating_reverse_direction/40}
 	\endminipage\hfill
 	\minipage{0.33\textwidth}
 	\centering
-	\includegraphics[height=5cm]{figures/2d_simulation/animations/2D_move_along_circle_rotating_reverse_direction/60}
-	\caption{$0.60[s]$}
+	\includegraphics[height=5cm]{figures/2d_simulation/animations2/2D_move_along_circle_rotating_reverse_direction/60}
 	\endminipage\hfill
+	\caption{Snapshots of the states at 0.20[s], 0.40[s] and 0.60[s]}
 \end{figure}
 In this case also the robot orientation and also the speed direction is changing from step to step. The changed orientation ($\omega dt$) has to be considered in the equation of $\gamma$ as being defined in the local frame.\\[0.3cm] 
 \noindent \textbf{Moving along a line and changing the orientation:}
@@ -1179,19 +1199,17 @@ In this case also the robot orientation and also the speed direction is changing
 \begin{figure}[htb!]
 	\minipage{0.33\textwidth}
 	\centering
-	\includegraphics[height=5cm]{figures/2d_simulation/animations/2D_move_along_line_and_rotating/20}
-	\caption{$0.20[s]$}
+	\includegraphics[height=5cm]{figures/2d_simulation/animations2/2D_move_along_line_and_rotating/20}
 	\endminipage\hfill
 	\minipage{0.33\textwidth}
 	\centering
-	\includegraphics[height=5cm]{figures/2d_simulation/animations/2D_move_along_line_and_rotating/40}
-	\caption{$0.40[s]$}
+	\includegraphics[height=5cm]{figures/2d_simulation/animations2/2D_move_along_line_and_rotating/40}
 	\endminipage\hfill
 	\minipage{0.33\textwidth}
 	\centering
-	\includegraphics[height=5cm]{figures/2d_simulation/animations/2D_move_along_line_and_rotating/60}
-	\caption{$0.60[s]$}
+	\includegraphics[height=5cm]{figures/2d_simulation/animations2/2D_move_along_line_and_rotating/60}
 	\endminipage\hfill
+	\caption{Snapshots of the states at 0.20[s], 0.40[s] and 0.60[s]}
 \end{figure}
 The kinematic simulation code is a handy tool to demonstrate the possibilities of such a robot configuration, but it does not give any details from dynamics point of view. As it can be seen in previous chapter the real world is not as ideal, thus such a simple kinematic point of view is not enough to give a detailed analysis. These kinematic simulation assumes that the contacts are ideal and there are small accelerations, thus the wheels cannot slip.
 \newpage
@@ -1570,7 +1588,7 @@ Figure \ref{dangerousOri} depicts the parametric solution of the contact forces 
 	\minipage{0.45\textwidth}
 	\centering
 	\includegraphics[height=7cm]{figures/dangerousOri.png}
-	\caption{The free-body diagram of the wheel A}
+	\caption{Orientation dependence of the wheel contact forces (normal direction)}
 	\label{dangerousOri}
 	\endminipage\hfill
 \end{figure}
@@ -1593,13 +1611,13 @@ Let us consider that the given robot has a disk shaped mass on a rod which is bo
 	\minipage{0.45\textwidth}
 	\centering
 	\includegraphics[height=7cm]{figures/draw_robot_baking}
-	\caption{Peak state at braking in case of most disadvantageous orientation when the contact force reduction is concentrated on a single passive wheel}
+	\caption{Peak state at \textit{braking} in case of most disadvantageous orientation when the contact force reduction is concentrated on a single passive wheel}
 	\label{draw_robot_braking}
 	\endminipage\hfill
 	\minipage{0.45\textwidth}
 	\centering
 	\includegraphics[height=7cm]{figures/draw_robot_accelerating}
-	\caption{Peak state at accelerating in case of most disadvantageous orientation when the contact force reduction is concentrated on a single passive wheel}
+	\caption{Peak state at \textit{accelerating} in case of most disadvantageous orientation when the contact force reduction is concentrated on a single passive wheel}
 	\label{draw_robot_accelerate}
 	\endminipage\hfill
 \end{figure}
@@ -1708,6 +1726,16 @@ Nowadays, it is a popular solution to combine such hardwares that have given wel
 A widely used solution for such concepts is the Robot Operating System (ROS). It is a flexible framework for implementing softwares on any kind of robots. There are several tools and libraries that can be used for developing complex applications on different robot platforms. In my case, a possible future step could be to start to use the built robot platform with a ROS application, e.g. implementing a simultaneous localization and mapping (SLAM) algorithm in a given environment and then carry out route planning algorithms. In case of this instance on hardware side some additional improvements were needed. In order to track the environment some kind of distance sensor should be added such as LIDAR (light detection and radar) or a KINECT camera. The robots position and orientation can be calculated quite accurately, but it is always good to have extra sensors and then make sensor fusions using techniques such as Kalman filter. For instance, using a 9-axis absolute orientation sensor (accelerometer,gyroscope and magnetometer) is a common choice for orientation tracking or for localization of the robot it worth considering to setup fixed sensors by which the position of the robot can be measured in an absolute manner and not from relative displacements as in case of odometry. If the bluetooth communication protocol is not fast enough, then a possible next step could be to move towards a Rasberry Pi platform with Wifi connection. 
 
 Aside from these possible hardware improvements, it can be concluded that the built hardware is a good base for further projects that wants to utilize a mobile robot with maximal freedom in term of maneuverability and high accuracy in terms of location and orientation control.
+
+\newpage
+\section*{Kivonat}
+\addcontentsline{toc}{section}{Kivonat}
+A diplomatervezési feladat kereteiben egy autonóm transzport robot szabályozási és paraméterbecslő problémáit vizsgálatára került sor. Ennek érdekében egy háromkerekű mobil omnirobot Arduino platform támogatással épült meg nulláról. Annak érdekében, hogy a robot a felhasználó elvárásainak minnél pontosabban eleget tehessen, részletes dinamikai számítások készültek el és az irányítástechnika klasszikus módszereit alkalmazva a motoro szabalyázosa történt meg. Ennek eredményeképpen egy jól szabályozható, azaz a pozícióját és orientációját tekintve pontosan ismerhető robotot kaptunk. 
+
+Továbbá, a lehetőségei egy autonóm borulás elkerülő algoritmus applikációs lehetőségei lettek megvizsgálva, amihez egy kapcsolt elektro-mechanikai model lett kidolgozva alapozva a megvalósult robot platformra. 
+
+\noindent Az elkészült borulás elkerülő algoritmus a mérési 
+eredményekkel összevetve jó az egyezést mutatott.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 											Bibliography

@@ -1,5 +1,5 @@
 \babel@toc {english}{}
-\contentsline {section}{Abstract}{2}{Doc-Start}
+\contentsline {section}{Abstract}{1}{Doc-Start}
 \contentsline {section}{Preface}{3}{Doc-Start}
 \contentsline {section}{\numberline {1}Introduction to Autonomous Transport Robots}{5}{section.1}
 \contentsline {subsection}{\numberline {1.1}History of transportation}{5}{subsection.1.1}
@@ -7,38 +7,37 @@
 \contentsline {subsection}{\numberline {1.3}Application of autonomous transport robots}{8}{subsection.1.3}
 \contentsline {section}{\numberline {2}Mobile Robotics}{11}{section.2}
 \contentsline {subsection}{\numberline {2.1}Classification of mobile robots}{11}{subsection.2.1}
-\contentsline {subsubsection}{\numberline {2.1.1}Based on the medium in which the robot moves}{11}{subsubsection.2.1.1}
-\contentsline {subsubsection}{\numberline {2.1.2}Based on the locomotion mechanism}{11}{subsubsection.2.1.2}
 \contentsline {subsection}{\numberline {2.2}Legged Mobile Robots}{12}{subsection.2.2}
 \contentsline {subsection}{\numberline {2.3}Wheeled Mobile Robots}{13}{subsection.2.3}
 \contentsline {subsubsection}{\numberline {2.3.1}Wheel design}{14}{subsubsection.2.3.1}
 \contentsline {subsubsection}{\numberline {2.3.2}Wheel configurations}{15}{subsubsection.2.3.2}
 \contentsline {paragraph}{\numberline {2.3.2.1}Holonomic robots}{15}{paragraph.2.3.2.1}
 \contentsline {paragraph}{\numberline {2.3.2.2}Anholonomic robots}{16}{paragraph.2.3.2.2}
-\contentsline {section}{\numberline {3}The Hardware Application}{18}{section.3}
-\contentsline {subsection}{\numberline {3.1}Selecting a mobile robot configuration}{18}{subsection.3.1}
-\contentsline {subsection}{\numberline {3.2}The Hardware}{19}{subsection.3.2}
-\contentsline {subsubsection}{\numberline {3.2.1}Platform base}{20}{subsubsection.3.2.1}
-\contentsline {subsubsection}{\numberline {3.2.2}Omni wheel}{20}{subsubsection.3.2.2}
-\contentsline {subsubsection}{\numberline {3.2.3}Gear Motor}{21}{subsubsection.3.2.3}
-\contentsline {subsubsection}{\numberline {3.2.4}Electronics}{22}{subsubsection.3.2.4}
-\contentsline {subsubsection}{\numberline {3.2.5}Schematic diagram of the electronics}{25}{subsubsection.3.2.5}
-\contentsline {subsection}{\numberline {3.3}DC motor speed analysis}{26}{subsection.3.3}
-\contentsline {subsubsection}{\numberline {3.3.1}System modelling}{26}{subsubsection.3.3.1}
-\contentsline {subsubsection}{\numberline {3.3.2}Step response analysis of the motors}{28}{subsubsection.3.3.2}
-\contentsline {subsubsection}{\numberline {3.3.3}Controller design using blackbox model}{30}{subsubsection.3.3.3}
-\contentsline {section}{\numberline {4}Motion Analysis of The Robot}{36}{section.4}
-\contentsline {subsection}{\numberline {4.1}Kinematics of three-wheeled omnidirectional robot}{36}{subsection.4.1}
-\contentsline {subsubsection}{\numberline {4.1.1}Basic relationships}{36}{subsubsection.4.1.1}
-\contentsline {subsubsection}{\numberline {4.1.2}2D Simulations}{38}{subsubsection.4.1.2}
-\contentsline {subsection}{\numberline {4.2}Dynamic analysis of DC motors}{42}{subsection.4.2}
-\contentsline {subsubsection}{\numberline {4.2.1}DC motor parameter identification}{42}{subsubsection.4.2.1}
-\contentsline {subsubsection}{\numberline {4.2.2}Validation of the parameter estimation}{47}{subsubsection.4.2.2}
-\contentsline {subsection}{\numberline {4.3}Mechanical model of the robot}{49}{subsection.4.3}
-\contentsline {subsubsection}{\numberline {4.3.1}Model of the robot platform}{49}{subsubsection.4.3.1}
-\contentsline {subsubsection}{\numberline {4.3.2}Simulations of motor states}{53}{subsubsection.4.3.2}
-\contentsline {subsubsection}{\numberline {4.3.3}Comparision with measurements}{56}{subsubsection.4.3.3}
-\contentsline {subsubsection}{\numberline {4.3.4}Mass estimation}{59}{subsubsection.4.3.4}
-\contentsline {section}{Summary}{62}{figure.4.45}
-\contentsline {section}{References}{64}{figure.4.45}
-\contentsline {section}{Attachments}{66}{figure.4.45}
+\contentsline {section}{\numberline {3}The Hardware Application}{19}{section.3}
+\contentsline {subsection}{\numberline {3.1}Selecting a mobile robot configuration}{19}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}The Hardware}{20}{subsection.3.2}
+\contentsline {subsubsection}{\numberline {3.2.1}Platform base}{21}{subsubsection.3.2.1}
+\contentsline {subsubsection}{\numberline {3.2.2}Omni wheel}{21}{subsubsection.3.2.2}
+\contentsline {subsubsection}{\numberline {3.2.3}Gear Motor}{22}{subsubsection.3.2.3}
+\contentsline {subsubsection}{\numberline {3.2.4}Electronics}{23}{subsubsection.3.2.4}
+\contentsline {subsubsection}{\numberline {3.2.5}Schematic diagram of the electronics}{26}{subsubsection.3.2.5}
+\contentsline {subsection}{\numberline {3.3}DC motor speed analysis}{27}{subsection.3.3}
+\contentsline {subsubsection}{\numberline {3.3.1}System modelling}{27}{subsubsection.3.3.1}
+\contentsline {subsubsection}{\numberline {3.3.2}Step response analysis of the motors}{29}{subsubsection.3.3.2}
+\contentsline {subsubsection}{\numberline {3.3.3}Controller design using blackbox model}{31}{subsubsection.3.3.3}
+\contentsline {section}{\numberline {4}Motion Analysis of The Robot}{37}{section.4}
+\contentsline {subsection}{\numberline {4.1}Kinematics of three-wheeled omnidirectional robot}{37}{subsection.4.1}
+\contentsline {subsubsection}{\numberline {4.1.1}Basic relationships}{37}{subsubsection.4.1.1}
+\contentsline {subsubsection}{\numberline {4.1.2}2D Simulations}{39}{subsubsection.4.1.2}
+\contentsline {subsection}{\numberline {4.2}Dynamic analysis of DC motors}{43}{subsection.4.2}
+\contentsline {subsubsection}{\numberline {4.2.1}DC motor parameter identification}{43}{subsubsection.4.2.1}
+\contentsline {subsubsection}{\numberline {4.2.2}Validation of the parameter estimation}{48}{subsubsection.4.2.2}
+\contentsline {subsection}{\numberline {4.3}Mechanical model of the robot}{50}{subsection.4.3}
+\contentsline {subsubsection}{\numberline {4.3.1}Model of the robot platform}{50}{subsubsection.4.3.1}
+\contentsline {subsubsection}{\numberline {4.3.2}Simulations of motor states}{54}{subsubsection.4.3.2}
+\contentsline {subsubsection}{\numberline {4.3.3}Comparision with measurements}{57}{subsubsection.4.3.3}
+\contentsline {subsubsection}{\numberline {4.3.4}Mass estimation}{60}{subsubsection.4.3.4}
+\contentsline {section}{Summary}{63}{figure.4.37}
+\contentsline {section}{Kivonat}{65}{figure.4.37}
+\contentsline {section}{References}{66}{figure.4.37}
+\contentsline {section}{Attachments}{68}{figure.4.37}
