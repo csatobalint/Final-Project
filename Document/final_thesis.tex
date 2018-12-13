@@ -46,7 +46,7 @@
 \definecolor{mGreen}{rgb}{0,0.6,0}
 \definecolor{mGray}{rgb}{0.5,0.5,0.5}
 \definecolor{mPurple}{rgb}{0.58,0,0.82}
-\definecolor{backgroundColour}{rgb}{0.95,0.95,0.92}
+\definecolor{backgroundColour}{rgb}{1,1,1}
 
 \lstdefinestyle{CStyle}{
 	backgroundcolor=\color{backgroundColour},   
@@ -147,6 +147,13 @@ Control and Parameter Estimation Problems of Autonomous Transport Robots
 
 \newpage
 
+\section*{Abstract}
+In this Final Project work the control and parameter estimation problems of an autonomous transport robot were investigated. A three-wheeled omnidirectional robot platform was built from scratch combined with the widely spread Arduino platform. In order to have a robot that behaves just as the user want, a detailed dynamic analysis and classical control of motors were carried out with great improvements in terms of location and orientation control. Additionally, the possibility of developing an on the go fall over avoidance autonomous feature was investigated for which a coupled electro-mechanical model was elaborated considering several details of the given hardware application. The developed fall over estimator model was compared with measurements and good agreements were obtained.
+
+\addcontentsline{toc}{section}{Abstract}
+
+\newpage
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 													Preface
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -182,18 +189,6 @@ As a conclusion, the main message of my former project was that one needs to go 
 
 \newpage
 
-\section*{Abstract}
-Autonomous vehicle technology offers the possibility of fundamentally
-changing transportation. Equipping cars and light vehicles
-with this technology will likely reduce crashes, energy consumption,
-and pollution and reduce the costs of congestion, as well.............
-blabalblablalblalba
-lablblablablalblballb
-labllablblalbalblalblbal
-
-\addcontentsline{toc}{section}{Abstract}
-
-\newpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 											Introduction to Autonomous Transport Robots
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -504,28 +499,26 @@ In previous chapters the basic features of mobile robots and some real life appl
 The development of kinematic and dynamic properties have been taken less attention so far, therefore this field can contain remarkable development potential in my opinion. The transport robots in industrial application are designed such a way that during their movement they will not likely face issues regarding the stability because they move along
 high radius path with low speed and accelerate moderately. In other words, a compromise is made between the configuration costs and the productivity, between the security and effectiveness. Sooner or later, the demand for a more dynamic, faster and smoother operation of transport robots can come into being just like in automotive industry. The problem can be more complex as well in certain situations. For instance, a transport robot operating in a plant that carries loads with different properties such as mass, moment of inertia or height would face a more challenging situation in dynamic stability point of view than a car with more or less known and constant physical parameters.
 
-To select a mobile configuration, the general purpose, working environment and concept of the robot have to be defined. Based on real life experiences and possible future application needs, this study will focus on designing a transport robot which would operate in a laboratory carrying different shaped and weighted loads. Instead focusing on navigation, i.e. dead-reckoning, route planning and obstacle avoiding, the control of dynamic behavior is to be examined in details.  As it was mentioned, the lower level issues will be in focus instead of the higher level ones. TODO
+To select a mobile configuration, the general purpose, working environment and concept of the robot have to be defined. Based on real life experiences and possible future application needs, this study will focus on designing a transport robot which would operate in a laboratory carrying different shaped and weighted loads. Instead focusing on navigation, i.e. dead-reckoning, route planning and obstacle avoiding, the control of dynamic behavior is to be examined in details.  As it was mentioned, the lower level issues will be in focus instead of the higher level ones. In  a former project in a similar way, the focus was firstly on lower level problems, then the robot platform after some further developments was able to participate in a robot football match of the Indonesia Robot Contest. \cite{robot_focis}. Another application of a four wheeled omnidirectional vehicle was a development of an algorithm to calculate near-optimal minimum time trajectories which can be used as part of a high-level path planner. \cite{robot_focis_2} In this work also detailed analysis of vehicle dynamics were carried out.
 
 Beside the technological aspects also the practicability and costs have to be considered since the building of the mobile robot configuration is also the part of my thesis. The most important aspect of a study of such an advanced moving transport robot is the maneuverability. In terms of maneuverability, the omnidirectional robots show the best performance. Choosing a three-wheeled omnidirectional mobile robot configuration can be regarded the optimal choice. The controllability is more complex compared to anholonomic robots, but with the choice of minimum number of three wheels it is still an easily handleable design challenge. Application of more wheels could give more controllability which would be favored, e.g. TUG is also four wheel driven omnidirectional configuration. However, it would make some additional issues appear such increased slip danger and more complex controllability. Compared to anholonomic configuration, the holonomic configurations are less stable as mentioned before, but it can be regarded as an advantage in this case, because this study is willing to deal with stability issues, thus the main objective is to examine the behavior of the system near stability and provide parameter estimation methods to avoid it. In other words, the possibility of demonstration of the problem to solve it is more important than simply avoiding it.
 In other words, a transport robot might be preferred over others if it can be as stable as possible without loosing any maneuverability skill. For an omnidirectional drive configuration special wheels of higher price are needed, thus the three-wheeled configuration is optimal from economic point of view as well compared to more wheeled omnidirectional robots.
-\newpage
+
 \subsection{The Hardware}
 The realised mobile robot was built from scratch ordering its part from different sources. In this chapter, the components of the mobile robot platform are presented.
-\subsubsection{Overall picture of the robot platform}
-Robot platform: Three-wheeled omnidirectional robot
 \begin{itemize}
-	\item Triangle-shaped cases (3 elements): makes structural integrity by holding the machine components; more levels are needed in order to have place for a package too.
+{\small 	\item Triangle-shaped cases (3 elements): makes structural integrity by holding the machine components; more levels are needed in order to have place for a package too.
 	\item Separate DC motors for all wheels with hall sensors: electric energy to kinetic energy conversion during locomotion; for controllability magnetic encoders are attached.
 	\item L298N Motor Drivers: power electronic module which drives the motors.
 	\item Microcontroller (Arduino Mega 2560): makes the calculations in order to operate the whole as a system, communicates with all devices.
 	\item Bluetooth Module (HC-05): gives the possibility of wireless serial communication
 	\item Step-up and voltage regulator modules: electronic modules that helps to connect certain parts of the the electronic circuit
-	\item Battery: energy storage; provides the energy needed for the operation of electronics and the motors.
+	\item Battery: energy storage; provides the energy needed for the operation of electronics and the motors.}
 \end{itemize}
 \begin{figure}[htb!]
 	\centering
-	\includegraphics[width=0.7\textwidth]{figures/robot_platform_1.png}
-	\caption{Robot platform}
+	\includegraphics[width=0.6\textwidth]{figures/robot_platform_1.png}
+	\caption{Robot platform: Three-wheeled omnidirectional robot}
 	\label{robot_platform_1}
 \end{figure}
 \newpage
@@ -616,6 +609,14 @@ The so called motor divers have these functionalities, in my case the usually us
 
 In order to be able to communicate wireless with robot, a bluetooth module (HC-05) was used by which serial communication could be realized. The serial communication is a protocol of a process of sending one bit data at a frequency sequentially over a communication channel. For instance, the Arduino board can communicate with the computer via an USB type cable using the serial communication protocol, e.g. when the code is uploading or when commands are sent from the board to the pc or vice versa. The pins for serial communication are denoted as RX (Receiving) and TX(Transferring) letters, the USB connection is connected to RX1,TX1 serial channel on the Mega. In order to avoid the collision of communication of the bluetooth module and the USB port if both are in use at same time, the BT module was connected to the RX2,TX2 channel.
 
+Using a third-party application called \textit{Joystick bluetooth Commander} on android mobile platform the robot could be remote controlled via bluetooth serial communication.
+\begin{figure}[htb!]
+	\centering
+	\includegraphics[width=\textwidth]{figures/jybt.png}
+	\label{electronics}
+	\caption{Joystick bluetooth Commander dashboard}
+\end{figure}
+This is an open-source software code for which several examples were provided, also an arduino code that handles whether a button is pressed or move commands are sent by the analog joystick.
 \newpage
 \subsubsection{Schematic diagram of the electronics}
 \begin{figure}[htb!]
@@ -630,7 +631,7 @@ The robot configuration is equipped by three officially identical 12V DC motors 
 Briefly, the DC motor works on the principle (Lorentz Law) that when a current conductor wire (armature) is put in a magnetic field then it will be subjected to electromagnetic force in accordance with the direction and magnitude of current and magnetic field, i.e. $\mathbf{F} = I~\mathbf{l} \times \mathbf{B}$. The coil is connected to a DC power source, thus current will flow through the wire producing its own magnetic field. The mechanical force is produced as result of the magnetic field of the permanent magnets and the magnetic field of the coil. The magnetic field of the coil is attracted to the permanent magnetic field, therefore the armature starts rotating due to the induced electromagnetic force.
 \begin{figure}[htb!]
 	\centering
-	\includegraphics[height=5cm]{figures/dc_conducting_wire.png}
+	\includegraphics[height=7cm]{figures/dc_conducting_wire.png}
 	\caption{A single current conductor in a static magnetic field \cite{dc_motor_2}}
 	\label{dc_conducting_wire}
 \end{figure}
@@ -640,7 +641,7 @@ According to Faraday's law of electromagnetic induction, a rotating loop of coil
 The electrical equivalent circuit of the armature and the free-body diagram of the rotor can be modeled as follows.
 \begin{figure}[htb!]
 	\centering
-	\includegraphics[height=5cm]{figures/dc_motor_model.png}
+	\includegraphics[height=7cm]{figures/dc_motor_model.png}
 	\caption{DC motor electrical and mechanical model \cite{dc_motor_3}}
 	\label{dc_motor_model}
 \end{figure}
@@ -1563,7 +1564,7 @@ Figure \ref{dangerousOri} depicts the parametric solution of the contact forces 
 	\minipage{0.45\textwidth}
 	\centering
 	\includegraphics[height=7cm]{figures/accelerationState}
-	\caption{State at forward acceleration}
+	\caption{State at forward acceleration in the safest orientation in terms of contact forces as the reduction is distributed between two wheels}
 	\label{accelerationState}
 	\endminipage\hfill
 	\minipage{0.45\textwidth}
@@ -1577,7 +1578,7 @@ Figure \ref{dangerousOri} depicts the parametric solution of the contact forces 
 Figure \ref{accelerationState} depicts the case with the most favorable orientation with respect to the evolution of the contact forces. Despite the fact that this model could predict a risk for fall over even in this configuration, in the reality this can hardly happen. In this case the wheel A and B could rise above the ground due to the too high acceleration but as they are actually the ones that causes the accelerations also the cause would vanish. Moreover, the wheel C is just perpendicular to the direction of the acceleration, thus its passive rollers are aligned such a way that they can roll freely. The direction of the rolling just after the rising of the wheels, thus the rotation of the robot depends on the location of the common center of mass. Figure \ref{fallover_ppt} shows the two possible cases. On one hand, the gravitational force is always balanced by the contact force on the passive wheel. On the other hand, the resultant moment, thus the direction of the angular acceleration depends on the orientation of the geometry, i.e. the relative position of center of mass referenced to the passive wheel contact point. If the robot case does not rotate that much that the center of mass could get beyond the passive wheel, then the robot will fall back and roll towards the passive wheel. Therefore, the opposite situation can not even happen by an inertial force which is caused by a too high acceleration as the passive will roll in the opposite direction immediately after the contact of wheel A and B are lost. Although, in reality there are mostly such conditions when this prediction based on this given idealistic model does not hold properly. The case is not perfectly rigid, thus it will vibrate and it may deform such a way due to a sudden inertial force that the center of mass can get beyond the wheel. In addition, the passive wheel can also stick to a given surface if it is not perfectly aligned or the passive roller does not work as an idealistic roller, i.e. as a slider from global point of view if the moving friction is not considered.
 \begin{figure}[htb!]
 	\centering
-	\includegraphics[height=7cm]{figures/fallover_ppt}
+	\includegraphics[height=6cm]{figures/fallover_ppt}
 	\caption{Dependence of the location of center of mass}
 	\label{fallover_ppt}
 \end{figure}
@@ -1592,13 +1593,13 @@ Let us consider that the given robot has a disk shaped mass on a rod which is bo
 	\minipage{0.45\textwidth}
 	\centering
 	\includegraphics[height=7cm]{figures/draw_robot_baking}
-	\caption{Peak state at braking}
+	\caption{Peak state at braking in case of most disadvantageous orientation when the contact force reduction is concentrated on a single passive wheel}
 	\label{draw_robot_braking}
 	\endminipage\hfill
 	\minipage{0.45\textwidth}
 	\centering
 	\includegraphics[height=7cm]{figures/draw_robot_accelerating}
-	\caption{Peak state at accelerating}
+	\caption{Peak state at accelerating in case of most disadvantageous orientation when the contact force reduction is concentrated on a single passive wheel}
 	\label{draw_robot_accelerate}
 	\endminipage\hfill
 \end{figure}
@@ -1626,7 +1627,7 @@ The configuration with the rod that has $0.373$ [kg] mass and is attached by a d
  \begin{figure}[htb!]
  	\centering
  	\includegraphics[width=\textwidth]{figures/fallover_video_1kg.png}
- 	\caption{Braking with max torque in case of 1.0[kg] disk at the top of the rod at 1[m] height; the robot with the doubled mass at top clearly falls over}
+ 	\caption{Braking with max torque in case of 1.0[kg] disk at the top of the rod at 1[m] height; the robot with the doubled mass at top clearly falls over due to the its linear momentum}
  	\label{fallover_video_1kg}
  \end{figure}
 
@@ -1641,18 +1642,19 @@ After the video measurements, the simplified time advanced solution of the more 
 
 With the given weights also the fall over was tested in case of opposite direction acceleration, i.e. in such configuration when the contact force distribution is theoretically the most favorable, see \ref{accelerationState} As it was mentioned, the simplified rigid and one-point contact robot model automatically predicts that it impossible to happen. With the given weights it was unable to fall over in the measurements. Just after the braking, the two driven wheels rose above the ground for a little time then fell back. Due to the intense vibration of the rod, the robot changed a random amount of its orientation angle in clockwise or counter-closckwise direction by rotating around the third passive wheel's contact point(s). On one hand, it was verified by the measurement that the robot can fall over in a specific direction and it cannot do like that in the corresponding opposite direction if the same inertias and accelerating power is used. On the other hand, due to the undesired random rotation around the passive wheel, the robot changes its orientation a little bit which is likely not acceptable in a real-life situations. Consequently, working at the edge of stability in this case is also a state which is wanted to be avoided during operation since it can lead to inaccurate orientation control and unpredicted movements. 
 
-Generally, the contact force depends on the mass of the attached disk and that of height of attachment in case of a given robot configuration and the acceleration state. Figure \ref{contactForce2D} represents the contact force of the passive wheel during the braking case as a function of the disk mass and height of attachment. It can be seen that by increasing either of them causes a reduction of contact force, thus increased risk for fall over.
+Generally, the contact force depends on the mass of the attached disk and that of height of attachment in case of a given robot configuration and the acceleration state. 
 \begin{figure}[htb!]
 	\centering
-	\includegraphics[height=4cm]{figures/contactForce2D_2}
+	\includegraphics[height=5.5cm]{figures/contactForce2D_2}
 	\caption{Passive wheel contact force (red means positive)}
 	\label{contactForce2D}
 \end{figure}
+Figure \ref{contactForce2D} represents the contact force of the passive wheel during the braking case as a function of the disk mass and height of attachment. It can be seen that by increasing either of them causes a reduction of contact force, thus increased risk for fall over.
 
 
 In this demonstrative configuration, it can be said that the height of the attachment point of the disk is kept constant, then only the disk mass remains as an unknown if the acceleration state is known.
 \subsubsection{Mass estimation}
-A more general model can be developed if a mass estimation algorithm is provided. For instance, the acceleration of the robot case has to depend on the robot mass. Although, the dependence is not trivial as the common acceleration is the resultant of three accelerating wheels. Parametric solution for the initial acceleration in case of the braking is shown in Figure \ref{massDep}. Compared to the weight of the robot (which is about 2[kg]), a quite high mass of payload is needed to have noticeable difference in the initial acceleration peak. In this consideration the rolling friction is not included, the acceleration dependence is caused by changes of inner joint force components which depends on the case mass. In my case, the robot hardware was able to have extra load about 2[kg] without having too high case deformations that can be harmful, thus this configuration is probably not able to work in a range where remarkable derivatives of the acceleration state could be experienced. Another problem is that the peak is not at the very first moment of an accelerating process which makes it harder to find the peak amplitude time. Additionally, the height of the peak is hard task to measure accurately using the rotary encoder since it uses double differentiation.
+A more general model can be developed if a mass estimation algorithm is provided too. For instance, the acceleration of the robot case has to depend on the robot mass. Although, the dependence is not trivial as the common acceleration is the resultant of three accelerating wheels. Parametric solution for the initial acceleration in case of the braking is shown in Figure \ref{massDep} using the simplified analytical approach. Compared to the weight of the robot (which is about 2[kg]), a quite high mass of payload is needed to have noticeable difference in the initial acceleration peak. In this consideration the rolling friction is not included, the acceleration dependence is caused by changes of inner joint force components which depends on the case mass. In my case, the robot hardware was able to have extra load about 2[kg] without having too high case deformations that can be harmful, therefore this configuration is probably not able to work in a range where remarkable derivatives of the acceleration state could be experienced. Another problem is that the peak is not at the very first moment of an accelerating process which makes it harder to find the peak amplitude time. Additionally, the height of the peak is hard task to measure accurately using the rotary encoder since it uses double differentiation.
 \begin{figure}[htb!]
 	\minipage{0.45\textwidth}
 	\centering
@@ -1668,7 +1670,7 @@ A more general model can be developed if a mass estimation algorithm is provided
 	\endminipage\hfill
 \end{figure}
 
-Figure \ref{epsCompare} represents measurement and simulation results of a no load case for a motor. It is enough to analyze a single wheel dynamics as the linear acceleration of the case is a definite resultant of wheel states. The pure measurement is quite noisy as so high accelerations are calculated even if the the velocity of the wheel is constant. A moving average filter was tested to make correction on the data. If the averaging is taken on the two previous and proceeding timesteps (MA4) then the oscillation in case of steady state vanishes and the peak gets closer to the simulated ones. On the other hand, also the peak time is shifted which originally matches quite well with the numerical simulation. The same tendency can be experienced with a longer averaging function (MA10). Then the same measurements were carried out with package loads up to ~1.7 [kg]. As it was mentioned, for structural reasons it was the maximum that this simple mobile robot could hold without harmful deformations. The measurements results showed little difference regarding the wheel accelerations. As in Figure \ref{massDep} shown, the relative changes of the initial peak of linear acceleration as a function of payload of the given robot hardware is too small compared to the measurement and processing errors (numerical differentiation) of the rotary encoders. It can be stated that the errors are more significant then the sensitivity to the payload mass, therefore monitoring the acceleration state is not suitable for developing a mass estimator algorithm. 
+Figure \ref{epsCompare} represents measurement and simulation results of a no load case for a motor. It is enough to analyze a single wheel dynamics as the linear acceleration of the case is a definite resultant of wheel states. The pure measurement is quite noisy as so high accelerations are calculated even if the the velocity of the wheel is constant. A moving average filter was tested to make some corrections on the data. If averaging is taken on the two previous and proceeding timesteps (MA4) then the oscillation in case of steady state vanishes and the peak gets closer to the simulated ones. On the other hand, also the peak time is shifted which originally matches quite well with the numerical simulation. Same tendency can be experienced with a longer averaging function (MA10). Then the same measurements were carried out with package loads up to ~1.7 [kg]. As it was mentioned, for structural reasons it was the maximum that this simple mobile robot could hold without harmful deformations. The measurements results showed little difference regarding the wheel accelerations. As in Figure \ref{massDep} shown, the relative changes of the initial peak of linear acceleration as a function of payload of the given robot hardware is too small compared to the measurement and processing errors (numerical differentiation) of the rotary encoders. It can be stated that the errors are more significant then the sensitivity to the payload mass, therefore monitoring the acceleration state is not suitable for developing a mass estimator algorithm. 
 
 Considering all above, a static approach was used in the end. In the equations, only viscous resistance was considered. In reality, there is no one-point contact between a wheel and ground. Both of the contact surfaces will deform and have multiple contact points which will exert adverse torque on the wheel, therefore additional torque is needed for keeping a constant speed beside the viscous resistance. The magnitude of the rolling resistance torque basically depends on the mass of the robot, the wheel and surface material characteristic since these will determine the degree of deformation of the contact surfaces. It can be generally written as $M_r = \mu_r m g$ where $\mu_r$ is the rolling resistance coefficient. From the motor point of view, it can be handled as a constant motor load which appears if the wheel is in contact with a surface and wants to roll. Therefore, beside the dynamic behavior also the final speed of the motors will be different, actually in a proportional way with the robot mass which can be utilized for a mass estimation algorithm.
 The final speed measurements with different added extra masses (0g, 500g, 1000g, 1500g, 2000g) were performed. All the wheels were powered by the maximal 12V, therefore the robot was spinning around its own axis. This is an advantageous movement since as it was mentioned, the only spinning case does not change the contact forces, thus it is a safety way of measuring an unknown added mass. When the transient state at the beginning was finished, the final speeds were calculated by averaging the speed data for some seconds. Using the 0g, 500g and 2000g measurement averaged speed data a linear curve was fitted to have a estimator function in such a way that the no mass case perfectly align with the curve. Let us suppose that the cases of 1000g and 1500g extra mass are unknown mass measurements and one wants to estimate the unknowns based on the fitted curve of the three known mass measurement casess (0g, 500g and 1000g extra masses). The measurement data with relative velocities scaled by the maximal 0g speed and the fitted curves are shown in Figure \ref{rolling_fric_meas} and the corresponding relative errors of the estimator function is shown in Figure \ref{mass_estimate}.
@@ -1689,16 +1691,106 @@ The final speed measurements with different added extra masses (0g, 500g, 1000g,
 
 Unfortunately, the speed reduction due to the extra mass is very low, thus the estimation can have such a high relative errors as in case of 500g extra mass (-27\%) while for the 1500g case a quite accurate (-3\%) estimation was obtained. The negative sign here means that the masses are underestimated which can be also problematic. On the other hand, the expected trend was obtained which can give a really rough estimate for the added mass. Theoretically, it is still possible that a robot configuration could use this method with different conditions such as higher sensitivity to changed mass (higher rolling friction coefficient) or higher cargo load capacity and operating range. The mass sensitivity can also depend on the surface on which the robot operates which also means that the recalibration is necessary on a different surface.
 
-If the mass estimator can be considered as an accurate one and the position of the added mass is known, then the mobile robot can have the autonomous feature to override the manual inputs of a remote control. Firstly, the robot makes the mass estimator measurements then stores the estimated mass and assumes it to be a disk shaped one. It knows its own geometrical features, thus the location of the estimated mass can be calculated. In this way, it can calculate its own center of gravity and using the dynamic model at every processor cycle it can make sanity checks for the provided user inputs which are the motor voltages whether they can lead to a fall over or not.
+If the mass estimator can be considered as an accurate one and the position of the added mass is known, then the mobile robot can have the autonomous feature to override the manual inputs of a remote control. Firstly, the robot makes the mass estimator measurements then stores the estimated mass and assumes it to be a disk shaped one. Additionally, it knows its own geometrical features, e.g. the location of the estimated mass. In this way, it can calculate its own center of gravity and using the dynamic model at every processor cycle it can make sanity checks for the provided user inputs which are the motor voltages whether they can lead to a fall over or not. If too risky maneuvers are expectable, then the the remote control is to overridden, e.g. it keeps the direction but decreases the magnitude of the traction.
 
 
 
 \newpage
 \newpage
 \section*{Summary}
-To do this part..
 \addcontentsline{toc}{section}{Summary}
+In this project some possible capabilities of autonomous transport robots and that of realization were analyzed. Mostly, the problems regarding the fall over phenomenon were studied in details as a potential new feature of an autonomous transport robot. As being a dynamic problem, focus was put on developing a comprehensive model considering both the electrical and mechanical behavior of the components and the system. On the other hand, there was another aspect that such relationships are looked for that can be either solved by low computational capacity micro controller on the run as well. Eventually, an efficient engineering type solution was found by monitoring the sign of the contact forces by means of the developed linear electro-mechanical model. As an extension a possible way for the load mass estimation was carried out by which a more general transport robot can be designed, e.g. it can distinguish between risks of transporting different packages based on estimating just before the transportation its own unknown (new) mass. Once the inertias of the robot platform and the load are known, the artificial algorithm can override the remote controller if the provided inputs would make the robot operate at the edge of its stability or close to it. A further possible application can be, that an operator or an other algorithm make a route plan and then the robot calculates the speed limits along the path, thus it can maximize the speed along a highly curved path resulting in a shorter travel time which is at the end a possible way of cost reduction in plant for instance.
 
+The other focus of the project was more practical oriented developments. An three-wheeled omnidirectional robot was built from scratch and also several software codes were developed in order to make it operate. The most important characteristic of such a configuration is the presence of the three independent degrees of freedom, i.e. two dimensional translation and orientation change around its own center over a plane. In order to make it work in practice, the holonomic wheels that theoretically can give the possibility for having the increased freedom in terms of moving, have to be controlled precisely since for an every arbitrary movements a given combination matches strictly. Unfortunately, the shipped components needed real time control to behave just as they wanted. As it was shown, applying the PID methodology, a good control of wheels were performed. The quality of the control was also tested with the third party android mobile application by which the motors can be remoted controlled via bluetooth using a joystick. Without the control the robot changed its orientation also if it should not have had to do it, while after applying the control algorithms the robot platform became a real omnidirectional configuration keeping it orientation during such movements when it directed to move without changing it. In other words, a robot platform was built regarding a hardware and system together which can move quite accurately as the user want and ready to be used for higher level algorithms. At the beginning of the project this was one of the main motivation to build such a robot since the former experiences showed that it is not a trivial task and additionally really essential for anything more complicated task.
+
+Nowadays, it is a popular solution to combine such hardwares that have given well-defined and precisely working inputs for actuations and given outputs, e.g. data of sensors, and last but not least a wireless communication protocol to exchange information with an another computer. If the former things can be provided, than it is possible to connect a mobile robot such as mine with an another computer wireless which has higher computational power, thus more complicated algorithm can developed, what is more there are more advanced software possibilities for development, evaluation and processing. 
+
+A widely used solution for such concepts is the Robot Operating System (ROS). It is a flexible framework for implementing softwares on any kind of robots. There are several tools and libraries that can be used for developing complex applications on different robot platforms. In my case, a possible future step could be to start to use the built robot platform with a ROS application, e.g. implementing a simultaneous localization and mapping (SLAM) algorithm in a given environment and then carry out route planning algorithms. In case of this instance on hardware side some additional improvements were needed. In order to track the environment some kind of distance sensor should be added such as LIDAR (light detection and radar) or a KINECT camera. The robots position and orientation can be calculated quite accurately, but it is always good to have extra sensors and then make sensor fusions using techniques such as Kalman filter. For instance, using a 9-axis absolute orientation sensor (accelerometer,gyroscope and magnetometer) is a common choice for orientation tracking or for localization of the robot it worth considering to setup fixed sensors by which the position of the robot can be measured in an absolute manner and not from relative displacements as in case of odometry. If the bluetooth communication protocol is not fast enough, then a possible next step could be to move towards a Rasberry Pi platform with Wifi connection. 
+
+Aside from these possible hardware improvements, it can be concluded that the built hardware is a good base for further projects that wants to utilize a mobile robot with maximal freedom in term of maneuverability and high accuracy in terms of location and orientation control.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 											Bibliography
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\newpage
+\begin{thebibliography}{1}
+	
+	\addcontentsline{toc}{section}{References}
+	
+	\bibitem{google1} Google Photo Search: "Evolution of transportation"
+	
+	\bibitem {wiki} 
+	\emph{Autonomous car}: Wikipedia article
+	
+	\bibitem {c} 
+	James M. Anderson, Nidhi Kalra, Karlyn D. Stanley, Paul Sorensen, Constantine Samaras, Oluwatobi A. Oluwatola: \emph{Autonomous Vehicle Technology}, ISBN: 978-0-8330-8398-2, 2016
+	
+	\bibitem {5c} 
+	Anil Gupta: Five challenges in designing a fully autonomous system for driverless cars, IIoT-World
+	
+	\bibitem {starship} 
+	Starship Technologies: Website
+	
+	\bibitem {smp} 
+	SMP Robotics: Website
+	
+	\bibitem {neo} 
+	NEOBOTIX: Website
+	
+	\bibitem {bmw} 
+	BMW STR: Website
+	
+	\bibitem {apd} Allonrobots: Website
+	
+	\bibitem {rirt}
+	Dr. Tevesz Gábor:
+	\emph{Robotirányítás rendszertechnikája előadés jegyzet, Villamosmérnőki és Informatikai Kar, Automatizálási és Alkalmazott Informatikai Tanszék, 2017}
+	
+	\bibitem {sieg}
+	Roland Siegwart, Illah R. Nourbakhsh:
+	\emph{Introduction to Autonomous Mobile Robots}, A Bradford Book, The MIT Press, Massachusetts 2004,
+	ISBN 0-262-19502-X
+	
+	\bibitem{robot_focis} Three-wheeled Omnidirectional Robot Controller: Gusti Arif Hanifah Pawitan, Kusprasapta Mutijarsa, Widyawardana Adiprawita
+	Autonomous Vehicle Research Group SEEI Institut Teknologi Bandung, 2016 International Conference on Information Technology Systems and Innovation (ICITSI)
+	Bandung – Bali, October 24 – 27, 2016 ISBN: 978-1-5090-2449-0
+	
+	\bibitem{robot_focis_2} Trajectory generation and control for four wheeled omnidirectional vehicles: Oliver Purwin, Raffaello D’Andrea
+	Sibley School of Mechanical and Aerospace Engineering, Cornell University, Ithaca, NY 14853, USA
+	Robotics and Autonomous Systems 54 (2006) 13–22
+	
+	\bibitem{owp1} Magnus Jonason Bjärenstam: Development of a ball balancing robot
+	with omni wheels, Lund University, Department of Automatic Control,	March 2012
+	ISSN 0280-5316,	ISRN LUTFD2/TFRT--5897--SE
+	
+	\bibitem{dc_motor_5} Phidigets: DC Motor And Controller Primer
+	
+	\bibitem{arduino} Arduino Documentation (Website)
+	
+	\bibitem{dc_motor_3}  University of Michigan Wwebsite: Control Tutorials for Matlab \& Simulink
+	
+	\bibitem{dc_motor_4}  Alexandre Bernardino: \textit{Dynamic Model of a Permanent Magnet DC Motor}, Dept. of Electrical and Computer Engineering of the Faculty of Engineering, Technical University of Lisbon
+	
+	\bibitem{howtomech} HowToMechatronics Website
+	
+	\bibitem{dc_motor_2} Motor Selection Article on \textit{nathotron} Website: https://nathotron.wordpress.com/
+	
+	\bibitem{dc_motor_1} Elprocus Website: What are the best ways to control the speed of dc motor
+	
+	\bibitem{par_est_1} MathWorks Help: Estimating parameters of a dc motor
+	\bibitem{par_est_2} MathWorks Help: Modeling a dc motor
+	\bibitem{par_est_3} MathWorks Help: Simscape
+	
+	\bibitem{csernak} Dr. Csernák Gábor: Dinamika jegyzet, Budapesti Műszaki és Gazdaságtudományi Egyetem, Műszaki Mechanika Tanszék, 2018
+	
+	\bibitem{eqworld} EqWorld Website
+	
+	
+	
+	
+\end{thebibliography}
 \newpage
 
 \section*{Attachments}
@@ -1994,82 +2086,12 @@ set_speed(abs(s));
 #define LED_RED 31
 #define LED_YEL 32
 \end{lstlisting}
-
 \newpage
+\subsection*{II. Electromechanical model of the DC motors}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% 											Bibliography
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\newpage
-\newpage
-\begin{thebibliography}{1}
-
-\addcontentsline{toc}{section}{References}
-
-\bibitem{google1} Google Photo Search: "Evolution of transportation"
-
-\bibitem {wiki} 
-\emph{Autonomous car}: Wikipedia article
-
-\bibitem {c} 
-James M. Anderson, Nidhi Kalra, Karlyn D. Stanley, Paul Sorensen, Constantine Samaras, Oluwatobi A. Oluwatola: \emph{Autonomous Vehicle Technology}, ISBN: 978-0-8330-8398-2, 2016
-
-\bibitem {5c} 
-Anil Gupta: Five challenges in designing a fully autonomous system for driverless cars, IIoT-World
-
-\bibitem {starship} 
-Starship Technologies: Website
-
-\bibitem {smp} 
-SMP Robotics: Website
-
-\bibitem {neo} 
-NEOBOTIX: Website
-
-\bibitem {bmw} 
-BMW STR: Website
-
-\bibitem {apd} Allonrobots: Website
-
-\bibitem {rirt}
-Dr. Tevesz Gábor:
-\emph{Robotirányítás rendszertechnikája előadés jegyzet, Villamosmérnőki és Informatikai Kar, Automatizálási és Alkalmazott Informatikai Tanszék, 2017}
-
-\bibitem {sieg}
-Roland Siegwart, Illah R. Nourbakhsh:
-\emph{Introduction to Autonomous Mobile Robots}
-
-\bibitem{owp1} Magnus Jonason Bjärenstam: Development of a ball balancing robot
-with omni wheels, 2012 Lund University
-
-\bibitem{dc_motor_5} Phidigets: DC Motor And Controller Primer
-
-\bibitem{arduino} Arduino Documentation (Website)
-
-\bibitem{dc_motor_3}  University of Michigan Wwebsite: Control Tutorials for Matlab \& Simulink
-
-\bibitem{dc_motor_4}  Alexandre Bernardino: \textit{Dynamic Model of a Permanent Magnet DC Motor}, Dept. of Electrical and Computer Engineering of the Faculty of Engineering, Technical University of Lisbon
-
-\bibitem{howtomech} HowToMechatronics Website
-
-\bibitem{dc_motor_2} Motor Selection Article on \textit{nathotron} Website: https://nathotron.wordpress.com/
-
-\bibitem{dc_motor_1} Elprocus Website: What are the best ways to control the speed of dc motor
-
-\bibitem{mathworks} MathWorks Help
-
-\bibitem{par_est_1} MathWorks Help: Estimating parameters of a dc motor
-\bibitem{par_est_2} MathWorks Help: Modeling a dc motor
-\bibitem{par_est_3} MathWorks Help: Simscape
-
-\bibitem{csernak} Dr. Csernák Gábor: Dinamika jegyzet, Budapesti Műszaki és Gazdaságtudományi Egyetem, Műszaki Mechanika Tanszék, 2018
-
-\bibitem{eqworld} EqWorld Website
-
-
-
-
-\end{thebibliography}
+\begin{figure}[htb!]
+	\centering
+	\includegraphics[width=\textwidth]{figures/attach_2.png}
+\end{figure}
 
 \end{document}

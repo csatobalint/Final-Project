@@ -1,6 +1,6 @@
 \babel@toc {english}{}
-\contentsline {section}{Preface}{2}{Doc-Start}
-\contentsline {section}{Abstract}{4}{figure.0.2}
+\contentsline {section}{Abstract}{2}{Doc-Start}
+\contentsline {section}{Preface}{3}{Doc-Start}
 \contentsline {section}{\numberline {1}Introduction to Autonomous Transport Robots}{5}{section.1}
 \contentsline {subsection}{\numberline {1.1}History of transportation}{5}{subsection.1.1}
 \contentsline {subsection}{\numberline {1.2}Autonomous vehicles}{5}{subsection.1.2}
@@ -18,15 +18,14 @@
 \contentsline {section}{\numberline {3}The Hardware Application}{18}{section.3}
 \contentsline {subsection}{\numberline {3.1}Selecting a mobile robot configuration}{18}{subsection.3.1}
 \contentsline {subsection}{\numberline {3.2}The Hardware}{19}{subsection.3.2}
-\contentsline {subsubsection}{\numberline {3.2.1}Overall picture of the robot platform}{19}{subsubsection.3.2.1}
-\contentsline {subsubsection}{\numberline {3.2.2}Platform base}{20}{subsubsection.3.2.2}
-\contentsline {subsubsection}{\numberline {3.2.3}Omni wheel}{20}{subsubsection.3.2.3}
-\contentsline {subsubsection}{\numberline {3.2.4}Gear Motor}{21}{subsubsection.3.2.4}
-\contentsline {subsubsection}{\numberline {3.2.5}Electronics}{22}{subsubsection.3.2.5}
-\contentsline {subsubsection}{\numberline {3.2.6}Schematic diagram of the electronics}{25}{subsubsection.3.2.6}
+\contentsline {subsubsection}{\numberline {3.2.1}Platform base}{20}{subsubsection.3.2.1}
+\contentsline {subsubsection}{\numberline {3.2.2}Omni wheel}{20}{subsubsection.3.2.2}
+\contentsline {subsubsection}{\numberline {3.2.3}Gear Motor}{21}{subsubsection.3.2.3}
+\contentsline {subsubsection}{\numberline {3.2.4}Electronics}{22}{subsubsection.3.2.4}
+\contentsline {subsubsection}{\numberline {3.2.5}Schematic diagram of the electronics}{25}{subsubsection.3.2.5}
 \contentsline {subsection}{\numberline {3.3}DC motor speed analysis}{26}{subsection.3.3}
 \contentsline {subsubsection}{\numberline {3.3.1}System modelling}{26}{subsubsection.3.3.1}
-\contentsline {subsubsection}{\numberline {3.3.2}Step response analysis of the motors}{27}{subsubsection.3.3.2}
+\contentsline {subsubsection}{\numberline {3.3.2}Step response analysis of the motors}{28}{subsubsection.3.3.2}
 \contentsline {subsubsection}{\numberline {3.3.3}Controller design using blackbox model}{30}{subsubsection.3.3.3}
 \contentsline {section}{\numberline {4}Motion Analysis of The Robot}{36}{section.4}
 \contentsline {subsection}{\numberline {4.1}Kinematics of three-wheeled omnidirectional robot}{36}{subsection.4.1}
@@ -41,5 +40,5 @@
 \contentsline {subsubsection}{\numberline {4.3.3}Comparision with measurements}{56}{subsubsection.4.3.3}
 \contentsline {subsubsection}{\numberline {4.3.4}Mass estimation}{59}{subsubsection.4.3.4}
 \contentsline {section}{Summary}{62}{figure.4.45}
-\contentsline {section}{Attachments}{63}{figure.4.45}
-\contentsline {section}{References}{69}{lstnumber.-4.35}
+\contentsline {section}{References}{64}{figure.4.45}
+\contentsline {section}{Attachments}{66}{figure.4.45}
